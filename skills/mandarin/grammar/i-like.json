@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.grammar.i-like",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "grammar",
+  "slug": "i-like",
+  "statement": {
+    "en": "I can say what I like: 我喜欢猫 (I like cats)."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.vocab.animals"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "是 means \"am\" or \"is\". To say you like something, use 喜欢."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

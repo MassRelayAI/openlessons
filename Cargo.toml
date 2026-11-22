@@ -1,0 +1,28 @@
+[workspace]
+resolver = "2"
+members = ["crates/openlessons"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/MassRelayAI/openlessons"
+
+[workspace.dependencies]
+# serde_json: every record is JSON. preserve_order keeps a file's key order when `stamp` rewrites it; ids never depend on
+# key order (the canonical form sorts keys itself, see src/canon.rs)
+serde_json = { version = "1", features = ["preserve_order"] }
+# jsonschema: validates records against schemas/ (no network or file resolvers: every schema stands alone)
+jsonschema = { version = "0.63", default-features = false }
+# sha2: content-addressed ids and asset digests
+sha2 = "0.10"
+# regex: the personal-data patterns
+regex = "1"
+# clap (derive): the command line
+clap = { version = "4", features = ["derive"] }
+# anyhow: error context
+anyhow = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1

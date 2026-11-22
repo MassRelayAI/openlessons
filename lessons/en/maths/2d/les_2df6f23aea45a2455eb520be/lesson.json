@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_2df6f23aea45a2455eb520be",
+  "slug": "tens-and-ones",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Tens and ones",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.number.tens-and-ones"
+  ],
+  "teach": {
+    "text": "Numbers after ten have one ten and some ones. 14 is 1 ten and 4 ones.",
+    "examples": [
+      "14 is 1 ten and 4 ones",
+      "20 is 2 tens"
+    ],
+    "reteach": "Make a group of ten. What is left over are the ones."
+  },
+  "image": {
+    "emoji": "🔟"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

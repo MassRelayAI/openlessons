@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.grammar.i-like",
+  "version": 1,
+  "subject": "english",
+  "strand": "grammar",
+  "slug": "i-like",
+  "statement": {
+    "en": "I can say what I like with \"I like ...\"."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.grammar.this-is-a"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "After I we say like, not likes. I like ..."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

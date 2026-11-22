@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kosakata.keluarga",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kosakata",
+  "slug": "keluarga",
+  "statement": {
+    "id": "Saya bisa menyebut anggota keluarga saya."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kosakata.hewan"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Hampir! Keduanya keluarga, tetapi yang satu lebih tua dan yang lain lebih muda."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

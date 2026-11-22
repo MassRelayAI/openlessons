@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.sides-corners",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "sides-corners",
+  "statement": {
+    "en": "I can count the sides and corners of a flat shape."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.shape.flat-shapes"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "A circle has no straight sides and no corners."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

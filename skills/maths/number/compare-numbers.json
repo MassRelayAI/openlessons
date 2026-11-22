@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.compare-numbers",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "compare-numbers",
+  "statement": {
+    "en": "I can say which number is more and which is fewer."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.number.count-to-20"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Look again: the number that comes later when we count is the bigger one."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

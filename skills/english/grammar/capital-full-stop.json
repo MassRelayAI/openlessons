@@ -1,0 +1,44 @@
+{
+  "schema": "skill/1",
+  "id": "english.grammar.capital-full-stop",
+  "version": 1,
+  "subject": "english",
+  "strand": "grammar",
+  "slug": "capital-full-stop",
+  "statement": {
+    "en": "I can start a sentence with a capital letter and end it with a full stop."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.grammar.follow-instruction"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "A sentence needs a big letter at the start."
+      },
+      "mustAddress": true
+    },
+    {
+      "no": 2,
+      "feedback": {
+        "en": "A sentence needs a full stop at the end."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

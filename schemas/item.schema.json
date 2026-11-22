@@ -1,0 +1,2298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/item.schema.json",
+  "title": "item/1: one activity. `view` is all a learner may see; `key` holds the answer and never leaves the server side",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "kind",
+    "skills",
+    "band",
+    "role",
+    "view",
+    "key",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "item/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^itm_[0-9a-f]{24}$"
+    },
+    "kind": {
+      "enum": [
+        "tap_choice",
+        "multi_select",
+        "drag_match",
+        "sort_order",
+        "tap_image",
+        "word_tiles",
+        "story_choice"
+      ]
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*$"
+      }
+    },
+    "band": {
+      "enum": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    },
+    "role": {
+      "enum": [
+        "guided",
+        "practice",
+        "check",
+        "unit_test",
+        "path_test",
+        "placement",
+        "exam"
+      ]
+    },
+    "form": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{1,12}$",
+      "description": "parallel forms of a check or test (a, b, main, backup)"
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "items made by one template share a family"
+    },
+    "view": {
+      "type": "object"
+    },
+    "key": {
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "reviewed",
+        "published"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "maker",
+        "created"
+      ],
+      "description": "who or what made the record; an AI-made record says so and cannot be reviewed by its maker",
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "generator"
+          ],
+          "description": "human: written by a person; ai: drafted by a model; generator: produced by a deterministic program"
+        },
+        "maker": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+          "description": "a public handle or an agent name; never an email address"
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "created": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "by",
+              "kind",
+              "role",
+              "verdict",
+              "date"
+            ],
+            "properties": {
+              "by": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                "description": "a public handle or an agent name; never an email address"
+              },
+              "kind": {
+                "enum": [
+                  "human",
+                  "ai"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "subject",
+                  "language",
+                  "safety",
+                  "licence"
+                ]
+              },
+              "verdict": {
+                "enum": [
+                  "pass",
+                  "fix",
+                  "fail"
+                ]
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "tap_choice"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "options"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "option"
+                ],
+                "properties": {
+                  "option": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "option"
+                      ],
+                      "properties": {
+                        "option": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "multi_select"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "options"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "options": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "options"
+                ],
+                "properties": {
+                  "options": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "options"
+                      ],
+                      "properties": {
+                        "options": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          }
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "drag_match"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "left",
+              "right"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "left": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "right": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "pairs"
+                ],
+                "properties": {
+                  "pairs": {
+                    "type": "array",
+                    "minItems": 2,
+                    "items": {
+                      "type": "array",
+                      "minItems": 2,
+                      "maxItems": 2,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "pairs"
+                      ],
+                      "properties": {
+                        "pairs": {
+                          "type": "array",
+                          "minItems": 2,
+                          "items": {
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 200
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "sort_order"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "items"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "order"
+                ],
+                "properties": {
+                  "order": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "order"
+                      ],
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          }
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "tap_image"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "regions"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "regions": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "x",
+                    "y",
+                    "w",
+                    "h"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "x": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000
+                    },
+                    "y": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000
+                    },
+                    "w": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000
+                    },
+                    "h": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "region"
+                ],
+                "properties": {
+                  "region": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "region"
+                      ],
+                      "properties": {
+                        "region": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "word_tiles"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "tiles",
+              "slots"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "tiles": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 12,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id"
+                  ],
+                  "anyOf": [
+                    {
+                      "required": [
+                        "text"
+                      ]
+                    },
+                    {
+                      "required": [
+                        "image"
+                      ]
+                    }
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "image": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "emoji"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "emoji": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 64,
+                          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 200
+                        }
+                      }
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "slots": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 12
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded",
+              "answer",
+              "verification"
+            ],
+            "properties": {
+              "graded": {
+                "const": true
+              },
+              "answer": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "order"
+                ],
+                "properties": {
+                  "order": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    }
+                  }
+                }
+              },
+              "distractors": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "answer",
+                    "misconception"
+                  ],
+                  "properties": {
+                    "answer": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "order"
+                      ],
+                      "properties": {
+                        "order": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          }
+                        }
+                      }
+                    },
+                    "misconception": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "feedback": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    }
+                  }
+                }
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              },
+              "verification": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "constructed",
+                      "computed",
+                      "human",
+                      "solver"
+                    ],
+                    "description": "constructed: the key was built with the question by a deterministic generator; computed: an independent program; human: a person answered it; solver: a second model answered it blind"
+                  },
+                  "by": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                    "description": "a public handle or an agent name; never an email address"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "story_choice"
+          }
+        },
+        "required": [
+          "kind"
+        ]
+      },
+      "then": {
+        "properties": {
+          "view": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "prompt",
+              "start",
+              "nodes"
+            ],
+            "properties": {
+              "prompt": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "text"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2000
+                  },
+                  "image": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "emoji"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "emoji": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 64,
+                        "description": "Unicode emoji, drawn by the device font: no asset record needed"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      },
+                      "alt": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 200
+                      }
+                    }
+                  },
+                  "audio": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "oneOf": [
+                      {
+                        "required": [
+                          "cue"
+                        ]
+                      },
+                      {
+                        "required": [
+                          "asset"
+                        ]
+                      }
+                    ],
+                    "properties": {
+                      "cue": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 120,
+                        "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                      },
+                      "asset": {
+                        "type": "string",
+                        "pattern": "^ast_[0-9a-f]{24}$"
+                      }
+                    }
+                  }
+                }
+              },
+              "start": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "nodes": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 40,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "text",
+                    "end",
+                    "choices"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 200
+                    },
+                    "text": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 2000
+                    },
+                    "audio": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "oneOf": [
+                        {
+                          "required": [
+                            "cue"
+                          ]
+                        },
+                        {
+                          "required": [
+                            "asset"
+                          ]
+                        }
+                      ],
+                      "properties": {
+                        "cue": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 120,
+                          "description": "names a sound that must be heard (phoneme.s, word.sun); a harness records or synthesises it until an asset exists"
+                        },
+                        "asset": {
+                          "type": "string",
+                          "pattern": "^ast_[0-9a-f]{24}$"
+                        }
+                      }
+                    },
+                    "end": {
+                      "type": "boolean"
+                    },
+                    "choices": {
+                      "type": "array",
+                      "maxItems": 4,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "id",
+                          "label",
+                          "to"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          },
+                          "label": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 2000
+                          },
+                          "to": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 200
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "key": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "graded"
+            ],
+            "properties": {
+              "graded": {
+                "const": false
+              },
+              "hints": {
+                "type": "array",
+                "maxItems": 5,
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+{"schema":"alignment/1","skill":"maths.number.count-to-five","standard":"example-framework:y1.n1","strength":"exact","status":"reviewed","provenance":{"origin":"ai","maker":"example-agent","model":"example-model","created":"2026-11-23","reviews":[{"by":"example-teacher","kind":"human","role":"subject","verdict":"pass","date":"2026-11-23"}]}}
+{"schema":"alignment/1","skill":"maths.number.count-to-three","standard":"example-framework:y1","strength":"partial","status":"proposed","provenance":{"origin":"human","maker":"example-author","created":"2026-11-23","reviews":[]}}

@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.flat-shapes",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "flat-shapes",
+  "statement": {
+    "en": "I can name circles, squares, triangles and rectangles."
+  },
+  "type": "math_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "A square and a rectangle are close. Look at whether all the sides are the same."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

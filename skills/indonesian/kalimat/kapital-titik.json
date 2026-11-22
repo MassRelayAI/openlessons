@@ -1,0 +1,44 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kalimat.kapital-titik",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kalimat",
+  "slug": "kapital-titik",
+  "statement": {
+    "id": "Saya bisa memulai kalimat dengan huruf kapital dan mengakhirinya dengan tanda titik."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kalimat.saya-suka"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Kalimat harus dimulai dengan huruf besar."
+      },
+      "mustAddress": true
+    },
+    {
+      "no": 2,
+      "feedback": {
+        "id": "Kalimat harus diakhiri dengan tanda titik."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

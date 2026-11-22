@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kosakata.warna",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kosakata",
+  "slug": "warna",
+  "statement": {
+    "id": "Saya bisa menyebut delapan warna."
+  },
+  "type": "id_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Dua warna itu mirip. Lihat sekali lagi."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

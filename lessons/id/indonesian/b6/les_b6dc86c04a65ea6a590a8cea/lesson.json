@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_b6dc86c04a65ea6a590a8cea",
+  "slug": "huruf-awal",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Huruf awal sebuah kata",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.fonik.huruf-awal"
+  ],
+  "teach": {
+    "text": "Setiap kata dimulai dengan sebuah huruf. Bola dimulai dengan b. Topi dimulai dengan t.",
+    "examples": [
+      "bola: b",
+      "topi: t"
+    ],
+    "reteach": "Ucapkan kata itu pelan-pelan. Bunyi yang paling awal adalah hurufnya."
+  },
+  "image": {
+    "emoji": "🧢"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_b8481f7355aced2c7ec52686",
+  "slug": "solid-shapes",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Name solid shapes",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.shape.solid-shapes"
+  ],
+  "teach": {
+    "text": "Solid shapes are not flat. A ball is a sphere. A box is a cube.",
+    "examples": [
+      "a ball is a sphere",
+      "a tin is a cylinder"
+    ],
+    "reteach": "Hold a real thing: does it roll, stack or slide?"
+  },
+  "image": {
+    "emoji": "🧊"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

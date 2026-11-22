@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kalimat.ini",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kalimat",
+  "slug": "ini",
+  "statement": {
+    "id": "Saya bisa menunjuk dan berkata: Ini bola."
+  },
+  "type": "id_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "\"Saya\" berarti diri kita sendiri. Untuk menunjuk benda, kita berkata \"Ini\"."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

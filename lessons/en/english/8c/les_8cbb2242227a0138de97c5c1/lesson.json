@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_8cbb2242227a0138de97c5c1",
+  "slug": "numbers",
+  "locale": "en",
+  "subject": "english",
+  "title": "Count and read 1 to 10",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.vocab.numbers"
+  ],
+  "teach": {
+    "text": "Count each thing once, and say the last number. That is how many.",
+    "examples": [
+      "three apples",
+      "ten apples"
+    ],
+    "reteach": "Touch each apple as you count, so none is counted twice."
+  },
+  "image": {
+    "emoji": "🍎🍎🍎🍎🍎"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

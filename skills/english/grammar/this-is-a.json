@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "english.grammar.this-is-a",
+  "version": 1,
+  "subject": "english",
+  "strand": "grammar",
+  "slug": "this-is-a",
+  "statement": {
+    "en": "I can say \"This is a ...\" about a picture."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "The words are in the wrong order. Start with This."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema": "framework/1",
+  "id": "ccss-2010",
+  "title": "Common Core State Standards",
+  "publisher": "NGA Center for Best Practices and Council of Chief State School Officers",
+  "jurisdiction": "US",
+  "version": "2010",
+  "sourceUrl": "https://www.thecorestandards.org/read-the-standards/",
+  "terms": {
+    "class": "attribution",
+    "quote": "ids_and_titles",
+    "notice": "© Copyright 2010. National Governors Association Center for Best Practices and Council of Chief State School Officers. All rights reserved.",
+    "termsUrl": "https://www.thecorestandards.org/public-license/",
+    "note": "The public licence allows copying and display only for purposes that support the Common Core State Standards Initiative, with the notice, and names NGA Center/CCSSO as sole owners. We keep identifiers and titles and write statements in our own words.",
+    "reviewed": "2026-11-23"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_91194a86fc36312c2f54b4ca",
+  "slug": "ini",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Kalimat \"Ini ...\"",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kalimat.ini"
+  ],
+  "teach": {
+    "text": "Kita menunjuk benda dan berkata \"Ini ...\". Ini bola. Ini topi biru.",
+    "examples": [
+      "Ini bola.",
+      "Ini topi biru."
+    ],
+    "reteach": "Tunjuk bendanya, ucapkan \"Ini\", lalu sebut namanya."
+  },
+  "image": {
+    "emoji": "⚽"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

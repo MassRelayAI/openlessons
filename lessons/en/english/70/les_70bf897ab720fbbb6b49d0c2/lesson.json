@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_70bf897ab720fbbb6b49d0c2",
+  "slug": "colours",
+  "locale": "en",
+  "subject": "english",
+  "title": "Name eight colours",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.vocab.colours"
+  ],
+  "teach": {
+    "text": "Colours are everywhere! The sun is yellow and the grass is green.",
+    "examples": [
+      "red like an apple",
+      "blue like the sky"
+    ],
+    "reteach": "Think of something that is always that colour, like a banana for yellow."
+  },
+  "image": {
+    "emoji": "🔴"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

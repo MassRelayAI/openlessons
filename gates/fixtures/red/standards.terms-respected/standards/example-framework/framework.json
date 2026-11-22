@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "example-framework",
+  "title": "Example Primary Framework",
+  "publisher": "Example Education Board",
+  "jurisdiction": "international",
+  "version": "1",
+  "sourceUrl": "https://example.org/framework",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://example.org/terms",
+    "note": "Terms not read: the nodes still copy the official wording.",
+    "reviewed": null
+  }
+}

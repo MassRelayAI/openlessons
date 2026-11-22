@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_3d5044eb5a752d47a779f479",
+  "slug": "colours",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Name eight colours",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.vocab.colours"
+  ],
+  "teach": {
+    "text": "Hóngsè is red, lánsè is blue, lǜsè is green. Every colour ends in 色 sè.",
+    "examples": [
+      "红色 hóngsè: red",
+      "蓝色 lánsè: blue"
+    ],
+    "reteach": "Look at the first character: it tells you the colour. 色 just means colour."
+  },
+  "image": {
+    "emoji": "🔴"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

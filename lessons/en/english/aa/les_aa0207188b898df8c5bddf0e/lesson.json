@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_aa0207188b898df8c5bddf0e",
+  "slug": "follow-instruction",
+  "locale": "en",
+  "subject": "english",
+  "title": "Follow a spoken instruction",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.grammar.follow-instruction"
+  ],
+  "teach": {
+    "text": "Listen to the whole instruction, then do it. Touch the red ball.",
+    "examples": [
+      "Touch the cat.",
+      "Touch the blue one."
+    ],
+    "reteach": "Listen for the thing and its colour. Say the instruction to yourself."
+  },
+  "image": {
+    "emoji": "🐸"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

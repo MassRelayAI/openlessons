@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.grammar.whats-this",
+  "version": 1,
+  "subject": "english",
+  "strand": "grammar",
+  "slug": "whats-this",
+  "statement": {
+    "en": "I can answer \"What's this?\" with \"It's a ...\"."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.grammar.i-like"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "We say It's for one thing. Start your answer with It's."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

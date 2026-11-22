@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_1af4f677f89d7f6bbfb2e06a",
+  "slug": "letter-sounds",
+  "locale": "en",
+  "subject": "english",
+  "title": "Say the sound for a letter",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.phonics.letter-sounds"
+  ],
+  "teach": {
+    "text": "Every letter has a sound. The letter s says sss, like a snake.",
+    "examples": [
+      "s says sss",
+      "a says a, like apple"
+    ],
+    "reteach": "Look at the picture and say its first sound slowly. That sound is the letter."
+  },
+  "image": {
+    "emoji": "☀️"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

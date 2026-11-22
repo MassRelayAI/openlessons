@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_73fd1cd1d5d7a0510feb9e2f",
+  "slug": "hewan",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Nama delapan hewan",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kosakata.hewan"
+  ],
+  "teach": {
+    "text": "Kucing berbunyi meong. Sapi berbunyi mooo. Bebek berbunyi kwek kwek.",
+    "examples": [
+      "kucing: meong",
+      "bebek: kwek kwek"
+    ],
+    "reteach": "Lihat gambarnya, tirukan bunyi hewannya, lalu sebut namanya."
+  },
+  "image": {
+    "emoji": "🐱"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

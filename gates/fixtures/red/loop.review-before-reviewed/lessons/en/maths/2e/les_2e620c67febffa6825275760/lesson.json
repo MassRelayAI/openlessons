@@ -1,0 +1,44 @@
+{
+  "schema": "lesson/1",
+  "id": "les_2e620c67febffa6825275760",
+  "slug": "count-to-five",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Count to five",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.number.count-to-five"
+  ],
+  "teach": {
+    "text": "Count each thing once. One, two, three, four, five.",
+    "examples": [
+      "three is 3"
+    ],
+    "reteach": "Touch each one as you say its number."
+  },
+  "image": {
+    "asset": "ast_7d8583b3c4edef9fc3a08153",
+    "alt": "a dot"
+  },
+  "status": "published",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "example-agent",
+    "model": "example-model",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "example-agent",
+        "kind": "ai",
+        "role": "subject",
+        "verdict": "pass",
+        "date": "2026-11-23"
+      }
+    ]
+  }
+}

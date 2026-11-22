@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "cefr",
+  "title": "Common European Framework of Reference for Languages",
+  "publisher": "Council of Europe",
+  "jurisdiction": "international",
+  "version": "Companion volume 2018",
+  "sourceUrl": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2018/1680787989",
+    "note": "Reproducing the descriptors needs permission from the publisher. Level names are used as facts; descriptors are never copied.",
+    "reviewed": null
+  }
+}

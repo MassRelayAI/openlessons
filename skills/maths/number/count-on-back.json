@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.count-on-back",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "count-on-back",
+  "statement": {
+    "en": "I can find 1 or 2 more and 1 or 2 fewer than a number to 20."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.number.tens-and-ones"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "More means count on, fewer means count back. Check which way you hopped."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

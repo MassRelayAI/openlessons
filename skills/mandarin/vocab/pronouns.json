@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.vocab.pronouns",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "vocab",
+  "slug": "pronouns",
+  "statement": {
+    "en": "I can use 我, 你, 他 and 她 and their plurals."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.vocab.family"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two sound the same or nearly the same. Look at the character: who is it about?"
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

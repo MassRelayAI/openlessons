@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "hsk-3",
+  "title": "Chinese Proficiency Grading Standards for International Chinese Language Education (HSK 3.0)",
+  "publisher": "Ministry of Education of the People's Republic of China",
+  "jurisdiction": "CN",
+  "version": "GF 0025-2021",
+  "sourceUrl": "https://www.chinesetest.cn/",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.chinesetest.cn/",
+    "note": "No terms of reuse were found. Band names only; the graded word, character and grammar lists are never stored.",
+    "reviewed": null
+  }
+}

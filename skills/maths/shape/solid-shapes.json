@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.solid-shapes",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "solid-shapes",
+  "statement": {
+    "en": "I can name cubes, spheres, cones and cylinders."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.shape.sides-corners"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Think about what the shape does: a cylinder rolls and stacks, a sphere only rolls."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

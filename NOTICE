@@ -1,0 +1,21 @@
+openlessons
+Copyright 2026 The openlessons authors
+
+Code and tools (the command line, the schemas, the gates) are licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Content (everything under lessons/, skills/, alignments/, paths/, assets/ and locales/) is licensed under the Creative Commons
+Attribution 4.0 International licence (see LICENSE-CONTENT). Suggested credit: "openlessons contributors, CC BY 4.0", with a
+link to https://github.com/MassRelayAI/openlessons. An asset may carry its own licence and attribution in its record.
+
+Standards frameworks under standards/ are referenced, not reproduced. Each belongs to its publisher; this project is not
+affiliated with or endorsed by any of them, and its lessons do not certify anything. Notices the publishers ask for:
+
+- National curriculum in England (Department for Education): Contains public sector information licensed under the Open
+  Government Licence v3.0.
+- Common Core State Standards: © Copyright 2010. National Governors Association Center for Best Practices and Council of
+  Chief State School Officers. All rights reserved.
+
+The Common European Framework of Reference for Languages (Council of Europe), Cambridge English: Young Learners and
+Cambridge Primary Mathematics (Cambridge University Press & Assessment), HSK and YCT (Chinese Testing International;
+GF 0025-2021) and Kurikulum Merdeka (Kementerian Pendidikan Dasar dan Menengah) are named by level only, with links to
+their sources. No descriptor, word list, syllabus text or exam item of theirs is stored here.

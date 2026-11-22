@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.fonik.hitung-suku-kata",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "fonik",
+  "slug": "hitung-suku-kata",
+  "statement": {
+    "id": "Saya bisa memotong kata menjadi suku kata dan menghitungnya."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kalimat.kapital-titik"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Hitung lagi dengan tepukan. Setiap suku kata satu tepukan, bukan setiap huruf."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

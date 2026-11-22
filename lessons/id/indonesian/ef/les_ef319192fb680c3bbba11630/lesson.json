@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_ef319192fb680c3bbba11630",
+  "slug": "kapital-titik",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Huruf kapital dan tanda titik",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kalimat.kapital-titik"
+  ],
+  "teach": {
+    "text": "Kalimat dimulai dengan huruf besar dan diakhiri tanda titik. Ibu pergi ke pasar.",
+    "examples": [
+      "Ibu pergi ke pasar.",
+      "Adik minum susu."
+    ],
+    "reteach": "Periksa: apakah huruf pertama besar? Apakah ada titik di akhir?"
+  },
+  "image": {
+    "emoji": "✏️"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

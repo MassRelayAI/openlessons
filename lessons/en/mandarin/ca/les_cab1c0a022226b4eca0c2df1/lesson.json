@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_cab1c0a022226b4eca0c2df1",
+  "slug": "count",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Count things in Chinese",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.characters.count"
+  ],
+  "teach": {
+    "text": "Count each thing once, in Chinese: yī, èr, sān, sì, wǔ.",
+    "examples": [
+      "三 sān: three dots",
+      "五 wǔ: five dots"
+    ],
+    "reteach": "Touch each dot as you count: yī, èr, sān. The last number you say is how many."
+  },
+  "image": {
+    "emoji": "🐼"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

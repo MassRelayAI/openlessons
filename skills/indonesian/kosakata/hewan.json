@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kosakata.hewan",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kosakata",
+  "slug": "hewan",
+  "statement": {
+    "id": "Saya bisa menyebut dan membaca nama delapan hewan."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kosakata.warna"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Dua hewan itu mirip. Lihat telinga, kaki, atau bulunya sekali lagi."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

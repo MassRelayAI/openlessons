@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_bcf2c909a474d5260df4a7cf",
+  "slug": "who-is",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Say who someone is",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.grammar.who-is"
+  ],
+  "teach": {
+    "text": "Put 是 shì (is, am) in the middle: 他是爸爸, he is dad. 我是哥哥, I am the big brother.",
+    "examples": [
+      "他是爸爸: he is my dad",
+      "她是妈妈: she is my mum"
+    ],
+    "reteach": "First who (我, 他, 她), then 是, then the family word."
+  },
+  "image": {
+    "emoji": "👉"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

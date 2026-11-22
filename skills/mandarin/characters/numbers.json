@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.characters.numbers",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "characters",
+  "slug": "numbers",
+  "statement": {
+    "en": "I can read and say the Chinese numbers one to ten."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.pinyin.tones"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Look closely: those two characters look alike. 七 (7) has a hook; 十 (10) is a plain cross."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

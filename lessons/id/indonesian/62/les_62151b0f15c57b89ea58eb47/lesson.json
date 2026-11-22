@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_62151b0f15c57b89ea58eb47",
+  "slug": "keluarga",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Nama anggota keluarga",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kosakata.keluarga"
+  ],
+  "teach": {
+    "text": "Kakak lebih tua dari kita. Adik lebih muda. Nenek dan kakek adalah orang tua dari ayah atau ibu.",
+    "examples": [
+      "kakak: lebih tua",
+      "adik: lebih muda"
+    ],
+    "reteach": "Pikirkan siapa yang lebih tua dan siapa yang lebih muda."
+  },
+  "image": {
+    "emoji": "👩"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

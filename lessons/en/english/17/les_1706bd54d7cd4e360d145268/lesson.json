@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_1706bd54d7cd4e360d145268",
+  "slug": "split-sounds",
+  "locale": "en",
+  "subject": "english",
+  "title": "Split a word into sounds",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.phonics.split-sounds"
+  ],
+  "teach": {
+    "text": "A word is a train of sounds. The word tap has three: t - a - p.",
+    "examples": [
+      "tap: t - a - p",
+      "pin: p - i - n"
+    ],
+    "reteach": "Tap once for every sound you hear in the word. Count your taps."
+  },
+  "image": {
+    "emoji": "🪺"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

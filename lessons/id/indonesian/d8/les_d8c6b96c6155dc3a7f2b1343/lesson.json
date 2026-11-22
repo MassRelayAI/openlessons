@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_d8c6b96c6155dc3a7f2b1343",
+  "slug": "suku-kata",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Suku kata terbuka: ba, bi, bu",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.fonik.suku-kata"
+  ],
+  "teach": {
+    "text": "Huruf b dan a digabung menjadi ba. b dan i menjadi bi. b dan u menjadi bu.",
+    "examples": [
+      "b + a = ba",
+      "m + i = mi"
+    ],
+    "reteach": "Ucapkan bunyi huruf pertama, lalu bunyi vokalnya, makin lama makin cepat: b... a... ba!"
+  },
+  "image": {
+    "emoji": "⚽"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

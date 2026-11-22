@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_aeef30d8f2c31da8ed0c2d75",
+  "slug": "vokal",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Bunyi huruf vokal",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.fonik.vokal"
+  ],
+  "teach": {
+    "text": "Huruf a berbunyi a, seperti apel. Huruf i berbunyi i, seperti ikan.",
+    "examples": [
+      "a seperti apel",
+      "u seperti ular"
+    ],
+    "reteach": "Lihat gambarnya dan ucapkan bunyi pertamanya pelan-pelan. Bunyi itu hurufnya."
+  },
+  "image": {
+    "emoji": "🍎"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

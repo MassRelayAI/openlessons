@@ -1,0 +1,14 @@
+{
+  "schema": "licences/1",
+  "note": "SPDX ids an asset may carry. Not allowed, by design: any NonCommercial or NoDerivatives licence, and ShareAlike or copyleft terms, which would bind the lessons that use the asset.",
+  "allowed": [
+    "CC0-1.0",
+    "CC-BY-4.0",
+    "CC-BY-3.0",
+    "MIT",
+    "Apache-2.0"
+  ],
+  "attributionNotRequired": [
+    "CC0-1.0"
+  ]
+}

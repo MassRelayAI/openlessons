@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_af6c5326e0a4ce1fa12935c1",
+  "slug": "body",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Name parts of my body",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.vocab.body"
+  ],
+  "teach": {
+    "text": "Tóu is head, shǒu is hand, jiǎo is foot. Yǎnjing are your eyes.",
+    "examples": [
+      "手 shǒu: hand",
+      "脚 jiǎo: foot"
+    ],
+    "reteach": "Touch each part as you say it: tóu, shǒu, jiǎo."
+  },
+  "image": {
+    "emoji": "✋"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

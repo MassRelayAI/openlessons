@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.phonics.split-sounds",
+  "version": 1,
+  "subject": "english",
+  "strand": "phonics",
+  "slug": "split-sounds",
+  "statement": {
+    "en": "I can split a short word into its sounds."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.phonics.blend-sounds"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Count the sounds, not the syllables. Say the word slowly."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

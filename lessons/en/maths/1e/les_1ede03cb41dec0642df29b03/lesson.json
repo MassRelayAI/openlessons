@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_1ede03cb41dec0642df29b03",
+  "slug": "flat-shapes",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Name flat shapes",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.shape.flat-shapes"
+  ],
+  "teach": {
+    "text": "Flat shapes: a circle is round, a square has 4 equal sides, a triangle has 3 sides.",
+    "examples": [
+      "a circle is round",
+      "a triangle has 3 sides"
+    ],
+    "reteach": "Trace the edge with your finger and count the straight sides."
+  },
+  "image": {
+    "emoji": "⬛"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

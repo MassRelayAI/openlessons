@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_3776927a6d4ef4f3944d55a1",
+  "slug": "i-like",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Say: I like ...",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.grammar.i-like"
+  ],
+  "teach": {
+    "text": "Wǒ xǐhuan means I like. 我喜欢狗: I like dogs.",
+    "examples": [
+      "我喜欢猫: I like cats",
+      "我喜欢红色: I like red"
+    ],
+    "reteach": "Start with 我 (I), then 喜欢 (like), then the thing you like."
+  },
+  "image": {
+    "emoji": "❤️"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

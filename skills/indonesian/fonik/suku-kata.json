@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.fonik.suku-kata",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "fonik",
+  "slug": "suku-kata",
+  "statement": {
+    "id": "Saya bisa membaca suku kata terbuka seperti ba, bi, bu, be, bo."
+  },
+  "type": "phonics_single_sound",
+  "prerequisites": [
+    "indonesian.fonik.vokal"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Huruf pertamanya sudah betul. Dengarkan lagi bunyi vokal di belakangnya."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_4750e68db8b298822b8c3852",
+  "slug": "hitung-suku-kata",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Menghitung suku kata",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.fonik.hitung-suku-kata"
+  ],
+  "teach": {
+    "text": "Tepuk tangan untuk setiap suku kata: se-pa-tu, tiga tepukan. Ma-ta-ha-ri, empat tepukan.",
+    "examples": [
+      "bo-la: dua",
+      "se-pa-tu: tiga"
+    ],
+    "reteach": "Ucapkan katanya pelan-pelan dan tepuk tangan setiap kali mulutmu terbuka."
+  },
+  "image": {
+    "emoji": "🔤"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

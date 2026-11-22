@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.tens-and-ones",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "tens-and-ones",
+  "statement": {
+    "en": "I can say how many tens and ones are in a number to 20."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.number.compare-numbers"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "The ten is one whole group. Count only what is left over as ones."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

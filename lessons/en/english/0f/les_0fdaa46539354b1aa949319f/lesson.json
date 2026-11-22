@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_0fdaa46539354b1aa949319f",
+  "slug": "i-like",
+  "locale": "en",
+  "subject": "english",
+  "title": "Say: I like ...",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.grammar.i-like"
+  ],
+  "teach": {
+    "text": "To say what we like we say: I like dogs.",
+    "examples": [
+      "I like cats.",
+      "I like apples."
+    ],
+    "reteach": "Think of something you love. Start with I like, then say the thing."
+  },
+  "image": {
+    "emoji": "🍎"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

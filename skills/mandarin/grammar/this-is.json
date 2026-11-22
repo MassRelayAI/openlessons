@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.grammar.this-is",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "grammar",
+  "slug": "this-is",
+  "statement": {
+    "en": "I can say what something is: 这是狗 (this is a dog)."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.grammar.i-like"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "我是 means \"I am\". To show something, say 这是 (this is)."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

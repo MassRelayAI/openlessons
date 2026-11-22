@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kosakata.angka",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kosakata",
+  "slug": "angka",
+  "statement": {
+    "id": "Saya bisa membaca angka satu sampai sepuluh dalam kata."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kosakata.keluarga"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Hampir! Angka itu bersebelahan atau bentuknya mirip. Hitung lagi pelan-pelan."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "schema": "locale/1",
+  "id": "en",
+  "name": "English",
+  "script": "Latn",
+  "direction": "ltr",
+  "segmentation": "space"
+}

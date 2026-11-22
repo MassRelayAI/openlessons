@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "cambridge-yle",
+  "title": "Cambridge English: Young Learners",
+  "publisher": "Cambridge University Press & Assessment",
+  "jurisdiction": "international",
+  "version": "current",
+  "sourceUrl": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/young-learners/",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/young-learners/",
+    "note": "Proprietary. Level names only; word lists, syllabus text and exam items are never stored.",
+    "reviewed": null
+  }
+}

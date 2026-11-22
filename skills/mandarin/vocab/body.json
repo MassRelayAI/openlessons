@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.vocab.body",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "vocab",
+  "slug": "body",
+  "statement": {
+    "en": "I can name eight parts of my body in Mandarin."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.vocab.pronouns"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Nearly! Those two are close to each other on your body. Touch the part and say it again."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

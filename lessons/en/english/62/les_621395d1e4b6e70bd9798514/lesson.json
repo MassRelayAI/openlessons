@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_621395d1e4b6e70bd9798514",
+  "slug": "whats-this",
+  "locale": "en",
+  "subject": "english",
+  "title": "Answer: What's this?",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.grammar.whats-this"
+  ],
+  "teach": {
+    "text": "When someone asks What's this? we answer: It's a cat.",
+    "examples": [
+      "It's a dog.",
+      "It's a duck."
+    ],
+    "reteach": "The answer starts with It's. It's a, then the name."
+  },
+  "image": {
+    "emoji": "🦆"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

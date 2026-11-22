@@ -1,0 +1,24 @@
+{
+  "schema": "asset/1",
+  "id": "ast_7d8583b3c4edef9fc3a08153",
+  "kind": "image",
+  "mediaType": "image/svg+xml",
+  "file": "ast_7d8583b3c4edef9fc3a08153.svg",
+  "sha256": "7d8583b3c4edef9fc3a081531f8b47874828a7e2e9e7bc26c8b4371ed996e07d",
+  "licence": "CC-BY-4.0",
+  "attribution": {
+    "title": "A dot",
+    "author": "Example Artist",
+    "source": "https://example.org/dot"
+  },
+  "alt": {
+    "en": "a dot"
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "human",
+    "maker": "example-author",
+    "created": "2026-11-23",
+    "reviews": []
+  }
+}

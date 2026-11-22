@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.fonik.gabung",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "fonik",
+  "slug": "gabung",
+  "statement": {
+    "id": "Saya bisa menggabungkan dua suku kata menjadi sebuah kata."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.fonik.huruf-awal"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Suku katanya sudah betul, tetapi urutannya terbalik. Mulai dari suku kata pertama."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

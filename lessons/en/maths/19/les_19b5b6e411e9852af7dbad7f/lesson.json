@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_19b5b6e411e9852af7dbad7f",
+  "slug": "add-within-10",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Add within 10",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "Adding means putting groups together. 3 and 4 make 7.",
+    "examples": [
+      "3 + 4 = 7",
+      "5 + 2 = 7"
+    ],
+    "reteach": "Start at the bigger number and count on the smaller one."
+  },
+  "image": {
+    "emoji": "➕"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

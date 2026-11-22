@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_09bead33a4e5488f171d7bd2",
+  "slug": "numbers",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Read the numbers 1 to 10",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.characters.numbers"
+  ],
+  "teach": {
+    "text": "One is 一 yī, two is 二 èr, three is 三 sān. Ten is 十 shí.",
+    "examples": [
+      "一 yī: 1",
+      "十 shí: 10"
+    ],
+    "reteach": "Count the lines in 一, 二 and 三. For the others, say them in order on your fingers."
+  },
+  "image": {
+    "emoji": "🔟"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

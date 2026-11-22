@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_fcaffa5e56a5ef660f7c75f4",
+  "slug": "sight-words",
+  "locale": "en",
+  "subject": "english",
+  "title": "Read common words on sight",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.phonics.sight-words"
+  ],
+  "teach": {
+    "text": "Some words we just know by looking: the, I, to.",
+    "examples": [
+      "the cat",
+      "I can go to the park"
+    ],
+    "reteach": "Cover the word with your hand, then look again. Say it fast: the."
+  },
+  "image": {
+    "emoji": "🍎"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

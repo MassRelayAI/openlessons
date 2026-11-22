@@ -1,0 +1,44 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.pinyin.tones",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "pinyin",
+  "slug": "tones",
+  "statement": {
+    "en": "I can hear the four tones of Mandarin and match each one to its mark."
+  },
+  "type": "phonics_single_sound",
+  "prerequisites": [
+    "mandarin.speaking.greetings"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Tone 2 goes straight up; tone 3 dips down first. Listen again for the dip."
+      },
+      "mustAddress": true
+    },
+    {
+      "no": 2,
+      "feedback": {
+        "en": "Tone 1 stays high and flat; tone 4 falls fast, like saying \"No!\""
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

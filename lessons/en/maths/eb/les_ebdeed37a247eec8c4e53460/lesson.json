@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_ebdeed37a247eec8c4e53460",
+  "slug": "compare-numbers",
+  "locale": "en",
+  "subject": "maths",
+  "title": "More and fewer",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.number.compare-numbers"
+  ],
+  "teach": {
+    "text": "The number that comes later when we count is bigger. 9 is more than 5.",
+    "examples": [
+      "9 is more than 5",
+      "3 is fewer than 8"
+    ],
+    "reteach": "Count up from the smaller number. The one you reach first is smaller."
+  },
+  "image": {
+    "emoji": "🍎"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

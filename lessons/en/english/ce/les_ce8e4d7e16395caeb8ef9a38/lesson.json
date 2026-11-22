@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_ce8e4d7e16395caeb8ef9a38",
+  "slug": "family",
+  "locale": "en",
+  "subject": "english",
+  "title": "Name my family",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.vocab.family"
+  ],
+  "teach": {
+    "text": "Our family has special names: mum, dad, sister, brother.",
+    "examples": [
+      "This is my mum.",
+      "This is my brother."
+    ],
+    "reteach": "Think who looks after you at home. What do you call them?"
+  },
+  "image": {
+    "emoji": "👩"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

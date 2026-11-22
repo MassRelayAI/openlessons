@@ -1,0 +1,26 @@
+{
+  "schema": "path/1",
+  "slug": "first-counting",
+  "locale": "en",
+  "subject": "maths",
+  "title": "First counting",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "units": [
+    {
+      "title": "Count",
+      "lessons": [
+        "les_2e620c67febffa6825275760"
+      ]
+    }
+  ],
+  "status": "proposed",
+  "provenance": {
+    "origin": "human",
+    "maker": "example-author",
+    "created": "2026-11-23",
+    "reviews": []
+  }
+}

@@ -1,0 +1,19 @@
+[package]
+name = "openlessons"
+description = "Validate, index and search the openlessons curriculum commons"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "openlessons"
+path = "src/main.rs"
+
+[dependencies]
+serde_json.workspace = true
+jsonschema.workspace = true
+sha2.workspace = true
+regex.workspace = true
+clap.workspace = true
+anyhow.workspace = true

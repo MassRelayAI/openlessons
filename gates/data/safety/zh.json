@@ -1,0 +1,45 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "zh",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "杀",
+      "枪",
+      "炸弹",
+      "自杀",
+      "武器"
+    ],
+    "substances": [
+      "啤酒",
+      "香烟",
+      "毒品",
+      "喝醉"
+    ],
+    "gambling": [
+      "赌博",
+      "赌场",
+      "彩票"
+    ],
+    "adult": [
+      "色情",
+      "裸体"
+    ],
+    "insults": [
+      "笨蛋",
+      "傻瓜",
+      "白痴"
+    ],
+    "commerce": [
+      "立即购买",
+      "信用卡"
+    ],
+    "personal_data": [
+      "你的密码",
+      "你的电话号码",
+      "你的地址"
+    ]
+  },
+  "hashed": []
+}

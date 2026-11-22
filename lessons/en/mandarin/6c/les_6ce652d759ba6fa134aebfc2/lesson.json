@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_6ce652d759ba6fa134aebfc2",
+  "slug": "greetings",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Say hello, thank you and goodbye",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.speaking.greetings"
+  ],
+  "teach": {
+    "text": "Nǐ hǎo means hello. Xièxie means thank you. Zàijiàn means goodbye.",
+    "examples": [
+      "你好 nǐ hǎo: hello",
+      "谢谢 xièxie: thank you"
+    ],
+    "reteach": "Think about what is happening: are you meeting, leaving, or saying thank you?"
+  },
+  "image": {
+    "emoji": "👋"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

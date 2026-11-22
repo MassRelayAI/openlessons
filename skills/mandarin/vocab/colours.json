@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.vocab.colours",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "vocab",
+  "slug": "colours",
+  "statement": {
+    "en": "I can name eight colours in Mandarin."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two sound or look alike. Listen to the first part again: hóng or huáng, lán or lǜ?"
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

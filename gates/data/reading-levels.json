@@ -1,0 +1,30 @@
+{
+  "schema": "reading-levels/1",
+  "note": "Upper bounds for the text a learner reads, chosen by the youngest age a lesson states. Bounds, not a readability score: a sentence within them can still be too hard, which is what a language reviewer is for.",
+  "bands": [
+    {
+      "maxAge": 7,
+      "maxSentenceWords": 20,
+      "maxWordChars": 12,
+      "maxSentenceChars": 20
+    },
+    {
+      "maxAge": 9,
+      "maxSentenceWords": 24,
+      "maxWordChars": 14,
+      "maxSentenceChars": 30
+    },
+    {
+      "maxAge": 12,
+      "maxSentenceWords": 30,
+      "maxWordChars": 16,
+      "maxSentenceChars": 40
+    },
+    {
+      "maxAge": 18,
+      "maxSentenceWords": 45,
+      "maxWordChars": 22,
+      "maxSentenceChars": 60
+    }
+  ]
+}

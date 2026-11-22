@@ -1,0 +1,49 @@
+{
+  "schema": "path/1",
+  "slug": "first-english",
+  "locale": "en",
+  "subject": "english",
+  "title": "First English",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "units": [
+    {
+      "title": "Sounds and letters",
+      "lessons": [
+        "les_1af4f677f89d7f6bbfb2e06a",
+        "les_a390f4e65decb220033e8fb8",
+        "les_1706bd54d7cd4e360d145268",
+        "les_fcaffa5e56a5ef660f7c75f4"
+      ]
+    },
+    {
+      "title": "Words around me",
+      "lessons": [
+        "les_70bf897ab720fbbb6b49d0c2",
+        "les_8cbb2242227a0138de97c5c1",
+        "les_fb3d7803fc8d78a1673fbb67",
+        "les_ce8e4d7e16395caeb8ef9a38"
+      ]
+    },
+    {
+      "title": "First sentences",
+      "lessons": [
+        "les_d9c58eed103c55afe9e1993c",
+        "les_0fdaa46539354b1aa949319f",
+        "les_621395d1e4b6e70bd9798514",
+        "les_aa0207188b898df8c5bddf0e",
+        "les_d8e13db8ce0b64e71745fa1e"
+      ]
+    }
+  ],
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

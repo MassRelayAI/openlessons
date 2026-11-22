@@ -1,0 +1,91 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "en",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "kill",
+      "kills",
+      "killed",
+      "killing",
+      "murder",
+      "stab",
+      "shoot",
+      "gun",
+      "guns",
+      "rifle",
+      "pistol",
+      "bomb",
+      "weapon",
+      "weapons",
+      "suicide",
+      "corpse"
+    ],
+    "substances": [
+      "beer",
+      "wine",
+      "vodka",
+      "whisky",
+      "whiskey",
+      "drunk",
+      "cigarette",
+      "cigarettes",
+      "vape",
+      "cocaine",
+      "heroin",
+      "marijuana",
+      "drug",
+      "drugs"
+    ],
+    "gambling": [
+      "casino",
+      "gamble",
+      "gambling",
+      "betting",
+      "lottery",
+      "jackpot"
+    ],
+    "adult": [
+      "sex",
+      "sexy",
+      "porn",
+      "naked",
+      "nude"
+    ],
+    "insults": [
+      "stupid",
+      "idiot",
+      "dumb",
+      "loser",
+      "shut up"
+    ],
+    "commerce": [
+      "buy now",
+      "limited offer",
+      "subscribe now",
+      "credit card"
+    ],
+    "personal_data": [
+      "your password",
+      "your phone number",
+      "your address",
+      "your home address"
+    ]
+  },
+  "hashed": [
+    "2189c0ed714f0c54ea91fc1d8355e3b1d68723a4fb580e99b088651c80a50f26",
+    "31506a8448a761a448a08aa69d9116ea8a6cb1c6b3f4244b3043051f69c9cc3c",
+    "566f532d486c947709d3d0e6b7575af8380248db66dada211d58eb00ad585297",
+    "6ac3c336e4094835293a3fed8a4b5fedde1b5e2626d9838fed50693bba00af0e",
+    "7bc671151cbfaee7f32cd56e86a87b0be30fde8dc72c7f236d3ab2ce42cddbd5",
+    "85fc17f7069acd39a5c636cd0a6530651096128da447959f5e250824857dc559",
+    "9ae315a94e428a7ee3b5e48adae6541965d93b86acf10ffa1c45b93b6fe577b4",
+    "ad505b0be8a49b89273e307106fa42133cbd804456724c5e7635bd953215d92a",
+    "c2c3b68b48832afd9a4dbdd474c1b6c81c8baecdb71446f9947dac72dd0fe93d",
+    "d75a838dc758ba17f28bd8dbac605cb70c35465263d5733164521de2f7ef7926",
+    "e512a05583448f44790783f986b1f36925c8cfc42338ca0e1caa637755bd15ae",
+    "e9143a29033d9145afc1854ad835b976814bf560b245685a801450f52c288aec",
+    "f50c51ed2315dcf3fa88181cf033f8029cac64f7dea4048327ca032ec102ea74"
+  ]
+}

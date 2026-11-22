@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_a390f4e65decb220033e8fb8",
+  "slug": "blend-sounds",
+  "locale": "en",
+  "subject": "english",
+  "title": "Blend sounds into a word",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.phonics.blend-sounds"
+  ],
+  "teach": {
+    "text": "Push the sounds together: s - a - t makes sat.",
+    "examples": [
+      "s-a-t, sat",
+      "t-i-n, tin"
+    ],
+    "reteach": "Say the first two sounds together, then add the last one: sa... sat."
+  },
+  "image": {
+    "emoji": "⛺"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

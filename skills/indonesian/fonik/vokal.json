@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.fonik.vokal",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "fonik",
+  "slug": "vokal",
+  "statement": {
+    "id": "Saya bisa menyebut bunyi huruf a, i, u, e, dan o."
+  },
+  "type": "phonics_single_sound",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "Hati-hati: bunyi huruf itu mirip. Dengarkan sekali lagi."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

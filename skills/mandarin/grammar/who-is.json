@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.grammar.who-is",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "grammar",
+  "slug": "who-is",
+  "statement": {
+    "en": "I can say who someone is: 他是爸爸 (he is my dad)."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.vocab.body"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Check the first word: is it about a boy (他), a girl (她), or you (我)?"
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

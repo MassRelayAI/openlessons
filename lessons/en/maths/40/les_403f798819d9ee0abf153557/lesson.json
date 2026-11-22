@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_403f798819d9ee0abf153557",
+  "slug": "subtract-within-10",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Take away within 10",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.calc.subtract-within-10"
+  ],
+  "teach": {
+    "text": "Taking away makes a number smaller. 8 take away 3 leaves 5.",
+    "examples": [
+      "8 - 3 = 5",
+      "6 - 2 = 4"
+    ],
+    "reteach": "Start at the big number and count back the small one."
+  },
+  "image": {
+    "emoji": "➖"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

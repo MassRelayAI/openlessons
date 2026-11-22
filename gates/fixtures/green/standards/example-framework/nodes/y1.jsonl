@@ -1,0 +1,2 @@
+{"schema":"standard/1","id":"example-framework:y1","framework":"example-framework","kind":"level","code":"Y1","subject":"maths","label":"Year 1","sourceUrl":"https://example.org/framework/y1"}
+{"schema":"standard/1","id":"example-framework:y1.n1","framework":"example-framework","kind":"objective","code":"Y1.N1","parent":"example-framework:y1","subject":"maths","label":"Count to five","titleOfficial":"Counting","statementOfficial":"Pupils count up to five objects.","statementOwn":"Count a small group of things.","sourceUrl":"https://example.org/framework/y1#n1"}

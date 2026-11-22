@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.vocab.family",
+  "version": 1,
+  "subject": "english",
+  "strand": "vocab",
+  "slug": "family",
+  "statement": {
+    "en": "I can name people in my family."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.vocab.animals"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Check if the person is older or younger. Look at the picture again."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

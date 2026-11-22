@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_fb3d7803fc8d78a1673fbb67",
+  "slug": "animals",
+  "locale": "en",
+  "subject": "english",
+  "title": "Name ten animals",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.vocab.animals"
+  ],
+  "teach": {
+    "text": "Animals have names. A cat says miaow and a cow says moo.",
+    "examples": [
+      "a cat",
+      "a frog"
+    ],
+    "reteach": "Think of the sound the animal makes, then say its name."
+  },
+  "image": {
+    "emoji": "🐱"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

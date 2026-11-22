@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/asset.schema.json",
+  "title": "asset/1: a picture or a sound, with its licence and attribution",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "kind",
+    "mediaType",
+    "file",
+    "sha256",
+    "licence",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "asset/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^ast_[0-9a-f]{24}$"
+    },
+    "kind": {
+      "enum": [
+        "image",
+        "audio"
+      ]
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^(image|audio)/[a-z0-9.+-]+$"
+    },
+    "file": {
+      "type": "string",
+      "pattern": "^ast_[0-9a-f]{24}\\.[a-z0-9]{2,5}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "licence": {
+      "type": "string",
+      "description": "SPDX id; must be on the allowed list in gates/data/licences.json"
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "author",
+        "source"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "changes": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      }
+    },
+    "alt": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "description": "text per locale (ICU MessageFormat)"
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "reviewed",
+        "published"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "maker",
+        "created"
+      ],
+      "description": "who or what made the record; an AI-made record says so and cannot be reviewed by its maker",
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "generator"
+          ],
+          "description": "human: written by a person; ai: drafted by a model; generator: produced by a deterministic program"
+        },
+        "maker": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+          "description": "a public handle or an agent name; never an email address"
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "created": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "by",
+              "kind",
+              "role",
+              "verdict",
+              "date"
+            ],
+            "properties": {
+              "by": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                "description": "a public handle or an agent name; never an email address"
+              },
+              "kind": {
+                "enum": [
+                  "human",
+                  "ai"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "subject",
+                  "language",
+                  "safety",
+                  "licence"
+                ]
+              },
+              "verdict": {
+                "enum": [
+                  "pass",
+                  "fix",
+                  "fail"
+                ]
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_6108be0bd88ed0ab214ed632",
+  "slug": "this-is",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Say: This is ...",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.grammar.this-is"
+  ],
+  "teach": {
+    "text": "Zhè shì means this is. 这是猫: this is a cat.",
+    "examples": [
+      "这是猫: this is a cat",
+      "这是妈妈: this is my mum"
+    ],
+    "reteach": "Point and say 这是, then the word for what you point at."
+  },
+  "image": {
+    "emoji": "👉"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

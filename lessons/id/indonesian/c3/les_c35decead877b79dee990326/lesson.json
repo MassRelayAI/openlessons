@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_c35decead877b79dee990326",
+  "slug": "gabung",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Gabungkan suku kata menjadi kata",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.fonik.gabung"
+  ],
+  "teach": {
+    "text": "Bo dan la digabung menjadi bola. Bu dan ku menjadi buku.",
+    "examples": [
+      "bo-la: bola",
+      "bu-ku: buku"
+    ],
+    "reteach": "Ucapkan suku kata pertama, lalu yang kedua, makin cepat sampai menjadi satu kata."
+  },
+  "image": {
+    "emoji": "📘"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

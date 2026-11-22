@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.characters.count",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "characters",
+  "slug": "count",
+  "statement": {
+    "en": "I can count up to ten things and say the number in Chinese."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [
+    "mandarin.characters.numbers"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Count again, touching each one once. You may have counted one twice or skipped one."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

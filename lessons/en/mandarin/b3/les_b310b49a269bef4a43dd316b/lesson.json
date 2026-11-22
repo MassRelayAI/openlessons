@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_b310b49a269bef4a43dd316b",
+  "slug": "pronouns",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Say I, you, he and she",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.vocab.pronouns"
+  ],
+  "teach": {
+    "text": "Wǒ is I, nǐ is you. Tā is he or she: 他 for a boy, 她 for a girl. Add 们 for more than one.",
+    "examples": [
+      "我 wǒ: I",
+      "我们 wǒmen: we"
+    ],
+    "reteach": "Point to yourself for 我, to a friend for 你, and to someone over there for 他 or 她."
+  },
+  "image": {
+    "emoji": "🙋"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/standard.schema.json",
+  "title": "standard/1: one node of a framework (a level, a strand or an objective)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "framework",
+    "kind",
+    "code",
+    "label",
+    "sourceUrl"
+  ],
+  "properties": {
+    "schema": {
+      "const": "standard/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*:[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "framework": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "kind": {
+      "enum": [
+        "level",
+        "strand",
+        "objective"
+      ]
+    },
+    "code": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "the publisher's own identifier or level name"
+    },
+    "parent": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*:[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "subject": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "our own short name for the node"
+    },
+    "titleOfficial": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "the publisher's title; allowed when terms.quote is ids_and_titles or official_text"
+    },
+    "statementOfficial": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "description": "the publisher's wording; allowed only when terms.quote is official_text"
+    },
+    "statementOwn": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "description": "our own paraphrase, always allowed"
+    },
+    "sourceUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    }
+  }
+}

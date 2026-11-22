@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_ea6e08deec131ba201299074",
+  "slug": "tones",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Hear the four tones",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.pinyin.tones"
+  ],
+  "teach": {
+    "text": "Mandarin has four tones. Mā is high and flat, má goes up, mǎ dips down and up, mà falls.",
+    "examples": [
+      "mā: tone 1",
+      "mà: tone 4"
+    ],
+    "reteach": "Move your hand with your voice: flat, up, down and up, then down."
+  },
+  "image": {
+    "emoji": "🏮"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

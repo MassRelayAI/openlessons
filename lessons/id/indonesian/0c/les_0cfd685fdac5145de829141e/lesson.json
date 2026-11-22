@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_0cfd685fdac5145de829141e",
+  "slug": "warna",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Nama delapan warna",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kosakata.warna"
+  ],
+  "teach": {
+    "text": "Langit berwarna biru. Daun berwarna hijau. Pisang berwarna kuning.",
+    "examples": [
+      "merah seperti apel",
+      "hijau seperti daun"
+    ],
+    "reteach": "Lihat sekelilingmu. Cari benda yang warnanya sama, lalu sebut warnanya."
+  },
+  "image": {
+    "emoji": "🔴"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

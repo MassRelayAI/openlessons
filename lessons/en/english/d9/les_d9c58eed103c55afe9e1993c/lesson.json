@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_d9c58eed103c55afe9e1993c",
+  "slug": "this-is-a",
+  "locale": "en",
+  "subject": "english",
+  "title": "Say: This is a ...",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.grammar.this-is-a"
+  ],
+  "teach": {
+    "text": "To name a thing we say: This is a cat.",
+    "examples": [
+      "This is a dog.",
+      "This is a fish."
+    ],
+    "reteach": "Point at the picture and say the three little words first: this is a."
+  },
+  "image": {
+    "emoji": "🐶"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

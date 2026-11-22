@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_fcca3f5a141f4748cc867b9a",
+  "slug": "animals",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Name eight animals",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.vocab.animals"
+  ],
+  "teach": {
+    "text": "Māo is cat, gǒu is dog, yú is fish. Look: 鸟 (bird) and 马 (horse) look alike!",
+    "examples": [
+      "猫 māo: cat",
+      "鸟 niǎo: bird"
+    ],
+    "reteach": "Say the animal and its sound together: māo, miaow!"
+  },
+  "image": {
+    "emoji": "🐼"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

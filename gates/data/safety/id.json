@@ -1,0 +1,65 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "id",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "bunuh",
+      "membunuh",
+      "dibunuh",
+      "pembunuhan",
+      "tembak",
+      "menembak",
+      "pistol",
+      "senapan",
+      "bom",
+      "senjata",
+      "bunuh diri"
+    ],
+    "substances": [
+      "bir",
+      "rokok",
+      "merokok",
+      "mabuk",
+      "narkoba",
+      "ganja",
+      "miras"
+    ],
+    "gambling": [
+      "judi",
+      "berjudi",
+      "kasino",
+      "togel",
+      "taruhan"
+    ],
+    "adult": [
+      "seks",
+      "porno",
+      "telanjang",
+      "bugil"
+    ],
+    "insults": [
+      "bodoh",
+      "goblok",
+      "tolol",
+      "idiot"
+    ],
+    "commerce": [
+      "beli sekarang",
+      "kartu kredit"
+    ],
+    "personal_data": [
+      "kata sandi kamu",
+      "nomor telepon kamu",
+      "alamat rumah kamu"
+    ]
+  },
+  "hashed": [
+    "4077902c11d06e1058060d1bd789e7c5a1db2bbecbc39b8d161c1d131c2ac1b7",
+    "448b6ebec015e8927620d2c758278b8dc7dc058b170b2f39784e82d5923ef178",
+    "6ad747eac3b0922710c5b9d63cdb24830213a8f1a5fd42dfaf5f5cb47fb41db6",
+    "bc3550d16a4528d0327919d4a3f5e5e87f535d8ed30320e27b444ece582995f3",
+    "fee2df80a86f0283e20cbc9deb111c48ad8239ce0ea821b2bb25e6ac516ee9c7"
+  ]
+}

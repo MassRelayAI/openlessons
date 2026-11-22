@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.grammar.follow-instruction",
+  "version": 1,
+  "subject": "english",
+  "strand": "grammar",
+  "slug": "follow-instruction",
+  "statement": {
+    "en": "I can follow a simple spoken instruction."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.grammar.whats-this"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Listen to the whole instruction: there are two things to find."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

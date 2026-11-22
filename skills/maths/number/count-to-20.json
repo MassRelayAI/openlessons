@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.count-to-20",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "count-to-20",
+  "statement": {
+    "en": "I can count up to 20 things and read the numbers 11 to 20."
+  },
+  "type": "math_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Count again and touch each one. Check you did not count one twice."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

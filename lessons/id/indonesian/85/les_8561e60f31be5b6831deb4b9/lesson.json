@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_8561e60f31be5b6831deb4b9",
+  "slug": "angka",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Membaca angka satu sampai sepuluh",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kosakata.angka"
+  ],
+  "teach": {
+    "text": "Satu, dua, tiga, empat, lima. Enam, tujuh, delapan, sembilan, sepuluh.",
+    "examples": [
+      "tiga: 3",
+      "tujuh: 7"
+    ],
+    "reteach": "Hitung dengan jarimu sambil menyebut angkanya."
+  },
+  "image": {
+    "emoji": "🔟"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

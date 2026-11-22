@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.add-within-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "add-within-10",
+  "statement": {
+    "en": "I can add two numbers with a total up to 10."
+  },
+  "type": "math_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Adding makes the number bigger. Count on, do not count back."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

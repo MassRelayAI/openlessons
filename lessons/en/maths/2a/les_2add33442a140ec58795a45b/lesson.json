@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_2add33442a140ec58795a45b",
+  "slug": "sides-corners",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Sides and corners",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.shape.sides-corners"
+  ],
+  "teach": {
+    "text": "Sides are the straight edges. Corners are where two sides meet. A triangle has 3 of each.",
+    "examples": [
+      "a triangle has 3 sides",
+      "a square has 4 corners"
+    ],
+    "reteach": "Put a finger on each corner as you count. Do not count the same one twice."
+  },
+  "image": {
+    "emoji": "🔺"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

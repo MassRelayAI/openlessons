@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_3840188d4eef373125db8b5d",
+  "slug": "describe-shapes",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Describe shapes",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.shape.describe-shapes"
+  ],
+  "teach": {
+    "text": "Shapes have clues: a circle has no corners, a square has 4 equal sides.",
+    "examples": [
+      "a circle has no corners",
+      "a cube has 6 flat faces"
+    ],
+    "reteach": "Look for the clue first: corners, sides, or flat faces."
+  },
+  "image": {
+    "emoji": "⬢"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

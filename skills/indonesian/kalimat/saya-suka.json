@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "indonesian.kalimat.saya-suka",
+  "version": 1,
+  "subject": "indonesian",
+  "strand": "kalimat",
+  "slug": "saya-suka",
+  "statement": {
+    "id": "Saya bisa berkata apa yang saya suka: Saya suka apel."
+  },
+  "type": "id_foundations",
+  "prerequisites": [
+    "indonesian.kalimat.ini"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "id": "\"Ini\" dipakai untuk menunjuk benda. Untuk berkata suka, pakai \"Saya suka\"."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

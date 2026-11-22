@@ -1,0 +1,48 @@
+{
+  "schema": "path/1",
+  "slug": "membaca-awal",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Membaca Awal",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "units": [
+    {
+      "title": "Huruf dan bunyi",
+      "lessons": [
+        "les_aeef30d8f2c31da8ed0c2d75",
+        "les_d8c6b96c6155dc3a7f2b1343",
+        "les_b6dc86c04a65ea6a590a8cea",
+        "les_c35decead877b79dee990326"
+      ]
+    },
+    {
+      "title": "Kata di sekitarku",
+      "lessons": [
+        "les_0cfd685fdac5145de829141e",
+        "les_73fd1cd1d5d7a0510feb9e2f",
+        "les_62151b0f15c57b89ea58eb47",
+        "les_8561e60f31be5b6831deb4b9"
+      ]
+    },
+    {
+      "title": "Kalimat pertama",
+      "lessons": [
+        "les_91194a86fc36312c2f54b4ca",
+        "les_3b924e479c6e7834890b6b60",
+        "les_ef319192fb680c3bbba11630",
+        "les_4750e68db8b298822b8c3852"
+      ]
+    }
+  ],
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

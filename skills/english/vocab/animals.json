@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.vocab.animals",
+  "version": 1,
+  "subject": "english",
+  "strand": "vocab",
+  "slug": "animals",
+  "statement": {
+    "en": "I can name ten animals."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.vocab.numbers"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two animals both live on the farm. Look at the picture again."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

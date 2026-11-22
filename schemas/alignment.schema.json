@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/alignment.schema.json",
+  "title": "alignment/1: a skill mapped to a standard node",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "skill",
+    "standard",
+    "strength",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "alignment/1"
+    },
+    "skill": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*$"
+    },
+    "standard": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*:[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "strength": {
+      "enum": [
+        "exact",
+        "partial",
+        "related"
+      ],
+      "description": "exact: the skill is the objective (needs a human review); partial: it covers part of it; related: same area, no coverage claim"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "reviewed",
+        "published"
+      ]
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "maker",
+        "created"
+      ],
+      "description": "who or what made the record; an AI-made record says so and cannot be reviewed by its maker",
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "generator"
+          ],
+          "description": "human: written by a person; ai: drafted by a model; generator: produced by a deterministic program"
+        },
+        "maker": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+          "description": "a public handle or an agent name; never an email address"
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "created": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "by",
+              "kind",
+              "role",
+              "verdict",
+              "date"
+            ],
+            "properties": {
+              "by": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                "description": "a public handle or an agent name; never an email address"
+              },
+              "kind": {
+                "enum": [
+                  "human",
+                  "ai"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "subject",
+                  "language",
+                  "safety",
+                  "licence"
+                ]
+              },
+              "verdict": {
+                "enum": [
+                  "pass",
+                  "fix",
+                  "fail"
+                ]
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

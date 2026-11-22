@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.describe-shapes",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "describe-shapes",
+  "statement": {
+    "en": "I can say what makes a shape the shape it is."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.shape.solid-shapes"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Check the clue again. More than one shape can look alike."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

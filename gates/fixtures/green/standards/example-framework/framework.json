@@ -1,0 +1,18 @@
+{
+  "schema": "framework/1",
+  "id": "example-framework",
+  "title": "Example Primary Framework",
+  "publisher": "Example Education Board",
+  "jurisdiction": "international",
+  "version": "1",
+  "sourceUrl": "https://example.org/framework",
+  "terms": {
+    "class": "open",
+    "licence": "CC0-1.0",
+    "quote": "official_text",
+    "notice": "Example Primary Framework, Example Education Board.",
+    "termsUrl": "https://example.org/terms",
+    "note": "A made-up framework for the gate fixtures.",
+    "reviewed": "2026-11-23"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "english.vocab.colours",
+  "version": 1,
+  "subject": "english",
+  "strand": "vocab",
+  "slug": "colours",
+  "statement": {
+    "en": "I can name eight colours."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two colours are close. Look at which is darker."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

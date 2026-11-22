@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.speaking.greetings",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "speaking",
+  "slug": "greetings",
+  "statement": {
+    "en": "I can say hello, thank you, sorry and goodbye in Mandarin, and know when to use them."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two go together, but they are not the same. One is said first, the other is the answer."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

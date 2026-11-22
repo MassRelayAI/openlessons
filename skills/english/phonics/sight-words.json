@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "english.phonics.sight-words",
+  "version": 1,
+  "subject": "english",
+  "strand": "phonics",
+  "slug": "sight-words",
+  "statement": {
+    "en": "I can read the words the, I, to, a, is, it and we on sight."
+  },
+  "type": "eng_foundations",
+  "prerequisites": [
+    "english.phonics.split-sounds"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Those two words look alike. Look at the first letter."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

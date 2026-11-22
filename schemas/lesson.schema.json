@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/lesson.schema.json",
+  "title": "lesson/1: one lesson, authored in one locale",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "slug",
+    "locale",
+    "subject",
+    "title",
+    "ages",
+    "skills",
+    "teach",
+    "status",
+    "licence",
+    "attribution",
+    "provenance"
+  ],
+  "properties": {
+    "schema": {
+      "const": "lesson/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^les_[0-9a-f]{24}$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
+    },
+    "targetLocale": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$",
+      "description": "the language being learned, when the lesson teaches one"
+    },
+    "subject": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "ages": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "min",
+        "max"
+      ],
+      "properties": {
+        "min": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 18
+        },
+        "max": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 18
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*\\.[a-z0-9][a-z0-9-]*$"
+      }
+    },
+    "teach": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "examples": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "reteach": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "required": [
+            "emoji"
+          ]
+        },
+        {
+          "required": [
+            "asset"
+          ]
+        }
+      ],
+      "properties": {
+        "emoji": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "Unicode emoji, drawn by the device font: no asset record needed"
+        },
+        "asset": {
+          "type": "string",
+          "pattern": "^ast_[0-9a-f]{24}$"
+        },
+        "alt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        }
+      }
+    },
+    "minutes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 120
+    },
+    "translationOf": {
+      "type": "string",
+      "pattern": "^les_[0-9a-f]{24}$"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "proposed",
+        "reviewed",
+        "published"
+      ]
+    },
+    "licence": {
+      "const": "CC-BY-4.0"
+    },
+    "attribution": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "origin",
+        "maker",
+        "created"
+      ],
+      "description": "who or what made the record; an AI-made record says so and cannot be reviewed by its maker",
+      "properties": {
+        "origin": {
+          "enum": [
+            "human",
+            "ai",
+            "generator"
+          ],
+          "description": "human: written by a person; ai: drafted by a model; generator: produced by a deterministic program"
+        },
+        "maker": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+          "description": "a public handle or an agent name; never an email address"
+        },
+        "tool": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "created": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "reviews": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "by",
+              "kind",
+              "role",
+              "verdict",
+              "date"
+            ],
+            "properties": {
+              "by": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                "description": "a public handle or an agent name; never an email address"
+              },
+              "kind": {
+                "enum": [
+                  "human",
+                  "ai"
+                ]
+              },
+              "role": {
+                "enum": [
+                  "subject",
+                  "language",
+                  "safety",
+                  "licence"
+                ]
+              },
+              "verdict": {
+                "enum": [
+                  "pass",
+                  "fix",
+                  "fail"
+                ]
+              },
+              "date": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

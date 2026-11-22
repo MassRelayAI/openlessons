@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_d8e13db8ce0b64e71745fa1e",
+  "slug": "capital-full-stop",
+  "locale": "en",
+  "subject": "english",
+  "title": "Start with a capital, end with a full stop",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "english.grammar.capital-full-stop"
+  ],
+  "teach": {
+    "text": "A sentence starts with a big letter and ends with a full stop. The cat sat.",
+    "examples": [
+      "The cat sat.",
+      "I like dogs."
+    ],
+    "reteach": "Check the first letter is big and the last mark is a dot."
+  },
+  "image": {
+    "emoji": "🐱"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

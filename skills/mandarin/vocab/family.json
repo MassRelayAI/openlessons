@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "mandarin.vocab.family",
+  "version": 1,
+  "subject": "mandarin",
+  "strand": "vocab",
+  "slug": "family",
+  "statement": {
+    "en": "I can name the people in my family in Mandarin."
+  },
+  "type": "zh_foundations",
+  "prerequisites": [],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Close! Those two are in the same family, but one is older and one is younger, or one is a grandparent."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_3b924e479c6e7834890b6b60",
+  "slug": "saya-suka",
+  "locale": "id",
+  "subject": "indonesian",
+  "title": "Kalimat \"Saya suka ...\"",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "indonesian.kalimat.saya-suka"
+  ],
+  "teach": {
+    "text": "Untuk berkata apa yang kita suka: Saya suka apel. Saya suka kucing.",
+    "examples": [
+      "Saya suka apel.",
+      "Saya suka bola."
+    ],
+    "reteach": "Mulai dengan \"Saya\", lalu \"suka\", lalu benda yang kamu suka."
+  },
+  "image": {
+    "emoji": "❤️"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

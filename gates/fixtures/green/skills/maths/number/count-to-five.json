@@ -1,0 +1,35 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.count-to-five",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "count-to-five",
+  "statement": {
+    "en": "I can count up to five things."
+  },
+  "prerequisites": [
+    "maths.number.count-to-three"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Touch each one as you count it."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "human",
+    "maker": "example-author",
+    "created": "2026-11-23",
+    "reviews": []
+  }
+}

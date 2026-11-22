@@ -1,0 +1,38 @@
+{
+  "schema": "lesson/1",
+  "id": "les_f0031d2e1dc6ba6fe68eae8a",
+  "slug": "family",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "Name my family",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "skills": [
+    "mandarin.vocab.family"
+  ],
+  "teach": {
+    "text": "Māma is mum and bàba is dad. Gēge is a big brother, dìdi a little brother.",
+    "examples": [
+      "妈妈 māma: mum",
+      "哥哥 gēge: big brother"
+    ],
+    "reteach": "Big brothers and sisters are older than you; little ones are younger."
+  },
+  "image": {
+    "emoji": "👪"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

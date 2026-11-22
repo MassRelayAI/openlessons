@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/locale.schema.json",
+  "title": "locale/1: a language content is authored in",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "name",
+    "script",
+    "direction",
+    "segmentation"
+  ],
+  "properties": {
+    "schema": {
+      "const": "locale/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "script": {
+      "type": "string",
+      "pattern": "^[A-Z][a-z]{3}$"
+    },
+    "direction": {
+      "enum": [
+        "ltr",
+        "rtl"
+      ]
+    },
+    "segmentation": {
+      "enum": [
+        "space",
+        "character"
+      ],
+      "description": "how words are counted for the reading-level gate"
+    }
+  }
+}

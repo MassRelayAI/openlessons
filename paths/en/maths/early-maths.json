@@ -1,0 +1,48 @@
+{
+  "schema": "path/1",
+  "slug": "early-maths",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Early Maths",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "units": [
+    {
+      "title": "Numbers to 20",
+      "lessons": [
+        "les_2c9ea0b28e73cc2a8aad4a19",
+        "les_ebdeed37a247eec8c4e53460",
+        "les_2df6f23aea45a2455eb520be",
+        "les_42f9ccc6ab6f1e8d4dd790a3"
+      ]
+    },
+    {
+      "title": "Add and take away",
+      "lessons": [
+        "les_19b5b6e411e9852af7dbad7f",
+        "les_2dda0d2446b547c930264f18",
+        "les_403f798819d9ee0abf153557",
+        "les_56134fe597031f1c941000f9"
+      ]
+    },
+    {
+      "title": "Shapes",
+      "lessons": [
+        "les_1ede03cb41dec0642df29b03",
+        "les_2add33442a140ec58795a45b",
+        "les_b8481f7355aced2c7ec52686",
+        "les_3840188d4eef373125db8b5d"
+      ]
+    }
+  ],
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "yct",
+  "title": "Youth Chinese Test (YCT)",
+  "publisher": "Chinese Testing International",
+  "jurisdiction": "CN",
+  "version": "current",
+  "sourceUrl": "https://www.chinesetest.cn/",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.chinesetest.cn/",
+    "note": "No terms of reuse were found. Level names only; word lists and exam items are never stored.",
+    "reviewed": null
+  }
+}

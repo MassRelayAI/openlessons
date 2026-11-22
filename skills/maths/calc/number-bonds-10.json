@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.number-bonds-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "number-bonds-10",
+  "statement": {
+    "en": "I know the pairs of numbers that make 10."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.calc.add-within-10"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "The two numbers must add up to ten, not just be close to it."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

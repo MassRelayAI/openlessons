@@ -1,0 +1,37 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.subtract-within-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "subtract-within-10",
+  "statement": {
+    "en": "I can take one number away from another, within 10."
+  },
+  "type": "math_foundations",
+  "prerequisites": [
+    "maths.calc.number-bonds-10"
+  ],
+  "misconceptions": [
+    {
+      "no": 1,
+      "feedback": {
+        "en": "Taking away makes the number smaller. Count back, do not count on."
+      },
+      "mustAddress": true
+    }
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "lesson/1",
+  "id": "les_2c9ea0b28e73cc2a8aad4a19",
+  "slug": "count-to-20",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Count to 20",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.number.count-to-20"
+  ],
+  "teach": {
+    "text": "Count each thing once. After ten comes eleven, twelve, thirteen.",
+    "examples": [
+      "eleven is 11",
+      "twenty is 20"
+    ],
+    "reteach": "Put the things in rows of ten, then count the rest."
+  },
+  "image": {
+    "emoji": "🔟"
+  },
+  "status": "proposed",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "tool": "template-generator",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

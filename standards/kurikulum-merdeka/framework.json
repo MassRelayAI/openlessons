@@ -1,0 +1,16 @@
+{
+  "schema": "framework/1",
+  "id": "kurikulum-merdeka",
+  "title": "Kurikulum Merdeka: Capaian Pembelajaran",
+  "publisher": "Kementerian Pendidikan Dasar dan Menengah",
+  "jurisdiction": "ID",
+  "version": "current",
+  "sourceUrl": "https://kurikulum.kemdikbud.go.id/",
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://kurikulum.kemdikbud.go.id/",
+    "note": "Terms of reuse were not read. Phase names only; the text of the learning outcomes is never stored.",
+    "reviewed": null
+  }
+}

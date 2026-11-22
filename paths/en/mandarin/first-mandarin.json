@@ -1,0 +1,49 @@
+{
+  "schema": "path/1",
+  "slug": "first-mandarin",
+  "locale": "en",
+  "targetLocale": "zh-Hans",
+  "subject": "mandarin",
+  "title": "First Mandarin",
+  "ages": {
+    "min": 6,
+    "max": 9
+  },
+  "units": [
+    {
+      "title": "Hello, Mandarin",
+      "lessons": [
+        "les_6ce652d759ba6fa134aebfc2",
+        "les_ea6e08deec131ba201299074",
+        "les_09bead33a4e5488f171d7bd2",
+        "les_cab1c0a022226b4eca0c2df1"
+      ]
+    },
+    {
+      "title": "Me and my family",
+      "lessons": [
+        "les_f0031d2e1dc6ba6fe68eae8a",
+        "les_b310b49a269bef4a43dd316b",
+        "les_af6c5326e0a4ce1fa12935c1",
+        "les_bcf2c909a474d5260df4a7cf"
+      ]
+    },
+    {
+      "title": "Colours and animals",
+      "lessons": [
+        "les_3d5044eb5a752d47a779f479",
+        "les_fcca3f5a141f4748cc867b9a",
+        "les_3776927a6d4ef4f3944d55a1",
+        "les_6108be0bd88ed0ab214ed632"
+      ]
+    }
+  ],
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-seed",
+    "source": "seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}
