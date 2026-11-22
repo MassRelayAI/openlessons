@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0 (2026-11-23)
+
+- `openlessons mcp`: a Model Context Protocol server on standard input and output with four tools: `find_lessons`,
+  `get_lesson` (learner view, never an answer), `validate_proposal`, `propose_lesson`. Read-only unless `--allow-write`,
+  and then it saves proposal files under `proposals/` only.
+- Heard prompts (`prompt.mode: heard`) and the gate `item.heard-prompt-recorded`: the script is never printed, and the
+  prompt must name a recorded audio asset with a licence and an attribution.
+- `REVIEWERS.json` (`reviewers/1`), the review entry schema (`review/1`) and the gate `loop.reviewer-listed`: a record is
+  `reviewed` only through a person listed for that role, language, subject and framework. The list ships empty.
+- Restored, in the form it should have had: an `exact` alignment may be `proposed`, but it is settled only by a `subject`
+  reviewer, and `export` leaves it out below the bar. 0.2.0 had dropped the rule instead of fixing it.
+- `proposals/` is checked by the gates: every file in it must be a well-formed proposal.
+
 ## 0.2.0 (2026-11-23)
 
 - `export`: a course as a bundle, a learner bundle with every answer removed, or an app pack (`pack/1`: keyed strings,

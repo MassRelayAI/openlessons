@@ -1,0 +1,23 @@
+{
+  "schema": "reviewers/1",
+  "reviewers": [
+    {
+      "handle": "example-teacher",
+      "roles": [
+        "subject",
+        "language",
+        "safety"
+      ],
+      "locales": [
+        "en"
+      ],
+      "subjects": [
+        "maths"
+      ],
+      "frameworks": [
+        "example-framework"
+      ],
+      "since": "2026-01-01"
+    }
+  ]
+}

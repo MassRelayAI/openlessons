@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.loop.reviewer-listed",
+  "version": 1,
+  "title": "A `reviewed` or `published` record was passed by a person REVIEWERS.json lists for that role, language, subject and framework",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

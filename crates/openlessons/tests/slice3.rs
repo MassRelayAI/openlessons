@@ -1,0 +1,95 @@
+//! Exact alignments, reviewers, heard prompts.
+
+use openlessons::{export, scan};
+use serde_json::{json, Value};
+use std::fs;
+use std::path::{Path, PathBuf};
+
+fn root() -> PathBuf {
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("../..").canonicalize().unwrap()
+}
+fn copy_tree(from: &Path, to: &Path) {
+    fs::create_dir_all(to).unwrap();
+    for e in fs::read_dir(from).unwrap() {
+        let e = e.unwrap();
+        if e.file_type().unwrap().is_dir() {
+            copy_tree(&e.path(), &to.join(e.file_name()));
+        } else {
+            fs::copy(e.path(), to.join(e.file_name())).unwrap();
+        }
+    }
+}
+fn green_copy(name: &str) -> PathBuf {
+    let dir = std::env::temp_dir().join(format!("openlessons-s3-{}-{name}", std::process::id()));
+    let _ = fs::remove_dir_all(&dir);
+    copy_tree(&root().join("gates/fixtures/green"), &dir);
+    dir
+}
+fn rules_hit(tree: &Path) -> Vec<String> {
+    scan(tree, &root().join("gates/data")).unwrap().findings.iter().map(|f| format!("{}: {}", f.rule, f.message)).collect()
+}
+/// Rewrite the alignment rows of the green copy.
+fn edit_alignments(tree: &Path, f: impl Fn(&mut Value)) {
+    let file = tree.join("alignments/example-framework/maths.jsonl");
+    let rows: Vec<Value> = fs::read_to_string(&file).unwrap().lines().map(|l| serde_json::from_str(l).unwrap()).collect();
+    let out: String = rows
+        .into_iter()
+        .map(|mut r| {
+            f(&mut r);
+            format!("{r}\n")
+        })
+        .collect();
+    fs::write(&file, out).unwrap();
+}
+
+#[test]
+fn an_exact_alignment_may_be_proposed_but_is_reviewed_only_by_a_subject_reviewer() {
+    // proposed: a claim waiting for a person
+    let tree = green_copy("exact-proposed");
+    edit_alignments(&tree, |r| {
+        if r["strength"] == "exact" {
+            r["status"] = json!("proposed");
+            r["provenance"]["reviews"] = json!([]);
+        }
+    });
+    assert_eq!(rules_hit(&tree), Vec::<String>::new());
+    fs::remove_dir_all(&tree).unwrap();
+
+    // reviewed with no review at all
+    let tree = green_copy("exact-unreviewed");
+    edit_alignments(&tree, |r| {
+        if r["strength"] == "exact" {
+            r["provenance"]["reviews"] = json!([]);
+        }
+    });
+    assert!(rules_hit(&tree).iter().any(|f| f.starts_with("loop.review-before-reviewed")));
+    fs::remove_dir_all(&tree).unwrap();
+
+    // reviewed by a person, but for its licence and not for the subject: a coverage claim needs a subject reviewer
+    let tree = green_copy("exact-wrong-role");
+    edit_alignments(&tree, |r| {
+        if r["strength"] == "exact" {
+            r["provenance"]["reviews"][0]["role"] = json!("licence");
+        }
+    });
+    let hits = rules_hit(&tree);
+    assert!(hits.iter().any(|f| f.starts_with("loop.review-before-reviewed") && f.contains("exact")), "{hits:#?}");
+    fs::remove_dir_all(&tree).unwrap();
+}
+
+#[test]
+fn export_leaves_out_an_exact_alignment_below_the_bar() {
+    let tree = green_copy("exact-export");
+    let exact = |c: &export::Course| c.alignments.iter().filter(|a| a["strength"] == "exact").count();
+    // the green tree: a reviewed lesson, a reviewed exact alignment
+    assert_eq!(exact(&export::load(&tree, "en/maths/first-counting", "reviewed").unwrap()), 1);
+    edit_alignments(&tree, |r| {
+        if r["strength"] == "exact" {
+            r["status"] = json!("proposed");
+            r["provenance"]["reviews"] = json!([]);
+        }
+    });
+    assert_eq!(exact(&export::load(&tree, "en/maths/first-counting", "reviewed").unwrap()), 0, "an unreviewed coverage claim left with a reviewed export");
+    assert_eq!(exact(&export::load(&tree, "en/maths/first-counting", "proposed").unwrap()), 1, "--min-status proposed takes it, by choice");
+    fs::remove_dir_all(&tree).unwrap();
+}

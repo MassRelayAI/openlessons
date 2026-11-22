@@ -221,7 +221,8 @@ pub fn leak_problems(item: &Value) -> Vec<String> {
     let alt = prompt.get("image").map(|i| st(i, "alt")).unwrap_or("");
     let shown = tokens(&format!("{} . {alt}", st(prompt, "text")));
     let gives_away = |hay: &[String]| right.iter().all(|r| contains_tokens(hay, r)) && !wrong.iter().any(|w| contains_tokens(hay, w));
-    if gives_away(&shown) {
+    // a heard prompt is spoken, never printed: its script cannot give anything away to the eye
+    if st(prompt, "mode") != "heard" && gives_away(&shown) {
         out.push(format!("the prompt shows the answer ('{}') and no other choice", right[0].join(" ")));
     }
     // a hint may guide; it gives the answer away only when the answer is a word of its own (three letters or more)

@@ -1,0 +1,22 @@
+{
+  "schema": "asset/1",
+  "id": "ast_08662970568d4e2cf4998806",
+  "kind": "audio",
+  "mediaType": "audio/wav",
+  "file": "ast_08662970568d4e2cf4998806.wav",
+  "sha256": "08662970568d4e2cf49988067bee006f7e8ded8c4cd93f4aa6ef4211b891d8af",
+  "licence": "CC-BY-4.0",
+  "attribution": {
+    "title": "Tap the word cat",
+    "author": "Example Voice",
+    "source": "https://example.org/voice"
+  },
+  "locale": "en",
+  "status": "proposed",
+  "provenance": {
+    "origin": "human",
+    "maker": "example-author",
+    "created": "2026-11-23",
+    "reviews": []
+  }
+}

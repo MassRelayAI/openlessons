@@ -22,11 +22,13 @@ pub const RULES: &[&str] = &[
     "lesson.reading-level",
     "item.answer-verified",
     "item.no-answer-leak",
+    "item.heard-prompt-recorded",
     "asset.licensed",
     "content.no-pii",
     "content.child-safe",
     "content.no-duplicates",
     "loop.review-before-reviewed",
+    "loop.reviewer-listed",
     "loop.base-respected",
     "index.fresh",
 ];
@@ -41,6 +43,8 @@ const SCHEMAS: &[(&str, &str)] = &[
     ("asset/1", include_str!("../../../schemas/asset.schema.json")),
     ("locale/1", include_str!("../../../schemas/locale.schema.json")),
     ("path/1", include_str!("../../../schemas/path.schema.json")),
+    ("proposal/1", include_str!("../../../schemas/proposal.schema.json")),
+    ("reviewers/1", include_str!("../../../schemas/reviewers.schema.json")),
 ];
 
 #[derive(Debug, Clone, PartialEq)]
@@ -197,7 +201,73 @@ fn review_problem(v: &Value) -> Option<String> {
             st(p, "origin")
         ));
     }
+    // an exact alignment says "this standard is covered": only a subject reviewer can settle that
+    let subject_pass = arr(p, "reviews").iter().any(|r| st(r, "kind") == "human" && st(r, "verdict") == "pass" && st(r, "role") == "subject" && st(r, "by") != st(p, "maker"));
+    if st(v, "strength") == "exact" && reviewed && !subject_pass {
+        return Some(format!("an `exact` alignment is a coverage claim: `{status}` needs a passing review by a person in the role `subject`"));
+    }
     None
+}
+
+fn covers(entry: &Value, field: &str, want: &str) -> bool {
+    want.is_empty() || arr(entry, field).iter().filter_map(Value::as_str).any(|x| x == want || x == "*")
+}
+
+/// A settled record has a passing review by someone REVIEWERS.json lists for that role and that corner of the tree.
+/// `lesson` is (locale, subject) for an item, which does not carry them itself.
+fn reviewer_problem(r: &Refs, v: &Value, lesson: Option<(&str, &str)>) -> Option<String> {
+    let status = st(v, "status");
+    if !matches!(status, "reviewed" | "published") {
+        return None;
+    }
+    let (locale, subject, framework) = match st(v, "schema") {
+        "skill/1" => ("", st(v, "subject"), ""),
+        "alignment/1" => ("", st(v, "skill").split('.').next().unwrap_or(""), st(v, "standard").split(':').next().unwrap_or("")),
+        "lesson/1" | "path/1" => (st(v, "locale"), st(v, "subject"), ""),
+        "item/1" => (lesson.map(|l| l.0).unwrap_or(""), lesson.map(|l| l.1).unwrap_or(""), ""),
+        _ => ("", "", ""),
+    };
+    let p = &v["provenance"];
+    let exact = st(v, "strength") == "exact";
+    let listed = arr(p, "reviews").iter().any(|rv| {
+        st(rv, "kind") == "human"
+            && st(rv, "verdict") == "pass"
+            && st(rv, "by") != st(p, "maker")
+            && (!exact || st(rv, "role") == "subject")
+            && r.reviewers.iter().any(|e| {
+                st(e, "handle") == st(rv, "by")
+                    && arr(e, "roles").iter().any(|x| x.as_str() == Some(st(rv, "role")))
+                    && covers(e, "locales", locale)
+                    && covers(e, "subjects", subject)
+                    && covers(e, "frameworks", framework)
+                    && st(e, "since") <= st(rv, "date")
+                    && (st(e, "until").is_empty() || st(rv, "date") <= st(e, "until"))
+            })
+    });
+    if listed {
+        return None;
+    }
+    let mut place: Vec<String> = Vec::new();
+    for (name, value) in [("locale", locale), ("subject", subject), ("framework", framework)] {
+        if !value.is_empty() {
+            place.push(format!("{name} {value}"));
+        }
+    }
+    Some(format!(
+        "status `{status}` needs a passing review by a person REVIEWERS.json lists for that role{}{}, on a date inside their term",
+        if place.is_empty() { String::new() } else { format!(" and for {}", place.join(", ")) },
+        if exact { " (role `subject` for an exact alignment)" } else { "" }
+    ))
+}
+
+/// Both review gates on one record.
+fn reviewed_ok(c: &mut Ctx, r: &Refs, v: &Value, path: &str, line: usize, lesson: Option<(&str, &str)>) {
+    if let Some(m) = review_problem(v) {
+        c.add("loop.review-before-reviewed", path, line, m);
+    }
+    if let Some(m) = reviewer_problem(r, v, lesson) {
+        c.add("loop.reviewer-listed", path, line, m);
+    }
 }
 
 /// Every string in a record, except web addresses the schema asks for.
@@ -227,8 +297,11 @@ struct Refs {
     /// skill id -> aligned standard ids
     aligned: BTreeMap<String, BTreeSet<String>>,
     alignments: Vec<Aligned>,
-    assets: BTreeSet<String>,
+    /// asset id -> (kind, has an attribution)
+    assets: BTreeMap<String, (String, bool)>,
     lessons: BTreeMap<String, (String, String)>,
+    /// the entries of REVIEWERS.json
+    reviewers: Vec<Value>,
 }
 
 /// Scan the tree at `root` with the gate data (reading levels, licences, safety lexicons) in `data`.
@@ -260,10 +333,21 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         skills: BTreeMap::new(),
         aligned: BTreeMap::new(),
         alignments: Vec::new(),
-        assets: BTreeSet::new(),
+        assets: BTreeMap::new(),
         lessons: BTreeMap::new(),
+        reviewers: Vec::new(),
     };
 
+    // who may review what: no file, or an empty list, means nothing can be `reviewed`
+    let reviewers = root.join("REVIEWERS.json");
+    if reviewers.exists() {
+        if let Some(v) = c.read_json(&reviewers) {
+            if c.valid("reviewers/1", &v, "REVIEWERS.json", 0) {
+                r.reviewers = arr(&v, "reviewers").to_vec();
+            }
+        }
+    }
+    proposals(&mut c);
     locales(&mut c, &mut r);
     standards(&mut c, &mut r);
     skills(&mut c, &mut r, &lexicons);
@@ -301,6 +385,22 @@ fn stray(c: &mut Ctx, p: &Path, expected: &str) {
     }
     let rel = c.rel(p);
     c.add("layout.content-addressed", &rel, 0, format!("unexpected here: this folder holds {expected}"));
+}
+
+/// proposals/ is an inbox of proposal files waiting to be applied; each must at least be a well-formed proposal.
+fn proposals(c: &mut Ctx) {
+    for p in ls(&c.root.join("proposals")) {
+        if stem(&p, ".json").is_none() {
+            stray(c, &p, "proposal files (*.json)");
+            continue;
+        }
+        let rel = c.rel(&p);
+        let Some(v) = c.read_json(&p) else { continue };
+        if c.valid("proposal/1", &v, &rel, 0) {
+            pii(c, &v, &rel, 0);
+            c.count("proposals", 1);
+        }
+    }
 }
 
 fn locales(c: &mut Ctx, r: &mut Refs) {
@@ -427,9 +527,7 @@ fn skills(c: &mut Ctx, r: &mut Refs, lexicons: &BTreeMap<String, Lexicon>) {
                 if nos.len() != arr(&v, "misconceptions").len() {
                     c.add("content.no-duplicates", &rel, 0, "two misconceptions share a number");
                 }
-                if let Some(m) = review_problem(&v) {
-                    c.add("loop.review-before-reviewed", &rel, 0, m);
-                }
+                reviewed_ok(c, r, &v, &rel, 0, None);
                 pii(c, &v, &rel, 0);
                 let mut texts: Vec<(&String, &str)> = v["statement"].as_object().into_iter().flatten().filter_map(|(l, t)| t.as_str().map(|t| (l, t))).collect();
                 for m in arr(&v, "misconceptions") {
@@ -494,9 +592,7 @@ fn alignments(c: &mut Ctx, r: &mut Refs) {
                 if !seen.insert((skill.clone(), standard.clone())) {
                     c.add("content.no-duplicates", &rel, line, format!("{skill} -> {standard} is recorded twice"));
                 }
-                if let Some(m) = review_problem(&v) {
-                    c.add("loop.review-before-reviewed", &rel, line, m);
-                }
+                reviewed_ok(c, r, &v, &rel, line, None);
                 pii(c, &v, &rel, line);
                 let (has_skill, has_standard) = (r.skills.contains_key(&skill), r.standards.contains_key(&standard));
                 if !has_skill {
@@ -551,11 +647,9 @@ fn assets(c: &mut Ctx, r: &mut Refs, licences: &Value) {
             } else if v.get("attribution").is_none() && !no_credit.iter().any(|a| a == licence) {
                 c.add("asset.licensed", &rel, 0, format!("{licence} needs an attribution (title, author, source)"));
             }
-            if let Some(m) = review_problem(&v) {
-                c.add("loop.review-before-reviewed", &rel, 0, m);
-            }
+            reviewed_ok(c, r, &v, &rel, 0, None);
             pii(c, &v, &rel, 0);
-            r.assets.insert(id);
+            r.assets.insert(id, (st(&v, "kind").to_string(), v.get("attribution").is_some()));
             c.count("assets", 1);
         }
         for f in files {
@@ -649,9 +743,7 @@ fn lesson(
     if !target.is_empty() && !r.locales.contains_key(target) {
         c.add("refs.resolve", &rel, 0, format!("the target locale {target} is not in locales/"));
     }
-    if let Some(m) = review_problem(&v) {
-        c.add("loop.review-before-reviewed", &rel, 0, m);
-    }
+    reviewed_ok(c, r, &v, &rel, 0, None);
     pii(c, &v, &rel, 0);
 
     // aligned: every skill exists and maps to at least one standard
@@ -724,9 +816,21 @@ fn lesson(
             for m in item::leak_problems(&it) {
                 c.add("item.no-answer-leak", &irel, line, m);
             }
-            if let Some(m) = review_problem(&it) {
-                c.add("loop.review-before-reviewed", &irel, line, m);
+            let prompt = &it["view"]["prompt"];
+            if st(prompt, "mode") == "heard" {
+                let asset = st(&prompt["audio"], "asset");
+                let problem = match r.assets.get(asset) {
+                    _ if asset.is_empty() => Some("a prompt that is heard, not shown, names a recorded audio asset (`audio.asset`): a cue is not a recording".to_string()),
+                    None => Some(format!("the recording {asset} of this heard prompt has no record under assets/")),
+                    Some((kind, _)) if kind.as_str() != "audio" => Some(format!("{asset} is not an audio asset, and this prompt is heard")),
+                    Some((_, false)) => Some(format!("the recording {asset} has no attribution: a heard prompt carries the licence and the credit of its recording")),
+                    _ => None,
+                };
+                if let Some(m) = problem {
+                    c.add("item.heard-prompt-recorded", &irel, line, m);
+                }
             }
+            reviewed_ok(c, r, &it, &irel, line, Some((locale, subject)));
             pii(c, &it, &irel, line);
             item::asset_refs(&it, &mut refs);
             shown.extend(item::texts(&it).into_iter().map(|(p, t)| (irel.clone(), line, p, t)));
@@ -735,7 +839,7 @@ fn lesson(
     c.count("lessons", 1);
     c.count("items", n_items);
     for a in refs.iter().collect::<BTreeSet<_>>() {
-        if !r.assets.contains(a) {
+        if !r.assets.contains_key(a) {
             c.add("asset.licensed", &rel, 0, format!("the asset {a} has no record under assets/: a picture or sound without a licence cannot be used"));
         }
     }
@@ -815,9 +919,7 @@ fn paths(c: &mut Ctx, r: &Refs) {
                         }
                     }
                 }
-                if let Some(m) = review_problem(&v) {
-                    c.add("loop.review-before-reviewed", &rel, 0, m);
-                }
+                reviewed_ok(c, r, &v, &rel, 0, None);
                 pii(c, &v, &rel, 0);
                 c.count("paths", 1);
             }

@@ -89,7 +89,9 @@ pub fn load(root: &Path, course: &str, min_status: &str) -> Result<Course> {
         let file = fw.join(format!("{}.jsonl", parts[1]));
         if file.exists() {
             for a in read_lines(&file)? {
-                if skill_ids.contains(st(&a, "skill")) {
+                // an exact alignment is a coverage claim: below the bar it stays behind, like any unreviewed lesson
+                let below = st(&a, "strength") == "exact" && rank(st(&a, "status")) < floor;
+                if skill_ids.contains(st(&a, "skill")) && !below {
                     standard_ids.insert(st(&a, "standard").to_string());
                     alignments.push(a);
                 }
@@ -120,6 +122,22 @@ pub fn bundle(c: &Course) -> Value {
     })
 }
 
+/// One item as a learner may receive it: the view, and how many hints exist. The script of a heard prompt stays behind:
+/// it is spoken from the recording, and printed it could give the answer away.
+pub fn learner_item(i: &Value) -> Value {
+    let mut view = i["view"].clone();
+    if st(&view["prompt"], "mode") == "heard" {
+        if let Some(p) = view["prompt"].as_object_mut() {
+            p.remove("text");
+        }
+    }
+    let mut o = json!({"id": i["id"], "kind": i["kind"], "band": i["band"], "role": i["role"], "view": view, "hints": arr(&i["key"], "hints").len()});
+    if let Some(f) = i.get("form") {
+        o["form"] = f.clone();
+    }
+    o
+}
+
 /// What may reach a learner's device: no key, no hint, no feedback, no provenance.
 pub fn learner(c: &Course) -> Value {
     let lessons: Vec<Value> = c
@@ -129,12 +147,7 @@ pub fn learner(c: &Course) -> Value {
             let mut out = json!({
                 "id": l["id"], "title": l["title"], "locale": l["locale"], "ages": l["ages"], "skills": l["skills"], "teach": l["teach"],
                 "status": l["status"], "attribution": l["attribution"], "licence": l["licence"],
-                "items": items.iter().map(|i| {
-                    let mut o = json!({"id": i["id"], "kind": i["kind"], "band": i["band"], "role": i["role"], "view": i["view"],
-                                       "hints": arr(&i["key"], "hints").len()});
-                    if let Some(f) = i.get("form") { o["form"] = f.clone(); }
-                    o
-                }).collect::<Vec<_>>(),
+                "items": items.iter().map(learner_item).collect::<Vec<_>>(),
             });
             for k in ["image", "targetLocale"] {
                 if let Some(v) = l.get(k) {
@@ -246,6 +259,9 @@ fn pack_item(it: &Value, lo_of: &BTreeMap<String, String>, s: &mut Strings) -> V
     let mut prompt = Map::new();
     put(&mut prompt, "textKey", s.key("prompt", st(&view["prompt"], "text")));
     media(&view["prompt"], &mut prompt, s);
+    if let Some(m) = view["prompt"].get("mode") {
+        put(&mut prompt, "mode", m.clone());
+    }
     put(&mut o, "prompt", Value::Object(prompt));
     put(&mut o, "hints", json!(arr(key, "hints").iter().filter_map(Value::as_str).map(|h| json!({"textKey": s.key("hint", h)})).collect::<Vec<_>>()));
     let graded = kind != "story_choice";

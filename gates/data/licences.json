@@ -1,6 +1,6 @@
 {
   "schema": "licences/1",
-  "note": "SPDX ids an asset may carry. Not allowed, by design: any NonCommercial or NoDerivatives licence, and ShareAlike or copyleft terms, which would bind the lessons that use the asset.",
+  "note": "SPDX ids an asset may carry. A recording behind a heard prompt needs an attribution whatever its licence. Not allowed, by design: any NonCommercial or NoDerivatives licence, and ShareAlike or copyleft terms, which would bind the lessons that use the asset.",
   "allowed": [
     "CC0-1.0",
     "CC-BY-4.0",

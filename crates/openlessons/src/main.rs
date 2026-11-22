@@ -120,6 +120,17 @@ enum Cmd {
         #[arg(long)]
         out: Option<PathBuf>,
     },
+    /// Serve the tree over the Model Context Protocol on standard input and output (read-only unless --allow-write)
+    Mcp {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the gate data folder (default: <root>/gates/data)
+        #[arg(long)]
+        data: Option<PathBuf>,
+        /// let `propose_lesson` save proposal files under <root>/proposals/ (it writes nothing else)
+        #[arg(long)]
+        allow_write: bool,
+    },
     /// Write content ids into items.jsonl files and sort them (a file or a folder)
     Stamp { paths: Vec<PathBuf> },
     /// Print the id and folder of a lesson
@@ -265,6 +276,11 @@ fn run(cli: Cli) -> Result<u8> {
                 Some(p) => fs::write(&p, &body).with_context(|| format!("{}", p.display()))?,
                 None => print!("{body}"),
             }
+            Ok(0)
+        }
+        Cmd::Mcp { root, data, allow_write } => {
+            let server = openlessons::mcp::Server { data: data.unwrap_or_else(|| root.join("gates").join("data")), root, allow_write };
+            server.serve(std::io::stdin().lock(), std::io::stdout().lock())?;
             Ok(0)
         }
         Cmd::Stamp { paths } => {

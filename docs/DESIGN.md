@@ -1,6 +1,6 @@
 # openlessons: design
 
-As of 2026-11-23. Slices 1 and 2 are built; what is not built is marked **later**.
+As of 2026-11-23. Slices 1 to 3 are built; what is not built is marked **later**.
 
 openlessons is a curriculum commons kept as plain files: skills, lessons and items anyone may use, aligned to public standards
 frameworks by reference. Any harness (an app, an agent, a script) can read it without our code. Content is CC BY 4.0, code is
@@ -23,7 +23,9 @@ breaking change is a new number (`lesson/2`) with a converter; a published recor
 | `asset/1` | a picture or a sound, with licence and attribution | `ast_` + hash |
 | `locale/1` | a language content is written in | `en`, `zh-Hans` |
 | `path/1` | an ordered course of lessons | locale / subject / slug |
-| `proposal/1` | content offered in one file; `openlessons apply` places it | a file, not stored |
+| `proposal/1` | content offered in one file; `openlessons apply` places it | a file in `proposals/` until applied |
+| `reviewers/1` | `REVIEWERS.json`: who may review what | one file |
+| `review/1` | one entry of a record's `provenance.reviews` | inside its record |
 
 **Standards are references, never copies.** A framework records what may be quoted, and a gate enforces it:
 
@@ -37,8 +39,9 @@ Terms nobody has read (`reviewed: null`) are `ids_only` by rule. Word lists and 
 stored.
 
 **Skills are ours; alignments are claims.** `exact` means the skill is the objective. `partial` means it covers part.
-`related` makes no coverage claim. A claim counts only once a person has reviewed it: coverage figures keep reviewed
-`exact`, proposed `exact` and `partial` apart, and a consumer must never add them together.
+`related` makes no coverage claim. An `exact` alignment may be `proposed`, as a claim waiting for a person. It reaches
+`reviewed` only through a listed `subject` reviewer, and `export` leaves it out while it is below the bar. Coverage figures
+keep reviewed `exact`, proposed `exact` and `partial` apart, and a consumer must never add them together.
 
 **An item keeps its answer apart from what a learner sees.** `view` is everything that may reach a learner's device. `key`
 holds the answer, tagged wrong answers, hints and how the answer was verified, and stays on the serving side. The schema
@@ -52,6 +55,11 @@ not translate: English starts from s-a-t-p-i-n, Indonesian from syllables. Skill
 
 **Pictures and sounds.** A picture is a Unicode emoji (no asset needed) or an `asset`. A sound is a `cue` naming what must be
 heard (`phoneme.s`) until a recorded `asset` exists. Every asset has a licence from the allowed list and its attribution.
+
+**Heard prompts.** A prompt is `shown` (the default) or `heard`. A heard prompt is for learners who cannot read yet: its
+`text` is the script of a recording and is never printed, so "Tap the word cat" is a fair question. It must name the
+recording (`audio.asset`), and that recording must carry its licence and an attribution. A learner export and the MCP
+server leave the script out.
 
 ## 2. Layout, for a very large tree
 
@@ -95,12 +103,14 @@ fail is not known to work. All gates block.
 | `lesson.aligned` | a lesson with a skill that is aligned to no standard |
 | `lesson.reading-level` | text too long for the youngest stated age (words per sentence, letters per word; characters for CJK) |
 | `item.answer-verified` | an answer that names nothing, two choices that look the same, a check a guess passes, no verification method |
-| `item.no-answer-leak` | a prompt or hint that shows the right answer and none of the wrong ones |
+| `item.no-answer-leak` | a shown prompt, or a hint, that gives the right answer and none of the wrong ones |
+| `item.heard-prompt-recorded` | a heard prompt without a recorded audio asset that has a licence and an attribution |
 | `asset.licensed` | an asset without a record, with a licence off the allowed list, or without attribution |
 | `content.no-pii` | an email address, phone number, web address or account handle |
 | `content.child-safe` | a term on the safety lexicon of the lesson's language; a language with no lexicon |
 | `content.no-duplicates` | the same item twice, by id or by what it asks and accepts |
-| `loop.review-before-reviewed` | `reviewed` or `published` without a passing review by a person who is not the maker |
+| `loop.review-before-reviewed` | `reviewed` or `published` without a passing review by a person who is not the maker; an `exact` alignment settled without a `subject` reviewer |
+| `loop.reviewer-listed` | a settling review by someone `REVIEWERS.json` does not list for that role, language, subject or framework, or dated outside their term |
 | `loop.base-respected` | against a base revision (`--base`): a reviewed record changed in place, moved back, or removed |
 | `index.fresh` | an index that is not the one the data generates |
 
@@ -122,9 +132,12 @@ draft ──► proposed ──► reviewed ──► published
 - Every record says who made it: `provenance.origin` is `human`, `ai` or `generator`, with the maker's public handle and,
   for AI, the model. An AI-made record that hides its origin is grounds for removal.
 - The gates decide whether a proposal may be looked at. They never decide that it is good.
-- `reviewed` needs a review entry by a person other than the maker (roles: subject, language, safety, licence). The gate
-  checks the record; that the reviewer is a real person is enforced by review of the pull request. There is no
-  `CODEOWNERS` file yet because no public reviewer team exists to name (see CONTRIBUTING).
+- `reviewed` needs a review entry (`review/1`: who, as a person or an AI, in which role, with which verdict, when) by a
+  person other than the maker, and that person must be listed in [`REVIEWERS.json`](../REVIEWERS.json) for the role and for
+  the record's language, subject and framework, on a date inside their term. Roles: subject, language, safety, licence.
+  **The list ships empty.** Naming reviewers is the project owner's decision; until someone is listed, nothing can be
+  `reviewed`. A change to the list is a change to who is trusted: it is made on its own, never together with content. There
+  is no `CODEOWNERS` file yet because no public reviewer team exists to name (see CONTRIBUTING).
 - **A change is judged against its base** (`validate --base origin/main`, run by CI on every pull request). A change may add
   anything and may change anything unreviewed. A `reviewed` or `published` record may only move forward with reviews
   appended, or be reopened: back to `proposed` with a higher `version` (skill) or `revision` (lesson, path). An item is
@@ -156,7 +169,11 @@ draft ──► proposed ──► reviewed ──► published
 - **`observe`** prints `observation/1` records: one per gate, and one per standards level and locale with the skills,
   lessons, items, reviewed and proposed alignments and objectives reached. The rules that score them are in
   [`scoregraph/`](../scoregraph); a score ledger ingests both and gates a change that lowers the score.
-- **Later**: an MCP server over the same index.
+- **The MCP server** (`openlessons mcp`, standard input and output) gives an agent four tools: `find_lessons`,
+  `get_lesson` (the learner's view: no key, no hints, no script of a heard prompt; refused below `min_status`, default
+  `published`), `validate_proposal` (the gates over a proposal, nothing saved) and `propose_lesson`. The server is
+  read-only unless started with `--allow-write`, and then it writes one thing: a proposal file under `proposals/`, for a
+  maintainer to apply and a listed person to review. It cannot write a lesson or a review.
 
 ## 6. Decisions
 
@@ -169,9 +186,9 @@ draft ──► proposed ──► reviewed ──► published
 7. AI may draft and propose. Only a person moves a record to `reviewed`.
 8. The index is generated and committed, so a harness with no tools can still search.
 
-## 7. Slice 3
+## 7. Next
 
-1. An MCP server over the index: find, read a lesson, export a learner bundle, apply a proposal.
-2. Audio-first prompts (text that is spoken, not shown), so listening items stop tripping the leak gate; recorded assets.
-3. Reviewer teams per language and subject, then `CODEOWNERS`, then the first `reviewed` content.
-4. Objective-level nodes for the rest of the open frameworks; the gates on changed shards only.
+1. Reviewers named in `REVIEWERS.json` by the project owner, then the first `reviewed` content.
+2. Recordings for the seed's audio cues, and heard prompts for the listening items the leak gate turned away.
+3. Objective-level nodes for the rest of the open frameworks; the gates on changed shards only.
+4. `CODEOWNERS` once public reviewer teams exist; an HTTP transport for the MCP server if a host needs one.

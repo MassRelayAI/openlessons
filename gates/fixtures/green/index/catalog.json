@@ -7,9 +7,9 @@
     "standards": 2,
     "skills": 2,
     "alignments": 2,
-    "assets": 1,
+    "assets": 2,
     "lessons": 1,
-    "items": 7,
+    "items": 8,
     "paths": 1
   },
   "shelves": [
@@ -17,7 +17,7 @@
       "locale": "en",
       "subject": "maths",
       "lessons": 1,
-      "items": 7,
+      "items": 8,
       "file": "index/en/maths.jsonl"
     }
   ]

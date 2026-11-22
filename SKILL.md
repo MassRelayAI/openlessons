@@ -5,6 +5,21 @@ description: Find, use and propose lessons in the openlessons curriculum commons
 
 # openlessons: how an agent finds, uses and proposes lessons
 
+## 0. With the MCP server
+
+If your harness has the `openlessons` MCP server connected (`openlessons mcp --root <clone>`, standard input and output),
+use its tools and skip the file work below:
+
+| tool | does |
+|---|---|
+| `find_lessons` | searches the index by `locale`, `subject`, `skill`, `standard`, `framework`, `age`, `status`, `text` |
+| `get_lesson` | returns one lesson as a learner may see it. No answers, hints or feedback, ever. Refuses a lesson below `min_status` (default `published`) |
+| `validate_proposal` | runs the gates over a `proposal/1` object and returns the findings; saves nothing |
+| `propose_lesson` | validates, then saves the proposal under `proposals/` for a maintainer and a reviewer. Needs a server started with `--allow-write`; it never writes a lesson and nothing it saves is reviewed |
+
+The server cannot grade: answers stay on the serving side, with whoever runs `export` or reads the files. Lower
+`min_status` only when an adult responsible for the learner accepts unreviewed content. Sections 2 and 3 still apply.
+
 openlessons is a folder of JSON files. You need no special tool: reading files is enough. The `openlessons` CLI is faster
 when it is installed (`cargo install --path crates/openlessons` in a clone of https://github.com/MassRelayAI/openlessons).
 
@@ -47,6 +62,8 @@ app pack with keyed strings and answer groups for a lesson player; `--format bun
 - `band` is `easy`, `medium` or `hard`. Start easy.
 - A skill's `mastery` (for example 4 of 5 on one check) says when to move on; `prerequisites` say what comes first.
 - `audio.cue` names a sound the learner must hear (`phoneme.s`). Say it or play it; do not print it.
+- A prompt with `"mode": "heard"` is played from its recording (`audio.asset`) and its `text` is never shown: printed, it
+  would give the answer away. Credit the recording as its asset record says.
 - Check `status`. With children, use `published` content only, unless an adult responsible for the learner has chosen
   otherwise. `proposed` means no educator has reviewed it.
 - Credit the source where the lesson is shown: the lesson's `attribution` and `licence` (CC BY 4.0).
@@ -63,6 +80,8 @@ places every record, and marks all of it `proposed`. Then do steps 6 and 7 below
 2. Get the lesson's id and folder: `openlessons id <locale> <subject> <slug>`.
 3. Write `lesson.json` and `items.jsonl` there (schemas: `schemas/lesson.schema.json`, `schemas/item.schema.json`; copy the
    shape of an existing lesson). Write in the lesson's language; do not translate another lesson word for word.
+   A prompt meant for a learner who cannot read yet is `"mode": "heard"` and must name a recorded audio asset that has a
+   licence and an attribution; without a recording, write the item so the printed prompt does not contain the answer.
 4. Say what you are: `"provenance": {"origin": "ai", "maker": "<your agent name>", "model": "<model>", "created": "<date>"}`
    and `"status": "proposed"`. Never set `reviewed` or `published` yourself, and never add a review entry for your own work.
 5. For every graded item set `key.verification.method`: `computed` when a program worked the answer out, `solver` when a
@@ -71,7 +90,7 @@ places every record, and marks all of it `proposed`. Then do steps 6 and 7 below
    `openlessons validate --base origin/main`. Fix every finding. Add freely; never edit a `reviewed` or `published` record
    in place: revise an item with a new item that names the old one in `supersedes`, and reopen a lesson or skill by
    raising its `revision` or `version` and setting it back to `proposed`. Do not edit `index/` by hand and do not change a gate or its fixtures to make your content pass.
-7. Open a pull request. A person reviews it.
+7. Open a pull request. A person listed in `REVIEWERS.json` reviews it; you cannot add yourself or anyone else to that list.
 
 What the gates will refuse: a prompt that contains the answer, two choices that look the same, text too long for the stated
 age, anything on the safety lexicon, personal data (emails, phone numbers, links, handles), a duplicate of an existing item,

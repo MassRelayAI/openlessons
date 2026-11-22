@@ -50,6 +50,12 @@
       "mode": "blocking"
     },
     {
+      "id": "item.heard-prompt-recorded",
+      "version": 1,
+      "title": "A prompt that is heard, not shown, names a recorded audio asset that has a licence and an attribution",
+      "mode": "blocking"
+    },
+    {
       "id": "asset.licensed",
       "version": 1,
       "title": "Every picture and sound has a record with an allowed licence and its attribution",
@@ -77,6 +83,12 @@
       "id": "loop.review-before-reviewed",
       "version": 1,
       "title": "Nothing is `reviewed` or `published` without a passing review by a person who did not make it; an `exact` alignment needs one too",
+      "mode": "blocking"
+    },
+    {
+      "id": "loop.reviewer-listed",
+      "version": 1,
+      "title": "A `reviewed` or `published` record was passed by a person REVIEWERS.json lists for that role, language, subject and framework",
       "mode": "blocking"
     },
     {

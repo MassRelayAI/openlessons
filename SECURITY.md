@@ -25,11 +25,14 @@ few working days.
   escapes the tree;
 - a way for content to reach `reviewed` or `published` without a person's review, or for a reviewed record to change
   without the base comparison noticing;
-- a learner export (`export --format learner`) that carries an answer;
+- a learner export (`export --format learner`) or an MCP `get_lesson` reply that carries an answer, a hint or the script
+  of a heard prompt;
+- a way to make the MCP server write anything but a proposal file, or write at all without `--allow-write`;
+- a way for a review to count from someone `REVIEWERS.json` does not list;
 - a problem in the CI workflow (the workflow uses a read-only token and actions pinned by commit).
 
 `openlessons` reads files and prints verdicts. It opens no network socket. It starts one other program, `git`, and only
-when asked to compare with a base revision (`--base`).
+when asked to compare with a base revision (`--base`). `openlessons mcp` speaks on standard input and output only.
 
 ## Supported versions
 

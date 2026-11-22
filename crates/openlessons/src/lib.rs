@@ -5,6 +5,7 @@
 //! - [`find`]: answers a query from the generated index
 //! - [`base`]: judges a change against the tree it starts from
 //! - [`export`] / [`import`]: bundles, learner bundles and app packs out; packs and proposal files in
+//! - [`mcp`]: a Model Context Protocol server over the tree (read-only unless told otherwise)
 //! - [`observe`]: gate results and standards coverage as observation/1 records
 //! - [`canon`]: canonical JSON and the ids derived from content
 
@@ -13,6 +14,7 @@ pub mod canon;
 pub mod export;
 pub mod import;
 pub mod item;
+pub mod mcp;
 pub mod observe;
 pub mod scan;
 pub mod text;

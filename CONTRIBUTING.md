@@ -35,9 +35,9 @@ draft ──► proposed ──► reviewed ──► published
 
 4. **Open a pull request** with status `proposed`. Keep it small: one lesson, or one skill with its lessons. An agent can
    instead write one proposal file and run `openlessons apply <file>`, which places the records and marks them `proposed`.
-5. **Review.** A person who did not make the content reads it for the subject, the language and child safety, and adds a
-   review entry. Only then does a maintainer set `reviewed`, and later `published`. Nobody reviews their own work, and an
-   AI review never counts as the review.
+5. **Review.** A person who did not make the content, and who is listed in `REVIEWERS.json` for that role, language and
+   subject, reads it and adds a review entry. Only then does a maintainer set `reviewed`, and later `published`. Nobody
+   reviews their own work, and an AI review never counts as the review.
 
 ## What a reviewer looks for (the gates cannot)
 
@@ -54,7 +54,18 @@ move forward (reviews appended, nothing else touched), or be reopened: back to `
 or `revision` (lesson, path). A reviewed item is never edited: a new item names it in `supersedes`, and only then may the
 old one go. `openlessons validate --base origin/main` enforces this, and CI runs it on every pull request.
 
-## Reviewers and CODEOWNERS
+## Reviewers
+
+`REVIEWERS.json` lists the people whose review can settle a record: a public handle, the roles they review in (subject,
+language, safety, licence), the languages, subjects and frameworks they cover (`*` for all), and the dates of their term.
+A gate refuses any `reviewed` or `published` record whose passing review is not from someone listed for exactly that. An
+`exact` alignment needs a `subject` reviewer listed for its framework.
+
+**The list is empty.** Who reviews lessons for children is the project owner's decision, and it has not been made yet.
+Until it is, everything stays `proposed`, however good it looks. Do not add a reviewer in a pull request that also adds
+or changes content: a change to the list is reviewed on its own.
+
+## CODEOWNERS
 
 There is no `CODEOWNERS` file yet, on purpose. An owner must be a public team with write access, one per language and
 subject, made of people qualified to review lessons for children. No such team exists today, and a file naming an owner
@@ -64,7 +75,8 @@ pull request, and nothing in the tree is `reviewed`.
 ## Changing a gate
 
 A gate is a rule in `gates/rules.json`, its code, and a red fixture under `gates/fixtures/red/<rule>/` that it must fail.
-A new gate arrives red-first: add the fixture, see `openlessons selftest` fail, then write the check. Loosening a gate
+A gate is never loosened to let existing content through: if the data fails a rule, the data is what changes. A new gate
+arrives red-first: add the fixture, see `openlessons selftest` fail, then write the check. Loosening a gate
 needs a reason in the pull request and a maintainer's agreement; never loosen a gate in the same change as the content it
 would let through.
 

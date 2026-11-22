@@ -89,7 +89,7 @@ fn an_edited_item_is_caught_until_it_is_stamped() {
     fs::write(&file, raw.replace("How many stars?", "How many stars are there?")).unwrap();
     assert!(rules_hit(&tree).contains(&"layout.content-addressed".to_string()), "a changed item still carries its old id");
     let (_, items, changed) = stamp(&tree).unwrap();
-    assert_eq!((items, changed), (7, 1));
+    assert_eq!((items, changed), (8, 1));
     assert_eq!(rules_hit(&tree), Vec::<String>::new());
     fs::remove_dir_all(&tree).unwrap();
 }

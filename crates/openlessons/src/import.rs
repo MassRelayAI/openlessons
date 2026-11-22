@@ -95,6 +95,9 @@ fn item(p: &Value, s: &Strings) -> Result<Value> {
     let mut prompt = Map::new();
     put(&mut prompt, "text", json!(s.get(&p["prompt"]["textKey"])?));
     media(&p["prompt"], &mut prompt, s)?;
+    if let Some(m) = p["prompt"].get("mode") {
+        put(&mut prompt, "mode", m.clone());
+    }
     let mut view = Map::new();
     put(&mut view, "prompt", Value::Object(prompt));
     match kind {

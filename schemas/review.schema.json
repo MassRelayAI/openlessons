@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/review.schema.json",
+  "title": "review/1: one entry of provenance.reviews. Reviews are only ever appended",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "by",
+    "kind",
+    "role",
+    "verdict",
+    "date"
+  ],
+  "properties": {
+    "by": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+      "description": "who reviewed: for a human review that counts, a handle listed in REVIEWERS.json"
+    },
+    "kind": {
+      "enum": [
+        "human",
+        "ai"
+      ],
+      "description": "an ai review is advice; only a human review can settle a record"
+    },
+    "role": {
+      "enum": [
+        "subject",
+        "language",
+        "safety",
+        "licence"
+      ],
+      "description": "subject: it teaches what it says and the answers are right; language: natural and right for the age and place; safety: nothing unsafe for a child; licence: every borrowed part may be used"
+    },
+    "verdict": {
+      "enum": [
+        "pass",
+        "fix",
+        "fail"
+      ]
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "note": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    }
+  }
+}

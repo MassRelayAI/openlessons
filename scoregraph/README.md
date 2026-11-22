@@ -6,7 +6,7 @@ depends on its code.
 
 | rule | one observation per | passes when |
 |---|---|---|
-| `quality.<gate>` (15) | gate, for the whole tree | the gate has no findings |
+| `quality.<gate>` (17) | gate, for the whole tree | the gate has no findings |
 | `feature.coverage.level.taught` | standards level and locale | at least one lesson reaches the level |
 | `feature.coverage.level.reviewed` (advisory) | standards level and locale | at least one of those lessons is `published` |
 | `feature.coverage.level.exact` (advisory) | standards level and locale | at least one `exact` alignment has been reviewed |

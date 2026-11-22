@@ -150,13 +150,14 @@
               "by": {
                 "type": "string",
                 "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
-                "description": "a public handle or an agent name; never an email address"
+                "description": "who reviewed: for a human review that counts, a handle listed in REVIEWERS.json"
               },
               "kind": {
                 "enum": [
                   "human",
                   "ai"
-                ]
+                ],
+                "description": "an ai review is advice; only a human review can settle a record"
               },
               "role": {
                 "enum": [
@@ -164,7 +165,8 @@
                   "language",
                   "safety",
                   "licence"
-                ]
+                ],
+                "description": "subject: it teaches what it says and the answers are right; language: natural and right for the age and place; safety: nothing unsafe for a child; licence: every borrowed part may be used"
               },
               "verdict": {
                 "enum": [
@@ -282,6 +284,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -576,6 +585,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -879,6 +895,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -1288,6 +1311,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -1590,6 +1620,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -1869,6 +1906,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },
@@ -2177,6 +2221,13 @@
                         "pattern": "^ast_[0-9a-f]{24}$"
                       }
                     }
+                  },
+                  "mode": {
+                    "enum": [
+                      "shown",
+                      "heard"
+                    ],
+                    "description": "shown (the default): the text is printed. heard: the text is the script of a recording and is never printed; `audio.asset` must name that recording"
                   }
                 }
               },

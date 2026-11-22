@@ -7,7 +7,7 @@ or AI harness to use and to add to.**
 - **Code and tools** (the CLI, schemas, gates): [Apache-2.0](LICENSE).
 - **Standards** are referenced by identifier and link. They belong to their publishers; see [NOTICE](NOTICE).
 
-> Status: early (0.2). The format, the gates, export and a seed are here. **The whole seed is `proposed`: it was drafted with AI and
+> Status: early (0.3). The format, the gates, export, an MCP server and a seed are here. **The whole seed is `proposed`: it was drafted with AI and
 > has not been reviewed by an educator yet.** Use `published` content for children; today there is none.
 
 ## What is in it
@@ -66,7 +66,14 @@ openlessons export en/maths/early-maths --format pack    --min-status proposed -
 `openlessons import`; the round trip is tested on every course in the tree.
 
 **In an AI harness.** Point the agent at [SKILL.md](SKILL.md): it explains how to find a lesson, how to run it with a
-learner, and how to propose new ones.
+learner, and how to propose new ones. Or connect the MCP server, which gives an agent four tools over this tree:
+
+```json
+{ "mcpServers": { "openlessons": { "command": "openlessons", "args": ["mcp", "--root", "/path/to/openlessons"] } } }
+```
+
+`find_lessons`, `get_lesson` (the learner's view: answers are never returned), `validate_proposal` and `propose_lesson`.
+The server is read-only unless started with `--allow-write`, and then it saves proposal files only.
 
 ### Three rules for anything that serves a learner
 
@@ -78,21 +85,24 @@ learner, and how to propose new ones.
 
 ## Quality gates
 
-Every change must pass fifteen gates: schema, content-derived ids, references, standards terms, alignment, reading level
-for the stated age, a verified answer, no answer in the prompt, licensed assets, no personal data, a child-safety lexicon, no
-duplicates, review before `reviewed`, nothing reviewed changed silently against the base, and a fresh index. Each gate has a fixture it must fail and one it must pass, and the
+Every change must pass seventeen gates: schema, content-derived ids, references, standards terms, alignment, reading level
+for the stated age, a verified answer, no answer in the prompt, a recording behind every heard prompt, licensed assets, no
+personal data, a child-safety lexicon, no duplicates, review before `reviewed`, by a listed reviewer, nothing reviewed
+changed silently against the base, and a fresh index. Each gate has a fixture it must fail and one it must pass, and the
 validator checks that before it judges anything. The gates are a floor. They do not replace a teacher's review.
 
 ## Contribute
 
 People and AI agents both can. A contribution is a pull request that adds files in the layout above, or one proposal file
-that `openlessons apply` places for you; it says who or what made it, it must pass the gates, and a person other than the maker reviews it before it is marked `reviewed`.
+that `openlessons apply` places for you; it says who or what made it, it must pass the gates, and a person other than the maker, listed in [REVIEWERS.json](REVIEWERS.json), reviews it before it is marked `reviewed`.
+That list is empty today, which is why everything here is still `proposed`.
 Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Found a problem in a lesson, especially one that is unsafe for a child? See [SECURITY.md](SECURITY.md).
 
 ## Roadmap
 
-1. Done: the format, fifteen gates, `validate`, `find`, `index`, `export`, `import`, `apply`, `observe`, the seed.
-2. Next: an MCP server over the index, audio-first prompts and recorded audio, reviewers per language and subject.
-3. Then: the first `reviewed` content, with educators.
+1. Done: the format, seventeen gates, `validate`, `find`, `index`, `export`, `import`, `apply`, `observe`, `mcp`, heard
+   prompts, the reviewer list, the seed.
+2. Next: reviewers named, and the first `reviewed` content, with educators.
+3. Then: recordings for the audio cues; more frameworks at objective level.

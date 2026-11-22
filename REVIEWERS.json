@@ -1,0 +1,5 @@
+{
+  "schema": "reviewers/1",
+  "note": "The people whose review can settle a record, and what each may review. Nobody is listed yet: naming reviewers is the project owner's decision, and until someone is listed nothing in the tree can be `reviewed` or `published`. See CONTRIBUTING.md.",
+  "reviewers": []
+}
