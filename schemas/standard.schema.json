@@ -37,7 +37,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 200,
-      "description": "the publisher's own identifier or level name"
+      "description": "the publisher's own identifier or level name; where the publisher gives none, the position in its published list"
     },
     "parent": {
       "type": "string",

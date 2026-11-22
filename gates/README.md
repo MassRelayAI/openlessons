@@ -7,6 +7,7 @@
 - `fixtures/red/<rule>/`: files laid over the green tree that the named gate must refuse.
 
 `openlessons selftest` copies the green tree, lays each red overlay over it in turn, and requires the named gate to fire.
+The green tree is also the base each overlay is compared with, which is how `loop.base-respected` is proven.
 `openlessons validate` runs the self-test first and judges nothing if it fails.
 
 ## Adding or changing a gate

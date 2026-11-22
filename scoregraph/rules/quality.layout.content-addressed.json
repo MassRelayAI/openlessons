@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.layout.content-addressed",
+  "version": 1,
+  "title": "Every record lives where its id says, ids are derived from content, and nothing else lives in the data folders",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

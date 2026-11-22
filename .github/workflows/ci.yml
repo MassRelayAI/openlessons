@@ -32,6 +32,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
+          fetch-depth: 0 # the base of the change is compared with, so its commit must be here
       - name: Rust toolchain (stable, with clippy)
         run: rustup toolchain install stable --profile minimal --component clippy --no-self-update && rustup default stable
         shell: bash
@@ -39,8 +40,18 @@ jobs:
         run: cargo build --release --locked
       - name: gate self-test (each gate red on its red fixture, green on the green one)
         run: cargo run -q --release --locked -- selftest
-      - name: validate the whole tree
-        run: cargo run -q --release --locked -- validate
+      - name: validate the whole tree, against the base of this change (nothing reviewed may change silently)
+        shell: bash
+        env:
+          # a commit id from the event, passed as data: never written into the script
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -n "$BASE" ] && git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            cargo run -q --release --locked -- validate --base "$BASE"
+          else
+            echo "no base commit for this event: validating without a base"
+            cargo run -q --release --locked -- validate
+          fi
       - name: cargo test
         run: cargo test --locked
       - name: cargo clippy

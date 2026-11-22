@@ -1,0 +1,48 @@
+{
+  "schema": "rule/1",
+  "id": "feature.coverage.level.exact",
+  "version": 1,
+  "title": "A standards level has at least one exact alignment a person has reviewed",
+  "family": "feature",
+  "kind": "deterministic",
+  "mode": "advisory",
+  "weight": 2,
+  "check": {
+    "fact": "exact_reviewed",
+    "op": "ge",
+    "value": 1
+  },
+  "red": {
+    "facts": {
+      "skills": 2,
+      "lessons": 2,
+      "lessons_published": 1,
+      "lessons_reviewed": 1,
+      "items": 40,
+      "alignments": 2,
+      "exact_reviewed": 0,
+      "exact_proposed": 0,
+      "partial": 1,
+      "related": 0,
+      "objectives": 4,
+      "objectives_reached": 1
+    }
+  },
+  "green": {
+    "facts": {
+      "skills": 2,
+      "lessons": 2,
+      "lessons_published": 1,
+      "lessons_reviewed": 1,
+      "items": 40,
+      "alignments": 2,
+      "exact_reviewed": 1,
+      "exact_proposed": 0,
+      "partial": 1,
+      "related": 0,
+      "objectives": 4,
+      "objectives_reached": 1
+    }
+  },
+  "owner": "coverage"
+}

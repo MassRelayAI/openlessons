@@ -73,6 +73,11 @@
       "maxLength": 200,
       "description": "items made by one template share a family"
     },
+    "supersedes": {
+      "type": "string",
+      "pattern": "^itm_[0-9a-f]{24}$",
+      "description": "the item this one revises: the only way a reviewed item is replaced"
+    },
     "view": {
       "type": "object"
     },

@@ -80,6 +80,12 @@
       "mode": "blocking"
     },
     {
+      "id": "loop.base-respected",
+      "version": 1,
+      "title": "Against a base revision, nothing reviewed changes silently: it moves forward, is reopened with a higher version, or is revised by a new record",
+      "mode": "blocking"
+    },
+    {
       "id": "index.fresh",
       "version": 1,
       "title": "The index is the one the data generates, never a hand edit",

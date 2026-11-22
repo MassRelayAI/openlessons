@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.content.child-safe",
+  "version": 1,
+  "title": "No term from the safety lexicon of the lesson's language; a language without a lexicon is refused",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

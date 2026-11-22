@@ -27,6 +27,7 @@ pub const RULES: &[&str] = &[
     "content.child-safe",
     "content.no-duplicates",
     "loop.review-before-reviewed",
+    "loop.base-respected",
     "index.fresh",
 ];
 
@@ -51,12 +52,34 @@ pub struct Finding {
     pub message: String,
 }
 
+/// One alignment row, as the coverage figures need it.
+#[derive(Debug, Clone)]
+pub struct Aligned {
+    pub skill: String,
+    pub standard: String,
+    pub strength: String,
+    pub status: String,
+}
+
+/// One standard node, as the coverage figures need it.
+#[derive(Debug, Clone)]
+pub struct Node {
+    pub framework: String,
+    pub kind: String,
+    pub parent: String,
+}
+
 #[derive(Debug, Default)]
 pub struct Scan {
     pub findings: Vec<Finding>,
     pub counts: BTreeMap<String, u64>,
     /// the generated index: relative path -> file content
     pub index: BTreeMap<String, String>,
+    /// standard id -> node
+    pub standards: BTreeMap<String, Node>,
+    pub alignments: Vec<Aligned>,
+    /// one index line per lesson (id, locale, subject, skills, status, items, ...)
+    pub lessons: Vec<Value>,
 }
 
 struct Ctx {
@@ -174,9 +197,6 @@ fn review_problem(v: &Value) -> Option<String> {
             st(p, "origin")
         ));
     }
-    if st(v, "strength") == "exact" && !reviewed {
-        return Some("an `exact` alignment is a coverage claim: it needs status `reviewed` and a person's review".to_string());
-    }
     None
 }
 
@@ -201,11 +221,12 @@ struct Refs {
     locales: BTreeMap<String, String>,
     /// framework id -> terms.quote
     frameworks: BTreeMap<String, String>,
-    standards: BTreeSet<String>,
+    standards: BTreeMap<String, Node>,
     /// skill id -> (subject, misconception numbers)
     skills: BTreeMap<String, (String, BTreeSet<u64>)>,
     /// skill id -> aligned standard ids
     aligned: BTreeMap<String, BTreeSet<String>>,
+    alignments: Vec<Aligned>,
     assets: BTreeSet<String>,
     lessons: BTreeMap<String, (String, String)>,
 }
@@ -235,9 +256,10 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
     let mut r = Refs {
         locales: BTreeMap::new(),
         frameworks: BTreeMap::new(),
-        standards: BTreeSet::new(),
+        standards: BTreeMap::new(),
         skills: BTreeMap::new(),
         aligned: BTreeMap::new(),
+        alignments: Vec::new(),
         assets: BTreeSet::new(),
         lessons: BTreeMap::new(),
     };
@@ -258,7 +280,8 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         let first = stale.first().map(|s| s.as_str()).unwrap_or("index");
         c.add("index.fresh", &format!("index/{first}"), 0, format!("the index does not match the data ({} file(s) differ): run `openlessons index`, never edit it by hand", stale.len()));
     }
-    Ok(Scan { findings: c.findings, counts: c.counts, index })
+    let lessons = entries.into_iter().map(|e| e.line).collect();
+    Ok(Scan { findings: c.findings, counts: c.counts, index, standards: r.standards, alignments: r.alignments, lessons })
 }
 
 fn collect_files(base: &Path, dir: &Path, out: &mut BTreeMap<String, String>) {
@@ -355,7 +378,8 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
                 if v.get("titleOfficial").is_some() && quote == "ids_only" {
                     c.add("standards.terms-respected", &rel, line, format!("{id} copies the publisher's title, which the terms of {fw} do not allow (quote: {quote})"));
                 }
-                if !r.standards.insert(id.clone()) {
+                let node = Node { framework: fw.clone(), kind: st(&v, "kind").to_string(), parent: st(&v, "parent").to_string() };
+                if r.standards.insert(id.clone(), node).is_some() {
                     c.add("content.no-duplicates", &rel, line, format!("the standard {id} is recorded twice"));
                 }
                 if !st(&v, "parent").is_empty() {
@@ -366,7 +390,7 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
         }
     }
     for (rel, line, parent) in parents {
-        if !r.standards.contains(&parent) {
+        if !r.standards.contains_key(&parent) {
             c.add("refs.resolve", &rel, line, format!("the parent {parent} does not exist"));
         }
     }
@@ -474,7 +498,7 @@ fn alignments(c: &mut Ctx, r: &mut Refs) {
                     c.add("loop.review-before-reviewed", &rel, line, m);
                 }
                 pii(c, &v, &rel, line);
-                let (has_skill, has_standard) = (r.skills.contains_key(&skill), r.standards.contains(&standard));
+                let (has_skill, has_standard) = (r.skills.contains_key(&skill), r.standards.contains_key(&standard));
                 if !has_skill {
                     c.add("refs.resolve", &rel, line, format!("the skill {skill} does not exist"));
                 }
@@ -482,6 +506,7 @@ fn alignments(c: &mut Ctx, r: &mut Refs) {
                     c.add("refs.resolve", &rel, line, format!("the standard {standard} does not exist"));
                 }
                 if has_skill && has_standard {
+                    r.alignments.push(Aligned { skill: skill.clone(), standard: standard.clone(), strength: st(&v, "strength").to_string(), status: st(&v, "status").to_string() });
                     r.aligned.entry(skill).or_default().insert(standard);
                 }
                 c.count("alignments", 1);

@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.lesson.reading-level",
+  "version": 1,
+  "title": "The text a learner reads fits the youngest age the lesson says it is for",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

@@ -150,6 +150,11 @@
       "type": "string",
       "pattern": "^les_[0-9a-f]{24}$"
     },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "raised when a reviewed lesson is reopened for a change (absent = 1)"
+    },
     "status": {
       "enum": [
         "draft",

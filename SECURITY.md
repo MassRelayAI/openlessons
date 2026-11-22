@@ -23,10 +23,13 @@ few working days.
 
 - a way to make a failing gate pass: a bypass of the self-test, a record the validator misreads as clean, a path that
   escapes the tree;
-- a way for content to reach `reviewed` or `published` without a person's review;
+- a way for content to reach `reviewed` or `published` without a person's review, or for a reviewed record to change
+  without the base comparison noticing;
+- a learner export (`export --format learner`) that carries an answer;
 - a problem in the CI workflow (the workflow uses a read-only token and actions pinned by commit).
 
-`openlessons` reads files and prints verdicts. It opens no network socket and starts no other program.
+`openlessons` reads files and prints verdicts. It opens no network socket. It starts one other program, `git`, and only
+when asked to compare with a base revision (`--base`).
 
 ## Supported versions
 

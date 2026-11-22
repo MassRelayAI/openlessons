@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.loop.base-respected",
+  "version": 1,
+  "title": "Against a base revision, nothing reviewed changes silently: it moves forward, is reopened with a higher version, or is revised by a new record",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

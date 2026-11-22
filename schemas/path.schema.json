@@ -62,6 +62,11 @@
         }
       }
     },
+    "revision": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "raised when a reviewed path is reopened for a change (absent = 1)"
+    },
     "units": {
       "type": "array",
       "minItems": 1,

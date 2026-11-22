@@ -7,7 +7,7 @@ or AI harness to use and to add to.**
 - **Code and tools** (the CLI, schemas, gates): [Apache-2.0](LICENSE).
 - **Standards** are referenced by identifier and link. They belong to their publishers; see [NOTICE](NOTICE).
 
-> Status: early (0.1). The format, the gates and a seed are here. **The whole seed is `proposed`: it was drafted with AI and
+> Status: early (0.2). The format, the gates, export and a seed are here. **The whole seed is `proposed`: it was drafted with AI and
 > has not been reviewed by an educator yet.** Use `published` content for children; today there is none.
 
 ## What is in it
@@ -17,7 +17,8 @@ or AI harness to use and to add to.**
 | lessons | 49, in 4 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian | `lessons/` |
 | items (questions and activities, 7 kinds) | 4,178 | `lessons/**/items.jsonl` |
 | skills, each with its misconceptions and prerequisites | 49 | `skills/` |
-| standards frameworks, as references with their terms of reuse | 8 (10 level nodes, 67 alignments, all `partial`) | `standards/`, `alignments/` |
+| standards frameworks, as references with their terms of reuse | 8 (39 nodes: 10 levels, 9 strands, 20 objectives) | `standards/` |
+| alignments of skills to standards, none reviewed yet | 85 (81 `partial`, 4 `exact`, all `proposed`) | `alignments/` |
 | languages | English, Indonesian; Chinese (Simplified) as a language being learned | `locales/` |
 
 The numbers come from [`index/catalog.json`](index/catalog.json), which the tool generates.
@@ -55,7 +56,14 @@ openlessons find --subject maths --age 6
 openlessons find --framework ccss-2010 --json
 openlessons find --skill english.phonics --text "sounds"
 openlessons validate            # proves every gate on its fixtures, then checks the whole tree
+
+# one course out: for a learner's device (no answers), or as an app pack (keyed strings, answer groups)
+openlessons export en/maths/early-maths --format learner --min-status proposed --out out/
+openlessons export en/maths/early-maths --format pack    --min-status proposed --out out/pack
 ```
+
+`export` takes `published` content unless you lower the bar yourself with `--min-status`. An app pack reads back with
+`openlessons import`; the round trip is tested on every course in the tree.
 
 **In an AI harness.** Point the agent at [SKILL.md](SKILL.md): it explains how to find a lesson, how to run it with a
 learner, and how to propose new ones.
@@ -70,22 +78,21 @@ learner, and how to propose new ones.
 
 ## Quality gates
 
-Every change must pass fourteen gates: schema, content-derived ids, references, standards terms, alignment, reading level
+Every change must pass fifteen gates: schema, content-derived ids, references, standards terms, alignment, reading level
 for the stated age, a verified answer, no answer in the prompt, licensed assets, no personal data, a child-safety lexicon, no
-duplicates, review before `reviewed`, and a fresh index. Each gate has a fixture it must fail and one it must pass, and the
+duplicates, review before `reviewed`, nothing reviewed changed silently against the base, and a fresh index. Each gate has a fixture it must fail and one it must pass, and the
 validator checks that before it judges anything. The gates are a floor. They do not replace a teacher's review.
 
 ## Contribute
 
-People and AI agents both can. A contribution is a pull request that adds or changes files in the layout above; it says who
-or what made it, it must pass the gates, and a person other than the maker reviews it before it is marked `reviewed`.
+People and AI agents both can. A contribution is a pull request that adds files in the layout above, or one proposal file
+that `openlessons apply` places for you; it says who or what made it, it must pass the gates, and a person other than the maker reviews it before it is marked `reviewed`.
 Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Found a problem in a lesson, especially one that is unsafe for a child? See [SECURITY.md](SECURITY.md).
 
 ## Roadmap
 
-1. This release: the format, fourteen gates, `validate`, `find`, `index`, the seed.
-2. Next: `export` (a lesson bundle, and a learner bundle with the answers removed), proposal files, objective-level
-   standards with reviewed `exact` alignments, recorded audio.
-3. Later: an MCP server over the index, a quality ledger, reviewers per language and subject.
+1. Done: the format, fifteen gates, `validate`, `find`, `index`, `export`, `import`, `apply`, `observe`, the seed.
+2. Next: an MCP server over the index, audio-first prompts and recorded audio, reviewers per language and subject.
+3. Then: the first `reviewed` content, with educators.

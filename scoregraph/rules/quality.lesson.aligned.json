@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.lesson.aligned",
+  "version": 1,
+  "title": "Every lesson teaches at least one skill, and every skill it teaches is aligned to at least one standard",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

@@ -31,6 +31,10 @@ its `skills`. An alignment's `strength` is `exact`, `partial` or `related`. Only
 
 ## 2. Use a lesson with a learner
 
+To hand a course to a device, export it without answers: `openlessons export <locale>/<subject>/<slug> --format learner
+--out <dir>` (add `--min-status proposed` only when an adult has agreed to unreviewed content). `--format pack` gives an
+app pack with keyed strings and answer groups for a lesson player; `--format bundle` gives every record in one file.
+
 - `lesson.json` has `teach.text` (say this first), `teach.examples`, and `teach.reteach` (say this after a wrong answer).
 - Each line of `items.jsonl` is one activity. **Show the learner `view` only. Never show or send `key`**: it holds the
   answer, the hints and the feedback.
@@ -49,6 +53,10 @@ its `skills`. An alignment's `strength` is `exact`, `partial` or `related`. Only
 
 ## 3. Propose a lesson
 
+The short way: write one proposal file (`schemas/proposal.schema.json`: your `provenance`, then `skills`, `alignments` and
+`lessons` with their `items`, without ids, status or schema fields) and run `openlessons apply <file>`. It computes ids,
+places every record, and marks all of it `proposed`. Then do steps 6 and 7 below. The long way, file by file:
+
 1. Pick the skill in `skills/`. If it does not exist, add `skills/<subject>/<strand>/<slug>.json` and at least one row in
    `alignments/<framework>/<subject>.jsonl`. Write statements in your own words. Never copy a standard's wording unless
    that framework's `terms.quote` is `official_text`.
@@ -59,8 +67,10 @@ its `skills`. An alignment's `strength` is `exact`, `partial` or `related`. Only
    and `"status": "proposed"`. Never set `reviewed` or `published` yourself, and never add a review entry for your own work.
 5. For every graded item set `key.verification.method`: `computed` when a program worked the answer out, `solver` when a
    second model answered it without seeing the key, `human` when a person did. Do not guess arithmetic: compute it.
-6. Run `openlessons stamp <lesson folder>` (writes item ids), `openlessons index`, then `openlessons validate`. Fix every
-   finding. Do not edit `index/` by hand and do not change a gate or its fixtures to make your content pass.
+6. Run `openlessons stamp <lesson folder>` (writes item ids), `openlessons index`, then
+   `openlessons validate --base origin/main`. Fix every finding. Add freely; never edit a `reviewed` or `published` record
+   in place: revise an item with a new item that names the old one in `supersedes`, and reopen a lesson or skill by
+   raising its `revision` or `version` and setting it back to `proposed`. Do not edit `index/` by hand and do not change a gate or its fixtures to make your content pass.
 7. Open a pull request. A person reviews it.
 
 What the gates will refuse: a prompt that contains the answer, two choices that look the same, text too long for the stated

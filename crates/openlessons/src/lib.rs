@@ -3,10 +3,17 @@
 //! - [`scan`]: one pass over a data tree that runs every gate and builds the index
 //! - [`selftest`]: proves each gate fails its red fixture and the green fixture passes all of them
 //! - [`find`]: answers a query from the generated index
+//! - [`base`]: judges a change against the tree it starts from
+//! - [`export`] / [`import`]: bundles, learner bundles and app packs out; packs and proposal files in
+//! - [`observe`]: gate results and standards coverage as observation/1 records
 //! - [`canon`]: canonical JSON and the ids derived from content
 
+pub mod base;
 pub mod canon;
+pub mod export;
+pub mod import;
 pub mod item;
+pub mod observe;
 pub mod scan;
 pub mod text;
 
@@ -17,6 +24,15 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 pub use scan::{scan, Finding, Scan, RULES};
+
+/// The scan, plus the comparison with a base git revision when one is given.
+pub fn judge(root: &Path, data: &Path, base_rev: Option<&str>) -> Result<Scan> {
+    let mut s = scan(root, data)?;
+    if let Some(rev) = base_rev {
+        s.findings.extend(base::against_base(root, &base::GitBase::new(root, rev)?)?);
+    }
+    Ok(s)
+}
 
 fn copy_tree(from: &Path, to: &Path) -> Result<()> {
     fs::create_dir_all(to)?;
@@ -54,7 +70,8 @@ pub fn selftest(root: &Path) -> Result<SelfTest> {
         lines.push(format!("FAIL gates/rules.json lists {:?}; the program implements {:?}", listed.difference(&coded).collect::<Vec<_>>(), coded.difference(&listed).collect::<Vec<_>>()));
     }
 
-    let g = scan(&green, &data)?;
+    let mut g = scan(&green, &data)?;
+    g.findings.extend(base::against_base(&green, &base::DirBase { base: green.clone(), head: green.clone() })?);
     if g.findings.is_empty() && g.counts.get("items").copied().unwrap_or(0) > 0 {
         lines.push(format!("ok   green fixture: {} gates, 0 findings", RULES.len()));
     } else {
@@ -72,7 +89,11 @@ pub fn selftest(root: &Path) -> Result<SelfTest> {
         }
         let tmp = std::env::temp_dir().join(format!("openlessons-selftest-{}-{rule}", std::process::id()));
         let _ = fs::remove_dir_all(&tmp);
-        let result = copy_tree(&green, &tmp).and_then(|_| copy_tree(&red, &tmp)).and_then(|_| scan(&tmp, &data));
+        // the green tree is the base every red overlay is a change to
+        let result = copy_tree(&green, &tmp).and_then(|_| copy_tree(&red, &tmp)).and_then(|_| scan(&tmp, &data)).and_then(|mut s| {
+            s.findings.extend(base::against_base(&tmp, &base::DirBase { base: green.clone(), head: tmp.clone() })?);
+            Ok(s)
+        });
         let _ = fs::remove_dir_all(&tmp);
         let hits = result?.findings.iter().filter(|f| f.rule == *rule).count();
         if hits > 0 {

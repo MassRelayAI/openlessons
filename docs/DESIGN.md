@@ -1,6 +1,6 @@
 # openlessons: design
 
-As of 2026-11-23. Slice 1 is built; what is not built is marked **later**.
+As of 2026-11-23. Slices 1 and 2 are built; what is not built is marked **later**.
 
 openlessons is a curriculum commons kept as plain files: skills, lessons and items anyone may use, aligned to public standards
 frameworks by reference. Any harness (an app, an agent, a script) can read it without our code. Content is CC BY 4.0, code is
@@ -23,6 +23,7 @@ breaking change is a new number (`lesson/2`) with a converter; a published recor
 | `asset/1` | a picture or a sound, with licence and attribution | `ast_` + hash |
 | `locale/1` | a language content is written in | `en`, `zh-Hans` |
 | `path/1` | an ordered course of lessons | locale / subject / slug |
+| `proposal/1` | content offered in one file; `openlessons apply` places it | a file, not stored |
 
 **Standards are references, never copies.** A framework records what may be quoted, and a gate enforces it:
 
@@ -35,8 +36,9 @@ breaking change is a new number (`lesson/2`) with a converter; a published recor
 Terms nobody has read (`reviewed: null`) are `ids_only` by rule. Word lists and exam items of proprietary frameworks are never
 stored.
 
-**Skills are ours; alignments are claims.** `exact` means the skill is the objective and needs a person's review. `partial`
-means it covers part. `related` makes no coverage claim. A consumer must never add `partial` to `exact`.
+**Skills are ours; alignments are claims.** `exact` means the skill is the objective. `partial` means it covers part.
+`related` makes no coverage claim. A claim counts only once a person has reviewed it: coverage figures keep reviewed
+`exact`, proposed `exact` and `partial` apart, and a consumer must never add them together.
 
 **An item keeps its answer apart from what a learner sees.** `view` is everything that may reach a learner's device. `key`
 holds the answer, tagged wrong answers, hints and how the answer was verified, and stays on the serving side. The schema
@@ -76,7 +78,7 @@ gates/rules.json  gates/data/  gates/fixtures/                  the gates' data 
   rarely conflict.
 - **The index is generated** by `openlessons index` from data that passes the gates. A hand edit turns a gate red.
 - At true scale the tree splits by locale into several repositories with the same layout; nothing in the format assumes one
-  repository. **Later**: validating only the shards a change touches.
+  repository. The base comparison already reads only the files a change touches. **Later**: the other gates do the same.
 
 ## 3. Quality gates
 
@@ -99,6 +101,7 @@ fail is not known to work. All gates block.
 | `content.child-safe` | a term on the safety lexicon of the lesson's language; a language with no lexicon |
 | `content.no-duplicates` | the same item twice, by id or by what it asks and accepts |
 | `loop.review-before-reviewed` | `reviewed` or `published` without a passing review by a person who is not the maker |
+| `loop.base-respected` | against a base revision (`--base`): a reviewed record changed in place, moved back, or removed |
 | `index.fresh` | an index that is not the one the data generates |
 
 The gates are bounds, not judgement. Reading level is a ceiling, not a readability score; the lexicon is a starter list; the
@@ -113,13 +116,19 @@ draft ──► proposed ──► reviewed ──► published
  or AI      (pull request) the maker passes it      releases it
 ```
 
-- Content arrives as a pull request that adds files in the layout above (**later**: a single proposal file an agent can post).
+- Content arrives as a pull request: files in the layout above, or one **proposal file** (`proposal/1`) that
+  `openlessons apply` places. Whatever a proposal file says, every record it yields is `proposed` and carries the
+  proposal's maker: a proposal cannot review itself, and it cannot overwrite a reviewed record.
 - Every record says who made it: `provenance.origin` is `human`, `ai` or `generator`, with the maker's public handle and,
   for AI, the model. An AI-made record that hides its origin is grounds for removal.
 - The gates decide whether a proposal may be looked at. They never decide that it is good.
 - `reviewed` needs a review entry by a person other than the maker (roles: subject, language, safety, licence). The gate
-  checks the record; that the reviewer is a real person is enforced by review of the pull request (**later**: CODEOWNERS
-  per locale and subject).
+  checks the record; that the reviewer is a real person is enforced by review of the pull request. There is no
+  `CODEOWNERS` file yet because no public reviewer team exists to name (see CONTRIBUTING).
+- **A change is judged against its base** (`validate --base origin/main`, run by CI on every pull request). A change may add
+  anything and may change anything unreviewed. A `reviewed` or `published` record may only move forward with reviews
+  appended, or be reopened: back to `proposed` with a higher `version` (skill) or `revision` (lesson, path). An item is
+  content-addressed, so it is never edited: a new item names the old one in `supersedes`, and only then may the old one go.
 - Every graded item says how its answer was verified (`key.verification.method`: `constructed`, `computed`, `human`,
   `solver`). An answer only a model produced is confirmed in review; arithmetic is computed, not guessed.
 - A consumer chooses its own bar. The default for anything shown to children is `published` only. The whole seed is
@@ -129,11 +138,25 @@ draft ──► proposed ──► reviewed ──► published
 
 - **No code needed.** Read `index/catalog.json`, then `index/<locale>/<subject>.jsonl`, then the lesson folder.
   [`SKILL.md`](../SKILL.md) tells an agent how to find, use and propose lessons.
-- **The CLI** (`openlessons`, Rust): `validate`, `selftest`, `index`, `find`, `stamp`, `id`. Rust because the tool must run
-  untrusted contributions in CI with no install scripts, walk a very large tree fast, and ship as one binary; it matches the
-  sibling tools.
-- **Later**: `openlessons export` (a lesson bundle, and a learner bundle with every `key` removed, in the pack format an app
-  consumes), an MCP server over the same index, `observation/1` output so a score ledger can track quality over time.
+- **The CLI** (`openlessons`, Rust): `validate`, `selftest`, `index`, `find`, `export`, `import`, `apply`, `observe`, `stamp`,
+  `id`. Rust because the tool must read untrusted contributions in CI with no install scripts, walk a very large tree fast,
+  and ship as one binary; it matches the sibling tools.
+- **`export`** writes one course in three shapes, and takes nothing below `published` unless told to (`--min-status`):
+
+  | format | holds | for |
+  |---|---|---|
+  | `bundle` | every record of the course, as stored | a server, an agent |
+  | `learner` | lessons and item `view`s only: no key, hint, feedback or provenance | a learner's device |
+  | `pack` (`pack/1`) | one path file with objectives, units, lessons and stored items (pool, difficulty, solution, answer groups), and a keyed strings file for the course's language | a lesson player that loads keyed packs |
+
+  A pack keeps what its shape has no place for (status, provenance, verification) under `ext`, so `import` reads it back
+  into the same records. The round trip (export, import, compare) is a test over every course in the tree. The player's
+  own lines (`feedback.correct`, `feedback.try_again`) are referenced by key and not shipped: they are interface text,
+  not curriculum.
+- **`observe`** prints `observation/1` records: one per gate, and one per standards level and locale with the skills,
+  lessons, items, reviewed and proposed alignments and objectives reached. The rules that score them are in
+  [`scoregraph/`](../scoregraph); a score ledger ingests both and gates a change that lowers the score.
+- **Later**: an MCP server over the same index.
 
 ## 6. Decisions
 
@@ -146,10 +169,9 @@ draft ──► proposed ──► reviewed ──► published
 7. AI may draft and propose. Only a person moves a record to `reviewed`.
 8. The index is generated and committed, so a harness with no tools can still search.
 
-## 7. Slice 2
+## 7. Slice 3
 
-1. `export`: lesson and learner bundles, and the pack format for the first consuming app; round-trip test against it.
-2. Proposal files and `validate --base <ref>`: only legal status moves, only changed shards.
-3. Objective-level nodes for the open frameworks, then reviewed `exact` alignments.
-4. Audio-first prompts (text that is spoken, not shown), so listening items stop tripping the leak gate; recorded assets.
-5. `observation/1` output and a quality ledger; an MCP server; CODEOWNERS for reviewers.
+1. An MCP server over the index: find, read a lesson, export a learner bundle, apply a proposal.
+2. Audio-first prompts (text that is spoken, not shown), so listening items stop tripping the leak gate; recorded assets.
+3. Reviewer teams per language and subject, then `CODEOWNERS`, then the first `reviewed` content.
+4. Objective-level nodes for the rest of the open frameworks; the gates on changed shards only.

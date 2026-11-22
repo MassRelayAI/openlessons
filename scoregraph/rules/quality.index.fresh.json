@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.index.fresh",
+  "version": 1,
+  "title": "The index is the one the data generates, never a hand edit",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}
