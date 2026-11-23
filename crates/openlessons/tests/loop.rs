@@ -298,7 +298,9 @@ fn the_real_tree_has_a_registry_bands_a_graph_and_gaps() {
         }
     }
     let r = gaps::report(&s, &gaps::Options::default());
-    assert!(r.cells > 1000 && r.filled >= 49 && r.served == 0, "{} {} {}", r.cells, r.filled, r.served);
+    // a cell is served only by lessons the jury settled
+    let settled = s.lessons.iter().filter(|l| l["status"] == "reviewed" || l["status"] == "published").count();
+    assert!(r.cells > 1000 && r.filled >= 49 && r.served <= settled, "{} {} {} {settled}", r.cells, r.filled, r.served);
     // seven languages, and a pick is spread over them
     assert_eq!(s.locales.len(), 7);
     let picked = gaps::pick(&gaps::report(&s, &gaps::Options { subjects: vec!["maths".into(), "science".into(), "computing".into()], ..Default::default() }).gaps, 21);
