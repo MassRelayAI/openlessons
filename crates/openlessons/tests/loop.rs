@@ -396,3 +396,59 @@ fn every_held_back_framework_is_guarded_by_a_proven_list_or_says_it_is_not() {
     assert_eq!(hit(&v), 0);
     done(&tree);
 }
+
+/// The copied-text guard, proven on every run with sentences made up for this test: no publisher's text is involved.
+#[test]
+fn a_planted_sentence_from_a_fingerprinted_text_is_refused_and_its_paraphrase_lands() {
+    // our own "protected text", and a list of it in the same format as gates/data/protected/<framework>.txt
+    let theirs = "Seven small green frogs hop over the old log by the pond. Then the frogs sit very still and wait for the rain to stop.";
+    let planted = "Seven small green frogs hop over the old log by the pond.";
+    let paraphrase = "By the pond, an old log has seven little frogs jumping across it.";
+    let (tree, run) = green_copy("guard-ci");
+    let data_dir = |name: &str, with_list: bool| -> PathBuf {
+        let d = tree.parent().unwrap().join(name);
+        fs::create_dir_all(d.join("safety")).unwrap();
+        for f in ["reading-levels.json", "licences.json", "protected.json", "safety/en.json"] {
+            fs::copy(data().join(f), d.join(f)).unwrap();
+        }
+        if with_list {
+            fs::create_dir_all(d.join("protected")).unwrap();
+            let list = format!("# window=8\n{}\n", openlessons::text::fingerprints(theirs, 8, 1).join("\n"));
+            assert!(list.lines().skip(1).count() > 10 && !list.contains("frogs"), "hashes only");
+            fs::write(d.join("protected/made-up-publisher.txt"), list).unwrap();
+        }
+        d
+    };
+    let with_text = |sentence: &str| {
+        let mut d = draft();
+        d["lessons"][0]["lesson"]["teach"]["text"] = json!(format!("Count each thing once. {sentence}"));
+        d
+    };
+    let try_land = |data: &Path, name: &str, d: &Value| -> Value {
+        let drafts = run.join(name);
+        fs::create_dir_all(drafts.join("drafts")).unwrap();
+        fs::write(drafts.join("drafts/001.json"), d.to_string()).unwrap();
+        looprun::land(&Land { root: &tree, data, from: &drafts, mode: Mode::Files, date: "2026-11-23".into(), gaps: gaps::Options::default(), failed: vec![] }).unwrap()
+    };
+
+    // red first: without the list nothing knows the sentence, and a scan of the planted text is green
+    let unguarded = data_dir("data-without-list", false);
+    let mut lesson = with_text(planted)["lessons"][0]["lesson"].clone();
+    assert!(openlessons::text::Protected::load(&unguarded).unwrap().issue(lesson["teach"]["text"].as_str().unwrap()).is_none());
+
+    // with the list: the planted sentence is refused by the gate, naming the list, and leaves no trace
+    let guarded = data_dir("data-with-list", true);
+    let r = try_land(&guarded, "planted", &with_text(planted));
+    assert_eq!(r["landed"].as_array().unwrap().len(), 0, "{r:#}");
+    let why = &r["refused"][0]["why"][0];
+    assert_eq!(why["rule"], "content.no-copied-text");
+    assert!(why["message"].as_str().unwrap().contains("made-up-publisher"), "{why}");
+    // a few words changed inside the sentence do not hide a run of eight that is left
+    lesson["teach"]["text"] = json!("Look! Seven small green frogs hop over the old log today.");
+    assert!(openlessons::text::Protected::load(&guarded).unwrap().issue(lesson["teach"]["text"].as_str().unwrap()).is_some());
+
+    // the same idea in our own words lands
+    let r = try_land(&guarded, "paraphrase", &with_text(paraphrase));
+    assert_eq!((r["landed"].as_array().unwrap().len(), r["refused"].as_array().unwrap().len(), &r["gates"]["red"]), (1, 0, &json!(0)), "{r:#}");
+    done(&tree);
+}
