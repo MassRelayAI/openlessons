@@ -11,12 +11,13 @@
     "science.forces-energy.push-and-pull"
   ],
   "teach": {
-    "text": "Benda bergerak kalau didorong atau ditarik. Dorong itu menjauh. Tarik itu mendekat.",
+    "text": "Benda bergerak kalau didorong atau ditarik. Mendorong membuat benda menjauh. Menarik membuat benda mendekat. Benda yang diam mulai bergerak kalau diberi dorongan atau tarikan. Dorongan yang lebih kuat membuat benda bergerak lebih cepat.",
     "examples": [
-      "Menendang bola itu dorong",
-      "Membuka laci itu tarik"
+      "Menendang bola itu mendorong",
+      "Membuka laci itu menarik",
+      "Bola ditendang pelan: bola bergerak lambat. Bola ditendang keras: bola bergerak cepat."
     ],
-    "reteach": "Coba dengan kursi: dorong menjauh, tarik mendekat."
+    "reteach": "Coba dengan kursi: dorong kursi menjauh, lalu tarik kursi mendekat."
   },
   "image": {
     "emoji": "🛒"
@@ -25,9 +26,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

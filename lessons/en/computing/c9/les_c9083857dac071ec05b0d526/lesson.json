@@ -11,12 +11,14 @@
     "computing.algorithms.follow-steps"
   ],
   "teach": {
-    "text": "An instruction tells you what to do. Do one step, then the next.",
+    "text": "An instruction tells you what to do. Do one step, then the next. Keep the steps in order: first, then, last. Do not skip a step, or the task may go wrong. You can give instructions too. Make each one clear. Say just what to do. \"Hop three times\" is clear. \"Move a bit\" is not clear.",
     "examples": [
       "First, then, last",
-      "Step 1, step 2, step 3"
+      "Step 1, step 2, step 3",
+      "Clear: Clap two times. Not clear: Do something.",
+      "Open the door, then walk out. Skip the first step and you bump the door!"
     ],
-    "reteach": "Say each step out loud before you do it."
+    "reteach": "Say each step out loud before you do it. When you give a step, say just what to do."
   },
   "image": {
     "emoji": "👣"
@@ -25,9 +27,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

@@ -11,12 +11,13 @@
     "science.living-things.living-and-non-living"
   ],
   "teach": {
-    "text": "Los seres vivos comen, crecen y respiran. Una piedra no hace nada de eso.",
+    "text": "Los seres vivos crecen y necesitan agua. Los animales y las plantas son seres vivos. Los animales comen. Las plantas no comen: necesitan agua y luz. Una piedra no crece. Tampoco necesita agua. No está viva.",
     "examples": [
-      "Un gato está vivo",
-      "Una mesa no está viva"
+      "Un gato está vivo: crece y bebe agua",
+      "Una planta está viva: crece y necesita agua",
+      "Una mesa no está viva: no crece"
     ],
-    "reteach": "Pregunta: ¿come? ¿crece? ¿respira?"
+    "reteach": "Pregunta: ¿crece? ¿necesita agua?"
   },
   "image": {
     "emoji": "🌱"
@@ -25,9 +26,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

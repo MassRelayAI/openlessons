@@ -11,12 +11,15 @@
     "computing.digital-citizenship.check-sources"
   ],
   "teach": {
-    "text": "网上的信息不一定是真的。先看是谁写的，再找别的地方核对。",
+    "text": "网上的信息不一定是真的。先看是谁写的、什么时候写的，再找别的地方核对。事实是可以查证的，比如“一年有十二个月”。看法是一个人的想法，比如“这首歌最好听”。没核对过的消息，先不要转发。拿不准，或者看了心里不舒服，就去问家长、老师或照顾你的大人。",
     "examples": [
       "看作者是谁",
-      "找两个以上的来源"
+      "看是什么时候写的",
+      "找两个以上的来源",
+      "事实：一年有十二个月。看法：这首歌最好听。",
+      "拿不准时，问家长、老师或照顾你的大人"
     ],
-    "reteach": "问自己三个问题：谁写的？什么时候写的？别处也这么说吗？"
+    "reteach": "问自己四个问题：谁写的？什么时候写的？别处也这么说吗？这是事实，还是看法？还是拿不准，就请家长、老师或照顾你的大人帮你一起核对。"
   },
   "image": {
     "emoji": "🔎"
@@ -25,9 +28,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

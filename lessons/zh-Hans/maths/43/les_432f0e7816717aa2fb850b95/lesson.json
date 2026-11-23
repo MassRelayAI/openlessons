@@ -11,12 +11,12 @@
     "maths.calc.add-within-10"
   ],
   "teach": {
-    "text": "把两组合在一起就是加法。3个和4个合起来是7个。",
+    "text": "把两组东西合在一起，就是加法。3个和4个合起来是7个。",
     "examples": [
       "3 + 4 = 7",
-      "5 + 2 = 7"
+      "6 + 3 = 9"
     ],
-    "reteach": "从大的数开始，接着往下数。"
+    "reteach": "从大的数开始，接着往后数。比如 6 + 3：从 6 开始，往后数 3 个：7、8、9。"
   },
   "image": {
     "emoji": "➕"
@@ -25,9 +25,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

@@ -11,12 +11,14 @@
     "computing.ai.what-ai-is"
   ],
   "teach": {
-    "text": "AI adalah program komputer yang belajar dari banyak contoh. AI bisa menebak dengan baik, tetapi AI juga bisa salah.",
+    "text": "AI adalah program komputer yang dibuat oleh manusia. AI belajar dari banyak contoh. Dari contoh-contoh itu, AI menemukan pola. Dengan pola itu, AI bisa menebak dengan baik. Tetapi AI juga bisa salah, terutama pada hal yang belum pernah ia lihat. Karena itu, periksa jawaban AI di sumber lain, misalnya buku, atau tanyakan kepada guru atau orang tua.",
     "examples": [
-      "AI belajar dari ribuan foto kucing",
+      "AI belajar dari ribuan foto kucing, lalu menemukan pola bentuk kucing",
+      "Aplikasi yang mengenali suara memakai AI",
+      "AI yang hanya pernah melihat apel merah bisa keliru saat melihat apel hijau",
       "Jawaban AI perlu diperiksa"
     ],
-    "reteach": "Ingat tiga hal: AI itu program, AI belajar dari contoh, dan AI bisa salah."
+    "reteach": "Ingat empat hal: AI itu program buatan manusia, AI belajar dari contoh, AI mencari pola, dan AI bisa salah."
   },
   "image": {
     "emoji": "🤖"
@@ -25,9 +27,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

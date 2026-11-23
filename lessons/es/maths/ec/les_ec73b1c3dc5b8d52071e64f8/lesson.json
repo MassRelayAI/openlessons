@@ -2,7 +2,7 @@
   "slug": "sort-and-count-b05-06",
   "locale": "es",
   "subject": "maths",
-  "title": "Ordenar y contar",
+  "title": "Agrupar y contar",
   "ages": {
     "min": 5,
     "max": 6
@@ -11,10 +11,13 @@
     "maths.data.sort-and-count"
   ],
   "teach": {
-    "text": "Ponemos juntas las cosas que se parecen. Luego contamos cada grupo.",
+    "text": "Ponemos juntas las cosas que se parecen. Así hacemos grupos. Luego contamos cada grupo. Si contamos más, hay más. Si contamos menos, hay menos.",
     "examples": [
       "🍎🍎🍎 son 3",
-      "🍌🍌 son 2"
+      "🍌🍌 son 2",
+      "Hay más 🍎 que 🍌. Hay menos 🍌 que 🍎.",
+      "🍎🍎 🍌🍌 son 2 grupos",
+      "🐶🐱🐭 son animales. ⚽ no va con ellos."
     ],
     "reteach": "Toca cada cosa una sola vez al contar."
   },
@@ -25,9 +28,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },

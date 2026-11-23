@@ -11,12 +11,16 @@
     "science.materials.name-materials"
   ],
   "teach": {
-    "text": "東西由不同的材料做成。木頭硬硬的。玻璃可以看穿。",
+    "text": "東西是用不同的材料做的。木頭硬硬的。玻璃是透明的，可以看到另一邊。布和毛線軟軟的。金屬很硬，可以放在火上。紙薄薄的。塑膠不怕水。",
     "examples": [
       "桌子是木頭做的",
-      "窗戶是玻璃做的"
+      "窗戶是玻璃做的",
+      "湯匙是金屬做的",
+      "圍巾是毛線做的",
+      "本子是紙做的",
+      "雨鞋是塑膠做的，不怕水"
     ],
-    "reteach": "摸一摸，看一看：硬的還是軟的？"
+    "reteach": "摸一摸，看一看：硬的還是軟的？透明嗎？怕不怕水？"
   },
   "image": {
     "emoji": "🪵"
@@ -25,9 +29,9 @@
   "status": "draft",
   "provenance": {
     "origin": "ai",
-    "maker": "claude-code",
-    "model": "claude-fable-5",
-    "tool": "openlessons-loop",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
     "reviews": []
   },
