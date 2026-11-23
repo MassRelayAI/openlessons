@@ -130,14 +130,14 @@ fn finding_and_reading_a_lesson_never_returns_an_answer() {
 
 #[test]
 fn an_unreviewed_lesson_is_refused_at_the_default_bar() {
-    // the real tree: everything is proposed
+    // the real tree: everything is proposed, or a draft of the loop; neither has been reviewed
     let replies = talk(&root(), false, &[call(1, "find_lessons", json!({"subject": "maths", "limit": 1}))]);
     let found: Value = serde_json::from_str(&result(&replies, 1).0).unwrap();
     assert!(found["count"].as_u64().unwrap() >= 12 && found["shown"] == 1);
     let id = found["lessons"][0]["id"].as_str().unwrap().to_string();
     let replies = talk(&root(), false, &[call(1, "get_lesson", json!({"id": id}))]);
     let (text, err) = result(&replies, 1);
-    assert!(err && text.contains("proposed") && text.contains("min_status"), "{text}");
+    assert!(err && (text.contains("`proposed`") || text.contains("`draft`")) && text.contains("min_status"), "{text}");
 }
 
 #[test]
