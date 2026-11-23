@@ -283,6 +283,14 @@ pub fn order(root: &Path, s: &scan::Scan, jury: &Value, role: &str, lesson: &str
         bail!("the role is subject, safety or language");
     }
     let f = read_lesson(root, s, lesson)?;
+    // the checks a lesson meets before the jury: no reviewer spends a verdict on what a gate can refuse
+    let segmentation = s.locales.get(st(&f.lesson, "locale")).map(|l| st(l, "segmentation").to_string()).unwrap_or_default();
+    let refused: Vec<String> = f.items.iter().flat_map(|it| scan::pre_jury_problems(&s.hints, &f.lesson, &segmentation, it).into_iter().map(move |(rule, m)| format!("{} {rule}: {m}", st(it, "id")))).collect();
+    if !refused.is_empty() {
+        bail!("{lesson} is refused before the jury; fix and draft again:
+{}", refused.join("
+"));
+    }
     let skills: Vec<String> = arr(&f.lesson, "skills").iter().filter_map(Value::as_str).map(str::to_string).collect();
     let aligned = aligned_map(s);
     let mut standards = Vec::new();

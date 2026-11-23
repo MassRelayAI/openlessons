@@ -1,0 +1,21 @@
+{
+  "note": "Words a hint uses to point at something its item must have. `picture`: the hint sends the learner to an image, so the item shows one. `both`: the hint speaks of two things, so the item offers no more than two choices. Spaced scripts match whole words; CJK matches the text. Used by the gate item.hint-fits.",
+  "picture": {
+    "en": ["picture", "pictures", "image", "drawing"],
+    "es": ["imagen", "imágenes", "dibujo", "dibujos", "foto"],
+    "id": ["gambar", "foto"],
+    "hi": ["तस्वीर", "तस्वीरें", "चित्र"],
+    "ar": ["صورة", "الصورة", "الصور", "صور", "الرسم"],
+    "zh-Hans": ["图片", "看图", "图中", "图上"],
+    "zh-Hant": ["圖片", "看圖", "圖中", "圖上"]
+  },
+  "both": {
+    "en": ["both"],
+    "es": ["ambos", "ambas", "los dos", "las dos"],
+    "id": ["kedua", "keduanya"],
+    "hi": ["दोनों"],
+    "ar": ["كلا", "كلتا", "كليهما", "كلتيهما"],
+    "zh-Hans": ["两个", "两样", "两种"],
+    "zh-Hant": ["兩個", "兩樣", "兩種"]
+  }
+}

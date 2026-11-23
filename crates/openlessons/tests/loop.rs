@@ -410,7 +410,7 @@ fn a_planted_sentence_from_a_fingerprinted_text_is_refused_and_its_paraphrase_la
     let data_dir = |name: &str, with_list: bool| -> PathBuf {
         let d = tree.parent().unwrap().join(name);
         fs::create_dir_all(d.join("safety")).unwrap();
-        for f in ["reading-levels.json", "licences.json", "protected.json", "safety/en.json"] {
+        for f in ["reading-levels.json", "licences.json", "protected.json", "hints.json", "safety/en.json"] {
             fs::copy(data().join(f), d.join(f)).unwrap();
         }
         if with_list {

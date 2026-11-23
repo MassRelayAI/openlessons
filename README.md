@@ -254,7 +254,7 @@ no model       no model   a model    no model   no model           a person revi
    misconceptions, the ages and reading bounds, the language, the aligned standards in our own words (the publisher's
    wording only where its terms allow), and the rules. A pick is dealt across subjects and languages, prerequisites first.
 3. **Draft.** Any harness answers each order with one proposal file (`proposal/1`) under `.loop/drafts/`.
-4. **Gates.** `openlessons loop land` judges each proposal with all twenty-three gates. A draft that fails leaves no trace and is
+4. **Gates.** `openlessons loop land` judges each proposal with all twenty-five gates. A draft that fails leaves no trace and is
    listed in the report with the reason.
 5. **Land.** What passes is placed at status **`draft`**, the index is regenerated, the whole tree is judged again, and a
    run report is written to `runs/<id>.json` and `.md`: gaps closed, items added, gates passed, drafts refused. Without a
@@ -316,7 +316,9 @@ MassRelay).
 - **Spot-checked.** 5% of passes are drawn (reproducibly) and marked `spotCheck: pending` for an optional human check.
   It never blocks; disagreement is how jury drift is caught.
 
-The gate `review.jury-decision` refuses a `reviewed` lesson or item without its decision, or with one that is not
+Before the jury, the gates `item.hint-fits` (no hint points at a picture the item does not show, or speaks of "both"
+over three choices) and `item.objective-listed` (no item tests an objective its lesson does not list) refuse what the first
+run showed a gate can catch: `jury orders` will not hand such a lesson to a reviewer. The gate `review.jury-decision` refuses a `reviewed` lesson or item without its decision, or with one that is not
 unanimous, not sourced, or about other content.
 
 ```sh
@@ -331,8 +333,8 @@ paths are still settled by people listed in `REVIEWERS.json`; none is listed yet
 
 ## Quality gates
 
-Every change must pass twenty-three gates: schema, content-derived ids, references, standards terms, alignment, a place in the
-topic graph, matching age bands, reading level for the stated age, a verified answer, no answer in the prompt, a recording
+Every change must pass twenty-five gates: schema, content-derived ids, references, standards terms, alignment, a place in the
+topic graph, matching age bands, reading level for the stated age, a verified answer, no answer in the prompt, a hint that fits its item, items only on the lesson's objectives, a recording
 behind every heard prompt, licensed assets, adopted material under its own open licence and with its credit, no
 personal data, no copied text, a child-safety lexicon, no duplicates,
 review before `reviewed`, by a listed reviewer, a unanimous and sourced jury decision for every reviewed lesson and item,
@@ -350,7 +352,7 @@ Found a problem in a lesson, especially one that is unsafe for a child? See [SEC
 
 ## Roadmap
 
-1. Done: the format, twenty-three gates, the sourced AI jury, the registry, the age bands, the topic graph, the gap
+1. Done: the format, twenty-five gates, the sourced AI jury, the registry, the age bands, the topic graph, the gap
    report, the loop, `export`, `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake
    (`sources/`, `openlessons adopt`).
 2. Next: human spot-checks of jury passes, and educators named for skills and alignments; Arabic and Indonesian stories
