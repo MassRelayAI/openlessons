@@ -9,8 +9,8 @@
     "skills": 181,
     "alignments": 559,
     "assets": 0,
-    "lessons": 55,
-    "items": 4214,
+    "lessons": 57,
+    "items": 4230,
     "paths": 6,
     "bands": 10,
     "subjects": 10,
@@ -20,6 +20,13 @@
     "sources": 16
   },
   "shelves": [
+    {
+      "locale": "ar",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/ar/maths.jsonl"
+    },
     {
       "locale": "en",
       "subject": "english",
@@ -40,6 +47,13 @@
       "lessons": 15,
       "items": 1042,
       "file": "index/en/maths.jsonl"
+    },
+    {
+      "locale": "en",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/en/science.jsonl"
     },
     {
       "locale": "es",
