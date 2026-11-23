@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_b5f688a4e08c5a4eb6172c8c",
+  "lesson": "les_b21b40b44d679c655ece243d",
+  "contentHash": "f9d5ab4c7103a7ab8365ece26831d35eaac5e5495c6102926cd675a90ce2b0b4",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Moving a blanket toward your body with your hand is a pull.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "NGSS K-PS2-1 Motion and Stability: Forces and Interactions",
+              "url": "https://www.nextgenscience.org/pe/k-ps2-1-motion-and-stability-forces-and-interactions",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Hint: 'Selimut datang mendekat' - 'datang' gives the blanket agency; unnatural for an object being pulled. Correct: 'Selimut bergerak mendekat ke badanmu. Gerakan mana yang membuat benda mendekat?'"
+      ],
+      "verdict": "object",
+      "locale": "id",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Hint: 'Selimut datang mendekat' - 'datang' gives the blanket agency; unnatural for an object being pulled. Correct: 'Selimut bergerak mendekat ke badanmu. Gerakan mana yang membuat benda mendekat?'",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

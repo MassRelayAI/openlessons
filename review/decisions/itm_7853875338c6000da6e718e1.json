@@ -1,0 +1,82 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_7853875338c6000da6e718e1",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "5d19966380379b5bb23e408f6dd48c2485051341e357ca8856d42bad99a1a53d",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A password is personal information kept safe and not shared online; the safe choice among the options is the adult who cares for the child.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "Childnet: Get SMART (4-11 year olds)",
+              "url": "https://www.childnet.com/young-people/4-11-year-olds/get-smart/",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Prompt uses 'we' ('لمن نقول كلمة المرور؟') but the key option uses 'me' ('الذي يرعاني'); the teaching example says 'الذي يرعانا'. Correct option c: 'الشخص الكبير الذي يرعانا'."
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Prompt uses 'we' ('لمن نقول كلمة المرور؟') but the key option uses 'me' ('الذي يرعاني'); the teaching example says 'الذي يرعانا'. Correct option c: 'الشخص الكبير الذي يرعانا'.",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

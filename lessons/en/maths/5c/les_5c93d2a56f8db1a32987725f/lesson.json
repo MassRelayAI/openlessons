@@ -1,0 +1,37 @@
+{
+  "slug": "add-within-20-b05-06",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Add within 20",
+  "ages": {
+    "min": 6,
+    "max": 6
+  },
+  "skills": [
+    "maths.calc.add-within-20"
+  ],
+  "teach": {
+    "text": "To add, start at the bigger number and count on. 8 + 4: start at 8. Count on 4: 9, 10, 11, 12. So 8 and 4 make 12. You can add in any order. 3 + 8 is the same as 8 + 3.",
+    "examples": [
+      "8 + 4 = 12",
+      "7 + 6 = 13"
+    ],
+    "reteach": "Make ten first, then add what is left. 9 + 3: 9 needs 1 more to make 10. Take 1 from the 3. Now 2 are left. 10 and 2 make 12."
+  },
+  "image": {
+    "emoji": "➕"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_5c93d2a56f8db1a32987725f",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

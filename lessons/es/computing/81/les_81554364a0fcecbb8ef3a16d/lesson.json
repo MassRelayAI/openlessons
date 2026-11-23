@@ -1,0 +1,46 @@
+{
+  "slug": "sort-into-groups-b05-06",
+  "locale": "es",
+  "subject": "computing",
+  "title": "Clasificar con una regla",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "computing.data.sort-into-groups"
+  ],
+  "teach": {
+    "text": "Una regla nos dice cómo agrupar las cosas. Por ejemplo: por color o por tamaño. Las cosas que cumplen la regla van en el grupo. Las otras no van en el grupo.",
+    "examples": [
+      "Regla: es de color amarillo. El limón va en el grupo. La fresa no.",
+      "Regla: tiene cuatro patas. El perro va en el grupo. El pez no."
+    ],
+    "reteach": "Di la regla en voz alta. Mira cada cosa y pregunta: ¿cumple la regla?"
+  },
+  "image": {
+    "emoji": "🗂️"
+  },
+  "schema": "lesson/1",
+  "status": "reviewed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_81554364a0fcecbb8ef3a16d.json"
+      }
+    ]
+  },
+  "id": "les_81554364a0fcecbb8ef3a16d",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

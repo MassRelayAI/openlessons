@@ -1,0 +1,38 @@
+{
+  "slug": "day-and-night-b05-06",
+  "locale": "hi",
+  "subject": "science",
+  "title": "दिन और रात",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.earth-space.day-and-night"
+  ],
+  "teach": {
+    "text": "पृथ्वी लट्टू की तरह घूमती है। पृथ्वी का जो हिस्सा सूरज की ओर होता है, वहाँ दिन होता है। जो हिस्सा सूरज की उलटी ओर होता है, वहाँ रात होती है। सुबह सूरज उगता दिखता है। शाम को सूरज डूबता दिखता है। रात में अँधेरा होता है और तारे दिखते हैं। चाँद कभी रात में दिखता है, कभी दिन में भी।",
+    "examples": [
+      "सूरज की ओर: दिन",
+      "सूरज की उलटी ओर: रात",
+      "रात में तारे दिखते हैं, दिन में नहीं"
+    ],
+    "reteach": "एक गेंद और टॉर्च से देखो: आधी गेंद पर ही रोशनी पड़ती है। गेंद को घुमाओ: रोशनी वाला हिस्सा बदल जाता है।"
+  },
+  "image": {
+    "emoji": "🌍"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_5d37d0d151952243b893326b",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_6be2268fcf4530aa4bf603bf",
+  "lesson": "les_b21b40b44d679c655ece243d",
+  "contentHash": "a4b9847a7cacb2568d38b3517d7e1c6f0fb014a6d6302b24268b265f551d4508",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Moving a door away from yourself is a push.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "NGSS K-PS2-1 Motion and Stability: Forces and Interactions",
+              "url": "https://www.nextgenscience.org/pe/k-ps2-1-motion-and-stability-forces-and-interactions",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Hint: 'Pintu pergi menjauh dari badanmu' - 'pergi' is used for people/animals, not for a door being moved; it reads unnatural. Correct: 'Pintu bergerak menjauh dari badanmu. Gerakan mana yang membuat benda menjauh?'"
+      ],
+      "verdict": "object",
+      "locale": "id",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Hint: 'Pintu pergi menjauh dari badanmu' - 'pergi' is used for people/animals, not for a door being moved; it reads unnatural. Correct: 'Pintu bergerak menjauh dari badanmu. Gerakan mana yang membuat benda menjauh?'",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

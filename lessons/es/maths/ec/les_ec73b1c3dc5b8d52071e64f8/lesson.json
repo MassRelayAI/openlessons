@@ -1,0 +1,40 @@
+{
+  "slug": "sort-and-count-b05-06",
+  "locale": "es",
+  "subject": "maths",
+  "title": "Agrupar y contar",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.data.sort-and-count"
+  ],
+  "teach": {
+    "text": "Ponemos juntas las cosas que se parecen. Así hacemos grupos. Luego contamos cada grupo. Si contamos más, hay más. Si contamos menos, hay menos.",
+    "examples": [
+      "🍎🍎🍎 son 3",
+      "🍌🍌 son 2",
+      "Hay más 🍎 que 🍌. Hay menos 🍌 que 🍎.",
+      "🍎🍎 🍌🍌 son 2 grupos",
+      "🐶🐱🐭 son animales. ⚽ no va con ellos."
+    ],
+    "reteach": "Toca cada cosa una sola vez al contar."
+  },
+  "image": {
+    "emoji": "🧺"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_ec73b1c3dc5b8d52071e64f8",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

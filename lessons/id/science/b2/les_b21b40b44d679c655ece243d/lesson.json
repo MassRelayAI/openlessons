@@ -1,0 +1,38 @@
+{
+  "slug": "push-and-pull-b05-06",
+  "locale": "id",
+  "subject": "science",
+  "title": "Dorong dan tarik",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.forces-energy.push-and-pull"
+  ],
+  "teach": {
+    "text": "Benda bergerak kalau didorong atau ditarik. Mendorong membuat benda menjauh. Menarik membuat benda mendekat. Benda yang diam mulai bergerak kalau diberi dorongan atau tarikan. Dorongan yang lebih kuat membuat benda bergerak lebih cepat.",
+    "examples": [
+      "Menendang bola itu mendorong",
+      "Membuka laci itu menarik",
+      "Bola ditendang pelan: bola bergerak lambat. Bola ditendang keras: bola bergerak cepat."
+    ],
+    "reteach": "Coba dengan kursi: dorong kursi menjauh, lalu tarik kursi mendekat."
+  },
+  "image": {
+    "emoji": "🛒"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_b21b40b44d679c655ece243d",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

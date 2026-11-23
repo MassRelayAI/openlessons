@@ -1,0 +1,39 @@
+{
+  "slug": "what-ai-is-b09-10",
+  "locale": "id",
+  "subject": "computing",
+  "title": "Apa itu AI?",
+  "ages": {
+    "min": 9,
+    "max": 10
+  },
+  "skills": [
+    "computing.ai.what-ai-is"
+  ],
+  "teach": {
+    "text": "AI adalah program komputer yang dibuat oleh manusia. AI belajar dari banyak contoh. Dari contoh-contoh itu, AI menemukan pola. Dengan pola itu, AI bisa menebak dengan baik. Tetapi AI juga bisa salah, terutama pada hal yang belum pernah ia lihat. Karena itu, periksa jawaban AI di sumber lain, misalnya buku, atau tanyakan kepada guru atau orang tua.",
+    "examples": [
+      "AI belajar dari ribuan foto kucing, lalu menemukan pola bentuk kucing",
+      "Aplikasi yang mengenali suara memakai AI",
+      "AI yang hanya pernah melihat apel merah bisa keliru saat melihat apel hijau",
+      "Jawaban AI perlu diperiksa"
+    ],
+    "reteach": "Ingat empat hal: AI itu program buatan manusia, AI belajar dari contoh, AI mencari pola, dan AI bisa salah."
+  },
+  "image": {
+    "emoji": "🤖"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_dfc2e5f0e2a89dde01bd7bc6",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

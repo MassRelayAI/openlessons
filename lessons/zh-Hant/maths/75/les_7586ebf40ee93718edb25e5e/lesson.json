@@ -1,0 +1,47 @@
+{
+  "slug": "halves-and-quarters-b05-06",
+  "locale": "zh-Hant",
+  "subject": "maths",
+  "title": "一半和四分之一",
+  "ages": {
+    "min": 6,
+    "max": 6
+  },
+  "skills": [
+    "maths.fractions.halves-and-quarters"
+  ],
+  "teach": {
+    "text": "把東西分成一樣大的兩份，每份是一半。分成一樣大的四份，每份是四分之一。平均分，就是每一份都一樣大。",
+    "examples": [
+      "一個蘋果切成一樣大的 2 塊，一塊是一半。",
+      "一張紙摺成一樣大的 4 格，一格是四分之一。",
+      "2 顆糖平均分成兩份，每份 1 顆。2 顆的一半是 1 顆。"
+    ],
+    "reteach": "先平均分成兩份，再數其中一份有幾個。可以拿積木分分看。"
+  },
+  "image": {
+    "emoji": "🍕"
+  },
+  "schema": "lesson/1",
+  "status": "reviewed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_7586ebf40ee93718edb25e5e.json"
+      }
+    ]
+  },
+  "id": "les_7586ebf40ee93718edb25e5e",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

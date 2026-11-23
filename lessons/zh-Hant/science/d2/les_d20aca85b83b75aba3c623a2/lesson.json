@@ -1,0 +1,41 @@
+{
+  "slug": "name-materials-b05-06",
+  "locale": "zh-Hant",
+  "subject": "science",
+  "title": "東西是什麼做的？",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.materials.name-materials"
+  ],
+  "teach": {
+    "text": "東西是用不同的材料做的。木頭硬硬的。玻璃是透明的，可以看到另一邊。布和毛線軟軟的。金屬很硬，可以放在火上。紙薄薄的。塑膠不怕水。",
+    "examples": [
+      "桌子是木頭做的",
+      "窗戶是玻璃做的",
+      "湯匙是金屬做的",
+      "圍巾是毛線做的",
+      "本子是紙做的",
+      "雨鞋是塑膠做的，不怕水"
+    ],
+    "reteach": "摸一摸，看一看：硬的還是軟的？透明嗎？怕不怕水？"
+  },
+  "image": {
+    "emoji": "🪵"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_d20aca85b83b75aba3c623a2",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

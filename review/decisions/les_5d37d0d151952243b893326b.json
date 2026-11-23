@@ -1,0 +1,80 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_5d37d0d151952243b893326b",
+  "lesson": "les_5d37d0d151952243b893326b",
+  "contentHash": "9023690b30d9a7faab45fbd99dfd7e8d43babbd9b8452245417ac6b74412191b",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Day and night are caused by Earth's rotation: sunlight falls on only one side of Earth, which has day, while the side facing away has night, and the Sun appears to rise and set as Earth turns.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "Why do we have day and night? (astroEDU, IAU)",
+              "licence": "CC-BY-4.0",
+              "url": "https://astroedu.iau.org/activities/why-do-we-have-day-and-night/",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Day & Night, Ahmanson Hall of the Sky (Griffith Observatory)",
+              "url": "https://griffithobservatory.lacity.gov/exhibits/ahmanson-hall-of-the-sky/day-night/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "hi",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

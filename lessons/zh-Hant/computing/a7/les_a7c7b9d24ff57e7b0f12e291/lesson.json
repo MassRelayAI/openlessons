@@ -1,0 +1,47 @@
+{
+  "slug": "binary-b11-12",
+  "locale": "zh-Hant",
+  "subject": "computing",
+  "title": "二進位：0 和 1",
+  "ages": {
+    "min": 11,
+    "max": 12
+  },
+  "skills": [
+    "computing.data.binary"
+  ],
+  "teach": {
+    "text": "電腦用 0 和 1 儲存所有資料。只用 0 和 1 來寫數字的方法，叫做二進位。我們平常用 0 到 9 寫的數字，叫做十進位。二進位每一位的值，從右到左是 1、2、4、8，每往左一位就加倍。把有 1 的那幾位的值加起來，就是十進位的數。",
+    "examples": [
+      "101 是 4 + 1 = 5",
+      "1111 是 8 + 4 + 2 + 1 = 15",
+      "十進位 9 是 8 + 1，寫成二進位是 1001"
+    ],
+    "reteach": "把有 1 的位置的值加起來。"
+  },
+  "image": {
+    "emoji": "💾"
+  },
+  "schema": "lesson/1",
+  "status": "reviewed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_a7c7b9d24ff57e7b0f12e291.json"
+      }
+    ]
+  },
+  "id": "les_a7c7b9d24ff57e7b0f12e291",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_37cb8249c974106e5e0efd74",
+  "lesson": "les_f413a3a2a23bf87de3c06163",
+  "contentHash": "83a7d4b02bc65ebdc2140d508ec8a76555552c3b2511728f443621be813505d9",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A bicycle has never been alive; a fish and a bird are living animals.",
+          "registry": "eng-nc-2014:ks1.science",
+          "sources": [
+            {
+              "title": "National curriculum in England: science programmes of study (Year 1 plants, everyday materials; Year 2 living things)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-science-programmes-of-study/national-curriculum-in-england-science-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Hint 'Pregunta de cada uno' is not idiomatic Spanish ('preguntar de' is wrong here). Correct: 'Pregúntate por cada uno: ¿crece? ¿necesita agua?'"
+      ],
+      "verdict": "object",
+      "locale": "es",
+      "checks": {
+        "natural": true,
+        "correct": false,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Hint 'Pregunta de cada uno' is not idiomatic Spanish ('preguntar de' is wrong here). Correct: 'Pregúntate por cada uno: ¿crece? ¿necesita agua?'",
+    "language: check `correct` is false"
+  ],
+  "spotCheck": "none"
+}
