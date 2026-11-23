@@ -1,0 +1,33 @@
+{
+  "schema": "path/1",
+  "slug": "first-stories",
+  "locale": "ar",
+  "subject": "literacy",
+  "title": "قصص أولى",
+  "ages": {
+    "min": 4,
+    "max": 8
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "massrelay",
+    "model": "claude-opus-5.5",
+    "source": "original-stories-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "قصص للقراءة الأولى",
+      "lessons": [
+        "les_aa205836824ce6596b81d5d2",
+        "les_90a53123c334711b1d5d0606",
+        "les_d4e0cd70a158bb3366fa8425",
+        "les_1a1616c112d3afb3a93f56a7",
+        "les_ce0fc855be7630d57463da97",
+        "les_bde6bdc2db8b52d6a60b3235"
+      ]
+    }
+  ]
+}

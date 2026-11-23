@@ -11,7 +11,9 @@
     "b05-06"
   ],
   "statement": {
-    "en": "I know how a book works: where it starts, which way the words go, and what a word is."
+    "en": "I know how a book works: where it starts, which way the words go, and what a word is.",
+    "ar": "أعرف كيف أمسك الكتاب، ومن أين أبدأ، وكيف أقلب صفحاته.",
+    "id": "Aku tahu cara memegang buku, dari mana mulai, dan cara membalik halamannya."
   },
   "prerequisites": [],
   "mastery": {
@@ -19,7 +21,7 @@
     "m": 4,
     "n": 5
   },
-  "status": "proposed",
+  "status": "draft",
   "provenance": {
     "origin": "ai",
     "maker": "openlessons-graph",

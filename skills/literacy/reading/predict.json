@@ -11,7 +11,9 @@
     "b07-08"
   ],
   "statement": {
-    "en": "I can say what might happen next in a story and why I think so."
+    "en": "I can say what might happen next in a story and why I think so.",
+    "ar": "أستطيع أن أتوقع ما سيحدث بعد ذلك في القصة، وأقول لماذا.",
+    "id": "Aku bisa menebak apa yang akan terjadi selanjutnya dalam cerita, dan mengatakan alasannya."
   },
   "prerequisites": [],
   "mastery": {
@@ -19,7 +21,7 @@
     "m": 4,
     "n": 5
   },
-  "status": "proposed",
+  "status": "draft",
   "provenance": {
     "origin": "ai",
     "maker": "openlessons-graph",
