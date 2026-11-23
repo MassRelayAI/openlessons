@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+## 0.4.2 (2026-11-23)
+
+- 0.4.1's tag points at a commit whose catalogs were stale; use 0.4.2. No content changed.
+- Files the 0.4.1 gate work touched beyond its lane: `schemas/skill.schema.json` (optional `deprecated`),
+  `scoregraph/rules/quality.graph.ids-stable.json`, `crates/openlessons/src/observe.rs`, `crates/openlessons/src/main.rs`
+  (the new gate is `unmeasured` without `--base`), `scoregraph/README.md`, `gates/README.md`, `README.md`.
+
 ## 0.4.1 (2026-11-23)
 
 - **Objective ids are a public contract.** The new gate `graph.ids-stable` (judged with `--base`, like `loop.base-respected`)
