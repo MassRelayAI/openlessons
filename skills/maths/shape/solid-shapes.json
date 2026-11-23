@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "shape",
   "slug": "solid-shapes",
+  "topic": "3d-shapes",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can name cubes, spheres, cones and cylinders."
   },

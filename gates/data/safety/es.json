@@ -1,0 +1,69 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "es",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "matar",
+      "mató",
+      "asesinar",
+      "asesinato",
+      "apuñalar",
+      "disparar",
+      "pistola",
+      "pistolas",
+      "rifle",
+      "bomba",
+      "arma de fuego",
+      "suicidio",
+      "cadáver"
+    ],
+    "substances": [
+      "cerveza",
+      "vodka",
+      "whisky",
+      "borracho",
+      "borracha",
+      "cigarrillo",
+      "cigarrillos",
+      "cocaína",
+      "heroína",
+      "marihuana",
+      "droga",
+      "drogas"
+    ],
+    "gambling": [
+      "casino",
+      "apostar",
+      "apuestas",
+      "lotería"
+    ],
+    "adult": [
+      "sexo",
+      "sexy",
+      "porno",
+      "desnudo",
+      "desnuda"
+    ],
+    "insults": [
+      "estúpido",
+      "estúpida",
+      "idiota",
+      "imbécil",
+      "cállate"
+    ],
+    "commerce": [
+      "compra ahora",
+      "oferta limitada",
+      "suscríbete ahora",
+      "tarjeta de crédito"
+    ],
+    "personal_data": [
+      "tu contraseña",
+      "tu número de teléfono",
+      "tu dirección"
+    ]
+  },
+  "hashed": []
+}

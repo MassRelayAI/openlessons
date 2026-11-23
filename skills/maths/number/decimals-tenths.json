@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.decimals-tenths",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "decimals-tenths",
+  "topic": "beyond-whole-numbers",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can read, write and order numbers with one decimal place."
+  },
+  "prerequisites": [
+    "maths.number.place-value-to-1000",
+    "maths.fractions.unit-fractions"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

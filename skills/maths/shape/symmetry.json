@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.symmetry",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "symmetry",
+  "topic": "angles-symmetry",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can find a line of symmetry in a shape."
+  },
+  "prerequisites": [
+    "maths.shape.describe-shapes"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

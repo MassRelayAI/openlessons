@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "calc",
   "slug": "missing-number",
+  "topic": "addition-subtraction",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can find the missing number in an add or take-away sentence within 10."
   },

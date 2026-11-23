@@ -1,0 +1,69 @@
+{
+  "schema": "subject/1",
+  "id": "life-skills",
+  "area": "life-skills",
+  "label": {
+    "en": "Life skills"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "money",
+      "label": {
+        "en": "Money sense"
+      },
+      "topics": [
+        {
+          "id": "spending-saving",
+          "label": {
+            "en": "Spending and saving"
+          }
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "label": {
+        "en": "Staying safe"
+      },
+      "topics": [
+        {
+          "id": "everyday-safety",
+          "label": {
+            "en": "Everyday safety"
+          }
+        }
+      ]
+    },
+    {
+      "id": "time-planning",
+      "label": {
+        "en": "Time and planning"
+      },
+      "topics": [
+        {
+          "id": "routines-planning",
+          "label": {
+            "en": "Routines and planning"
+          }
+        }
+      ]
+    },
+    {
+      "id": "home",
+      "label": {
+        "en": "Home skills"
+      },
+      "topics": [
+        {
+          "id": "caring-for-things",
+          "label": {
+            "en": "Caring for things and food"
+          }
+        }
+      ]
+    }
+  ]
+}

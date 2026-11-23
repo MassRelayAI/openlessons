@@ -1,0 +1,27 @@
+{
+  "schema": "framework/1",
+  "id": "jlpt",
+  "title": "Japanese-Language Proficiency Test (JLPT)",
+  "publisher": "The Japan Foundation and Japan Educational Exchanges and Services",
+  "jurisdiction": "JP",
+  "version": "current",
+  "sourceUrl": "https://www.jlpt.jp/e/",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 10,
+      "max": 99
+    },
+    "grades": "N5 to N1"
+  },
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.jlpt.jp/e/policy.html",
+    "evidence": "without permission of copyright holders for personal use such as individual study",
+    "note": "Copying and adaptation are allowed without permission only for personal use such as individual study. Level names only.",
+    "reviewed": "2026-11-23"
+  }
+}

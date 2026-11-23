@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.share-equally",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "share-equally",
+  "topic": "multiplication-division",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can share things into equal groups and say how many are in each."
+  },
+  "prerequisites": [
+    "maths.calc.equal-groups"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

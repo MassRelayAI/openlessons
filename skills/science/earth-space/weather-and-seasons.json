@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "science.earth-space.weather-and-seasons",
+  "version": 1,
+  "subject": "science",
+  "strand": "earth-space",
+  "slug": "weather-and-seasons",
+  "topic": "weather-seasons",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can describe the weather and name the seasons where I live."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

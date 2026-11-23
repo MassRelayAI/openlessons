@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.count-to-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "count-to-10",
+  "topic": "counting",
+  "bands": [
+    "b03-04"
+  ],
+  "statement": {
+    "en": "I can count up to 10 things, saying one number for each thing."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

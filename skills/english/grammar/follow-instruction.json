@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "grammar",
   "slug": "follow-instruction",
+  "topic": "simple-sentences",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can follow a simple spoken instruction."
   },

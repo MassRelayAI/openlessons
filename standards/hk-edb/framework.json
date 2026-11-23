@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "hk-edb",
+  "title": "Hong Kong Education Bureau curriculum guides",
+  "publisher": "Education Bureau and Curriculum Development Council, Hong Kong",
+  "jurisdiction": "HK",
+  "version": "current",
+  "sourceUrl": "https://www.edb.gov.hk/en/curriculum-development/renewal/guides.html",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 18
+    },
+    "grades": "Primary 1 to Secondary 6"
+  },
+  "languages": [
+    "zh-Hant",
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.edb.gov.hk/en/important-notices/index.html",
+    "evidence": "solely for personal or non-commercial internal use",
+    "note": "All rights reserved: download is for personal or non-commercial internal use, and adaptation needs written authorisation. Key stage names only.",
+    "reviewed": "2026-11-23"
+  }
+}

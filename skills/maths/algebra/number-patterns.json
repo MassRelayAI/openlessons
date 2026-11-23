@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.algebra.number-patterns",
+  "version": 1,
+  "subject": "maths",
+  "strand": "algebra",
+  "slug": "number-patterns",
+  "topic": "patterns",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can find the rule of a number pattern and continue it."
+  },
+  "prerequisites": [
+    "maths.number.skip-count-2-5-10"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

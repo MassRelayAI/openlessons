@@ -7,13 +7,17 @@
 //! - [`export`] / [`import`]: bundles, learner bundles and app packs out; packs and proposal files in
 //! - [`mcp`]: a Model Context Protocol server over the tree (read-only unless told otherwise)
 //! - [`observe`]: gate results and standards coverage as observation/1 records
+//! - [`gaps`]: the gap report over objective x age band x language
+//! - [`looprun`]: the content loop: work orders, landing drafts, the run report
 //! - [`canon`]: canonical JSON and the ids derived from content
 
 pub mod base;
 pub mod canon;
 pub mod export;
+pub mod gaps;
 pub mod import;
 pub mod item;
+pub mod looprun;
 pub mod mcp;
 pub mod observe;
 pub mod scan;

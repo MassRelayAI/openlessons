@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "fonik",
   "slug": "hitung-suku-kata",
+  "topic": "suku-kata",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa memotong kata menjadi suku kata dan menghitungnya."
   },

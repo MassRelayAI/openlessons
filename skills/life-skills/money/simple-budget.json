@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.money.simple-budget",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "money",
+  "slug": "simple-budget",
+  "topic": "spending-saving",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can plan how to spend and save a small amount of money."
+  },
+  "prerequisites": [
+    "life-skills.money.saving"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

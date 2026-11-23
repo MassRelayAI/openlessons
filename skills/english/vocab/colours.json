@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "vocab",
   "slug": "colours",
+  "topic": "first-words",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can name eight colours."
   },

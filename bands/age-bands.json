@@ -1,0 +1,491 @@
+{
+  "schema": "age-bands/1",
+  "note": "The one age-band model of openlessons. A band is the age at the start of the school year, for a learner who started school at the usual age; it is a guide for choosing content, never a rule about a child. Every objective and every level of a standards framework names its bands, and a lesson's `ages` must fall inside its objectives' bands. Each band lists what it is called in the main grade systems; a system with nothing for the band is left out.",
+  "systems": {
+    "us": {
+      "name": "United States grades",
+      "jurisdiction": "US",
+      "note": "Typical age at the start of the school year. Cut-off dates differ by state.",
+      "sourceUrl": "https://www.thecorestandards.org/read-the-standards/"
+    },
+    "england": {
+      "name": "England: key stages and year groups",
+      "jurisdiction": "GB-ENG",
+      "note": "A child is in Year 1 in the school year they turn 6. Reception and below are the early years foundation stage.",
+      "sourceUrl": "https://www.gov.uk/national-curriculum"
+    },
+    "indonesia": {
+      "name": "Indonesia: kelas and fase (Kurikulum Merdeka)",
+      "jurisdiction": "ID",
+      "note": "Fase A is kelas 1-2, B is 3-4, C is 5-6, D is 7-9, E is 10, F is 11-12. Children start kelas 1 at 7, and may at 6, so kelas 1 is listed in two bands.",
+      "sourceUrl": "https://kurikulum.kemendikdasmen.go.id/"
+    },
+    "australia": {
+      "name": "Australia: year levels",
+      "jurisdiction": "AU",
+      "note": "Foundation is the first year of school, called Kindergarten, Prep, Reception, Pre-primary or Transition by state.",
+      "sourceUrl": "https://v9.australiancurriculum.edu.au/"
+    },
+    "india": {
+      "name": "India: classes and NEP 2020 stages",
+      "jurisdiction": "IN",
+      "note": "The 5+3+3+4 structure: foundational (ages 3-8), preparatory (8-11), middle (11-14), secondary (14-18).",
+      "sourceUrl": "https://www.education.gov.in/"
+    },
+    "singapore": {
+      "name": "Singapore: levels",
+      "jurisdiction": "SG",
+      "note": "A child enters Primary 1 in the year they turn 7.",
+      "sourceUrl": "https://www.moe.gov.sg/primary"
+    },
+    "china": {
+      "name": "China: grades",
+      "jurisdiction": "CN",
+      "note": "Six years of primary, three of junior secondary, three of senior secondary; grade 1 starts at 6.",
+      "sourceUrl": "https://www.moe.gov.cn/"
+    },
+    "spain": {
+      "name": "Spain: cursos",
+      "jurisdiction": "ES",
+      "note": "Primaria runs from 6 to 12, ESO from 12 to 16, Bachillerato from 16 to 18.",
+      "sourceUrl": "https://www.boe.es/eli/es/rd/2022/03/01/157"
+    },
+    "cefr": {
+      "name": "CEFR levels, as a school foreign-language range",
+      "jurisdiction": "international",
+      "note": "CEFR levels describe proficiency, not age. These are the levels a school learner of a foreign language is usually working at; a first language or an early start sits outside them.",
+      "sourceUrl": "https://www.coe.int/en/web/common-european-framework-reference-languages"
+    },
+    "isced": {
+      "name": "ISCED 2011 levels",
+      "jurisdiction": "international",
+      "note": "UNESCO's international classification of education levels.",
+      "sourceUrl": "https://uis.unesco.org/en/topic/international-standard-classification-education-isced"
+    }
+  },
+  "bands": [
+    {
+      "id": "b00-02",
+      "label": "Ages 0 to 2",
+      "ages": {
+        "min": 0,
+        "max": 2
+      },
+      "stage": "infant and toddler",
+      "systems": {
+        "england": [
+          "Early years foundation stage"
+        ],
+        "indonesia": [
+          "PAUD: TPA, KB"
+        ],
+        "isced": [
+          "ISCED 01"
+        ]
+      }
+    },
+    {
+      "id": "b03-04",
+      "label": "Ages 3 to 4",
+      "ages": {
+        "min": 3,
+        "max": 4
+      },
+      "stage": "preschool",
+      "systems": {
+        "us": [
+          "Pre-kindergarten"
+        ],
+        "england": [
+          "EYFS: Nursery",
+          "EYFS: Reception"
+        ],
+        "indonesia": [
+          "PAUD: KB",
+          "PAUD: TK A (Fase Fondasi)"
+        ],
+        "australia": [
+          "Preschool (the year before Foundation)"
+        ],
+        "india": [
+          "Foundational stage: preschool, Balvatika"
+        ],
+        "singapore": [
+          "Nursery 1",
+          "Nursery 2"
+        ],
+        "china": [
+          "幼儿园 (kindergarten)"
+        ],
+        "spain": [
+          "Educación Infantil, segundo ciclo"
+        ],
+        "isced": [
+          "ISCED 02"
+        ]
+      }
+    },
+    {
+      "id": "b05-06",
+      "label": "Ages 5 to 6",
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "stage": "early primary",
+      "systems": {
+        "us": [
+          "Kindergarten",
+          "Grade 1"
+        ],
+        "england": [
+          "Key stage 1: Year 1",
+          "Key stage 1: Year 2"
+        ],
+        "indonesia": [
+          "PAUD: TK B (Fase Fondasi)",
+          "SD kelas 1 (Fase A)"
+        ],
+        "australia": [
+          "Foundation",
+          "Year 1"
+        ],
+        "india": [
+          "Foundational stage: Balvatika",
+          "Foundational stage: Class 1"
+        ],
+        "singapore": [
+          "Kindergarten 1 and 2",
+          "Primary 1"
+        ],
+        "china": [
+          "幼儿园大班",
+          "小学一年级 (Grade 1)"
+        ],
+        "spain": [
+          "Educación Infantil (último curso)",
+          "1.º de Primaria"
+        ],
+        "cefr": [
+          "Pre-A1"
+        ],
+        "isced": [
+          "ISCED 02",
+          "ISCED 1"
+        ]
+      }
+    },
+    {
+      "id": "b07-08",
+      "label": "Ages 7 to 8",
+      "ages": {
+        "min": 7,
+        "max": 8
+      },
+      "stage": "lower primary",
+      "systems": {
+        "us": [
+          "Grade 2",
+          "Grade 3"
+        ],
+        "england": [
+          "Key stage 2: Year 3",
+          "Key stage 2: Year 4"
+        ],
+        "indonesia": [
+          "SD kelas 1-2 (Fase A)",
+          "SD kelas 3 (Fase B)"
+        ],
+        "australia": [
+          "Year 2",
+          "Year 3"
+        ],
+        "india": [
+          "Foundational stage: Class 2",
+          "Preparatory stage: Class 3"
+        ],
+        "singapore": [
+          "Primary 2",
+          "Primary 3"
+        ],
+        "china": [
+          "小学二年级",
+          "小学三年级"
+        ],
+        "spain": [
+          "2.º de Primaria",
+          "3.º de Primaria"
+        ],
+        "cefr": [
+          "Pre-A1",
+          "A1"
+        ],
+        "isced": [
+          "ISCED 1"
+        ]
+      }
+    },
+    {
+      "id": "b09-10",
+      "label": "Ages 9 to 10",
+      "ages": {
+        "min": 9,
+        "max": 10
+      },
+      "stage": "upper primary",
+      "systems": {
+        "us": [
+          "Grade 4",
+          "Grade 5"
+        ],
+        "england": [
+          "Key stage 2: Year 5",
+          "Key stage 2: Year 6"
+        ],
+        "indonesia": [
+          "SD kelas 3-4 (Fase B)",
+          "SD kelas 5 (Fase C)"
+        ],
+        "australia": [
+          "Year 4",
+          "Year 5"
+        ],
+        "india": [
+          "Preparatory stage: Class 4",
+          "Preparatory stage: Class 5"
+        ],
+        "singapore": [
+          "Primary 4",
+          "Primary 5"
+        ],
+        "china": [
+          "小学四年级",
+          "小学五年级"
+        ],
+        "spain": [
+          "4.º de Primaria",
+          "5.º de Primaria"
+        ],
+        "cefr": [
+          "A1"
+        ],
+        "isced": [
+          "ISCED 1"
+        ]
+      }
+    },
+    {
+      "id": "b11-12",
+      "label": "Ages 11 to 12",
+      "ages": {
+        "min": 11,
+        "max": 12
+      },
+      "stage": "end of primary, start of secondary",
+      "systems": {
+        "us": [
+          "Grade 6",
+          "Grade 7"
+        ],
+        "england": [
+          "Key stage 3: Year 7",
+          "Key stage 3: Year 8"
+        ],
+        "indonesia": [
+          "SD kelas 5-6 (Fase C)"
+        ],
+        "australia": [
+          "Year 6",
+          "Year 7"
+        ],
+        "india": [
+          "Middle stage: Class 6",
+          "Middle stage: Class 7"
+        ],
+        "singapore": [
+          "Primary 6",
+          "Secondary 1"
+        ],
+        "china": [
+          "小学六年级",
+          "初中一年级 (Grade 7)"
+        ],
+        "spain": [
+          "6.º de Primaria",
+          "1.º de ESO"
+        ],
+        "cefr": [
+          "A1",
+          "A2"
+        ],
+        "isced": [
+          "ISCED 1",
+          "ISCED 2"
+        ]
+      }
+    },
+    {
+      "id": "b13-14",
+      "label": "Ages 13 to 14",
+      "ages": {
+        "min": 13,
+        "max": 14
+      },
+      "stage": "lower secondary",
+      "systems": {
+        "us": [
+          "Grade 8",
+          "Grade 9"
+        ],
+        "england": [
+          "Key stage 3: Year 9",
+          "Key stage 4: Year 10"
+        ],
+        "indonesia": [
+          "SMP kelas 7-8 (Fase D)"
+        ],
+        "australia": [
+          "Year 8",
+          "Year 9"
+        ],
+        "india": [
+          "Middle stage: Class 8",
+          "Secondary stage: Class 9"
+        ],
+        "singapore": [
+          "Secondary 2",
+          "Secondary 3"
+        ],
+        "china": [
+          "初中二年级",
+          "初中三年级"
+        ],
+        "spain": [
+          "2.º de ESO",
+          "3.º de ESO"
+        ],
+        "cefr": [
+          "A2",
+          "B1"
+        ],
+        "isced": [
+          "ISCED 2"
+        ]
+      }
+    },
+    {
+      "id": "b15-16",
+      "label": "Ages 15 to 16",
+      "ages": {
+        "min": 15,
+        "max": 16
+      },
+      "stage": "upper secondary",
+      "systems": {
+        "us": [
+          "Grade 10",
+          "Grade 11"
+        ],
+        "england": [
+          "Key stage 4: Year 11",
+          "Year 12 (16 to 18 study)"
+        ],
+        "indonesia": [
+          "SMP kelas 9 (Fase D)",
+          "SMA kelas 10 (Fase E)"
+        ],
+        "australia": [
+          "Year 10",
+          "Year 11"
+        ],
+        "india": [
+          "Secondary stage: Class 10",
+          "Secondary stage: Class 11"
+        ],
+        "singapore": [
+          "Secondary 4 or 5",
+          "Junior College 1"
+        ],
+        "china": [
+          "高中一年级",
+          "高中二年级"
+        ],
+        "spain": [
+          "4.º de ESO",
+          "1.º de Bachillerato"
+        ],
+        "cefr": [
+          "B1"
+        ],
+        "isced": [
+          "ISCED 2",
+          "ISCED 3"
+        ]
+      }
+    },
+    {
+      "id": "b17-18",
+      "label": "Ages 17 to 18",
+      "ages": {
+        "min": 17,
+        "max": 18
+      },
+      "stage": "end of school",
+      "systems": {
+        "us": [
+          "Grade 12"
+        ],
+        "england": [
+          "Year 13 (16 to 18 study)"
+        ],
+        "indonesia": [
+          "SMA kelas 11-12 (Fase F)"
+        ],
+        "australia": [
+          "Year 12"
+        ],
+        "india": [
+          "Secondary stage: Class 12"
+        ],
+        "singapore": [
+          "Junior College 2"
+        ],
+        "china": [
+          "高中三年级"
+        ],
+        "spain": [
+          "2.º de Bachillerato"
+        ],
+        "cefr": [
+          "B1",
+          "B2"
+        ],
+        "isced": [
+          "ISCED 3"
+        ]
+      }
+    },
+    {
+      "id": "adult",
+      "label": "Adult",
+      "ages": {
+        "min": 19,
+        "max": 99
+      },
+      "stage": "adult",
+      "systems": {
+        "cefr": [
+          "A1",
+          "A2",
+          "B1",
+          "B2",
+          "C1",
+          "C2"
+        ],
+        "isced": [
+          "ISCED 4 to 8"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "nz-curriculum",
+  "title": "The New Zealand Curriculum",
+  "publisher": "Ministry of Education, New Zealand",
+  "jurisdiction": "NZ",
+  "version": "current",
+  "sourceUrl": "https://newzealandcurriculum.tahurangi.education.govt.nz/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "Years 0 to 13"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "licence": "CC-BY-NC-4.0",
+    "quote": "ids_only",
+    "termsUrl": "https://newzealandcurriculum.tahurangi.education.govt.nz/copyright",
+    "evidence": "licensed for re-use under a Creative Commons Attribution-NonCommercial 4.0 Licence",
+    "note": "Crown copyright under a non-commercial licence. Level names only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

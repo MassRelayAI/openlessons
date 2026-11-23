@@ -1,0 +1,32 @@
+{
+  "schema": "framework/1",
+  "id": "jp-mext-cos",
+  "title": "学習指導要領 (Course of Study)",
+  "publisher": "Ministry of Education, Culture, Sports, Science and Technology (MEXT)",
+  "jurisdiction": "JP",
+  "version": "2017-2018 (Heisei 29-30)",
+  "sourceUrl": "https://www.mext.go.jp/a_menu/shotou/new-cs/1384661.htm",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 18
+    },
+    "grades": "Kindergarten to upper secondary"
+  },
+  "languages": [
+    "ja"
+  ],
+  "terms": {
+    "class": "open",
+    "licence": "CC-BY-4.0",
+    "quote": "official_text",
+    "notice": "Source: Ministry of Education, Culture, Sports, Science and Technology (Japan) website. Edited by openlessons contributors.",
+    "termsUrl": "https://www.mext.go.jp/b_menu/1351168.htm",
+    "evidence": "商用利用も可能です。",
+    "note": "The ministry's site rules follow the Public Data License 1.0 and say the content may also be used under CC BY; commercial use and adaptation are allowed with the source cited and edits declared. Not covered: symbol marks, logos, and content that states other rules or holds third-party rights.",
+    "reviewed": "2026-11-23"
+  }
+}

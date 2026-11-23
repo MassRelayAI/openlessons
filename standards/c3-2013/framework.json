@@ -1,0 +1,29 @@
+{
+  "schema": "framework/1",
+  "id": "c3-2013",
+  "title": "College, Career, and Civic Life (C3) Framework for Social Studies State Standards",
+  "publisher": "National Council for the Social Studies",
+  "jurisdiction": "US",
+  "version": "2013",
+  "sourceUrl": "https://www.socialstudies.org/standards/c3",
+  "subjects": [
+    "social-studies"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "Kindergarten to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.socialstudies.org/standards/c3",
+    "note": "The document is reported to allow free reproduction of its text, but its rights page could not be read, so the terms are unread and only codes are used.",
+    "reviewed": null
+  }
+}

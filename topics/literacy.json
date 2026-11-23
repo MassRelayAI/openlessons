@@ -1,0 +1,79 @@
+{
+  "schema": "subject/1",
+  "id": "literacy",
+  "area": "literacy",
+  "label": {
+    "en": "Reading, writing and talk (any language)"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "reading",
+      "label": {
+        "en": "Reading"
+      },
+      "topics": [
+        {
+          "id": "print-and-books",
+          "label": {
+            "en": "Print and books"
+          }
+        },
+        {
+          "id": "understanding",
+          "label": {
+            "en": "Understanding a text"
+          }
+        },
+        {
+          "id": "thinking-about-texts",
+          "label": {
+            "en": "Thinking about texts"
+          }
+        }
+      ]
+    },
+    {
+      "id": "writing",
+      "label": {
+        "en": "Writing"
+      },
+      "topics": [
+        {
+          "id": "sentences",
+          "label": {
+            "en": "Sentences"
+          }
+        },
+        {
+          "id": "composition",
+          "label": {
+            "en": "Composition"
+          }
+        }
+      ]
+    },
+    {
+      "id": "speaking-listening",
+      "label": {
+        "en": "Speaking and listening"
+      },
+      "topics": [
+        {
+          "id": "listening",
+          "label": {
+            "en": "Listening"
+          }
+        },
+        {
+          "id": "talk",
+          "label": {
+            "en": "Talk and presenting"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "arts.drama-dance.role-play",
+  "version": 1,
+  "subject": "arts",
+  "strand": "drama-dance",
+  "slug": "role-play",
+  "topic": "movement-role",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can pretend to be someone else and act out a short scene."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.divide-with-tables",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "divide-with-tables",
+  "topic": "multiplication-division",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can use the times tables to divide."
+  },
+  "prerequisites": [
+    "maths.calc.times-tables-2-5-10",
+    "maths.calc.share-equally"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

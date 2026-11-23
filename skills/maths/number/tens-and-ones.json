@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "tens-and-ones",
+  "topic": "place-value",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say how many tens and ones are in a number to 20."
   },

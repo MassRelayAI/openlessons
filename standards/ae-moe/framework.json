@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "ae-moe",
+  "title": "United Arab Emirates national curriculum",
+  "publisher": "Ministry of Education, United Arab Emirates",
+  "jurisdiction": "AE",
+  "version": "current",
+  "sourceUrl": "https://www.moe.gov.ae/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "Kindergarten to grade 12 (cycles 1 to 3)"
+  },
+  "languages": [
+    "ar",
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.moe.gov.ae/",
+    "note": "No terms of reuse could be read on the ministry's site; a search result reports that all copyrights are reserved. Cycle names only.",
+    "reviewed": null
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "framework/1",
+  "id": "unesco-ai-cfs-2024",
+  "title": "AI competency framework for students",
+  "publisher": "UNESCO",
+  "jurisdiction": "international",
+  "version": "2024",
+  "sourceUrl": "https://unesdoc.unesco.org/ark:/48223/pf0000391105",
+  "subjects": [
+    "computing"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "School age, three progression levels"
+  },
+  "terms": {
+    "class": "reference_only",
+    "licence": "CC-BY-SA-3.0-IGO",
+    "quote": "ids_only",
+    "termsUrl": "https://www.unesco.org/en/open-access/cc-sa",
+    "evidence": "available in Open Access under the Attribution-ShareAlike 3.0 IGO (CC-BY-SA 3.0 IGO) license",
+    "note": "Open access under a share-alike licence, which cannot be carried into a CC BY tree. Competency names by code only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

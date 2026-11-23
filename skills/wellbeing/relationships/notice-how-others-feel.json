@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.relationships.notice-how-others-feel",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "relationships",
+  "slug": "notice-how-others-feel",
+  "topic": "conflict-empathy",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can notice how someone else feels and show that I care."
+  },
+  "prerequisites": [
+    "wellbeing.self.name-feelings"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

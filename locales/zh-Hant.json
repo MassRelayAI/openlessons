@@ -1,0 +1,8 @@
+{
+  "schema": "locale/1",
+  "id": "zh-Hant",
+  "name": "Chinese (Traditional)",
+  "script": "Hant",
+  "direction": "ltr",
+  "segmentation": "character"
+}

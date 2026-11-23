@@ -11,6 +11,12 @@ pub fn is_cjk(c: char) -> bool {
     matches!(c as u32, 0x3040..=0x30FF | 0x3400..=0x4DBF | 0x4E00..=0x9FFF | 0xF900..=0xFAFF | 0x20000..=0x2FA1F)
 }
 
+/// Marks that sit inside a word without being letters: combining accents, the signs and the virama of Devanagari, the
+/// vowel marks of Arabic, and the joiners. Without them a Hindi word would split at every conjunct.
+fn is_word_mark(c: char) -> bool {
+    matches!(c as u32, 0x0300..=0x036F | 0x0900..=0x0963 | 0x0966..=0x097F | 0x064B..=0x065F | 0x0670 | 0x200C | 0x200D)
+}
+
 /// Lower-cased runs of letters and digits; each CJK character is its own token.
 pub fn tokens(s: &str) -> Vec<String> {
     let mut out = Vec::new();
@@ -21,7 +27,7 @@ pub fn tokens(s: &str) -> Vec<String> {
                 out.push(std::mem::take(&mut cur));
             }
             out.push(c.to_string());
-        } else if c.is_alphanumeric() {
+        } else if c.is_alphanumeric() || is_word_mark(c) {
             cur.extend(c.to_lowercase());
         } else if !cur.is_empty() {
             out.push(std::mem::take(&mut cur));
@@ -72,7 +78,7 @@ pub fn band_for(bands: &[ReadingBand], min_age: i64) -> Option<&ReadingBand> {
 
 /// `segmentation` is the locale's: `space` counts words, `character` counts CJK characters per sentence.
 pub fn reading_issue(text: &str, segmentation: &str, band: &ReadingBand) -> Option<String> {
-    for sentence in text.split(['.', '!', '?', '。', '！', '？', '\n', ';', ':']) {
+    for sentence in text.split(['.', '!', '?', '。', '！', '？', '\n', ';', ':', '।', '؟', '۔', '¿', '¡']) {
         let toks = tokens(sentence);
         if segmentation == "character" {
             let n = sentence.chars().filter(|c| is_cjk(*c)).count();
@@ -85,7 +91,8 @@ pub fn reading_issue(text: &str, segmentation: &str, band: &ReadingBand) -> Opti
             return Some(format!("a sentence of {} words (limit {})", toks.len(), band.max_sentence_words));
         }
         for t in &toks {
-            let letters = t.chars().filter(|c| c.is_alphabetic() && !is_cjk(*c)).count();
+            // marks are not letters: a Hindi or Arabic word is as long as its letters, not its signs
+            let letters = t.chars().filter(|c| c.is_alphabetic() && !is_cjk(*c) && !is_word_mark(*c)).count();
             if letters > band.max_word_chars {
                 return Some(format!("the word '{t}' has {letters} letters (limit {})", band.max_word_chars));
             }
@@ -159,6 +166,63 @@ impl Lexicon {
     }
 }
 
+// ---------- copied text ----------
+
+/// What the gate `content.no-copied-text` looks for in our own wording (gates/data/protected.json): marks that travel
+/// with copied material, and fingerprints of protected wording. A fingerprint is the hash of a run of `window` words, so
+/// the list can say "this sentence is the publisher's" without holding the sentence.
+#[derive(Debug, Clone, Default)]
+pub struct Protected {
+    /// substrings, matched as written (the copyright sign)
+    pub symbols: Vec<String>,
+    /// phrases, matched as runs of whole tokens
+    pub marks: Vec<Vec<String>>,
+    pub window: usize,
+    /// fingerprint -> framework id
+    pub prints: BTreeMap<String, String>,
+}
+
+/// The fingerprints of a text: one per run of `window` tokens.
+pub fn fingerprints(text: &str, window: usize) -> Vec<String> {
+    let toks = tokens(text);
+    if window == 0 || toks.len() < window {
+        return Vec::new();
+    }
+    toks.windows(window).map(|w| sha256_hex(w.join(" ").as_bytes())[..16].to_string()).collect()
+}
+
+impl Protected {
+    pub fn from_json(v: &Value) -> Protected {
+        let list = |k: &str| v.get(k).and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str).map(str::to_string).collect::<Vec<_>>();
+        let mut p = Protected { symbols: list("symbols"), marks: list("marks").iter().map(|m| tokens(m)).filter(|m| !m.is_empty()).collect(), window: v.get("window").and_then(Value::as_u64).unwrap_or(6) as usize, prints: BTreeMap::new() };
+        for (framework, prints) in v.get("fingerprints").and_then(Value::as_object).into_iter().flatten() {
+            for h in prints.as_array().into_iter().flatten().filter_map(Value::as_str) {
+                p.prints.insert(h.to_string(), framework.clone());
+            }
+        }
+        p
+    }
+
+    /// Why this text looks copied, if it does.
+    pub fn issue(&self, text: &str) -> Option<String> {
+        if let Some(s) = self.symbols.iter().find(|s| text.contains(s.as_str())) {
+            return Some(format!("'{s}' marks copied material: write it in your own words and credit sources in `attribution`"));
+        }
+        let toks = tokens(text);
+        if let Some(m) = self.marks.iter().find(|m| contains_tokens(&toks, m)) {
+            return Some(format!("'{}' marks copied material: write it in your own words and credit sources in `attribution`", m.join(" ")));
+        }
+        if self.window > 0 && toks.len() >= self.window {
+            for w in toks.windows(self.window) {
+                if let Some(framework) = self.prints.get(&sha256_hex(w.join(" ").as_bytes())[..16]) {
+                    return Some(format!("'{}' is the wording of {framework}, whose terms do not allow copying it: paraphrase", w.join(" ")));
+                }
+            }
+        }
+        None
+    }
+}
+
 /// The language subtag of a BCP 47 tag (`zh-Hans` -> `zh`).
 pub fn language(tag: &str) -> &str {
     tag.split('-').next().unwrap_or(tag)
@@ -218,6 +282,9 @@ mod tests {
         assert_eq!(tokens("What does 晚安 (wǎn ān) mean?"), ["what", "does", "晚", "安", "wǎn", "ān", "mean"]);
         assert!(contains_tokens(&tokens("Which letter says n?"), &tokens("N")));
         assert!(!contains_tokens(&tokens("Which one is new?"), &tokens("n")));
+        // a conjunct and a vowel mark stay inside their word
+        assert_eq!(tokens("बच्चे खेलते हैं।").len(), 3);
+        assert_eq!(tokens("كَتَبَ الولد").len(), 2);
     }
 
     #[test]
@@ -251,6 +318,22 @@ mod tests {
         assert!(lex.hit("Buy now!").is_some());
         assert!(lex.hit("a ZZWORD here").is_some());
         assert!(lex.hit("The sun is hot.").is_none());
+    }
+
+    #[test]
+    fn copied_text_is_found_by_mark_and_by_fingerprint() {
+        let theirs = "Pupils should recite the seven wonders in order every single morning";
+        let p = Protected::from_json(&serde_json::json!({
+            "symbols": ["\u{a9}"], "marks": ["all rights reserved"], "window": 6,
+            "fingerprints": {"example-framework": fingerprints(theirs, 6)}
+        }));
+        assert!(p.issue("Count the dots. \u{a9} 2020 A Publisher").is_some());
+        assert!(p.issue("All Rights Reserved.").is_some());
+        assert!(p.issue("I can say the seven wonders, one by one.").is_none());
+        // six of their words in a row, inside our sentence
+        assert!(p.issue("Now recite the seven wonders in order, please.").is_some());
+        assert!(p.issue("Recite the seven wonders.").is_none());
+        assert_eq!(fingerprints("one two three", 6), Vec::<String>::new());
     }
 
     #[test]

@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "grammar",
   "slug": "capital-full-stop",
+  "topic": "punctuation",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can start a sentence with a capital letter and end it with a full stop."
   },

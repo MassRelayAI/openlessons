@@ -1,0 +1,67 @@
+{
+  "schema": "subject/1",
+  "id": "arts",
+  "area": "arts",
+  "label": {
+    "en": "The arts"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "visual-art",
+      "label": {
+        "en": "Visual art"
+      },
+      "topics": [
+        {
+          "id": "colour-line-shape",
+          "label": {
+            "en": "Colour, line and shape"
+          }
+        },
+        {
+          "id": "responding",
+          "label": {
+            "en": "Looking at and talking about art"
+          }
+        }
+      ]
+    },
+    {
+      "id": "music",
+      "label": {
+        "en": "Music"
+      },
+      "topics": [
+        {
+          "id": "beat-rhythm",
+          "label": {
+            "en": "Beat and rhythm"
+          }
+        },
+        {
+          "id": "sound-qualities",
+          "label": {
+            "en": "Pitch and dynamics"
+          }
+        }
+      ]
+    },
+    {
+      "id": "drama-dance",
+      "label": {
+        "en": "Drama and dance"
+      },
+      "topics": [
+        {
+          "id": "movement-role",
+          "label": {
+            "en": "Movement and role play"
+          }
+        }
+      ]
+    }
+  ]
+}

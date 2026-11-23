@@ -1,0 +1,67 @@
+{
+  "schema": "subject/1",
+  "id": "indonesian",
+  "area": "literacy",
+  "label": {
+    "en": "Bahasa Indonesia"
+  },
+  "locales": [
+    "id"
+  ],
+  "strands": [
+    {
+      "id": "fonik",
+      "label": {
+        "en": "Fonik"
+      },
+      "topics": [
+        {
+          "id": "bunyi-huruf",
+          "label": {
+            "en": "Bunyi huruf"
+          }
+        },
+        {
+          "id": "suku-kata",
+          "label": {
+            "en": "Suku kata"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kalimat",
+      "label": {
+        "en": "Kalimat"
+      },
+      "topics": [
+        {
+          "id": "kalimat-sederhana",
+          "label": {
+            "en": "Kalimat sederhana"
+          }
+        },
+        {
+          "id": "tanda-baca",
+          "label": {
+            "en": "Tanda baca"
+          }
+        }
+      ]
+    },
+    {
+      "id": "kosakata",
+      "label": {
+        "en": "Kosakata"
+      },
+      "topics": [
+        {
+          "id": "kata-pertama",
+          "label": {
+            "en": "Kata pertama"
+          }
+        }
+      ]
+    }
+  ]
+}

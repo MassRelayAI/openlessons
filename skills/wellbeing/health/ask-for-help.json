@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.health.ask-for-help",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "health",
+  "slug": "ask-for-help",
+  "topic": "help-seeking",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I know who I can ask for help, and how to ask."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "shape",
   "slug": "flat-shapes",
+  "topic": "2d-shapes",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can name circles, squares, triangles and rectangles."
   },

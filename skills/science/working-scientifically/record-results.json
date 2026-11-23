@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "science.working-scientifically.record-results",
+  "version": 1,
+  "subject": "science",
+  "strand": "working-scientifically",
+  "slug": "record-results",
+  "topic": "enquiry",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can write down what I found in a table or a chart."
+  },
+  "prerequisites": [
+    "science.working-scientifically.ask-and-observe"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

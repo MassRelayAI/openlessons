@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.fractions.fractions-decimals-percent",
+  "version": 1,
+  "subject": "maths",
+  "strand": "fractions",
+  "slug": "fractions-decimals-percent",
+  "topic": "equivalence",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can change between simple fractions, decimals and percentages."
+  },
+  "prerequisites": [
+    "maths.fractions.equivalent-fractions"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

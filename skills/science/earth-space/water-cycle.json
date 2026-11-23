@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "science.earth-space.water-cycle",
+  "version": 1,
+  "subject": "science",
+  "strand": "earth-space",
+  "slug": "water-cycle",
+  "topic": "earth",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can explain how water moves between sea, sky and land."
+  },
+  "prerequisites": [
+    "science.materials.melting-and-freezing"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

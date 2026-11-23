@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "science.living-things.body-parts-and-senses",
+  "version": 1,
+  "subject": "science",
+  "strand": "living-things",
+  "slug": "body-parts-and-senses",
+  "topic": "human-body",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can name parts of my body and the sense each one gives me."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

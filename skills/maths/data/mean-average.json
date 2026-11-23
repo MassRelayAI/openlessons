@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.data.mean-average",
+  "version": 1,
+  "subject": "maths",
+  "strand": "data",
+  "slug": "mean-average",
+  "topic": "averages",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can find the mean of a set of numbers."
+  },
+  "prerequisites": [
+    "maths.calc.divide-with-tables"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

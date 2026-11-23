@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "grammar",
   "slug": "this-is",
+  "topic": "simple-sentences",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can say what something is: 这是狗 (this is a dog)."
   },

@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "computing.algorithms.spot-patterns",
+  "version": 1,
+  "subject": "computing",
+  "strand": "algorithms",
+  "slug": "spot-patterns",
+  "topic": "patterns-debugging",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can spot a part of a task that repeats."
+  },
+  "prerequisites": [
+    "computing.algorithms.sequence"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

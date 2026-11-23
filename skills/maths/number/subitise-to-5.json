@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.subitise-to-5",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "subitise-to-5",
+  "topic": "counting",
+  "bands": [
+    "b03-04"
+  ],
+  "statement": {
+    "en": "I can see how many are in a small group, up to 5, without counting them."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

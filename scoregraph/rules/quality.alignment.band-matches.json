@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.alignment.band-matches",
+  "version": 1,
+  "title": "An `exact` or `partial` alignment shares an age band with its standard, and a lesson is written for ages its objectives are taught at",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

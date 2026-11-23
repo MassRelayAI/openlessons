@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.measure.area-of-rectangles",
+  "version": 1,
+  "subject": "maths",
+  "strand": "measure",
+  "slug": "area-of-rectangles",
+  "topic": "perimeter-area",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can find the area of a rectangle by counting squares or multiplying."
+  },
+  "prerequisites": [
+    "maths.calc.times-tables-to-12"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

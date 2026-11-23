@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "computing.digital-citizenship.keep-private",
+  "version": 1,
+  "subject": "computing",
+  "strand": "digital-citizenship",
+  "slug": "keep-private",
+  "topic": "privacy-safety",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I know what information about me is private, and I tell a trusted adult when something online worries me."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

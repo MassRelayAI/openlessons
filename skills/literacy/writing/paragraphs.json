@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.writing.paragraphs",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "writing",
+  "slug": "paragraphs",
+  "topic": "composition",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can group my ideas into paragraphs."
+  },
+  "prerequisites": [
+    "literacy.writing.sequence-a-story"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

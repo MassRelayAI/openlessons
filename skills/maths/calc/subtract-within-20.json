@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.subtract-within-20",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "subtract-within-20",
+  "topic": "addition-subtraction",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can take one number away from another, within 20."
+  },
+  "prerequisites": [
+    "maths.calc.add-within-20"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

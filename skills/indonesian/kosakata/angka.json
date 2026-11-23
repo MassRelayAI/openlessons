@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kosakata",
   "slug": "angka",
+  "topic": "kata-pertama",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa membaca angka satu sampai sepuluh dalam kata."
   },

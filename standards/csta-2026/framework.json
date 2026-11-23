@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "csta-2026",
+  "title": "CSTA PK-12 Computer Science Standards",
+  "publisher": "Computer Science Teachers Association",
+  "jurisdiction": "US",
+  "version": "2026",
+  "sourceUrl": "https://csteachers.org/pk12standards/",
+  "subjects": [
+    "computing"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "Pre-kindergarten to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "licence": "CC-BY-NC-SA-4.0",
+    "quote": "ids_only",
+    "termsUrl": "https://csteachers.org/pk12standards/",
+    "evidence": "as long as they provide proper attribution, use for non-commercial purposes, and share contributions or derivations under the same license",
+    "note": "Shared under an attribution, non-commercial, share-alike licence: neither condition fits a CC BY tree. Standard identifiers only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

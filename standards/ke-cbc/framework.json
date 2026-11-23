@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "ke-cbc",
+  "title": "Competency Based Curriculum designs",
+  "publisher": "Kenya Institute of Curriculum Development",
+  "jurisdiction": "KE",
+  "version": "current",
+  "sourceUrl": "https://kicd.ac.ke/cbc-materials/curriculum-designs/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "Pre-primary 1 to senior school"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://kicd.ac.ke/cbc-materials/curriculum-designs/",
+    "evidence": "All Rights Reserved",
+    "note": "All rights reserved (site footer; no terms page). Grade names only.",
+    "reviewed": "2026-11-23"
+  }
+}

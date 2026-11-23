@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.home.tidy-and-care",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "home",
+  "slug": "tidy-and-care",
+  "topic": "caring-for-things",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can put my things away and look after them."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

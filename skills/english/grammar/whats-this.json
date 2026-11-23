@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "grammar",
   "slug": "whats-this",
+  "topic": "simple-sentences",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can answer \"What's this?\" with \"It's a ...\"."
   },

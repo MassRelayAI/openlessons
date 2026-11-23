@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "fonik",
   "slug": "gabung",
+  "topic": "suku-kata",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa menggabungkan dua suku kata menjadi sebuah kata."
   },

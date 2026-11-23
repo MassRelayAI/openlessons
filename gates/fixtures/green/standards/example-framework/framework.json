@@ -6,6 +6,16 @@
   "jurisdiction": "international",
   "version": "1",
   "sourceUrl": "https://example.org/framework",
+  "subjects": [
+    "maths"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 7
+    },
+    "grades": "Year 1"
+  },
   "terms": {
     "class": "open",
     "licence": "CC0-1.0",

@@ -374,6 +374,12 @@ pub fn pack(c: &Course) -> Result<(Value, Value)> {
         if let Some(t) = k.get("type") {
             put(&mut o, "skillType", t.clone());
         }
+        // where the objective hangs in the topic graph, and the ages it is taught at
+        for field in ["topic", "bands", "locales"] {
+            if let Some(v) = k.get(field) {
+                put(&mut o, &format!("ext:{field}"), v.clone());
+            }
+        }
         put(&mut o, "prerequisites", json!(arr(k, "prerequisites").iter().filter_map(Value::as_str).map(&lo_ref).collect::<Vec<_>>()));
         let mut mis = Vec::new();
         for m in arr(k, "misconceptions") {

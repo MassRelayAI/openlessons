@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "arts.visual-art.line-and-shape",
+  "version": 1,
+  "subject": "arts",
+  "strand": "visual-art",
+  "slug": "line-and-shape",
+  "topic": "colour-line-shape",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can use different lines and shapes to make a picture."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "count-to-three",
+  "topic": "counting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can count up to three things."
   },

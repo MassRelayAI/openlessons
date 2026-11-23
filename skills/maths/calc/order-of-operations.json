@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.order-of-operations",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "order-of-operations",
+  "topic": "multiplication-division",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can work out a sum with several steps in the right order."
+  },
+  "prerequisites": [
+    "maths.calc.multiply-two-digit"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

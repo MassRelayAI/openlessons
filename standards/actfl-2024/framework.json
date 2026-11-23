@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "actfl-2024",
+  "title": "ACTFL Proficiency Guidelines",
+  "publisher": "ACTFL",
+  "jurisdiction": "US",
+  "version": "2024",
+  "sourceUrl": "https://www.actfl.org/educator-resources/actfl-proficiency-guidelines",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 99
+    },
+    "grades": "Novice to Distinguished"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.actfl.org/use-of-actfl-proficiency-guidelines-and-issuing-of-official-actfl-tests",
+    "evidence": "may be used for non-profit, educational purposes only, provided that they are reproduced in their entirety",
+    "note": "Reproduction is allowed only whole, unaltered, for non-profit educational purposes. Level names only. Recorded for Arabic and other languages it describes.",
+    "reviewed": "2026-11-23"
+  }
+}

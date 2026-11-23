@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "count-to-five",
+  "topic": "counting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can count up to five things."
   },

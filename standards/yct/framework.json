@@ -6,11 +6,25 @@
   "jurisdiction": "CN",
   "version": "current",
   "sourceUrl": "https://www.chinesetest.cn/",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 15
+    },
+    "grades": "YCT levels 1 to 4"
+  },
+  "languages": [
+    "zh-Hans"
+  ],
   "terms": {
     "class": "reference_only",
     "quote": "ids_only",
-    "termsUrl": "https://www.chinesetest.cn/",
-    "note": "No terms of reuse were found. Level names only; word lists and exam items are never stored.",
-    "reviewed": null
+    "termsUrl": "https://www.chinesetest.cn/legal-notice",
+    "evidence": "All the contents of the website are copyrighted by CTI or the content providers.",
+    "note": "The same site terms as HSK. Level names only; word lists and exam items are never stored.",
+    "reviewed": "2026-11-23"
   }
 }

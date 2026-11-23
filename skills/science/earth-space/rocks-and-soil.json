@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "science.earth-space.rocks-and-soil",
+  "version": 1,
+  "subject": "science",
+  "strand": "earth-space",
+  "slug": "rocks-and-soil",
+  "topic": "earth",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can sort rocks by how they look and feel and say what soil is made of."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

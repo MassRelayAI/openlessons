@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "ca-on-curriculum",
+  "title": "The Ontario Curriculum",
+  "publisher": "Ontario Ministry of Education",
+  "jurisdiction": "CA-ON",
+  "version": "current",
+  "sourceUrl": "https://www.dcp.edu.gov.on.ca/en/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "Kindergarten to grade 12"
+  },
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.ontario.ca/page/copyright-information",
+    "evidence": "may be reproduced for non-commercial purposes if no changes are made to the original content",
+    "note": "Crown copyright: reproduction is allowed for non-commercial purposes with no changes; commercial reproduction needs a licence from the King's Printer. Codes only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

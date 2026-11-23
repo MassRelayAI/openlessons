@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.reading.predict",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "reading",
+  "slug": "predict",
+  "topic": "understanding",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can say what might happen next in a story and why I think so."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

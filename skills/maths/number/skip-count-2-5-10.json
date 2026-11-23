@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.skip-count-2-5-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "skip-count-2-5-10",
+  "topic": "counting",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can count in steps of 2, 5 and 10."
+  },
+  "prerequisites": [
+    "maths.number.count-to-100"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

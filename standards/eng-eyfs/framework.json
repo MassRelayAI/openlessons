@@ -1,0 +1,32 @@
+{
+  "schema": "framework/1",
+  "id": "eng-eyfs",
+  "title": "Early years foundation stage statutory framework",
+  "publisher": "Department for Education",
+  "jurisdiction": "GB-ENG",
+  "version": "current",
+  "sourceUrl": "https://www.gov.uk/government/publications/early-years-foundation-stage-framework--2",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 0,
+      "max": 5
+    },
+    "grades": "Birth to 5 (to the end of Reception)"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "open",
+    "licence": "OGL-UK-3.0",
+    "quote": "official_text",
+    "notice": "Contains public sector information licensed under the Open Government Licence v3.0.",
+    "termsUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "evidence": "All content is available under the Open Government Licence v3.0, except where otherwise stated",
+    "note": "Published on GOV.UK, whose content is under the Open Government Licence v3.0 except where otherwise stated. We hold one level node and no wording yet. Check the document's own notice before quoting from it.",
+    "reviewed": "2026-11-23"
+  }
+}

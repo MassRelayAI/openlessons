@@ -1,0 +1,73 @@
+{
+  "schema": "subject/1",
+  "id": "wellbeing",
+  "area": "wellbeing",
+  "label": {
+    "en": "Wellbeing and social-emotional learning"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "self",
+      "label": {
+        "en": "Knowing and managing myself"
+      },
+      "topics": [
+        {
+          "id": "feelings",
+          "label": {
+            "en": "Feelings"
+          }
+        },
+        {
+          "id": "mindset-goals",
+          "label": {
+            "en": "Mindset and goals"
+          }
+        }
+      ]
+    },
+    {
+      "id": "relationships",
+      "label": {
+        "en": "Getting on with others"
+      },
+      "topics": [
+        {
+          "id": "friendship",
+          "label": {
+            "en": "Friendship and sharing"
+          }
+        },
+        {
+          "id": "conflict-empathy",
+          "label": {
+            "en": "Empathy and conflict"
+          }
+        }
+      ]
+    },
+    {
+      "id": "health",
+      "label": {
+        "en": "Healthy habits"
+      },
+      "topics": [
+        {
+          "id": "body-care",
+          "label": {
+            "en": "Looking after my body"
+          }
+        },
+        {
+          "id": "help-seeking",
+          "label": {
+            "en": "Asking for help"
+          }
+        }
+      ]
+    }
+  ]
+}

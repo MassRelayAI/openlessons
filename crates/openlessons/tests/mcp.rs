@@ -58,7 +58,7 @@ fn proposal() -> Value {
     json!({
         "schema": "proposal/1", "title": "Count to four",
         "provenance": {"origin": "ai", "maker": "example-agent", "model": "example-model", "created": "2026-11-23"},
-        "skills": [{"id": "maths.number.count-to-four", "statement": {"en": "I can count up to four things."}, "prerequisites": ["maths.number.count-to-three"]}],
+        "skills": [{"id": "maths.number.count-to-four", "topic": "counting", "bands": ["b05-06"], "statement": {"en": "I can count up to four things."}, "prerequisites": ["maths.number.count-to-three"]}],
         "alignments": [{"skill": "maths.number.count-to-four", "standard": "example-framework:y1", "strength": "partial"}],
         "lessons": [{
             "lesson": {"slug": "count-to-four", "locale": "en", "subject": "maths", "title": "Count to four", "ages": {"min": 5, "max": 7},
@@ -85,7 +85,7 @@ fn it_speaks_the_protocol() {
     assert_eq!(replies[0]["result"]["serverInfo"]["name"], "openlessons");
     assert!(replies[0]["result"]["capabilities"]["tools"].is_object());
     let names: Vec<&str> = replies[1]["result"]["tools"].as_array().unwrap().iter().map(|t| t["name"].as_str().unwrap()).collect();
-    assert_eq!(names, ["find_lessons", "get_lesson", "validate_proposal", "propose_lesson"]);
+    assert_eq!(names, ["find_lessons", "get_lesson", "gap_report", "get_work_orders", "validate_proposal", "propose_lesson"]);
     assert!(replies[1]["result"]["tools"].as_array().unwrap().iter().all(|t| t["inputSchema"]["type"] == "object" && t["description"].is_string()));
     assert_eq!(replies[2]["result"], json!({}));
     assert_eq!(replies[3]["error"]["code"], -32601);

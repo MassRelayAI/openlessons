@@ -1,0 +1,27 @@
+{
+  "schema": "subject/1",
+  "id": "maths",
+  "area": "maths",
+  "label": {
+    "en": "Maths"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "number",
+      "label": {
+        "en": "Number"
+      },
+      "topics": [
+        {
+          "id": "counting",
+          "label": {
+            "en": "Counting"
+          }
+        }
+      ]
+    }
+  ]
+}

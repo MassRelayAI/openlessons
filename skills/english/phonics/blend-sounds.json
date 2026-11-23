@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "phonics",
   "slug": "blend-sounds",
+  "topic": "blending-segmenting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can blend three sounds into a word."
   },

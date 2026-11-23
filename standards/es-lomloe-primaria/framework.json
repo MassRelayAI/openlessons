@@ -1,0 +1,32 @@
+{
+  "schema": "framework/1",
+  "id": "es-lomloe-primaria",
+  "title": "Real Decreto 157/2022: ordenación y enseñanzas mínimas de la Educación Primaria",
+  "publisher": "Gobierno de España (Boletín Oficial del Estado)",
+  "jurisdiction": "ES",
+  "version": "2022 (LOMLOE)",
+  "sourceUrl": "https://www.boe.es/eli/es/rd/2022/03/01/157",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 12
+    },
+    "grades": "1.º a 6.º de Educación Primaria"
+  },
+  "languages": [
+    "es"
+  ],
+  "terms": {
+    "class": "open",
+    "licence": "LicenseRef-BOE-reutilizacion",
+    "quote": "official_text",
+    "notice": "Fuente: Agencia Estatal Boletín Oficial del Estado, https://www.boe.es",
+    "termsUrl": "https://www.boe.es/informacion/aviso_legal/index.php",
+    "evidence": "permiten la reutilización de los documentos sometidos a ellas para fines comerciales y no comerciales",
+    "note": "The BOE's conditions allow reuse of its documents for commercial and non-commercial purposes: the meaning must not be distorted and the source must be cited. Not covered: the site's design and graphics, marks and logos. The autonomous communities add their own curricula, which are not recorded here.",
+    "reviewed": "2026-11-23"
+  }
+}

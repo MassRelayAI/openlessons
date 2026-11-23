@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.self.keep-trying",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "self",
+  "slug": "keep-trying",
+  "topic": "mindset-goals",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can keep trying when something is hard, and learn from a mistake."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

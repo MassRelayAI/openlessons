@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "za-caps",
+  "title": "Curriculum and Assessment Policy Statements (CAPS)",
+  "publisher": "Department of Basic Education, South Africa",
+  "jurisdiction": "ZA",
+  "version": "current",
+  "sourceUrl": "https://www.education.gov.za/Curriculum/CurriculumAssessmentPolicyStatements(CAPS).aspx",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "Grade R to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.education.gov.za/terms.aspx",
+    "evidence": "All rights reserved.",
+    "note": "All rights reserved. Phase names only.",
+    "reviewed": "2026-11-23"
+  }
+}

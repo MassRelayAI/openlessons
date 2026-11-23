@@ -1,0 +1,32 @@
+{
+  "schema": "framework/1",
+  "id": "sco-cfe",
+  "title": "Curriculum for Excellence: experiences and outcomes",
+  "publisher": "Education Scotland",
+  "jurisdiction": "GB-SCT",
+  "version": "current",
+  "sourceUrl": "https://education.gov.scot/curriculum-for-excellence/curriculum-for-excellence-documents/experiences-and-outcomes/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 15
+    },
+    "grades": "Early level to fourth level (to the end of S3)"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "open",
+    "licence": "OGL-UK-3.0",
+    "quote": "official_text",
+    "notice": "© Crown copyright. Contains public sector information licensed under the Open Government Licence v3.0.",
+    "termsUrl": "https://education.gov.scot/terms-of-use/",
+    "evidence": "You may use and re-use the information featured on this website (not including logos) free of charge",
+    "note": "Crown copyright, reusable under the Open Government Licence. Not covered: logos, and images, videos and material marked as a third party's.",
+    "reviewed": "2026-11-23"
+  }
+}

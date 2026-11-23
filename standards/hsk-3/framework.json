@@ -2,15 +2,29 @@
   "schema": "framework/1",
   "id": "hsk-3",
   "title": "Chinese Proficiency Grading Standards for International Chinese Language Education (HSK 3.0)",
-  "publisher": "Ministry of Education of the People's Republic of China",
+  "publisher": "Ministry of Education of the People's Republic of China and the State Language Commission; tests run by Chinese Testing International",
   "jurisdiction": "CN",
   "version": "GF 0025-2021",
-  "sourceUrl": "https://www.chinesetest.cn/",
+  "sourceUrl": "https://www.chinesetest.cn/HSK",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 12,
+      "max": 99
+    },
+    "grades": "Bands 1 to 9"
+  },
+  "languages": [
+    "zh-Hans"
+  ],
   "terms": {
     "class": "reference_only",
     "quote": "ids_only",
-    "termsUrl": "https://www.chinesetest.cn/",
-    "note": "No terms of reuse were found. Band names only; the graded word, character and grammar lists are never stored.",
-    "reviewed": null
+    "termsUrl": "https://www.chinesetest.cn/legal-notice",
+    "evidence": "All the contents of the website are copyrighted by CTI or the content providers.",
+    "note": "The test site's contents are copyrighted by the operator or its content providers; reuse must name the source and the grant does not reach adaptation. Band names only; the graded word, character and grammar lists are never stored.",
+    "reviewed": "2026-11-23"
   }
 }

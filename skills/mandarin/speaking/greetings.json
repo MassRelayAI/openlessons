@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "speaking",
   "slug": "greetings",
+  "topic": "greetings",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can say hello, thank you, sorry and goodbye in Mandarin, and know when to use them."
   },

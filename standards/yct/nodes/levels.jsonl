@@ -1,1 +1,1 @@
-{"schema":"standard/1","id":"yct:yct-1","framework":"yct","kind":"level","code":"YCT 1","subject":"mandarin","label":"YCT level 1","sourceUrl":"https://www.chinesetest.cn/"}
+{"schema":"standard/1","id":"yct:yct-1","framework":"yct","kind":"level","code":"YCT 1","subject":"mandarin","label":"YCT level 1","sourceUrl":"https://www.chinesetest.cn/","bands":["b05-06","b07-08","b09-10"]}

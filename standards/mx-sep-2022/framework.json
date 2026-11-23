@@ -1,0 +1,29 @@
+{
+  "schema": "framework/1",
+  "id": "mx-sep-2022",
+  "title": "Plan de Estudio para la educación preescolar, primaria y secundaria",
+  "publisher": "Secretaría de Educación Pública",
+  "jurisdiction": "MX",
+  "version": "2022",
+  "sourceUrl": "https://educacionbasica.sep.gob.mx/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 15
+    },
+    "grades": "Preescolar, primaria y secundaria (fases 1 a 6)"
+  },
+  "languages": [
+    "es"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://educacionbasica.sep.gob.mx/",
+    "note": "The site could not be reached and no terms of reuse were read. Phase names only.",
+    "reviewed": null
+  }
+}

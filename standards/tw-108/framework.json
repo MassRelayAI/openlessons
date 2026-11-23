@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "tw-108",
+  "title": "十二年國民基本教育課程綱要 (12-Year Basic Education Curriculum Guidelines)",
+  "publisher": "Ministry of Education, Taiwan; hosted by the National Academy for Educational Research",
+  "jurisdiction": "TW",
+  "version": "2014, amended 2021 (the 108 curriculum)",
+  "sourceUrl": "https://www.naer.edu.tw/PageSyllabus?fid=52",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 18
+    },
+    "grades": "Grades 1 to 12"
+  },
+  "languages": [
+    "zh-Hant"
+  ],
+  "terms": {
+    "class": "attribution",
+    "quote": "ids_and_titles",
+    "notice": "資料來源：國家教育研究院／教育部",
+    "termsUrl": "https://www.naer.edu.tw/PageDoc?fid=324",
+    "evidence": "以無償、非專屬，得再授權之方式提供公眾使用",
+    "note": "The host's open-information announcement grants free, sublicensable reuse and adaptation with the source cited, but covers what the host owns; the guidelines are issued by the Ministry. Until that is settled we keep identifiers and titles and paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

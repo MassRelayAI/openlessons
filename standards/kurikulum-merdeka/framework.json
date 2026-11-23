@@ -5,12 +5,26 @@
   "publisher": "Kementerian Pendidikan Dasar dan Menengah",
   "jurisdiction": "ID",
   "version": "current",
-  "sourceUrl": "https://kurikulum.kemdikbud.go.id/",
+  "sourceUrl": "https://kurikulum.kemendikdasmen.go.id/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "PAUD (Fase Fondasi) and Fase A to F (kelas 1 to 12)"
+  },
+  "languages": [
+    "id"
+  ],
   "terms": {
     "class": "reference_only",
     "quote": "ids_only",
-    "termsUrl": "https://kurikulum.kemdikbud.go.id/",
-    "note": "Terms of reuse were not read. Phase names only; the text of the learning outcomes is never stored.",
-    "reviewed": null
+    "termsUrl": "https://kurikulum.kemendikdasmen.go.id/",
+    "evidence": "Hak Cipta Kementerian Pendidikan Dasar dan Menengah",
+    "note": "The site states no licence and its footer claims copyright for the ministry. Indonesia's copyright law (UU 28/2014, Pasal 42) excludes laws and regulations from copyright, but whether an agency head's decree setting the learning outcomes counts has not been settled for us. Phase names only; the text of the learning outcomes is never stored.",
+    "reviewed": "2026-11-23"
   }
 }

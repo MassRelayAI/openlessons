@@ -1,0 +1,133 @@
+{
+  "schema": "subject/1",
+  "id": "computing",
+  "area": "computing",
+  "label": {
+    "en": "Computing"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "algorithms",
+      "label": {
+        "en": "Algorithms"
+      },
+      "topics": [
+        {
+          "id": "instructions",
+          "label": {
+            "en": "Instructions and sequence"
+          }
+        },
+        {
+          "id": "patterns-debugging",
+          "label": {
+            "en": "Patterns and debugging"
+          }
+        }
+      ]
+    },
+    {
+      "id": "programming",
+      "label": {
+        "en": "Programming"
+      },
+      "topics": [
+        {
+          "id": "control",
+          "label": {
+            "en": "Loops and conditions"
+          }
+        },
+        {
+          "id": "data-and-functions",
+          "label": {
+            "en": "Variables and functions"
+          }
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": {
+        "en": "Data"
+      },
+      "topics": [
+        {
+          "id": "organising-data",
+          "label": {
+            "en": "Organising data"
+          }
+        },
+        {
+          "id": "representing-data",
+          "label": {
+            "en": "How computers store data"
+          }
+        }
+      ]
+    },
+    {
+      "id": "systems",
+      "label": {
+        "en": "Computer systems"
+      },
+      "topics": [
+        {
+          "id": "devices",
+          "label": {
+            "en": "Devices"
+          }
+        },
+        {
+          "id": "networks",
+          "label": {
+            "en": "Networks and the internet"
+          }
+        }
+      ]
+    },
+    {
+      "id": "digital-citizenship",
+      "label": {
+        "en": "Digital citizenship"
+      },
+      "topics": [
+        {
+          "id": "privacy-safety",
+          "label": {
+            "en": "Privacy and safety"
+          }
+        },
+        {
+          "id": "respect",
+          "label": {
+            "en": "Kindness and respect online"
+          }
+        },
+        {
+          "id": "information",
+          "label": {
+            "en": "Judging information"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ai",
+      "label": {
+        "en": "Artificial intelligence"
+      },
+      "topics": [
+        {
+          "id": "understanding-ai",
+          "label": {
+            "en": "Understanding AI"
+          }
+        }
+      ]
+    }
+  ]
+}

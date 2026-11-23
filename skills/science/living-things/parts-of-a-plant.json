@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "science.living-things.parts-of-a-plant",
+  "version": 1,
+  "subject": "science",
+  "strand": "living-things",
+  "slug": "parts-of-a-plant",
+  "topic": "plants",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can name the root, stem, leaf and flower of a plant."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

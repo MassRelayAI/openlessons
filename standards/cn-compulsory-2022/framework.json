@@ -1,0 +1,29 @@
+{
+  "schema": "framework/1",
+  "id": "cn-compulsory-2022",
+  "title": "义务教育课程方案和课程标准（2022年版）(Compulsory Education Curriculum Program and Standards)",
+  "publisher": "Ministry of Education of the People's Republic of China",
+  "jurisdiction": "CN",
+  "version": "2022",
+  "sourceUrl": "https://www.moe.gov.cn/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 15
+    },
+    "grades": "Grades 1 to 9"
+  },
+  "languages": [
+    "zh-Hans"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.moe.gov.cn/",
+    "note": "The ministry's site could not be read. China's Copyright Law (article 5) leaves official documents of state organs outside copyright, but the standards are also sold as books and their status is unclear to us. Grade bands only.",
+    "reviewed": null
+  }
+}

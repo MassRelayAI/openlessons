@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.safety.get-help-in-an-emergency",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "safety",
+  "slug": "get-help-in-an-emergency",
+  "topic": "everyday-safety",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I know when something is an emergency and how to get help from a trusted adult."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

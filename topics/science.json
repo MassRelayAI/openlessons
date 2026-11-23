@@ -1,0 +1,149 @@
+{
+  "schema": "subject/1",
+  "id": "science",
+  "area": "science",
+  "label": {
+    "en": "Science"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "living-things",
+      "label": {
+        "en": "Living things"
+      },
+      "topics": [
+        {
+          "id": "plants",
+          "label": {
+            "en": "Plants"
+          }
+        },
+        {
+          "id": "animals",
+          "label": {
+            "en": "Animals"
+          }
+        },
+        {
+          "id": "human-body",
+          "label": {
+            "en": "The human body"
+          }
+        },
+        {
+          "id": "habitats",
+          "label": {
+            "en": "Habitats and food chains"
+          }
+        },
+        {
+          "id": "cells",
+          "label": {
+            "en": "Cells"
+          }
+        }
+      ]
+    },
+    {
+      "id": "materials",
+      "label": {
+        "en": "Materials"
+      },
+      "topics": [
+        {
+          "id": "everyday-materials",
+          "label": {
+            "en": "Everyday materials"
+          }
+        },
+        {
+          "id": "states-of-matter",
+          "label": {
+            "en": "Solids, liquids and gases"
+          }
+        },
+        {
+          "id": "changes",
+          "label": {
+            "en": "Changing and separating materials"
+          }
+        }
+      ]
+    },
+    {
+      "id": "forces-energy",
+      "label": {
+        "en": "Forces and energy"
+      },
+      "topics": [
+        {
+          "id": "forces",
+          "label": {
+            "en": "Forces and magnets"
+          }
+        },
+        {
+          "id": "light-sound",
+          "label": {
+            "en": "Light and sound"
+          }
+        },
+        {
+          "id": "electricity",
+          "label": {
+            "en": "Electricity"
+          }
+        },
+        {
+          "id": "energy",
+          "label": {
+            "en": "Energy"
+          }
+        }
+      ]
+    },
+    {
+      "id": "earth-space",
+      "label": {
+        "en": "Earth and space"
+      },
+      "topics": [
+        {
+          "id": "weather-seasons",
+          "label": {
+            "en": "Weather and seasons"
+          }
+        },
+        {
+          "id": "earth",
+          "label": {
+            "en": "Rocks, soil and water"
+          }
+        },
+        {
+          "id": "space",
+          "label": {
+            "en": "Sun, Earth and planets"
+          }
+        }
+      ]
+    },
+    {
+      "id": "working-scientifically",
+      "label": {
+        "en": "Working scientifically"
+      },
+      "topics": [
+        {
+          "id": "enquiry",
+          "label": {
+            "en": "Asking, testing and recording"
+          }
+        }
+      ]
+    }
+  ]
+}

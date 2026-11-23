@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "compare-numbers",
+  "topic": "comparing",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say which number is more and which is fewer."
   },

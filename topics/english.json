@@ -1,0 +1,73 @@
+{
+  "schema": "subject/1",
+  "id": "english",
+  "area": "literacy",
+  "label": {
+    "en": "English"
+  },
+  "locales": [
+    "en"
+  ],
+  "strands": [
+    {
+      "id": "phonics",
+      "label": {
+        "en": "Phonics"
+      },
+      "topics": [
+        {
+          "id": "letter-sounds",
+          "label": {
+            "en": "Letters and sounds"
+          }
+        },
+        {
+          "id": "blending-segmenting",
+          "label": {
+            "en": "Blending and segmenting"
+          }
+        },
+        {
+          "id": "common-words",
+          "label": {
+            "en": "Common words"
+          }
+        }
+      ]
+    },
+    {
+      "id": "grammar",
+      "label": {
+        "en": "Sentences"
+      },
+      "topics": [
+        {
+          "id": "simple-sentences",
+          "label": {
+            "en": "Simple sentences"
+          }
+        },
+        {
+          "id": "punctuation",
+          "label": {
+            "en": "Punctuation"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vocab",
+      "label": {
+        "en": "Vocabulary"
+      },
+      "topics": [
+        {
+          "id": "first-words",
+          "label": {
+            "en": "First words"
+          }
+        }
+      ]
+    }
+  ]
+}

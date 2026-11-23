@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "calc",
   "slug": "number-bonds-10",
+  "topic": "addition-subtraction",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I know the pairs of numbers that make 10."
   },

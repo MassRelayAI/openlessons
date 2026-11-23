@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kalimat",
   "slug": "ini",
+  "topic": "kalimat-sederhana",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa menunjuk dan berkata: Ini bola."
   },

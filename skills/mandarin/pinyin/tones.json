@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "pinyin",
   "slug": "tones",
+  "topic": "tones",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can hear the four tones of Mandarin and match each one to its mark."
   },

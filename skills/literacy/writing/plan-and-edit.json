@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.writing.plan-and-edit",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "writing",
+  "slug": "plan-and-edit",
+  "topic": "composition",
+  "bands": [
+    "b09-10",
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can plan my writing, then read it again and make it better."
+  },
+  "prerequisites": [
+    "literacy.writing.sequence-a-story"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "ncas-2014",
+  "title": "National Core Arts Standards",
+  "publisher": "National Coalition for Arts Standards; rights administered by Young Audiences, Inc.",
+  "jurisdiction": "US",
+  "version": "2014",
+  "sourceUrl": "https://www.nationalartsstandards.org/",
+  "subjects": [
+    "arts"
+  ],
+  "span": {
+    "ages": {
+      "min": 4,
+      "max": 18
+    },
+    "grades": "Pre-kindergarten to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.nationalartsstandards.org/sites/default/files/2025-08/NCAS%20Copyright%20Guidelines_2025.pdf",
+    "evidence": "A copyright license and written permission from Young Audiences, Inc. (YAI) is required whenever copyrighted material",
+    "note": "All rights reserved, with narrow carve-outs; performance standards, enduring understandings and essential questions need a licence. Codes only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

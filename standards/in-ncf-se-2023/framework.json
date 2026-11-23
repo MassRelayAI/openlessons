@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "in-ncf-se-2023",
+  "title": "National Curriculum Framework for School Education",
+  "publisher": "National Council of Educational Research and Training (NCERT)",
+  "jurisdiction": "IN",
+  "version": "2023",
+  "sourceUrl": "https://www.ncert.nic.in/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 18
+    },
+    "grades": "Foundational, preparatory, middle and secondary stages (5+3+3+4)"
+  },
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.ncert.nic.in/",
+    "note": "The publisher's sites could not be reached and its copyright policy was not read. Search results report that reproduction needs its permission. Stage names only.",
+    "reviewed": null
+  }
+}

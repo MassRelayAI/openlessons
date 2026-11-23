@@ -75,6 +75,16 @@
     "sourceUrl": {
       "type": "string",
       "pattern": "^https://"
+    },
+    "bands": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(b[0-9]{2}-[0-9]{2}|adult)$"
+      },
+      "description": "the age bands (bands/age-bands.json) this node is written for; a node without them inherits its parent's"
     }
   }
 }

@@ -1,0 +1,189 @@
+{
+  "schema": "subject/1",
+  "id": "maths",
+  "area": "maths",
+  "label": {
+    "en": "Maths"
+  },
+  "locales": [
+    "*"
+  ],
+  "strands": [
+    {
+      "id": "number",
+      "label": {
+        "en": "Number"
+      },
+      "topics": [
+        {
+          "id": "counting",
+          "label": {
+            "en": "Counting"
+          }
+        },
+        {
+          "id": "place-value",
+          "label": {
+            "en": "Place value"
+          }
+        },
+        {
+          "id": "comparing",
+          "label": {
+            "en": "Comparing and ordering"
+          }
+        },
+        {
+          "id": "beyond-whole-numbers",
+          "label": {
+            "en": "Negative numbers and decimals"
+          }
+        }
+      ]
+    },
+    {
+      "id": "calc",
+      "label": {
+        "en": "Calculation"
+      },
+      "topics": [
+        {
+          "id": "addition-subtraction",
+          "label": {
+            "en": "Addition and subtraction"
+          }
+        },
+        {
+          "id": "multiplication-division",
+          "label": {
+            "en": "Multiplication and division"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fractions",
+      "label": {
+        "en": "Fractions"
+      },
+      "topics": [
+        {
+          "id": "parts-of-a-whole",
+          "label": {
+            "en": "Parts of a whole"
+          }
+        },
+        {
+          "id": "equivalence",
+          "label": {
+            "en": "Equivalent fractions, decimals and percentages"
+          }
+        }
+      ]
+    },
+    {
+      "id": "measure",
+      "label": {
+        "en": "Measurement"
+      },
+      "topics": [
+        {
+          "id": "length-mass",
+          "label": {
+            "en": "Length and mass"
+          }
+        },
+        {
+          "id": "time",
+          "label": {
+            "en": "Time"
+          }
+        },
+        {
+          "id": "money",
+          "label": {
+            "en": "Money"
+          }
+        },
+        {
+          "id": "perimeter-area",
+          "label": {
+            "en": "Perimeter and area"
+          }
+        }
+      ]
+    },
+    {
+      "id": "shape",
+      "label": {
+        "en": "Shape and space"
+      },
+      "topics": [
+        {
+          "id": "2d-shapes",
+          "label": {
+            "en": "Flat shapes"
+          }
+        },
+        {
+          "id": "3d-shapes",
+          "label": {
+            "en": "Solid shapes"
+          }
+        },
+        {
+          "id": "position",
+          "label": {
+            "en": "Position and direction"
+          }
+        },
+        {
+          "id": "angles-symmetry",
+          "label": {
+            "en": "Angles and symmetry"
+          }
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "label": {
+        "en": "Data"
+      },
+      "topics": [
+        {
+          "id": "sorting-charts",
+          "label": {
+            "en": "Sorting and charts"
+          }
+        },
+        {
+          "id": "averages",
+          "label": {
+            "en": "Averages"
+          }
+        }
+      ]
+    },
+    {
+      "id": "algebra",
+      "label": {
+        "en": "Patterns and algebra"
+      },
+      "topics": [
+        {
+          "id": "patterns",
+          "label": {
+            "en": "Patterns"
+          }
+        },
+        {
+          "id": "equations",
+          "label": {
+            "en": "Equations"
+          }
+        }
+      ]
+    }
+  ]
+}

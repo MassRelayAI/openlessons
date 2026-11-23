@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "characters",
   "slug": "numbers",
+  "topic": "numbers",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can read and say the Chinese numbers one to ten."
   },

@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "count-to-20",
+  "topic": "counting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can count up to 20 things and read the numbers 11 to 20."
   },

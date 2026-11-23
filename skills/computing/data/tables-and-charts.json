@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "computing.data.tables-and-charts",
+  "version": 1,
+  "subject": "computing",
+  "strand": "data",
+  "slug": "tables-and-charts",
+  "topic": "organising-data",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can put information into a table and show it as a chart."
+  },
+  "prerequisites": [
+    "computing.data.sort-into-groups"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

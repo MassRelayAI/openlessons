@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "grammar",
   "slug": "i-like",
+  "topic": "simple-sentences",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say what I like with \"I like ...\"."
   },

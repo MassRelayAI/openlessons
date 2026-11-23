@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kalimat",
   "slug": "kapital-titik",
+  "topic": "tanda-baca",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa memulai kalimat dengan huruf kapital dan mengakhirinya dengan tanda titik."
   },

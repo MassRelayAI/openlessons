@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "characters",
   "slug": "count",
+  "topic": "numbers",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can count up to ten things and say the number in Chinese."
   },

@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.shape.angles",
+  "version": 1,
+  "subject": "maths",
+  "strand": "shape",
+  "slug": "angles",
+  "topic": "angles-symmetry",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can spot right angles and say if an angle is bigger or smaller than one."
+  },
+  "prerequisites": [
+    "maths.shape.sides-corners"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

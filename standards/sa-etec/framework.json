@@ -1,0 +1,29 @@
+{
+  "schema": "framework/1",
+  "id": "sa-etec",
+  "title": "Saudi Arabia national curriculum framework",
+  "publisher": "Education and Training Evaluation Commission (ETEC)",
+  "jurisdiction": "SA",
+  "version": "current",
+  "sourceUrl": "https://etec.gov.sa/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 18
+    },
+    "grades": "Primary, intermediate and secondary"
+  },
+  "languages": [
+    "ar"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://etec.gov.sa/",
+    "note": "No framework page or terms page could be read; the site footer reserves all rights. Stage names only.",
+    "reviewed": null
+  }
+}

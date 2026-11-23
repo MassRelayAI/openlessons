@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.reading.main-idea",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "reading",
+  "slug": "main-idea",
+  "topic": "understanding",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can say what a text is mostly about."
+  },
+  "prerequisites": [
+    "literacy.reading.retell-a-story"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

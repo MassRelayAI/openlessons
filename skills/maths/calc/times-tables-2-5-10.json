@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.times-tables-2-5-10",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "times-tables-2-5-10",
+  "topic": "multiplication-division",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I know the 2, 5 and 10 times tables."
+  },
+  "prerequisites": [
+    "maths.calc.equal-groups"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

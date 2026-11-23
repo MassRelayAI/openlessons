@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "shape",
   "slug": "describe-shapes",
+  "topic": "2d-shapes",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say what makes a shape the shape it is."
   },

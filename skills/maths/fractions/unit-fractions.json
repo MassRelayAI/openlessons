@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.fractions.unit-fractions",
+  "version": 1,
+  "subject": "maths",
+  "strand": "fractions",
+  "slug": "unit-fractions",
+  "topic": "parts-of-a-whole",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can name and compare fractions with 1 on top, such as a third and a fifth."
+  },
+  "prerequisites": [
+    "maths.fractions.halves-and-quarters"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

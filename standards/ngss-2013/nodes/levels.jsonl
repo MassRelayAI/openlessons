@@ -1,0 +1,4 @@
+{"schema":"standard/1","id":"ngss-2013:k-2","framework":"ngss-2013","kind":"level","code":"K-2","subject":"science","bands":["b05-06","b07-08"],"label":"Kindergarten to grade 2","sourceUrl":"https://www.nextgenscience.org/search-standards"}
+{"schema":"standard/1","id":"ngss-2013:3-5","framework":"ngss-2013","kind":"level","code":"3-5","subject":"science","bands":["b07-08","b09-10"],"label":"Grades 3 to 5","sourceUrl":"https://www.nextgenscience.org/search-standards"}
+{"schema":"standard/1","id":"ngss-2013:ms","framework":"ngss-2013","kind":"level","code":"MS","subject":"science","bands":["b11-12","b13-14"],"label":"Middle school (grades 6 to 8)","sourceUrl":"https://www.nextgenscience.org/search-standards"}
+{"schema":"standard/1","id":"ngss-2013:hs","framework":"ngss-2013","kind":"level","code":"HS","subject":"science","bands":["b13-14","b15-16","b17-18"],"label":"High school (grades 9 to 12)","sourceUrl":"https://www.nextgenscience.org/search-standards"}

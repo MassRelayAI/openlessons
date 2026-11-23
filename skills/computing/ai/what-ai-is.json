@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "computing.ai.what-ai-is",
+  "version": 1,
+  "subject": "computing",
+  "strand": "ai",
+  "slug": "what-ai-is",
+  "topic": "understanding-ai",
+  "bands": [
+    "b09-10",
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can say what an AI system is, that it learns from examples, and that it can be wrong."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

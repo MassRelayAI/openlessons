@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.safety.safe-at-home",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "safety",
+  "slug": "safe-at-home",
+  "topic": "everyday-safety",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can spot things at home that could hurt me and keep away from them."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

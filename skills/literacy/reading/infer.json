@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.reading.infer",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "reading",
+  "slug": "infer",
+  "topic": "thinking-about-texts",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can work out something the writer shows but does not say."
+  },
+  "prerequisites": [
+    "literacy.reading.main-idea"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

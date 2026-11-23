@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "vocab",
   "slug": "family",
+  "topic": "first-words",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can name the people in my family in Mandarin."
   },

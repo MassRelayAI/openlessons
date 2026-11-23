@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.money.needs-and-wants",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "money",
+  "slug": "needs-and-wants",
+  "topic": "spending-saving",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can tell something I need from something I want."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

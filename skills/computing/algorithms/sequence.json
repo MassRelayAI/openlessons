@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "computing.algorithms.sequence",
+  "version": 1,
+  "subject": "computing",
+  "strand": "algorithms",
+  "slug": "sequence",
+  "topic": "instructions",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can put the steps of a task in the right order."
+  },
+  "prerequisites": [
+    "computing.algorithms.follow-steps"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "maths.measure.compare-length-mass",
+  "version": 1,
+  "subject": "maths",
+  "strand": "measure",
+  "slug": "compare-length-mass",
+  "topic": "length-mass",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can say which of two things is longer, shorter, heavier or lighter."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

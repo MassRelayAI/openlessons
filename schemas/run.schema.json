@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/run.schema.json",
+  "title": "run/1: the report of one loop run",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "date",
+    "mode",
+    "landed",
+    "refused",
+    "gaps",
+    "items",
+    "gates"
+  ],
+  "properties": {
+    "schema": {
+      "const": "run/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9a-f]{8}$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "mode": {
+      "enum": [
+        "dry-run",
+        "pull-request",
+        "files"
+      ]
+    },
+    "landed": {
+      "type": "array"
+    },
+    "refused": {
+      "type": "array"
+    },
+    "gaps": {
+      "type": "object"
+    },
+    "items": {
+      "type": "object"
+    },
+    "gates": {
+      "type": "object"
+    }
+  }
+}

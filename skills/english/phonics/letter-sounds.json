@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "phonics",
   "slug": "letter-sounds",
+  "topic": "letter-sounds",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say the sound for s, a, t, p, i and n."
   },

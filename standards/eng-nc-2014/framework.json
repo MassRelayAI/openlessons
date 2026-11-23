@@ -6,12 +6,26 @@
   "jurisdiction": "GB-ENG",
   "version": "2014",
   "sourceUrl": "https://www.gov.uk/government/collections/national-curriculum",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 16
+    },
+    "grades": "Key stages 1 to 4 (Year 1 to Year 11)"
+  },
+  "languages": [
+    "en"
+  ],
   "terms": {
     "class": "open",
     "licence": "OGL-UK-3.0",
     "quote": "official_text",
     "notice": "Contains public sector information licensed under the Open Government Licence v3.0.",
     "termsUrl": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+    "evidence": "All content is available under the Open Government Licence v3.0, except where otherwise stated",
     "note": "Published on GOV.UK under the Open Government Licence v3.0 except where otherwise stated. Official wording may be quoted with the notice; logos, crests and third-party material are not covered.",
     "reviewed": "2026-11-23"
   }

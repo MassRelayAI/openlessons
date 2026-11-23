@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "grammar",
   "slug": "this-is-a",
+  "topic": "simple-sentences",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can say \"This is a ...\" about a picture."
   },

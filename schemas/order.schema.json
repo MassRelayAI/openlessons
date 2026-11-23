@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/order.schema.json",
+  "title": "order/1: one work order of the loop: draft a lesson for this objective, age band and language. The answer is a proposal/1 with one lesson",
+  "type": "object",
+  "required": [
+    "schema",
+    "cell",
+    "objective",
+    "band",
+    "locale",
+    "lesson",
+    "standards",
+    "reading",
+    "rules"
+  ],
+  "properties": {
+    "schema": {
+      "const": "order/1"
+    },
+    "cell": {
+      "type": "string",
+      "description": "<objective>@<band>@<locale>"
+    },
+    "gap": {
+      "enum": [
+        "no-lesson",
+        "few-items"
+      ]
+    },
+    "demand": {
+      "type": "integer"
+    },
+    "objective": {
+      "type": "object",
+      "description": "the skill/1 record: statement, misconceptions, prerequisites, mastery"
+    },
+    "band": {
+      "type": "object"
+    },
+    "locale": {
+      "type": "object"
+    },
+    "lesson": {
+      "type": "object",
+      "description": "what the drafted lesson must carry: slug, locale, subject, ages, skills, and the fewest items"
+    },
+    "standards": {
+      "type": "array",
+      "description": "the aligned standards with our paraphrase; the publisher's wording only where its terms allow it"
+    },
+    "reading": {
+      "type": "object",
+      "description": "the reading-level bounds for the band"
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kosakata",
   "slug": "warna",
+  "topic": "kata-pertama",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa menyebut delapan warna."
   },

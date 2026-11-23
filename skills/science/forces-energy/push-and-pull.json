@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "science.forces-energy.push-and-pull",
+  "version": 1,
+  "subject": "science",
+  "strand": "forces-energy",
+  "slug": "push-and-pull",
+  "topic": "forces",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can say whether a push or a pull makes something move."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

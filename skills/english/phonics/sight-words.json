@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "phonics",
   "slug": "sight-words",
+  "topic": "common-words",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can read the words the, I, to, a, is, it and we on sight."
   },

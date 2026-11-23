@@ -1,0 +1,28 @@
+{
+  "schema": "framework/1",
+  "id": "kr-2022",
+  "title": "2022 개정 교육과정 (2022 Revised National Curriculum)",
+  "publisher": "Ministry of Education, Republic of Korea",
+  "jurisdiction": "KR",
+  "version": "2022",
+  "sourceUrl": "https://ncic.re.kr/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 18
+    },
+    "grades": "Grades 1 to 12"
+  },
+  "terms": {
+    "class": "reference_only",
+    "licence": "KOGL-Type-2",
+    "quote": "ids_only",
+    "termsUrl": "https://ncic.re.kr/mbr/policy.do",
+    "evidence": "공공누리 제2유형은 상업적 이용을 금지하고 있으니",
+    "note": "Korea Open Government Licence type 2: attribution, no commercial use. Grade bands only.",
+    "reviewed": "2026-11-23"
+  }
+}

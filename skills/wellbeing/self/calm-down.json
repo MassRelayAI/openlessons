@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.self.calm-down",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "self",
+  "slug": "calm-down",
+  "topic": "feelings",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can use a way to calm myself when a feeling is big."
+  },
+  "prerequisites": [
+    "wellbeing.self.name-feelings"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

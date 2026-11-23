@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "computing.systems.networks-and-internet",
+  "version": 1,
+  "subject": "computing",
+  "strand": "systems",
+  "slug": "networks-and-internet",
+  "topic": "networks",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can explain that the internet is many computers joined together to share information."
+  },
+  "prerequisites": [
+    "computing.systems.parts-of-a-computer"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

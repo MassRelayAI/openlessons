@@ -1,0 +1,53 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "hi",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "हत्या",
+      "बंदूक",
+      "बन्दूक",
+      "पिस्तौल",
+      "बम",
+      "हथियार",
+      "आत्महत्या",
+      "लाश"
+    ],
+    "substances": [
+      "शराब",
+      "बीयर",
+      "सिगरेट",
+      "नशा",
+      "गांजा",
+      "ड्रग्स"
+    ],
+    "gambling": [
+      "जुआ",
+      "कैसीनो",
+      "सट्टा",
+      "लॉटरी"
+    ],
+    "adult": [
+      "सेक्स",
+      "अश्लील",
+      "नंगा",
+      "नंगी"
+    ],
+    "insults": [
+      "बेवकूफ",
+      "मूर्ख",
+      "पागल"
+    ],
+    "commerce": [
+      "अभी खरीदें",
+      "क्रेडिट कार्ड"
+    ],
+    "personal_data": [
+      "तुम्हारा पासवर्ड",
+      "तुम्हारा फ़ोन नंबर",
+      "तुम्हारा पता"
+    ]
+  },
+  "hashed": []
+}

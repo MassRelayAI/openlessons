@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.self.set-a-goal",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "self",
+  "slug": "set-a-goal",
+  "topic": "mindset-goals",
+  "bands": [
+    "b09-10",
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can set a small goal and plan the steps to reach it."
+  },
+  "prerequisites": [
+    "wellbeing.self.keep-trying"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

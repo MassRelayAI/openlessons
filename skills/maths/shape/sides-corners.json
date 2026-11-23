@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "shape",
   "slug": "sides-corners",
+  "topic": "2d-shapes",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can count the sides and corners of a flat shape."
   },

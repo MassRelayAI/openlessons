@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.fractions.add-same-denominator",
+  "version": 1,
+  "subject": "maths",
+  "strand": "fractions",
+  "slug": "add-same-denominator",
+  "topic": "parts-of-a-whole",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can add and subtract fractions that have the same bottom number."
+  },
+  "prerequisites": [
+    "maths.fractions.unit-fractions"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

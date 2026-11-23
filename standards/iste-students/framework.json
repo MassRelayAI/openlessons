@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "iste-students",
+  "title": "ISTE Standards for Students",
+  "publisher": "International Society for Technology in Education",
+  "jurisdiction": "international",
+  "version": "2024",
+  "sourceUrl": "https://iste.org/standards/students",
+  "subjects": [
+    "computing"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "Kindergarten to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://iste.org/permissions-licensing",
+    "evidence": "Commercial use of the ISTE Standards requires a commercial digital use agreement.",
+    "note": "All rights reserved; commercial use needs an agreement with ISTE. Standard numbers only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

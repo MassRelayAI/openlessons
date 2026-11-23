@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "vocab",
   "slug": "family",
+  "topic": "first-words",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can name people in my family."
   },

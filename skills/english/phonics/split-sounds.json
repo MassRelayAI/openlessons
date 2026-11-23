@@ -5,6 +5,10 @@
   "subject": "english",
   "strand": "phonics",
   "slug": "split-sounds",
+  "topic": "blending-segmenting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can split a short word into its sounds."
   },

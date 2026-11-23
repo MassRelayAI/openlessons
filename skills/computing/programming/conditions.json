@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "computing.programming.conditions",
+  "version": 1,
+  "subject": "computing",
+  "strand": "programming",
+  "slug": "conditions",
+  "topic": "control",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can make a program choose what to do with an if."
+  },
+  "prerequisites": [
+    "computing.programming.loops"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

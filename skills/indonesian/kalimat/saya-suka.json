@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kalimat",
   "slug": "saya-suka",
+  "topic": "kalimat-sederhana",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa berkata apa yang saya suka: Saya suka apel."
   },

@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "fonik",
   "slug": "suku-kata",
+  "topic": "suku-kata",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa membaca suku kata terbuka seperti ba, bi, bu, be, bo."
   },

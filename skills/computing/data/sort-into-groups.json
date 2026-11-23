@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "computing.data.sort-into-groups",
+  "version": 1,
+  "subject": "computing",
+  "strand": "data",
+  "slug": "sort-into-groups",
+  "topic": "organising-data",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can sort objects by a rule and say what the rule is."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

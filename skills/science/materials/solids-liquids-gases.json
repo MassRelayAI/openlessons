@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "science.materials.solids-liquids-gases",
+  "version": 1,
+  "subject": "science",
+  "strand": "materials",
+  "slug": "solids-liquids-gases",
+  "topic": "states-of-matter",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can sort things into solids, liquids and gases and say how each behaves."
+  },
+  "prerequisites": [
+    "science.materials.name-materials"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

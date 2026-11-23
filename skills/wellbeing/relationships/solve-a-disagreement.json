@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.relationships.solve-a-disagreement",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "relationships",
+  "slug": "solve-a-disagreement",
+  "topic": "conflict-empathy",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can sort out a disagreement by listening and finding a fair way."
+  },
+  "prerequisites": [
+    "wellbeing.relationships.be-a-good-friend"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.calc.add-within-20",
+  "version": 1,
+  "subject": "maths",
+  "strand": "calc",
+  "slug": "add-within-20",
+  "topic": "addition-subtraction",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can add two numbers with a total up to 20."
+  },
+  "prerequisites": [
+    "maths.calc.number-bonds-10"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

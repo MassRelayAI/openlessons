@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "science.living-things.habitats",
+  "version": 1,
+  "subject": "science",
+  "strand": "living-things",
+  "slug": "habitats",
+  "topic": "habitats",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can match a living thing to the place where it lives and say why it suits it."
+  },
+  "prerequisites": [
+    "science.living-things.animal-groups"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

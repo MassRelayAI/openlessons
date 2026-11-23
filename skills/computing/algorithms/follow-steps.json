@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "computing.algorithms.follow-steps",
+  "version": 1,
+  "subject": "computing",
+  "strand": "algorithms",
+  "slug": "follow-steps",
+  "topic": "instructions",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can follow and give instructions one step at a time."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

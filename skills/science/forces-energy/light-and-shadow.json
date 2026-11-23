@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "science.forces-energy.light-and-shadow",
+  "version": 1,
+  "subject": "science",
+  "strand": "forces-energy",
+  "slug": "light-and-shadow",
+  "topic": "light-sound",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can explain how a shadow is made."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

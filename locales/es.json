@@ -1,0 +1,8 @@
+{
+  "schema": "locale/1",
+  "id": "es",
+  "name": "Spanish",
+  "script": "Latn",
+  "direction": "ltr",
+  "segmentation": "space"
+}

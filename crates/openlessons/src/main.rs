@@ -2,7 +2,7 @@
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use openlessons::{canon, export, find, import, judge, observe, selftest, stamp, write_index, Query, RULES};
+use openlessons::{canon, export, find, gaps, import, judge, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
 use serde_json::{json, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -131,10 +131,147 @@ enum Cmd {
         #[arg(long)]
         allow_write: bool,
     },
+    /// List the gaps: objective x age band x language cells with no lesson or too few items, ranked by demand
+    Gaps {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// how many gaps to print
+        #[arg(long, default_value_t = 20)]
+        top: usize,
+        /// only these subjects (comma separated)
+        #[arg(long, value_delimiter = ',')]
+        subject: Vec<String>,
+        /// only these languages (comma separated)
+        #[arg(long, value_delimiter = ',')]
+        locale: Vec<String>,
+        /// only these age bands (comma separated: b05-06,b07-08)
+        #[arg(long, value_delimiter = ',')]
+        band: Vec<String>,
+        /// a cell with fewer items than this is still a gap
+        #[arg(long, default_value_t = 8)]
+        min_items: u64,
+        /// one JSON object per gap, then a summary object
+        #[arg(long)]
+        json: bool,
+        /// Markdown (for a pull request or a CI summary)
+        #[arg(long)]
+        md: bool,
+    },
+    /// The content loop: pick the top gaps, land drafts, or do both around a drafter command
+    Loop {
+        #[command(subcommand)]
+        step: LoopStep,
+    },
+    /// List the standards registry: every framework with its licence class and what may be copied
+    Registry {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        #[arg(long)]
+        json: bool,
+    },
+    /// Print the fingerprints of a text file, for gates/data/protected.json (the text itself is never stored)
+    Fingerprint {
+        file: PathBuf,
+        #[arg(long, default_value_t = 6)]
+        window: usize,
+    },
     /// Write content ids into items.jsonl files and sort them (a file or a folder)
     Stamp { paths: Vec<PathBuf> },
     /// Print the id and folder of a lesson
     Id { locale: String, subject: String, slug: String },
+}
+
+#[derive(clap::Args)]
+struct PickArgs {
+    #[arg(long, default_value = ".")]
+    root: PathBuf,
+    /// how many gaps to take
+    #[arg(long, default_value_t = 20)]
+    top: usize,
+    /// only these subjects (comma separated)
+    #[arg(long, value_delimiter = ',')]
+    subject: Vec<String>,
+    /// only these languages (comma separated)
+    #[arg(long, value_delimiter = ',')]
+    locale: Vec<String>,
+    /// only these age bands (comma separated)
+    #[arg(long, value_delimiter = ',')]
+    band: Vec<String>,
+    #[arg(long, default_value_t = 8)]
+    min_items: u64,
+    /// the run folder: orders.json goes here, drafts under drafts/ (keep it outside the tree, or under .loop/)
+    #[arg(long, default_value = ".loop")]
+    run: PathBuf,
+}
+
+#[derive(clap::Args)]
+struct LandArgs {
+    /// commit on a new local branch loop/<run id>; push nothing, open nothing
+    #[arg(long)]
+    dry_run: bool,
+    /// only write the files and the report into the working tree; touch no branch
+    #[arg(long, conflicts_with = "dry_run")]
+    no_git: bool,
+    /// the run's date (default: today, UTC)
+    #[arg(long)]
+    date: Option<String>,
+}
+
+#[derive(Subcommand)]
+enum LoopStep {
+    /// Write the work orders (order/1) for the top gaps to <run>/orders.json
+    Pick {
+        #[command(flatten)]
+        pick: PickArgs,
+    },
+    /// Judge the proposal files in a folder and place the ones that pass as `draft`, with a run report
+    Land {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the folder of proposal files (and orders.json, when the run has one)
+        #[arg(long, default_value = ".loop")]
+        from: PathBuf,
+        #[arg(long, default_value_t = 8)]
+        min_items: u64,
+        #[command(flatten)]
+        land: LandArgs,
+    },
+    /// pick, hand each order to a drafter command, then land: the whole loop in one command
+    Run {
+        #[command(flatten)]
+        pick: PickArgs,
+        /// a command that reads one order/1 on standard input and writes one proposal/1 on standard output
+        #[arg(long)]
+        drafter: String,
+        #[command(flatten)]
+        land: LandArgs,
+    },
+}
+
+fn picked(p: &PickArgs) -> Result<(Vec<Value>, gaps::Options)> {
+    let data = p.root.join("gates").join("data");
+    let s = scan(&p.root, &data)?;
+    let o = gaps::Options { min_items: p.min_items, subjects: p.subject.clone(), locales: p.locale.clone(), bands: p.band.clone() };
+    let cells = gaps::pick(&gaps::report(&s, &o).gaps, p.top);
+    fs::create_dir_all(&p.run)?;
+    let orders = looprun::orders(&data, &s, &cells, p.min_items)?;
+    fs::write(p.run.join("orders.json"), format!("{}\n", serde_json::to_string_pretty(&orders)?))?;
+    Ok((orders, o))
+}
+
+fn landed(root: &Path, from: &Path, l: &LandArgs, gap: gaps::Options, failed: Vec<(String, String)>) -> Result<u8> {
+    let mode = if l.no_git { looprun::Mode::Files } else if l.dry_run { looprun::Mode::DryRun } else { looprun::Mode::PullRequest };
+    let data = root.join("gates").join("data");
+    let r = looprun::land(&looprun::Land { root, data: &data, from, mode, date: l.date.clone().unwrap_or_else(looprun::today), gaps: gap, failed })?;
+    print!("{}", looprun::markdown(&r));
+    println!("\nreport: runs/{}.json and runs/{}.md", r["id"].as_str().unwrap_or(""), r["id"].as_str().unwrap_or(""));
+    if let Some(b) = r["branch"].as_str() {
+        println!("branch: {b}{}", if l.dry_run { " (dry run: local only, nothing pushed)" } else { "" });
+    }
+    if let Some(pr) = r["pullRequest"].as_str() {
+        println!("pull request: {pr}");
+    }
+    Ok(0)
 }
 
 fn main() -> ExitCode {
@@ -281,6 +418,79 @@ fn run(cli: Cli) -> Result<u8> {
         Cmd::Mcp { root, data, allow_write } => {
             let server = openlessons::mcp::Server { data: data.unwrap_or_else(|| root.join("gates").join("data")), root, allow_write };
             server.serve(std::io::stdin().lock(), std::io::stdout().lock())?;
+            Ok(0)
+        }
+        Cmd::Gaps { root, top, subject, locale, band, min_items, json, md } => {
+            let s = scan(&root, &root.join("gates").join("data"))?;
+            let r = gaps::report(&s, &gaps::Options { min_items, subjects: subject, locales: locale, bands: band });
+            if json {
+                for c in r.gaps.iter().take(top) {
+                    println!("{}", c.json());
+                }
+                println!("{}", json!({"summary": gaps::summary(&r)}));
+            } else if md {
+                print!("{}", gaps::markdown(&r, top));
+            } else {
+                println!("{:>3}  {:<44} {:<7} {:<8} {:<10} {:>6} {:>3} {:>6}  ready", "#", "objective", "band", "language", "gap", "demand", "fw", "usage");
+                for (i, c) in r.gaps.iter().take(top).enumerate() {
+                    println!("{:>3}  {:<44} {:<7} {:<8} {:<10} {:>6} {:>3} {:>6}  {}", i + 1, c.objective, c.band, c.locale, c.kind, c.demand, c.frameworks, c.usage, if c.ready { "yes" } else { "prerequisites first" });
+                }
+                eprintln!("{} cells; {} filled ({} reviewed); {} gaps{}", r.cells, r.filled, r.served, r.gaps.len(), if r.gaps.len() > top { format!("; showing {top} (--top)") } else { String::new() });
+            }
+            Ok(0)
+        }
+        Cmd::Loop { step } => match step {
+            LoopStep::Pick { pick } => {
+                let (orders, _) = picked(&pick)?;
+                for o in &orders {
+                    println!("{}  demand {}", o["cell"].as_str().unwrap_or(""), o["demand"]);
+                }
+                println!("{} work order(s) in {}. Answer each with a proposal file under {}, then `openlessons loop land --from {}`.", orders.len(), pick.run.join("orders.json").display(), pick.run.join("drafts").display(), pick.run.display());
+                Ok(0)
+            }
+            LoopStep::Land { root, from, min_items, land } => {
+                if !gates_proven(&root, true)? {
+                    return Ok(1);
+                }
+                landed(&root, &from, &land, gaps::Options { min_items, ..Default::default() }, vec![])
+            }
+            LoopStep::Run { pick, drafter, land } => {
+                if !gates_proven(&pick.root, true)? {
+                    return Ok(1);
+                }
+                let (orders, gap) = picked(&pick)?;
+                let failed = looprun::draft_with(&pick.run, &orders, &drafter)?;
+                // the run's filters chose the orders; the report counts gaps over the whole tree
+                let _ = gap;
+                landed(&pick.root, &pick.run, &land, gaps::Options { min_items: pick.min_items, ..Default::default() }, failed)
+            }
+        },
+        Cmd::Registry { root, json } => {
+            let mut classes: std::collections::BTreeMap<String, usize> = Default::default();
+            let mut dirs: Vec<PathBuf> = fs::read_dir(root.join("standards"))?.filter_map(|e| e.ok().map(|e| e.path())).filter(|p| p.is_dir()).collect();
+            dirs.sort();
+            for d in &dirs {
+                let f: Value = serde_json::from_str(&fs::read_to_string(d.join("framework.json"))?).with_context(|| format!("{}", d.display()))?;
+                let t = &f["terms"];
+                let s = |v: &Value| v.as_str().unwrap_or("").to_string();
+                *classes.entry(format!("{} / {}", s(&t["class"]), s(&t["quote"]))).or_default() += 1;
+                if json {
+                    println!("{f}");
+                } else {
+                    println!("{:<28} {:<14} {:<15} {:<15} {:<16} read {}  {}", s(&f["id"]), s(&f["jurisdiction"]), s(&t["class"]), s(&t["quote"]), t["licence"].as_str().unwrap_or("-"), t["reviewed"].as_str().unwrap_or("never"), s(&f["title"]));
+                }
+            }
+            if !json {
+                eprintln!("{} framework(s): {}", dirs.len(), classes.iter().map(|(k, v)| format!("{v} {k}")).collect::<Vec<_>>().join("; "));
+            }
+            Ok(0)
+        }
+        Cmd::Fingerprint { file, window } => {
+            let raw = fs::read_to_string(&file).with_context(|| format!("{}", file.display()))?;
+            let mut prints: Vec<String> = raw.lines().flat_map(|l| text::fingerprints(l, window)).collect();
+            prints.sort();
+            prints.dedup();
+            println!("{}", serde_json::to_string(&prints)?);
             Ok(0)
         }
         Cmd::Stamp { paths } => {

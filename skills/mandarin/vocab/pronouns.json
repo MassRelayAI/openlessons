@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "vocab",
   "slug": "pronouns",
+  "topic": "first-words",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can use 我, 你, 他 and 她 and their plurals."
   },

@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "computing.data.binary",
+  "version": 1,
+  "subject": "computing",
+  "strand": "data",
+  "slug": "binary",
+  "topic": "representing-data",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can say that computers store everything as ones and zeros and count in binary to 15."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

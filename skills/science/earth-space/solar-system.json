@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "science.earth-space.solar-system",
+  "version": 1,
+  "subject": "science",
+  "strand": "earth-space",
+  "slug": "solar-system",
+  "topic": "space",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can name the planets and say that they go round the Sun."
+  },
+  "prerequisites": [
+    "science.earth-space.day-and-night"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

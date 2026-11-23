@@ -19,12 +19,15 @@ pub const RULES: &[&str] = &[
     "refs.resolve",
     "standards.terms-respected",
     "lesson.aligned",
+    "graph.placed",
+    "alignment.band-matches",
     "lesson.reading-level",
     "item.answer-verified",
     "item.no-answer-leak",
     "item.heard-prompt-recorded",
     "asset.licensed",
     "content.no-pii",
+    "content.no-copied-text",
     "content.child-safe",
     "content.no-duplicates",
     "loop.review-before-reviewed",
@@ -45,6 +48,10 @@ const SCHEMAS: &[(&str, &str)] = &[
     ("path/1", include_str!("../../../schemas/path.schema.json")),
     ("proposal/1", include_str!("../../../schemas/proposal.schema.json")),
     ("reviewers/1", include_str!("../../../schemas/reviewers.schema.json")),
+    ("age-bands/1", include_str!("../../../schemas/age-bands.schema.json")),
+    ("subject/1", include_str!("../../../schemas/subject.schema.json")),
+    ("signal/1", include_str!("../../../schemas/signal.schema.json")),
+    ("run/1", include_str!("../../../schemas/run.schema.json")),
 ];
 
 #[derive(Debug, Clone, PartialEq)]
@@ -73,8 +80,54 @@ pub struct Node {
     pub parent: String,
 }
 
+/// One age band of bands/age-bands.json.
+#[derive(Debug, Clone)]
+pub struct Band {
+    pub id: String,
+    pub min: i64,
+    pub max: i64,
+}
+
+/// One objective of the topic graph (a skill/1 record), as the gap report and the loop need it.
+#[derive(Debug, Clone, Default)]
+pub struct Objective {
+    pub subject: String,
+    pub strand: String,
+    pub topic: String,
+    pub bands: Vec<String>,
+    pub prerequisites: Vec<String>,
+    /// the languages of instruction the objective applies to (its own list, or its subject's)
+    pub locales: Vec<String>,
+    /// the whole record
+    pub record: Value,
+}
+
+/// One usage count of signals/: (objective, band, locale) -> count.
+#[derive(Debug, Clone)]
+pub struct Signal {
+    pub objective: String,
+    pub band: String,
+    pub locale: String,
+    pub count: u64,
+}
+
 #[derive(Debug, Default)]
 pub struct Scan {
+    /// the age bands, youngest first
+    pub bands: Vec<Band>,
+    /// locale id -> the locale/1 record
+    pub locales: BTreeMap<String, Value>,
+    /// skill id -> objective
+    pub objectives: BTreeMap<String, Objective>,
+    /// standard id -> the standard/1 record
+    pub nodes: BTreeMap<String, Value>,
+    /// framework id -> terms.quote
+    pub frameworks: BTreeMap<String, String>,
+    /// the standards registry: every framework/1 record
+    pub registry: Vec<Value>,
+    /// subject id -> its area (maths, literacy, science, ...)
+    pub areas: BTreeMap<String, String>,
+    pub signals: Vec<Signal>,
     pub findings: Vec<Finding>,
     pub counts: BTreeMap<String, u64>,
     /// the generated index: relative path -> file content
@@ -287,6 +340,9 @@ fn pii(c: &mut Ctx, v: &Value, path: &str, line: usize) {
     }
 }
 
+/// A subject of the topic graph: (the languages it applies to, its (strand, topic) pairs).
+type SubjectInfo = (Vec<String>, BTreeSet<(String, String)>);
+
 struct Refs {
     locales: BTreeMap<String, String>,
     /// framework id -> terms.quote
@@ -294,6 +350,18 @@ struct Refs {
     standards: BTreeMap<String, Node>,
     /// skill id -> (subject, misconception numbers)
     skills: BTreeMap<String, (String, BTreeSet<u64>)>,
+    bands: Vec<Band>,
+    /// subject id -> (its locales, its (strand, topic) pairs)
+    subjects: BTreeMap<String, SubjectInfo>,
+    objectives: BTreeMap<String, Objective>,
+    /// standard id -> the bands it names itself
+    node_bands: BTreeMap<String, Vec<String>>,
+    nodes: BTreeMap<String, Value>,
+    locale_records: BTreeMap<String, Value>,
+    signals: Vec<Signal>,
+    registry: Vec<Value>,
+    areas: BTreeMap<String, String>,
+    protected: text::Protected,
     /// skill id -> aligned standard ids
     aligned: BTreeMap<String, BTreeSet<String>>,
     alignments: Vec<Aligned>,
@@ -331,6 +399,16 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         frameworks: BTreeMap::new(),
         standards: BTreeMap::new(),
         skills: BTreeMap::new(),
+        bands: Vec::new(),
+        subjects: BTreeMap::new(),
+        objectives: BTreeMap::new(),
+        node_bands: BTreeMap::new(),
+        nodes: BTreeMap::new(),
+        locale_records: BTreeMap::new(),
+        signals: Vec::new(),
+        registry: Vec::new(),
+        areas: BTreeMap::new(),
+        protected: text::Protected::from_json(&load("protected.json")?),
         aligned: BTreeMap::new(),
         alignments: Vec::new(),
         assets: BTreeMap::new(),
@@ -349,14 +427,18 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
     }
     proposals(&mut c);
     locales(&mut c, &mut r);
+    age_bands(&mut c, &mut r);
+    subjects(&mut c, &mut r);
     standards(&mut c, &mut r);
     skills(&mut c, &mut r, &lexicons);
     alignments(&mut c, &mut r);
     assets(&mut c, &mut r, &licences);
     let entries = lessons(&mut c, &mut r, &bands, &lexicons);
     paths(&mut c, &r);
+    signals(&mut c, &mut r);
+    runs(&mut c);
 
-    let index = build_index(&entries, &c.counts);
+    let index = build_index(&entries, &c.counts, &r);
     let mut on_disk = BTreeMap::new();
     collect_files(&root.join("index"), &root.join("index"), &mut on_disk);
     if on_disk != index {
@@ -365,7 +447,22 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         c.add("index.fresh", &format!("index/{first}"), 0, format!("the index does not match the data ({} file(s) differ): run `openlessons index`, never edit it by hand", stale.len()));
     }
     let lessons = entries.into_iter().map(|e| e.line).collect();
-    Ok(Scan { findings: c.findings, counts: c.counts, index, standards: r.standards, alignments: r.alignments, lessons })
+    Ok(Scan {
+        bands: r.bands,
+        locales: r.locale_records,
+        objectives: r.objectives,
+        nodes: r.nodes,
+        frameworks: r.frameworks,
+        signals: r.signals,
+        registry: r.registry,
+        areas: r.areas,
+        findings: c.findings,
+        counts: c.counts,
+        index,
+        standards: r.standards,
+        alignments: r.alignments,
+        lessons,
+    })
 }
 
 fn collect_files(base: &Path, dir: &Path, out: &mut BTreeMap<String, String>) {
@@ -418,7 +515,161 @@ fn locales(c: &mut Ctx, r: &mut Refs) {
             c.add("layout.content-addressed", &rel, 0, format!("the file is named {id} but its id is {}", st(&v, "id")));
         }
         r.locales.insert(st(&v, "id").to_string(), st(&v, "segmentation").to_string());
+        r.locale_records.insert(st(&v, "id").to_string(), v.clone());
         c.count("locales", 1);
+    }
+}
+
+/// bands/age-bands.json: the one age-band model. Bands run youngest first and never overlap.
+fn age_bands(c: &mut Ctx, r: &mut Refs) {
+    let p = c.root.join("bands").join("age-bands.json");
+    for other in ls(&c.root.join("bands")) {
+        if name(&other) != "age-bands.json" {
+            stray(c, &other, "age-bands.json");
+        }
+    }
+    if !p.exists() {
+        return;
+    }
+    let rel = c.rel(&p);
+    let Some(v) = c.read_json(&p) else { return };
+    if !c.valid("age-bands/1", &v, &rel, 0) {
+        return;
+    }
+    let mut last = -1;
+    for b in arr(&v, "bands") {
+        let (id, min, max) = (st(b, "id").to_string(), b["ages"]["min"].as_i64().unwrap_or(0), b["ages"]["max"].as_i64().unwrap_or(0));
+        if min > max || min <= last {
+            c.add("schema.valid", &rel, 0, format!("the band {id} ({min}-{max}) overlaps the one before it or runs backwards"));
+        }
+        let want = if id == "adult" { "adult".to_string() } else { format!("b{min:02}-{max:02}") };
+        if id != want {
+            c.add("layout.content-addressed", &rel, 0, format!("a band of ages {min}-{max} has the id {want}, not {id}"));
+        }
+        for system in b["systems"].as_object().into_iter().flatten().map(|(k, _)| k) {
+            if v["systems"].get(system).is_none() {
+                c.add("refs.resolve", &rel, 0, format!("the band {id} names the system {system}, which `systems` does not describe"));
+            }
+        }
+        last = max;
+        r.bands.push(Band { id, min, max });
+    }
+    c.count("bands", r.bands.len() as u64);
+}
+
+/// topics/<subject>.json: the strands and topics of each subject.
+fn subjects(c: &mut Ctx, r: &mut Refs) {
+    for p in ls(&c.root.join("topics")) {
+        let Some(id) = stem(&p, ".json") else {
+            stray(c, &p, "<subject>.json");
+            continue;
+        };
+        let rel = c.rel(&p);
+        let Some(v) = c.read_json(&p) else { continue };
+        if !c.valid("subject/1", &v, &rel, 0) {
+            continue;
+        }
+        if st(&v, "id") != id {
+            c.add("layout.content-addressed", &rel, 0, format!("the file is named {id} but its id is {}", st(&v, "id")));
+        }
+        let mut locales = Vec::new();
+        for l in strs(&v, "locales") {
+            if l == "*" {
+                locales.extend(r.locales.keys().cloned());
+            } else if r.locales.contains_key(&l) {
+                locales.push(l);
+            } else {
+                c.add("refs.resolve", &rel, 0, format!("the locale {l} is not in locales/"));
+            }
+        }
+        locales.sort();
+        locales.dedup();
+        let mut pairs = BTreeSet::new();
+        for s in arr(&v, "strands") {
+            for t in arr(s, "topics") {
+                if !pairs.insert((st(s, "id").to_string(), st(t, "id").to_string())) {
+                    c.add("content.no-duplicates", &rel, 0, format!("the topic {}.{} is listed twice", st(s, "id"), st(t, "id")));
+                }
+            }
+        }
+        c.count("topics", pairs.len() as u64);
+        c.count("subjects", 1);
+        r.areas.insert(id.clone(), st(&v, "area").to_string());
+        r.subjects.insert(id, (locales, pairs));
+    }
+}
+
+/// signals/*.jsonl: aggregated usage counts. The schema allows counts only; each row must name a real cell.
+fn signals(c: &mut Ctx, r: &mut Refs) {
+    for p in ls(&c.root.join("signals")) {
+        if stem(&p, ".jsonl").is_none() {
+            stray(c, &p, "*.jsonl files of signal/1 records");
+            continue;
+        }
+        let rel = c.rel(&p);
+        for (line, v) in c.read_jsonl(&p) {
+            if !c.valid("signal/1", &v, &rel, line) {
+                continue;
+            }
+            let (objective, band, locale) = (st(&v, "objective"), st(&v, "band"), st(&v, "locale"));
+            match r.objectives.get(objective) {
+                None => c.add("refs.resolve", &rel, line, format!("the objective {objective} does not exist")),
+                Some(o) if !o.bands.iter().any(|b| b == band) || !o.locales.iter().any(|l| l == locale) => {
+                    c.add("refs.resolve", &rel, line, format!("{objective} has no cell for the band {band} and the locale {locale}"))
+                }
+                _ => r.signals.push(Signal { objective: objective.to_string(), band: band.to_string(), locale: locale.to_string(), count: v["count"].as_u64().unwrap_or(0) }),
+            }
+            c.count("signals", 1);
+        }
+    }
+}
+
+/// runs/: the reports of the loop's runs (<id>.json and its <id>.md).
+fn runs(c: &mut Ctx) {
+    for p in ls(&c.root.join("runs")) {
+        if stem(&p, ".md").is_some() {
+            continue;
+        }
+        let Some(id) = stem(&p, ".json") else {
+            stray(c, &p, "run reports (<id>.json, <id>.md)");
+            continue;
+        };
+        let rel = c.rel(&p);
+        let Some(v) = c.read_json(&p) else { continue };
+        if c.valid("run/1", &v, &rel, 0) {
+            if st(&v, "id") != id {
+                c.add("layout.content-addressed", &rel, 0, format!("the file is named {id} but the run is {}", st(&v, "id")));
+            }
+            pii(c, &v, &rel, 0);
+            c.count("runs", 1);
+        }
+    }
+}
+
+/// The bands a standard is written for: its own, or those of the nearest ancestor that names any.
+fn node_bands(r: &Refs, id: &str) -> Vec<String> {
+    let mut at = id.to_string();
+    for _ in 0..16 {
+        if let Some(b) = r.node_bands.get(&at) {
+            return b.clone();
+        }
+        match r.standards.get(&at) {
+            Some(n) if !n.parent.is_empty() => at = n.parent.clone(),
+            _ => break,
+        }
+    }
+    Vec::new()
+}
+
+fn span_of(r: &Refs, bands: &[String]) -> Option<(i64, i64)> {
+    let found: Vec<&Band> = r.bands.iter().filter(|b| bands.contains(&b.id)).collect();
+    Some((found.iter().map(|b| b.min).min()?, found.iter().map(|b| b.max).max()?))
+}
+
+/// The gate `content.no-copied-text` on one piece of our own text.
+fn copied(c: &mut Ctx, r: &Refs, t: &str, path: &str, line: usize, place: &str) {
+    if let Some(m) = r.protected.issue(t) {
+        c.add("content.no-copied-text", path, line, format!("{place}: {m}"));
     }
 }
 
@@ -451,6 +702,10 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
         if class != "reference_only" && (st(terms, "notice").is_empty() || st(terms, "licence").is_empty() && class == "open") {
             term_problem("an open or attribution framework states its licence and the notice to show");
         }
+        if f["span"]["ages"]["min"].as_i64() > f["span"]["ages"]["max"].as_i64() {
+            c.add("schema.valid", &frel, 0, "span.ages.min is above span.ages.max");
+        }
+        r.registry.push(f.clone());
         r.frameworks.insert(fw.clone(), quote.to_string());
         c.count("frameworks", 1);
         for p in ls(&dir) {
@@ -478,6 +733,19 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
                 if v.get("titleOfficial").is_some() && quote == "ids_only" {
                     c.add("standards.terms-respected", &rel, line, format!("{id} copies the publisher's title, which the terms of {fw} do not allow (quote: {quote})"));
                 }
+                if v.get("bands").is_some() {
+                    for b in strs(&v, "bands") {
+                        if !r.bands.iter().any(|x| x.id == b) {
+                            c.add("alignment.band-matches", &rel, line, format!("{id} names the age band {b}, which bands/age-bands.json does not hold"));
+                        }
+                    }
+                    r.node_bands.insert(id.clone(), strs(&v, "bands"));
+                }
+                // our own wording must be ours: the publisher's text is allowed only in the fields that say so
+                for field in ["label", "statementOwn"] {
+                    copied(c, r, st(&v, field), &rel, line, field);
+                }
+                r.nodes.insert(id.clone(), v.clone());
                 let node = Node { framework: fw.clone(), kind: st(&v, "kind").to_string(), parent: st(&v, "parent").to_string() };
                 if r.standards.insert(id.clone(), node).is_some() {
                     c.add("content.no-duplicates", &rel, line, format!("the standard {id} is recorded twice"));
@@ -541,6 +809,39 @@ fn skills(c: &mut Ctx, r: &mut Refs, lexicons: &BTreeMap<String, Lexicon>) {
                         c.add("content.child-safe", &rel, 0, format!("'{term}' ({cat}) is on the safety lexicon"));
                     }
                 }
+                // placed in the topic graph: a topic that exists, bands that exist, languages that exist
+                let (subject, strand, topic) = (st(&v, "subject").to_string(), st(&v, "strand").to_string(), st(&v, "topic").to_string());
+                let mut applies = Vec::new();
+                match r.subjects.get(&subject) {
+                    None => c.add("graph.placed", &rel, 0, format!("the subject {subject} has no file under topics/: an objective hangs from a subject, a strand and a topic")),
+                    Some((locales, pairs)) => {
+                        if !pairs.contains(&(strand.clone(), topic.clone())) {
+                            c.add("graph.placed", &rel, 0, format!("topics/{subject}.json has no topic `{topic}` in the strand `{strand}`"));
+                        }
+                        applies = locales.clone();
+                    }
+                }
+                if v.get("locales").is_some() {
+                    applies = strs(&v, "locales");
+                    for l in &applies {
+                        if !r.locales.contains_key(l) {
+                            c.add("refs.resolve", &rel, 0, format!("the locale {l} is not in locales/"));
+                        }
+                    }
+                }
+                let own_bands = strs(&v, "bands");
+                for b in &own_bands {
+                    if !r.bands.iter().any(|x| &x.id == b) {
+                        c.add("graph.placed", &rel, 0, format!("the age band {b} is not in bands/age-bands.json"));
+                    }
+                }
+                for t in v["statement"].as_object().into_iter().flatten().filter_map(|(_, t)| t.as_str()) {
+                    copied(c, r, t, &rel, 0, "statement");
+                }
+                r.objectives.insert(
+                    id.clone(),
+                    Objective { subject, strand, topic, bands: own_bands, prerequisites: strs(&v, "prerequisites"), locales: applies, record: v.clone() },
+                );
                 prereq.insert(id.clone(), (rel, strs(&v, "prerequisites")));
                 r.skills.insert(id, (st(&v, "subject").to_string(), nos));
                 c.count("skills", 1);
@@ -552,6 +853,13 @@ fn skills(c: &mut Ctx, r: &mut Refs, lexicons: &BTreeMap<String, Lexicon>) {
         for n in needs {
             if !prereq.contains_key(n) {
                 c.add("refs.resolve", rel, 0, format!("the prerequisite {n} does not exist"));
+            }
+            // a prerequisite is learned first: it cannot start in an older band than the objective that needs it
+            let start = |k: &str| r.objectives.get(k).and_then(|o| span_of(r, &o.bands)).map(|s| s.0);
+            if let (Some(mine), Some(theirs)) = (start(id), start(n)) {
+                if theirs > mine {
+                    c.add("graph.placed", rel, 0, format!("the prerequisite {n} starts at age {theirs}, after {id} (age {mine})"));
+                }
             }
         }
         let (mut seen, mut todo) = (BTreeSet::new(), needs.clone());
@@ -600,6 +908,18 @@ fn alignments(c: &mut Ctx, r: &mut Refs) {
                 }
                 if !has_standard {
                     c.add("refs.resolve", &rel, line, format!("the standard {standard} does not exist"));
+                }
+                if has_skill && has_standard && st(&v, "strength") != "related" {
+                    let theirs = node_bands(r, &standard);
+                    let mine = r.objectives.get(&skill).map(|o| o.bands.clone()).unwrap_or_default();
+                    if !theirs.is_empty() && !mine.is_empty() && !mine.iter().any(|b| theirs.contains(b)) {
+                        c.add(
+                            "alignment.band-matches",
+                            &rel,
+                            line,
+                            format!("{skill} is taught in {} but {standard} is written for {}: an `exact` or `partial` alignment shares an age band (use `related` for no coverage claim)", mine.join(", "), theirs.join(", ")),
+                        );
+                    }
                 }
                 if has_skill && has_standard {
                     r.alignments.push(Aligned { skill: skill.clone(), standard: standard.clone(), strength: st(&v, "strength").to_string(), status: st(&v, "status").to_string() });
@@ -762,6 +1082,14 @@ fn lesson(
             }
         }
     }
+    // the lesson is written for ages its objectives are taught at
+    for s in &skills {
+        if let Some((lo, hi)) = r.objectives.get(s).and_then(|o| span_of(r, &o.bands)) {
+            if ages.1 < lo || hi < ages.0 {
+                c.add("alignment.band-matches", &rel, 0, format!("the lesson is for ages {}-{} but {s} is taught at ages {lo}-{hi}", ages.0, ages.1));
+            }
+        }
+    }
     let mut refs = Vec::new();
     item::asset_refs(&v, &mut refs);
 
@@ -856,6 +1184,11 @@ fn lesson(
         if let Some(m) = text::icu_issue(t) {
             c.add("schema.valid", file, *line, format!("{place}: {m}"));
         }
+        if let Some(m) = r.protected.issue(t) {
+            if told.insert((2, t.clone())) {
+                c.add("content.no-copied-text", file, *line, format!("{place}: {m}"));
+            }
+        }
         if let Some(b) = band {
             if let Some(m) = text::reading_issue(t, &segmentation, b) {
                 if told.insert((0, t.clone())) {
@@ -928,7 +1261,7 @@ fn paths(c: &mut Ctx, r: &Refs) {
 }
 
 /// index/<locale>/<subject>.jsonl (one line per lesson, sorted by id) and index/catalog.json.
-fn build_index(entries: &[IndexEntry], counts: &BTreeMap<String, u64>) -> BTreeMap<String, String> {
+fn build_index(entries: &[IndexEntry], counts: &BTreeMap<String, u64>, r: &Refs) -> BTreeMap<String, String> {
     let mut files: BTreeMap<String, Vec<&IndexEntry>> = BTreeMap::new();
     for e in entries {
         files.entry(format!("{}/{}.jsonl", e.locale, e.subject)).or_default().push(e);
@@ -942,6 +1275,29 @@ fn build_index(entries: &[IndexEntry], counts: &BTreeMap<String, u64>) -> BTreeM
         let body: String = list.iter().map(|e| format!("{}\n", e.line)).collect();
         out.insert(file, body);
     }
+    // objectives.jsonl: every objective with its place in the graph, its bands, its standards and where it is taught
+    let mut taught: BTreeMap<&str, BTreeMap<&str, (u64, u64)>> = BTreeMap::new();
+    for e in entries {
+        for s in arr(&e.line, "skills").iter().filter_map(Value::as_str) {
+            let cell = taught.entry(s).or_default().entry(e.locale.as_str()).or_default();
+            cell.0 += 1;
+            cell.1 += e.line["items"].as_u64().unwrap_or(0);
+        }
+    }
+    let mut objectives = String::new();
+    for (id, o) in &r.objectives {
+        let standards: Vec<Value> = r.alignments.iter().filter(|a| &a.skill == id).map(|a| json!({"id": a.standard, "strength": a.strength, "status": a.status})).collect();
+        let lessons: BTreeMap<&str, Value> = taught.get(id.as_str()).into_iter().flatten().map(|(l, (n, items))| (*l, json!({"lessons": n, "items": items}))).collect();
+        let statement: Vec<&String> = o.record["statement"].as_object().into_iter().flatten().map(|(l, _)| l).collect();
+        let line = json!({
+            "id": id, "subject": o.subject, "strand": o.strand, "topic": o.topic, "bands": o.bands, "prerequisites": o.prerequisites,
+            "locales": o.locales, "statement": statement, "standards": standards, "taught": lessons, "status": st(&o.record, "status"),
+        });
+        objectives.push_str(&format!("{line}\n"));
+    }
+    if !r.objectives.is_empty() {
+        out.insert("objectives.jsonl".to_string(), objectives);
+    }
     let total = |k: &str| counts.get(k).copied().unwrap_or(0);
     let catalog = json!({
         "schema": "catalog/1",
@@ -949,6 +1305,7 @@ fn build_index(entries: &[IndexEntry], counts: &BTreeMap<String, u64>) -> BTreeM
         "counts": {
             "locales": total("locales"), "frameworks": total("frameworks"), "standards": total("standards"), "skills": total("skills"),
             "alignments": total("alignments"), "assets": total("assets"), "lessons": total("lessons"), "items": total("items"), "paths": total("paths"),
+            "bands": total("bands"), "subjects": total("subjects"), "topics": total("topics"), "signals": total("signals"), "runs": total("runs"),
         },
         "shelves": shelves,
     });

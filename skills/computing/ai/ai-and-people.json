@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "computing.ai.ai-and-people",
+  "version": 1,
+  "subject": "computing",
+  "strand": "ai",
+  "slug": "ai-and-people",
+  "topic": "understanding-ai",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can give examples of when a person should check or decide instead of an AI."
+  },
+  "prerequisites": [
+    "computing.ai.what-ai-is"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

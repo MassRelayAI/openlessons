@@ -1,0 +1,26 @@
+{
+  "schema": "framework/1",
+  "id": "ib",
+  "title": "International Baccalaureate programmes (PYP, MYP, DP)",
+  "publisher": "International Baccalaureate Organization",
+  "jurisdiction": "international",
+  "version": "current",
+  "sourceUrl": "https://www.ibo.org/programmes/",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 19
+    },
+    "grades": "Primary Years, Middle Years and Diploma programmes"
+  },
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.ibo.org/terms-and-conditions/copyright/",
+    "note": "Proprietary. The copyright page could not be read (it refuses automated requests), so the terms are unread and only programme names are used.",
+    "reviewed": null
+  }
+}

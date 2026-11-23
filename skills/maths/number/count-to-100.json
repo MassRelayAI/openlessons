@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.count-to-100",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "count-to-100",
+  "topic": "counting",
+  "bands": [
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can count to 100 forwards and backwards, starting from any number."
+  },
+  "prerequisites": [
+    "maths.number.count-to-20"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

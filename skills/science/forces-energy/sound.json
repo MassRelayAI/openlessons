@@ -1,0 +1,30 @@
+{
+  "schema": "skill/1",
+  "id": "science.forces-energy.sound",
+  "version": 1,
+  "subject": "science",
+  "strand": "forces-energy",
+  "slug": "sound",
+  "topic": "light-sound",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can say that sounds are made when something vibrates."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

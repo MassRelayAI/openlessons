@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "casel",
+  "title": "CASEL framework for social and emotional learning",
+  "publisher": "Collaborative for Academic, Social, and Emotional Learning",
+  "jurisdiction": "US",
+  "version": "2020",
+  "sourceUrl": "https://casel.org/fundamentals-of-sel/what-is-the-casel-framework/",
+  "subjects": [
+    "wellbeing"
+  ],
+  "span": {
+    "ages": {
+      "min": 3,
+      "max": 18
+    },
+    "grades": "Preschool to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://casel.org/terms-of-use/",
+    "evidence": "may not be copied, reproduced, modified, published",
+    "note": "All rights reserved: the site's contents may not be copied or modified without written permission. The five competence areas are named as facts; no text is stored.",
+    "reviewed": "2026-11-23"
+  }
+}

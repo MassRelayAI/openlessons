@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.time-planning.days-and-routines",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "time-planning",
+  "slug": "days-and-routines",
+  "topic": "routines-planning",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can name the days of the week and say what I do in the morning, afternoon and evening."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

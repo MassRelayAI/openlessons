@@ -1,0 +1,31 @@
+{
+  "schema": "framework/1",
+  "id": "oecd-pisa-2025",
+  "title": "PISA 2025 Assessment and Analytical Framework",
+  "publisher": "OECD",
+  "jurisdiction": "international",
+  "version": "2025",
+  "sourceUrl": "https://www.oecd.org/en/about/programmes/pisa.html",
+  "subjects": [
+    "maths",
+    "literacy",
+    "science"
+  ],
+  "span": {
+    "ages": {
+      "min": 15,
+      "max": 15
+    },
+    "grades": "Age 15"
+  },
+  "terms": {
+    "class": "open",
+    "licence": "CC-BY-4.0",
+    "quote": "ids_and_titles",
+    "notice": "OECD (2026), PISA 2025 Assessment and Analytical Framework. This is an adaptation of an original work by the OECD. The opinions expressed and arguments employed in this adaptation should not be reported as representing the official views of the OECD or of its Member countries.",
+    "termsUrl": "https://www.oecd.org/en/about/terms-conditions.html",
+    "evidence": "most OECD written content published as of 1 July 2024 is licensed under a Creative Commons Attribution BY 4.0 licence (CC BY 4.0)",
+    "note": "OECD written content published from 1 July 2024 is CC BY 4.0, and the framework's own rights page says so; an adaptation must carry OECD's disclaimer and may not use its logo. Earlier PISA frameworks and the Learning Compass 2030 are not under this licence. We keep to identifiers and titles until a node's source page has been read.",
+    "reviewed": "2026-11-23"
+  }
+}

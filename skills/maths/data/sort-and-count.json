@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "maths.data.sort-and-count",
+  "version": 1,
+  "subject": "maths",
+  "strand": "data",
+  "slug": "sort-and-count",
+  "topic": "sorting-charts",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can sort things into groups and count each group."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

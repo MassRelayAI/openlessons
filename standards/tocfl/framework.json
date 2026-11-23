@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "tocfl",
+  "title": "Test of Chinese as a Foreign Language (TOCFL)",
+  "publisher": "Steering Committee for the Test Of Proficiency-Huayu",
+  "jurisdiction": "TW",
+  "version": "current",
+  "sourceUrl": "https://tocfl.edu.tw/tocfl/",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 7,
+      "max": 99
+    },
+    "grades": "Novice to Band C (levels 1 to 6)"
+  },
+  "languages": [
+    "zh-Hant"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://tocfl.edu.tw/tocfl/",
+    "evidence": "All rights reserved.",
+    "note": "All rights reserved (site footer; no terms page). Level names only.",
+    "reviewed": "2026-11-23"
+  }
+}

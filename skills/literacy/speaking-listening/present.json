@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.speaking-listening.present",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "speaking-listening",
+  "slug": "present",
+  "topic": "talk",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can tell a group about something clearly, in an order that is easy to follow."
+  },
+  "prerequisites": [
+    "literacy.speaking-listening.ask-questions"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

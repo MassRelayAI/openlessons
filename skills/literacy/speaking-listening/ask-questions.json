@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.speaking-listening.ask-questions",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "speaking-listening",
+  "slug": "ask-questions",
+  "topic": "talk",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can ask a question to find out more."
+  },
+  "prerequisites": [
+    "literacy.speaking-listening.listen-and-respond"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

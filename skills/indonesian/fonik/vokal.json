@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "fonik",
   "slug": "vokal",
+  "topic": "bunyi-huruf",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa menyebut bunyi huruf a, i, u, e, dan o."
   },

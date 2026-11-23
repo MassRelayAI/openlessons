@@ -5,6 +5,10 @@
   "subject": "indonesian",
   "strand": "kosakata",
   "slug": "hewan",
+  "topic": "kata-pertama",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "id": "Saya bisa menyebut dan membaca nama delapan hewan."
   },

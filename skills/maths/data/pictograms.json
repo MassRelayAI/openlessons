@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.data.pictograms",
+  "version": 1,
+  "subject": "maths",
+  "strand": "data",
+  "slug": "pictograms",
+  "topic": "sorting-charts",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can read and make a pictogram."
+  },
+  "prerequisites": [
+    "maths.data.sort-and-count"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

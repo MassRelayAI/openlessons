@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.compare-to-100",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "compare-to-100",
+  "topic": "comparing",
+  "bands": [
+    "b05-06",
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can compare and order numbers up to 100, and use the signs for more than, less than and equal."
+  },
+  "prerequisites": [
+    "maths.number.compare-numbers"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

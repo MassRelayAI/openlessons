@@ -10,7 +10,12 @@
     "assets": 2,
     "lessons": 1,
     "items": 8,
-    "paths": 1
+    "paths": 1,
+    "bands": 2,
+    "subjects": 1,
+    "topics": 1,
+    "signals": 0,
+    "runs": 0
   },
   "shelves": [
     {

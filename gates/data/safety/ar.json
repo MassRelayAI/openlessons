@@ -1,0 +1,57 @@
+{
+  "schema": "safety-lexicon/1",
+  "language": "ar",
+  "maxAge": 12,
+  "note": "Words and phrases refused in content for learners up to maxAge. Whole words only. `hashed` holds the sha256 of lower-cased words we do not print. A starter list: it grows by pull request, and it never replaces the safety reviewer.",
+  "terms": {
+    "violence": [
+      "قتل",
+      "يقتل",
+      "قاتل",
+      "مسدس",
+      "بندقية",
+      "قنبلة",
+      "سلاح",
+      "أسلحة",
+      "انتحار",
+      "جثة"
+    ],
+    "substances": [
+      "خمر",
+      "بيرة",
+      "نبيذ",
+      "سكران",
+      "سيجارة",
+      "سجائر",
+      "مخدرات",
+      "حشيش"
+    ],
+    "gambling": [
+      "قمار",
+      "كازينو",
+      "مراهنة",
+      "يانصيب"
+    ],
+    "adult": [
+      "إباحي",
+      "عاري",
+      "عارية"
+    ],
+    "insults": [
+      "غبي",
+      "غبية",
+      "أحمق",
+      "اخرس"
+    ],
+    "commerce": [
+      "اشتر الآن",
+      "بطاقة ائتمان"
+    ],
+    "personal_data": [
+      "كلمة السر الخاصة بك",
+      "رقم هاتفك",
+      "عنوان منزلك"
+    ]
+  },
+  "hashed": []
+}

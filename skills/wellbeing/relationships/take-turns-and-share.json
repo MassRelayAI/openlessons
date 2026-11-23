@@ -1,0 +1,31 @@
+{
+  "schema": "skill/1",
+  "id": "wellbeing.relationships.take-turns-and-share",
+  "version": 1,
+  "subject": "wellbeing",
+  "strand": "relationships",
+  "slug": "take-turns-and-share",
+  "topic": "friendship",
+  "bands": [
+    "b03-04",
+    "b05-06"
+  ],
+  "statement": {
+    "en": "I can take turns and share with others."
+  },
+  "prerequisites": [],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.algebra.simple-equations",
+  "version": 1,
+  "subject": "maths",
+  "strand": "algebra",
+  "slug": "simple-equations",
+  "topic": "equations",
+  "bands": [
+    "b11-12"
+  ],
+  "statement": {
+    "en": "I can find the value of a letter in a simple equation."
+  },
+  "prerequisites": [
+    "maths.calc.missing-number",
+    "maths.calc.order-of-operations"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

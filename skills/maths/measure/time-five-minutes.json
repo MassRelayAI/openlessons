@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.measure.time-five-minutes",
+  "version": 1,
+  "subject": "maths",
+  "strand": "measure",
+  "slug": "time-five-minutes",
+  "topic": "time",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can tell the time to five minutes."
+  },
+  "prerequisites": [
+    "maths.measure.time-hour-half-hour",
+    "maths.number.skip-count-2-5-10"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "arts.music.read-simple-rhythm",
+  "version": 1,
+  "subject": "arts",
+  "strand": "music",
+  "slug": "read-simple-rhythm",
+  "topic": "beat-rhythm",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can read and clap a simple rhythm."
+  },
+  "prerequisites": [
+    "arts.music.keep-a-beat"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -244,6 +244,11 @@ pub fn from_pack(pack: &Value, strings: &Value) -> Result<Records> {
         put(&mut k, "subject", json!(parts[0]));
         put(&mut k, "strand", json!(parts[1]));
         put(&mut k, "slug", json!(parts[2]));
+        for field in ["topic", "bands", "locales"] {
+            if let Some(v) = o.get(format!("ext:{field}")) {
+                put(&mut k, field, v.clone());
+            }
+        }
         put(&mut k, "statement", Value::Object(statement));
         if let Some(t) = o.get("skillType") {
             put(&mut k, "type", t.clone());
@@ -472,6 +477,15 @@ pub fn write_records(root: &Path, r: &Records) -> Result<Vec<String>> {
 /// Turn a proposal file (`proposal/1`) into records. Whatever the file says, every record comes out `proposed`, made by
 /// the proposal's maker: a proposal cannot review itself.
 pub fn from_proposal(p: &Value) -> Result<Records> {
+    from_proposal_as(p, "proposed")
+}
+
+/// The records of a proposal at the status its way in gives them: `proposed` through `apply`, `draft` through the loop.
+/// Never anything higher: a proposal cannot review itself.
+pub fn from_proposal_as(p: &Value, status: &str) -> Result<Records> {
+    if !matches!(status, "draft" | "proposed") {
+        bail!("a proposal lands as `draft` or `proposed`, never `{status}`");
+    }
     if st(p, "schema") != "proposal/1" {
         bail!("not a proposal: `schema` must be \"proposal/1\"");
     }
@@ -493,7 +507,7 @@ pub fn from_proposal(p: &Value) -> Result<Records> {
     let stamp = |v: &Value, schema: &str, provenance: &Value| -> Value {
         let mut o = v.as_object().cloned().unwrap_or_default();
         put(&mut o, "schema", json!(schema));
-        put(&mut o, "status", json!("proposed"));
+        put(&mut o, "status", json!(status));
         put(&mut o, "provenance", provenance.clone());
         Value::Object(o)
     };

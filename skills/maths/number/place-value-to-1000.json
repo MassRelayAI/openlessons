@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.place-value-to-1000",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "place-value-to-1000",
+  "topic": "place-value",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can say what each digit is worth in a number up to 1000."
+  },
+  "prerequisites": [
+    "maths.number.place-value-to-100"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

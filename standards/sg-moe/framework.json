@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "sg-moe",
+  "title": "Singapore MOE syllabuses",
+  "publisher": "Ministry of Education, Singapore",
+  "jurisdiction": "SG",
+  "version": "current (primary mathematics 2021, English language 2020, primary science 2023)",
+  "sourceUrl": "https://www.moe.gov.sg/primary/curriculum/syllabus",
+  "subjects": [
+    "all"
+  ],
+  "span": {
+    "ages": {
+      "min": 6,
+      "max": 18
+    },
+    "grades": "Primary 1 to pre-university"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.moe.gov.sg/terms-of-use",
+    "evidence": "no part of The Website may be reproduced or reused for any commercial purposes whatsoever without our prior written permission",
+    "note": "All rights reserved: no commercial reuse without written permission, and no modification. Level names only, with our own paraphrase.",
+    "reviewed": "2026-11-23"
+  }
+}

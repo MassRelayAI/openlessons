@@ -1,0 +1,42 @@
+{
+  "schema": "age-bands/1",
+  "note": "Two bands for the gate fixtures.",
+  "systems": {
+    "example": {
+      "name": "Example system",
+      "jurisdiction": "international",
+      "note": "Made up.",
+      "sourceUrl": "https://example.org/system"
+    }
+  },
+  "bands": [
+    {
+      "id": "b05-06",
+      "label": "Ages 5 to 6",
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "stage": "early primary",
+      "systems": {
+        "example": [
+          "Year 1"
+        ]
+      }
+    },
+    {
+      "id": "b07-08",
+      "label": "Ages 7 to 8",
+      "ages": {
+        "min": 7,
+        "max": 8
+      },
+      "stage": "lower primary",
+      "systems": {
+        "example": [
+          "Year 2"
+        ]
+      }
+    }
+  ]
+}

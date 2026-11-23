@@ -4,13 +4,24 @@
   "title": "Common European Framework of Reference for Languages",
   "publisher": "Council of Europe",
   "jurisdiction": "international",
-  "version": "Companion volume 2018",
+  "version": "Companion volume 2020",
   "sourceUrl": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+  "subjects": [
+    "languages"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 99
+    },
+    "grades": "Pre-A1 to C2"
+  },
   "terms": {
     "class": "reference_only",
     "quote": "ids_only",
-    "termsUrl": "https://rm.coe.int/cefr-companion-volume-with-new-descriptors-2018/1680787989",
-    "note": "Reproducing the descriptors needs permission from the publisher. Level names are used as facts; descriptors are never copied.",
-    "reviewed": null
+    "termsUrl": "https://rm.coe.int/common-european-framework-of-reference-for-languages-learning-teaching/16809ea0d4",
+    "evidence": "All rights reserved. No part of this publication may be translated, reproduced or transmitted, in any form or by any means",
+    "note": "All rights reserved: reproducing or translating the descriptors needs written permission. Level names are used as facts; descriptors are never copied.",
+    "reviewed": "2026-11-23"
   }
 }

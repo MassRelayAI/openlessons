@@ -5,6 +5,10 @@
   "subject": "mandarin",
   "strand": "grammar",
   "slug": "i-like",
+  "topic": "simple-sentences",
+  "bands": [
+    "b07-08"
+  ],
   "statement": {
     "en": "I can say what I like: 我喜欢猫 (I like cats)."
   },

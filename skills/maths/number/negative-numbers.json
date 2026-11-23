@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "maths.number.negative-numbers",
+  "version": 1,
+  "subject": "maths",
+  "strand": "number",
+  "slug": "negative-numbers",
+  "topic": "beyond-whole-numbers",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can count back through zero and place negative numbers on a number line."
+  },
+  "prerequisites": [
+    "maths.number.compare-to-100"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

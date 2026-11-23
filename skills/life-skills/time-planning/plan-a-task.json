@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.time-planning.plan-a-task",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "time-planning",
+  "slug": "plan-a-task",
+  "topic": "routines-planning",
+  "bands": [
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can break a job into steps and plan when to do each one."
+  },
+  "prerequisites": [
+    "life-skills.time-planning.days-and-routines"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

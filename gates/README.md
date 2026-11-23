@@ -2,7 +2,9 @@
 
 - `rules.json`: the list of gates. The program refuses to run when this list and the gates it implements differ.
 - `data/`: what the gates read. `reading-levels.json` (bounds per age), `licences.json` (licences an asset may carry),
-  `safety/<language>.json` (the safety lexicon; `hashed` entries are sha256 of lower-cased words we do not print).
+  `safety/<language>.json` (the safety lexicon; `hashed` entries are sha256 of lower-cased words we do not print),
+  `protected.json` (marks of copied material, and fingerprints of texts we may not copy: hashes of every run of six
+  words, made with `openlessons fingerprint <file>` from a text file that is never committed).
 - `fixtures/green/`: a small, complete tree that passes every gate.
 - `fixtures/red/<rule>/`: files laid over the green tree that the named gate must refuse.
 

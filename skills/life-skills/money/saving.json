@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "life-skills.money.saving",
+  "version": 1,
+  "subject": "life-skills",
+  "strand": "money",
+  "slug": "saving",
+  "topic": "spending-saving",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can explain why people save and plan how to save for something."
+  },
+  "prerequisites": [
+    "life-skills.money.needs-and-wants"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

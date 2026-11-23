@@ -1,6 +1,7 @@
 //! A Model Context Protocol server over the tree: JSON-RPC 2.0, one message per line, on standard input and output.
 //!
-//! Four tools. Three only read: `find_lessons`, `get_lesson` (the learner's view: never an answer), `validate_proposal`.
+//! Six tools. Five only read: `find_lessons`, `get_lesson` (the learner's view: never an answer), `gap_report`,
+//! `get_work_orders` (the loop's next lessons to draft) and `validate_proposal`.
 //! One writes, and only when the server was started with `--allow-write`: `propose_lesson` saves a proposal file under
 //! `proposals/`. It never writes a lesson, and nothing it writes can be `reviewed`: a maintainer applies the file, the
 //! gates judge it, a person reviews it.
@@ -11,6 +12,8 @@
 use crate::canon::{canonical, sha256_hex};
 use crate::export::{arr, learner_item, rank, st};
 use crate::import::{from_proposal, write_records};
+use crate::gaps;
+use crate::looprun;
 use crate::{find, scan, Query};
 use anyhow::{anyhow, bail, Result};
 use serde_json::{json, Value};
@@ -56,6 +59,26 @@ fn tools() -> Value {
             "inputSchema": {"type": "object", "additionalProperties": false, "required": ["id"], "properties": {
                 "id": {"type": "string", "pattern": "^les_[0-9a-f]{24}$"},
                 "min_status": {"type": "string", "enum": ["published", "reviewed", "proposed", "draft"], "default": "published", "description": "lower it only when an adult responsible for the learner accepts unreviewed content"}
+            }}
+        },
+        {
+            "name": "gap_report",
+            "description": "The gaps of the commons: objective x age band x language cells with no lesson or too few items, ranked by demand (standards first, then usage counts). Read-only; needs no model.",
+            "inputSchema": {"type": "object", "additionalProperties": false, "properties": {
+                "top": {"type": "integer", "minimum": 1, "maximum": 200, "default": 20},
+                "subjects": {"type": "array", "items": {"type": "string"}},
+                "locales": {"type": "array", "items": {"type": "string"}},
+                "bands": {"type": "array", "items": {"type": "string"}, "description": "age band ids (b05-06)"}
+            }}
+        },
+        {
+            "name": "get_work_orders",
+            "description": "The next lessons to draft, as work orders (order/1): the objective, its misconceptions, the age band and reading bounds, the language, the aligned standards in our own words, and the rules. Answer each order with one proposal and hand it to `validate_proposal`, then `propose_lesson`. A maintainer lands proposals with `openlessons loop land`, as `draft`: nothing an agent writes reaches a child before a listed person reviews it.",
+            "inputSchema": {"type": "object", "additionalProperties": false, "properties": {
+                "top": {"type": "integer", "minimum": 1, "maximum": 50, "default": 5},
+                "subjects": {"type": "array", "items": {"type": "string"}},
+                "locales": {"type": "array", "items": {"type": "string"}},
+                "bands": {"type": "array", "items": {"type": "string"}}
             }}
         },
         {
@@ -139,6 +162,25 @@ impl Server {
         Ok(out)
     }
 
+    fn gap_options(a: &Value) -> gaps::Options {
+        let list = |k: &str| arr(a, k).iter().filter_map(Value::as_str).map(str::to_string).collect();
+        gaps::Options { subjects: list("subjects"), locales: list("locales"), bands: list("bands"), ..Default::default() }
+    }
+
+    fn gap_report(&self, a: &Value) -> Result<Value> {
+        let top = a.get("top").and_then(Value::as_u64).unwrap_or(20).clamp(1, 200) as usize;
+        let r = gaps::report(&scan(&self.root, &self.data)?, &Self::gap_options(a));
+        Ok(json!({"summary": gaps::summary(&r), "gaps": r.gaps.iter().take(top).map(gaps::Cell::json).collect::<Vec<_>>()}))
+    }
+
+    fn work_orders(&self, a: &Value) -> Result<Value> {
+        let top = a.get("top").and_then(Value::as_u64).unwrap_or(5).clamp(1, 50) as usize;
+        let o = Self::gap_options(a);
+        let s = scan(&self.root, &self.data)?;
+        let cells = gaps::pick(&gaps::report(&s, &o).gaps, top);
+        Ok(json!({"orders": looprun::orders(&self.data, &s, &cells, o.min_items)?}))
+    }
+
     /// The gates over a proposal, in a scratch tree: the reference data, the lessons it touches, and its own records.
     fn check(&self, proposal: &Value) -> Result<Value> {
         static N: AtomicU64 = AtomicU64::new(0);
@@ -146,7 +188,7 @@ impl Server {
         let tmp = std::env::temp_dir().join(format!("openlessons-mcp-{}-{}", std::process::id(), N.fetch_add(1, Ordering::Relaxed)));
         let _ = fs::remove_dir_all(&tmp);
         let run = || -> Result<Vec<Value>> {
-            for d in ["locales", "standards", "skills", "alignments", "assets"] {
+            for d in ["locales", "bands", "topics", "standards", "skills", "alignments", "assets"] {
                 copy_tree(&self.root.join(d), &tmp.join(d))?;
             }
             if self.root.join("REVIEWERS.json").exists() {
@@ -196,6 +238,8 @@ impl Server {
         let result = match st(params, "name") {
             "find_lessons" => self.find_lessons(&args),
             "get_lesson" => self.get_lesson(&args),
+            "gap_report" => self.gap_report(&args),
+            "get_work_orders" => self.work_orders(&args),
             "validate_proposal" => self.check(&args["proposal"]),
             "propose_lesson" => self.propose(&args["proposal"]),
             other => Err(anyhow!("unknown tool {other}")),

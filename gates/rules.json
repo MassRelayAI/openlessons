@@ -32,6 +32,18 @@
       "mode": "blocking"
     },
     {
+      "id": "graph.placed",
+      "version": 1,
+      "title": "Every objective hangs from a subject, a strand and a topic that exist, in age bands that exist; a prerequisite never starts later than the objective that needs it",
+      "mode": "blocking"
+    },
+    {
+      "id": "alignment.band-matches",
+      "version": 1,
+      "title": "An `exact` or `partial` alignment shares an age band with its standard, and a lesson is written for ages its objectives are taught at",
+      "mode": "blocking"
+    },
+    {
       "id": "lesson.reading-level",
       "version": 1,
       "title": "The text a learner reads fits the youngest age the lesson says it is for",
@@ -65,6 +77,12 @@
       "id": "content.no-pii",
       "version": 1,
       "title": "No email address, phone number, web address or account handle in content or provenance",
+      "mode": "blocking"
+    },
+    {
+      "id": "content.no-copied-text",
+      "version": 1,
+      "title": "Our own wording carries no mark of copied material and no run of words from a text whose terms forbid copying it",
       "mode": "blocking"
     },
     {

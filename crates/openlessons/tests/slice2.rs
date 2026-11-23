@@ -124,7 +124,7 @@ fn proposal() -> Value {
     json!({
         "schema": "proposal/1", "title": "Count to four",
         "provenance": {"origin": "ai", "maker": "example-agent", "model": "example-model", "created": "2026-11-23"},
-        "skills": [{"id": "maths.number.count-to-four", "statement": {"en": "I can count up to four things."}, "prerequisites": ["maths.number.count-to-three"], "status": "published"}],
+        "skills": [{"id": "maths.number.count-to-four", "topic": "counting", "bands": ["b05-06"], "statement": {"en": "I can count up to four things."}, "prerequisites": ["maths.number.count-to-three"], "status": "published"}],
         "alignments": [{"skill": "maths.number.count-to-four", "standard": "example-framework:y1", "strength": "partial"}],
         "lessons": [{
             "lesson": {"slug": "count-to-four", "locale": "en", "subject": "maths", "title": "Count to four", "ages": {"min": 5, "max": 7},

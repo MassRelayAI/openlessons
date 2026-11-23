@@ -1,0 +1,30 @@
+{
+  "schema": "framework/1",
+  "id": "ngss-2013",
+  "title": "Next Generation Science Standards",
+  "publisher": "NGSS Lead States; copyright held by the National Academies Press",
+  "jurisdiction": "US",
+  "version": "2013",
+  "sourceUrl": "https://www.nextgenscience.org/",
+  "subjects": [
+    "science"
+  ],
+  "span": {
+    "ages": {
+      "min": 5,
+      "max": 18
+    },
+    "grades": "Kindergarten to grade 12"
+  },
+  "languages": [
+    "en"
+  ],
+  "terms": {
+    "class": "reference_only",
+    "quote": "ids_only",
+    "termsUrl": "https://www.nextgenscience.org/trademark-and-copyright",
+    "evidence": "states, districts, schools, teachers and non-profit education entities may copy, reproduce, alter, adapt, edit, delete and rearrange any and all parts of the NGSS",
+    "note": "The NGSS public licence lets states, districts, schools, teachers and non-profit education bodies copy and adapt; it does not reach anyone else. Performance expectation codes only, with our own paraphrase. NGSS is a registered trademark of WestEd, which was not involved in this project and does not endorse it.",
+    "reviewed": "2026-11-23"
+  }
+}

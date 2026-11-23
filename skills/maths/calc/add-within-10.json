@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "calc",
   "slug": "add-within-10",
+  "topic": "addition-subtraction",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can add two numbers with a total up to 10."
   },

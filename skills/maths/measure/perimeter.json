@@ -1,0 +1,33 @@
+{
+  "schema": "skill/1",
+  "id": "maths.measure.perimeter",
+  "version": 1,
+  "subject": "maths",
+  "strand": "measure",
+  "slug": "perimeter",
+  "topic": "perimeter-area",
+  "bands": [
+    "b07-08",
+    "b09-10"
+  ],
+  "statement": {
+    "en": "I can find the distance all the way round a shape."
+  },
+  "prerequisites": [
+    "maths.measure.measure-in-cm"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "skill/1",
+  "id": "literacy.writing.sequence-a-story",
+  "version": 1,
+  "subject": "literacy",
+  "strand": "writing",
+  "slug": "sequence-a-story",
+  "topic": "composition",
+  "bands": [
+    "b07-08"
+  ],
+  "statement": {
+    "en": "I can write a short story with events in order."
+  },
+  "prerequisites": [
+    "literacy.writing.write-a-sentence"
+  ],
+  "mastery": {
+    "model": "m_of_n",
+    "m": 4,
+    "n": 5
+  },
+  "status": "proposed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "openlessons-graph",
+    "model": "claude-fable-5",
+    "source": "graph-seed-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

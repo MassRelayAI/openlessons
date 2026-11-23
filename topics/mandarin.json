@@ -1,0 +1,87 @@
+{
+  "schema": "subject/1",
+  "id": "mandarin",
+  "area": "languages",
+  "label": {
+    "en": "Mandarin as an additional language"
+  },
+  "locales": [
+    "en",
+    "id",
+    "es",
+    "hi",
+    "ar"
+  ],
+  "strands": [
+    {
+      "id": "pinyin",
+      "label": {
+        "en": "Pinyin and tones"
+      },
+      "topics": [
+        {
+          "id": "tones",
+          "label": {
+            "en": "Tones"
+          }
+        }
+      ]
+    },
+    {
+      "id": "speaking",
+      "label": {
+        "en": "Speaking"
+      },
+      "topics": [
+        {
+          "id": "greetings",
+          "label": {
+            "en": "Greetings"
+          }
+        }
+      ]
+    },
+    {
+      "id": "characters",
+      "label": {
+        "en": "Characters"
+      },
+      "topics": [
+        {
+          "id": "numbers",
+          "label": {
+            "en": "Numbers"
+          }
+        }
+      ]
+    },
+    {
+      "id": "grammar",
+      "label": {
+        "en": "Sentence patterns"
+      },
+      "topics": [
+        {
+          "id": "simple-sentences",
+          "label": {
+            "en": "Simple sentences"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vocab",
+      "label": {
+        "en": "Vocabulary"
+      },
+      "topics": [
+        {
+          "id": "first-words",
+          "label": {
+            "en": "First words"
+          }
+        }
+      ]
+    }
+  ]
+}

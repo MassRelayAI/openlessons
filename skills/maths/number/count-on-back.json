@@ -5,6 +5,10 @@
   "subject": "maths",
   "strand": "number",
   "slug": "count-on-back",
+  "topic": "counting",
+  "bands": [
+    "b05-06"
+  ],
   "statement": {
     "en": "I can find 1 or 2 more and 1 or 2 fewer than a number to 20."
   },
