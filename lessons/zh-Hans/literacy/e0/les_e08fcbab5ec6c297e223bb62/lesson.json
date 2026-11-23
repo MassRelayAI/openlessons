@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_e08fcbab5ec6c297e223bb62",
+  "slug": "gdl-story-8535",
+  "locale": "zh-Hans",
+  "subject": "literacy",
+  "title": "你在做什么？",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "读一读这个故事。看完一页，再点下一页。"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"你在做什么？\" by Nina Orange, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "8535",
+    "title": "你在做什么？",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e4%bd%a0%e5%9c%a8%e5%81%9a%e4%bb%80%e4%b9%88%ef%bc%9fni-zai-zuo-shenme/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Nina Orange"
+    ],
+    "attribution": "'你在做什么？' by Nina Orange (with Wiehan de Jager), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:8535",
+    "created": "2026-11-23"
+  }
+}

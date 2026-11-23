@@ -10,7 +10,10 @@
     "b05-06"
   ],
   "statement": {
-    "en": "I can retell a story with its beginning, middle and end."
+    "en": "I can retell a story with its beginning, middle and end.",
+    "es": "Puedo volver a contar un cuento con su principio, su parte del medio y su final.",
+    "hi": "मैं कहानी को उसकी शुरुआत, बीच और अंत के साथ फिर से सुना सकता हूँ।",
+    "zh-Hans": "我能按开头、中间和结尾复述一个故事。"
   },
   "prerequisites": [],
   "mastery": {
@@ -18,7 +21,7 @@
     "m": 4,
     "n": 5
   },
-  "status": "proposed",
+  "status": "draft",
   "provenance": {
     "origin": "ai",
     "maker": "openlessons-graph",

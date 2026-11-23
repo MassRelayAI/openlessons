@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_8e06a6991f55bcd966c3bafb",
+  "slug": "gdl-story-6175",
+  "locale": "hi",
+  "subject": "literacy",
+  "title": "वह हँस दिया",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"वह हँस दिया\" by Sanjiv Jaiswal 'Sanjay', CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "6175",
+    "title": "वह हँस दिया",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e0%a4%b5%e0%a4%b9-%e0%a4%b9%e0%a4%81%e0%a4%b8-%e0%a4%a6%e0%a4%bf%e0%a4%af%e0%a4%be/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Sanjiv Jaiswal 'Sanjay'"
+    ],
+    "attribution": "'वह हँस दिया' by Sanjiv Jaiswal 'Sanjay' (with Ajit Narayan), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story: वह हँस दिया is written by Sanjiv Jaiswal 'Sanjay' . © Pratham Books , 2007. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:6175",
+    "created": "2026-11-23"
+  }
+}

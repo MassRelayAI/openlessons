@@ -1,0 +1,43 @@
+{
+  "schema": "lesson/1",
+  "id": "les_4afa757372d20730890f667a",
+  "slug": "gdl-story-2008",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "My Teacher",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"My Teacher\" by Hlengiwe Zondi, Zimbili Dlamini, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "2008",
+    "title": "My Teacher",
+    "sourceUrl": "https://content.digitallibrary.io/book/my-teacher/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Hlengiwe Zondi",
+      "Zimbili Dlamini"
+    ],
+    "attribution": "'My Teacher' by Hlengiwe Zondi, Zimbili Dlamini (with Jesse Pietersen), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:2008",
+    "created": "2026-11-23"
+  }
+}

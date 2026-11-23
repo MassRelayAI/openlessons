@@ -1,0 +1,44 @@
+{
+  "schema": "lesson/1",
+  "id": "les_2f053f372090de5b73adc67e",
+  "slug": "gdl-story-2486",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "What Type Of Teeth?",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"What Type Of Teeth?\" by Clare Verbeek, Thembani Dladla, Zanele Buthelezi, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "2486",
+    "title": "What Type Of Teeth?",
+    "sourceUrl": "https://content.digitallibrary.io/book/what-type-of-teeth/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Clare Verbeek",
+      "Thembani Dladla",
+      "Zanele Buthelezi"
+    ],
+    "attribution": "'What Type Of Teeth?' by Clare Verbeek, Thembani Dladla, Zanele Buthelezi (with Rob Owen), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:2486",
+    "created": "2026-11-23"
+  }
+}

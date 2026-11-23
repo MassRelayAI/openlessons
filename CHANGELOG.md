@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+- **Two failure classes of the first jury run are gates now**, so a draft fails before the jury: `item.hint-fits`
+  (a hint pointing at a picture the item does not show, or speaking of "both" over three or more choices; words per
+  language in `gates/data/hints.json`) and `item.objective-listed` (an item on an objective its lesson does not list;
+  before, a `refs.resolve` finding). Both judge drafts and settled content; `jury orders` refuses a lesson that fails
+  them, whatever its status. Proven red first (`tests/hints.rs`, 4 of 5 failed) and on their fixtures. The `proposed`
+  seed has about 2,600 picture-less "look at the picture" hints: it meets the gate when it is put before the jury.
+
+## 0.5.1 (2026-11-23)
+
 - **The sourced AI jury (decision K4).** Lessons and items become `reviewed` only by a jury decision record,
   `review/decisions/<record id>.json` (schema `jury-decision/1`), under `review/jury-policy.md` (policy version 1; jury
   `jury-v1` in `REVIEWERS.json`, owner MassRelay). Three independent roles (subject, safety, language), unanimous to pass,
@@ -11,6 +20,27 @@
   `jury_submit`. Review entries take `kind: jury` with a `decision` path. Files beyond the review lane: `scan.rs`,
   `main.rs`, `mcp.rs`, `lib.rs`, the review-entry block of every record schema, `reviewers.schema.json`,
   `gates/rules.json`, the green fixture, `scoregraph/rules/quality.review.jury-decision.json`.
+- **29 first-reading stories adopted** from the Global Digital Library (level 1, read without an account): 10 English, 9
+  Hindi, 6 Chinese (Simplified), 4 Spanish. They were first published by StoryWeaver (18), African Storybook (9) and
+  Book Dash (2), and each is one `story_choice` item. There are four courses, `paths/<locale>/literacy/open-stories`. All
+  are `draft`. Five books were refused at intake: four for reading level, one with no author.
+- **GDL adapter.** It reads the public book record and the unpacked EPUB (spine order). The licence is the item's own,
+  twice over: the record's `license` term and every licence the book's credits page names, in English, Spanish or
+  Chinese (知识共享：署名). The book's statement wins. If the two disagree in family, or if the book names two licences or one
+  that cannot be read, the book is refused.
+- **A distributor's copy never gets round its publisher's class.** A book first published by a source held as
+  reference-only or share-alike is refused whatever the distributor's field says. This is why the Let's Read titles on
+  GDL stay out.
+- **Story lessons.** An adopted lesson that tells a story counts the story as its adopted wording. Its opening line is
+  ours, so `content.no-copied-text` no longer treats one opening line shared by many stories as copied.
+- **Sources.**
+  - Bloom Library moves to `reference-only`: its licence page names only NC licences, and its book API needs a key.
+  - Global Digital Library and African Storybook gain the licences actually seen, and GDL gains its importer.
+  - Decided, and recorded in the sources and the README: share-alike material (Wikibooks, UNESCO) stays out of this
+    repository, and a separate pack is made only if a product needs it.
+- **Back to `draft` for the jury.** These skill records have statements we wrote ourselves:
+  - `maths.number.count-to-10`, `maths.calc.add-within-10` and `maths.calc.subtract-within-10` (Spanish);
+  - `literacy.reading.retell-a-story`, which now also has Spanish, Hindi and Chinese.
 
 ## 0.5.0 (2026-11-23)
 

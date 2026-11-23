@@ -6,7 +6,8 @@
   "url": "https://www.africanstorybook.org/",
   "class": "adopt",
   "licences": [
-    "CC-BY-4.0"
+    "CC-BY-4.0",
+    "CC-BY-3.0"
   ],
   "perItem": "the licence shown in each story's credits",
   "terms": {
@@ -15,7 +16,7 @@
     "quotation": "© 2015-2026 Saide - Creative Commons Licence CC-BY-4.0"
   },
   "caveats": [
-    "stories load in a script reader; the per-story licence was not seen"
+    "the site's reader is a script; its books were read through GDL copies, whose EPUB credits state 'Creative Commons: Attribution 3.0'"
   ],
   "unverified": [
     "the per-story licence field and the attribution wording"

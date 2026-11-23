@@ -1,0 +1,43 @@
+{
+  "schema": "lesson/1",
+  "id": "les_215cb874854947f1a7bf462b",
+  "slug": "gdl-story-1912",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "Londi the dreaming girl",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Londi the dreaming girl\" by Lauren Holliday, Nathalie Koenig, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "1912",
+    "title": "Londi the dreaming girl",
+    "sourceUrl": "https://content.digitallibrary.io/book/londi-the-dreaming-girl/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Lauren Holliday",
+      "Nathalie Koenig"
+    ],
+    "attribution": "'Londi the dreaming girl' by Lauren Holliday, Nathalie Koenig, BookDash, licensed under CC BY 4.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:1912",
+    "created": "2026-11-23"
+  }
+}

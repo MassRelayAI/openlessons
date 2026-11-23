@@ -1,0 +1,43 @@
+{
+  "schema": "lesson/1",
+  "id": "les_07d36981c240069db258321d",
+  "slug": "gdl-story-8531",
+  "locale": "zh-Hans",
+  "subject": "literacy",
+  "title": "朋友",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "读一读这个故事。看完一页，再点下一页。"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"朋友\" by Zimbili Dlamini, Hlengiwe Zondi, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "8531",
+    "title": "朋友",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e6%9c%8b%e5%8f%8bpengyou/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Zimbili Dlamini",
+      "Hlengiwe Zondi"
+    ],
+    "attribution": "'朋友' by Zimbili Dlamini, Hlengiwe Zondi (with Catherine Groenewald), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:8531",
+    "created": "2026-11-23"
+  }
+}

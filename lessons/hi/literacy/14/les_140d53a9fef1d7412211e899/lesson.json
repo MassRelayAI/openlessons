@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_140d53a9fef1d7412211e899",
+  "slug": "gdl-story-6163",
+  "locale": "hi",
+  "subject": "literacy",
+  "title": "मैं नहीं डरती !",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"मैं नहीं डरती !\" by Mini Shrinivasan, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "6163",
+    "title": "मैं नहीं डरती !",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e0%a4%ae%e0%a5%88%e0%a4%82-%e0%a4%a8%e0%a4%b9%e0%a5%80%e0%a4%82-%e0%a4%a1%e0%a4%b0%e0%a4%a4%e0%a5%80/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Mini Shrinivasan"
+    ],
+    "attribution": "'मैं नहीं डरती !' by Mini Shrinivasan (with Rayika Sen, Yuman Hussain), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story: मैं नहीं डरती ! is translated by Yuman Hussain . The © for this translation lies with Yuman Hussain, 2017. Some rights reserved. Released under CC BY 4.0 license. Derived from: ' I Am Not Afraid! / मी नाही घाबरत! ' , by Sandhya Taksale . © Pratham Books , 2013. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' I Am Not Afraid! ' , by Mini Shrinivasan . © Pratham Books , 2013. Some rights re",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:6163",
+    "created": "2026-11-23"
+  }
+}

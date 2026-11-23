@@ -1,0 +1,33 @@
+{
+  "schema": "path/1",
+  "slug": "open-stories",
+  "locale": "zh-Hans",
+  "subject": "literacy",
+  "title": "开放故事：初读",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:level-1",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "第一批故事",
+      "lessons": [
+        "les_07d36981c240069db258321d",
+        "les_4f45f38c2345e2b93cfc484a",
+        "les_8a71f49badc0b515e0bded93",
+        "les_8cad4aeee9af470650948308",
+        "les_ccaa8fe0755f16dcc833ee52",
+        "les_e08fcbab5ec6c297e223bb62"
+      ]
+    }
+  ]
+}

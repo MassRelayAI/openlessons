@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_352c85140a6bf244f9234677",
+  "slug": "gdl-story-6195",
+  "locale": "hi",
+  "subject": "literacy",
+  "title": "सोना सयानी",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"सोना सयानी\" by Vinita Krishna, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "6195",
+    "title": "सोना सयानी",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e0%a4%b8%e0%a5%8b%e0%a4%a8%e0%a4%be-%e0%a4%b8%e0%a4%af%e0%a4%be%e0%a4%a8%e0%a5%80/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Vinita Krishna"
+    ],
+    "attribution": "'सोना सयानी' by Vinita Krishna (with Suvidha Mistry), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story: सोना सयानी is written by Vinita Krishna . © Pratham Books , 2006. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:6195",
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_5ee633f467ec5680e4688a78",
+  "slug": "gdl-story-2546",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "Wild Cat! Wild Cat!",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Wild Cat! Wild Cat!\" by Sejal Mehta, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "2546",
+    "title": "Wild Cat! Wild Cat!",
+    "sourceUrl": "https://content.digitallibrary.io/book/wild-cat-wild-cat/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Sejal Mehta"
+    ],
+    "attribution": "'Wild Cat! Wild Cat!' by Sejal Mehta (with Rohan Chakravarty), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story:Wild Cat! Wild Cat!is written bySejal Mehta. © Pratham Books , 2017. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:2546",
+    "created": "2026-11-23"
+  }
+}
