@@ -1,0 +1,50 @@
+{
+  "slug": "position-words-b05-06",
+  "locale": "id",
+  "subject": "maths",
+  "title": "Di mana letaknya?",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.shape.position-words"
+  ],
+  "teach": {
+    "text": "Kita bisa menyebutkan letak benda. Benda bisa ada di atas, di bawah, di dalam, atau di samping. Benda juga bisa ada di depan atau di belakang. Di atas kebalikan dari di bawah. Di depan kebalikan dari di belakang.",
+    "examples": [
+      "Topi di atas kepala",
+      "Ikan di dalam air",
+      "Sepatu ada di bawah meja",
+      "Bola ada di samping kotak",
+      "Guru berdiri di depan kelas",
+      "Tas ada di belakang kursi"
+    ],
+    "reteach": "Lihat benda itu, lalu lihat benda di dekatnya. Tanyakan: di mana letaknya?"
+  },
+  "image": {
+    "emoji": "📦"
+  },
+  "schema": "lesson/1",
+  "status": "reviewed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_af543d80d20833363751a6f8.json"
+      }
+    ]
+  },
+  "id": "les_af543d80d20833363751a6f8",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

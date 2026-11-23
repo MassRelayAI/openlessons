@@ -1,0 +1,46 @@
+{
+  "slug": "add-within-10-b05-06",
+  "locale": "zh-Hans",
+  "subject": "maths",
+  "title": "10以内的加法",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "把两组东西合在一起，就是加法。3个和4个合起来是7个。",
+    "examples": [
+      "3 + 4 = 7",
+      "6 + 3 = 9"
+    ],
+    "reteach": "从大的数开始，接着往后数。比如 6 + 3：从 6 开始，往后数 3 个：7、8、9。"
+  },
+  "image": {
+    "emoji": "➕"
+  },
+  "schema": "lesson/1",
+  "status": "reviewed",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code-reviser",
+    "model": "claude-fable-5-2",
+    "tool": "openlessons-jury-revise",
+    "created": "2026-11-23",
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_432f0e7816717aa2fb850b95.json"
+      }
+    ]
+  },
+  "id": "les_432f0e7816717aa2fb850b95",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

@@ -9,8 +9,8 @@
     "skills": 181,
     "alignments": 559,
     "assets": 0,
-    "lessons": 98,
-    "items": 4291,
+    "lessons": 103,
+    "items": 4332,
     "paths": 12,
     "bands": 10,
     "subjects": 10,
@@ -71,6 +71,13 @@
     },
     {
       "locale": "es",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/es/computing.jsonl"
+    },
+    {
+      "locale": "es",
       "subject": "literacy",
       "lessons": 4,
       "items": 4,
@@ -105,11 +112,39 @@
       "file": "index/id/literacy.jsonl"
     },
     {
+      "locale": "id",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/id/maths.jsonl"
+    },
+    {
       "locale": "zh-Hans",
       "subject": "literacy",
       "lessons": 6,
       "items": 6,
       "file": "index/zh-Hans/literacy.jsonl"
+    },
+    {
+      "locale": "zh-Hans",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hans/maths.jsonl"
+    },
+    {
+      "locale": "zh-Hant",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 9,
+      "file": "index/zh-Hant/computing.jsonl"
+    },
+    {
+      "locale": "zh-Hant",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hant/maths.jsonl"
     }
   ]
 }
