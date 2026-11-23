@@ -40,7 +40,8 @@ fn the_shipped_list_names_nobody_and_nothing_in_the_tree_is_reviewed() {
     let v: Value = serde_json::from_str(&fs::read_to_string(root().join("REVIEWERS.json")).unwrap()).unwrap();
     assert_eq!(v["reviewers"], json!([]), "reviewers are named by the project owner, not by a change that also adds content");
     let s = scan(&root(), &root().join("gates/data")).unwrap();
-    assert!(s.lessons.iter().all(|l| l["status"] == "proposed"));
+    // a contribution is `proposed`, a draft of the loop is `draft`: with nobody listed, nothing can be more than that
+    assert!(s.lessons.iter().all(|l| l["status"] == "proposed" || l["status"] == "draft"));
 }
 
 #[test]
