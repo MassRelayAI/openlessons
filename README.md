@@ -22,8 +22,8 @@ app or AI harness to use and to add to.**
 | objectives (skills), each with its topic, age bands and prerequisites | 181, with 122 prerequisite edges | `skills/` |
 | alignments of objectives to standards, none reviewed yet | 559 | `alignments/` |
 | sources of open material, each with its licence class (adopt, reference only, share-alike) | 16 (9 adopt, 5 reference only, 2 share-alike) | `sources/` |
-| lessons | 86: two outside a course (the first jury-reviewed lessons, in Arabic maths and English science) and the rest in 10 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian, open maths K-2 adapted from IM K-5 Math (English, Spanish), and open first-reading stories (English, Spanish, Hindi, Chinese) | `lessons/` |
-| items (questions and activities, 7 kinds) | 4,259 | `lessons/**/items.jsonl` |
+| lessons | 98: two outside a course (the first jury-reviewed lessons, in Arabic maths and English science) and the rest in 12 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian, open maths K-2 adapted from IM K-5 Math (English, Spanish), open first-reading stories (English, Spanish, Hindi, Chinese), and first stories written for openlessons in Arabic and Indonesian | `lessons/` |
+| items (questions and activities, 7 kinds) | 4,291 | `lessons/**/items.jsonl` |
 | languages of instruction | 7: Arabic, English, Spanish, Hindi, Indonesian, Chinese (Simplified), Chinese (Traditional) | `locales/` |
 | cells to fill (objective x age band x language) | 1,583, of which 54 have a lesson | `openlessons gaps` |
 
@@ -215,9 +215,22 @@ Today's intake has three parts:
   intake: four had a sentence too long for ages 5-7, and one named no author.
 - **StoryWeaver direct**: the adapter is ready, but StoryWeaver serves page text only to a signed-in reader.
 
-No Arabic or Indonesian story is in yet. GDL's Arabic books are all CC BY-NC-SA. Its Indonesian CC BY books with text
-are first published by Let's Read, which stays reference only until its licence is read: a distributor's copy never
-gets round its publisher's class.
+No Arabic or Indonesian story could be adopted. GDL's Arabic books are all CC BY-NC-SA. Its Indonesian CC BY books
+with text are first published by Let's Read, which stays reference only until its licence is read: a distributor's copy
+never gets round its publisher's class.
+
+So we wrote our own: 12 original early-reading stories, 6 in Arabic and 6 in Indonesian, CC BY 4.0, written by MassRelay
+(`paths/ar/literacy/first-stories`, `paths/id/literacy/first-stories`). They are not translations, and none is adapted
+from another book. Each is a `story_choice` item, and those that teach prediction have a branching page. Each story has
+one or two questions about it, and is mapped to one of three objectives:
+
+- how books work, for ages 4-5;
+- retelling a story, for ages 5-6;
+- predicting what comes next, for ages 6-8.
+
+Names, foods and places fit each locale. The Arabic stories have date palms, a market, a camel and a grandmother who
+reads. The Indonesian ones have rice fields, a market, a beach with turtles and a kite. All are `draft` until the jury
+reviews them.
 
 **How attribution reaches the app.** Each lesson's `attribution` line and its `adopted` block go out in every export:
 
@@ -353,7 +366,7 @@ Found a problem in a lesson, especially one that is unsafe for a child? See [SEC
 1. Done: the format, twenty-three gates, the sourced AI jury, the registry, the age bands, the topic graph, the gap
    report, the loop, `export`, `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake
    (`sources/`, `openlessons adopt`).
-2. Next: human spot-checks of jury passes, and educators named for skills and alignments; Arabic and Indonesian stories
-   from a source whose licence is read.
+2. Next: human spot-checks of jury passes, and educators named for skills and alignments; the jury's first pass over the
+   adopted and the original stories.
 3. Then: usage signals from products, with no learner data; recordings for the audio cues; objective-level nodes for the
    open frameworks.

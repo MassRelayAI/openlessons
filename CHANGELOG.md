@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 0.5.2 (2026-11-23)
+
+- **12 original early-reading stories, 6 in Arabic and 6 in Indonesian.** They are written for openlessons by MassRelay
+  and released under CC BY 4.0. None is a translation, and none is adapted from another book. No adoptable story exists
+  in either language: GDL's Arabic books are NC-SA, and its Indonesian CC BY books are Let's Read titles, still held.
+- Each story is a `story_choice` item, with one or two questions about it (32 items). The stories are mapped to three
+  objectives:
+  - `literacy.reading.how-books-work`, for ages 4-5;
+  - `literacy.reading.retell-a-story`, for ages 5-6;
+  - `literacy.reading.predict`, for ages 6-8; these stories branch at a "what happens next?" page.
+- Names, foods and places fit each locale. There are two courses, `paths/<ar|id>/literacy/first-stories`. Everything is
+  `draft`, for the jury.
+- The three objectives gain Arabic and Indonesian statements, in our own words. They are back at `draft`.
+
 ## 0.5.1 (2026-11-23)
 
 - **The sourced AI jury (decision K4).** Lessons and items become `reviewed` only by a jury decision record,

@@ -1,0 +1,29 @@
+{
+  "schema": "lesson/1",
+  "id": "les_d4e0cd70a158bb3366fa8425",
+  "slug": "qissa-salma-wa-sallat-altamr",
+  "locale": "ar",
+  "subject": "literacy",
+  "title": "سلمى وسلة التمر",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "اقرأ القصة. بعد ذلك تذكر ما حدث في البداية، وفي الوسط، وفي النهاية."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Written by MassRelay for openlessons, CC BY 4.0; openlessons contributors",
+  "provenance": {
+    "origin": "ai",
+    "maker": "massrelay",
+    "model": "claude-opus-5.5",
+    "source": "original-stories-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  }
+}

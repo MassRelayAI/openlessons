@@ -13,7 +13,9 @@
     "en": "I can retell a story with its beginning, middle and end.",
     "es": "Puedo volver a contar un cuento con su principio, su parte del medio y su final.",
     "hi": "मैं कहानी को उसकी शुरुआत, बीच और अंत के साथ फिर से सुना सकता हूँ।",
-    "zh-Hans": "我能按开头、中间和结尾复述一个故事。"
+    "zh-Hans": "我能按开头、中间和结尾复述一个故事。",
+    "ar": "أستطيع أن أعيد سرد قصة ببدايتها ووسطها ونهايتها.",
+    "id": "Aku bisa menceritakan kembali cerita dengan awal, tengah, dan akhirnya."
   },
   "prerequisites": [],
   "mastery": {

@@ -1,0 +1,33 @@
+{
+  "schema": "path/1",
+  "slug": "first-stories",
+  "locale": "id",
+  "subject": "literacy",
+  "title": "Cerita Pertama",
+  "ages": {
+    "min": 4,
+    "max": 8
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "massrelay",
+    "model": "claude-opus-5.5",
+    "source": "original-stories-2026-11",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "Cerita untuk mulai membaca",
+      "lessons": [
+        "les_d706bde42f588a8aa4660c40",
+        "les_3098722ee37f915f9ef7ff05",
+        "les_68dc1e4a41e98062f8735f6a",
+        "les_f8687e5f4473d0fe608ace14",
+        "les_2372e54063409d37c4849c9e",
+        "les_226663c0897af1916b2154d7"
+      ]
+    }
+  ]
+}
