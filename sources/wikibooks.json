@@ -1,0 +1,21 @@
+{
+  "schema": "source/1",
+  "id": "wikibooks",
+  "title": "Wikibooks",
+  "publisher": "Wikimedia Foundation and contributors",
+  "url": "https://en.wikibooks.org/",
+  "class": "sa-layer",
+  "licences": [
+    "CC-BY-SA-4.0",
+    "LicenseRef-GFDL-unversioned"
+  ],
+  "perItem": "text is dual-licensed CC BY-SA 4.0 and GFDL; some text is CC BY-SA only; media carry their own licences",
+  "terms": {
+    "url": "https://en.wikibooks.org/wiki/Wikibooks:Copyrights",
+    "read": "2026-11-23",
+    "quotation": "dual licensed under the Creative Commons Attribution-ShareAlike 4.0 International License"
+  },
+  "caveats": [
+    "share-alike: kept out of the CC BY core"
+  ]
+}

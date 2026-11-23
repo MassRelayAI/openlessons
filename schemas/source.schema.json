@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/source.schema.json",
+  "title": "source/1: a publisher of open material, its licences and what the core may take from it",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "id",
+    "title",
+    "publisher",
+    "url",
+    "class",
+    "licences",
+    "perItem",
+    "terms"
+  ],
+  "properties": {
+    "schema": {
+      "const": "source/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "maxLength": 64
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "hosts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9.-]+$"
+      },
+      "description": "hosts an item's sourceUrl may name (default: the host of `url`)"
+    },
+    "class": {
+      "enum": [
+        "adopt",
+        "reference-only",
+        "sa-layer"
+      ],
+      "description": "adopt: CC BY, CC0 or public-domain items may be imported with attribution; reference-only: NonCommercial, NoDerivatives or closed, codes and links only; sa-layer: ShareAlike, kept out of the CC BY core"
+    },
+    "licences": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64
+      },
+      "description": "SPDX ids (or LicenseRef-*) the source publishes items under; an item's own licence decides"
+    },
+    "perItem": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "description": "where an item states its own licence"
+    },
+    "terms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "read",
+        "quotation"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "read": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "quotation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "description": "the credit the publisher asks for"
+        }
+      }
+    },
+    "caveats": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 400
+      }
+    },
+    "importer": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "the adapter of `openlessons adopt` that reads this source"
+    },
+    "unverified": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 300
+      },
+      "description": "what could not be read on the publisher's own pages"
+    }
+  }
+}

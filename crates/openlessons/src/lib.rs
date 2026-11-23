@@ -11,6 +11,7 @@
 //! - [`looprun`]: the content loop: work orders, landing drafts, the run report
 //! - [`canon`]: canonical JSON and the ids derived from content
 
+pub mod adopt;
 pub mod base;
 pub mod canon;
 pub mod export;

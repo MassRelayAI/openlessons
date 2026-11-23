@@ -7,8 +7,8 @@ app or AI harness to use and to add to.**
 - **Code and tools** (the CLI, schemas, gates): [Apache-2.0](LICENSE).
 - **Standards** are referenced by identifier and link. They belong to their publishers; see [NOTICE](NOTICE).
 
-> Status: early (0.4). The format, the gates, a standards registry, an age-band model, a topic graph, the gap report and
-> the content loop are here. **Nothing in the tree has been reviewed by an educator yet.** A product for children reads
+> Status: early (0.5). The format, the gates, a standards registry, an age-band model, a topic graph, the gap report,
+> the content loop and an intake for open material (OER) are here. **Nothing in the tree has been reviewed by an educator yet.** A product for children reads
 > `reviewed` or `published` content only; today there is none.
 
 ## What is in it
@@ -20,16 +20,19 @@ app or AI harness to use and to add to.**
 | subjects, with strands and topics | 10 subjects, 86 topics | `topics/` |
 | objectives (skills), each with its topic, age bands and prerequisites | 181, with 122 prerequisite edges | `skills/` |
 | alignments of objectives to standards, none reviewed yet | 559 | `alignments/` |
-| lessons | 49, in 4 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian | `lessons/` |
-| items (questions and activities, 7 kinds) | 4,178 | `lessons/**/items.jsonl` |
+| sources of open material, each with its licence class (adopt, reference only, share-alike) | 16 (10 adopt, 4 reference only, 2 share-alike) | `sources/` |
+| lessons | 55, in 6 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian, and open maths K-2 adapted from IM K-5 Math in English and Spanish | `lessons/` |
+| items (questions and activities, 7 kinds) | 4,214 | `lessons/**/items.jsonl` |
 | languages of instruction | 7: Arabic, English, Spanish, Hindi, Indonesian, Chinese (Simplified), Chinese (Traditional) | `locales/` |
-| cells to fill (objective x age band x language) | 1,583, of which 49 have a lesson | `openlessons gaps` |
+| cells to fill (objective x age band x language) | 1,583, of which 50 have a lesson | `openlessons gaps` |
 
 The numbers come from [`index/catalog.json`](index/catalog.json) and `openlessons gaps`, which the tool generates.
 
 ## How it is organised
 
 ```
+sources/<source>.json           publishers of open material: licences, class, where an item states its own licence
+intake/<source>/plan.json       adoption plans: which items of a source, mapped onto which objectives
 standards/<framework>/          the registry: a framework, its licence and terms of reuse, its levels and objectives (references only)
 bands/age-bands.json            the one age-band model, and what each band is called in each country's grades
 topics/<subject>.json           a subject, its strands and their topics
@@ -97,7 +100,8 @@ proposal files only.
    `reviewed` or `published` content only: a child never receives unchecked AI output.** `export` and `get_lesson` default
    to `published`.
 3. **Give credit.** Each lesson carries its `licence` and `attribution`; each asset its own. A line such as
-   "Lesson from openlessons contributors, CC BY 4.0" with a link is enough.
+   "Lesson from openlessons contributors, CC BY 4.0" with a link is enough. A lesson adapted from open material says
+   so in its `attribution` and carries the original's credit in `adopted`: show both (see "Adopting open material").
 
 ## Where the benchmarks come from
 
@@ -116,6 +120,103 @@ A gate enforces the table: a record that holds a publisher's wording under terms
 `content.no-copied-text`, reads our own wording for the marks of copied material and for runs of words from texts we may
 not copy: ten of the held-back frameworks have a fingerprint list made from their official text (hashes only, never the
 text), and each of the other 22 says in its record that the paraphrase rule is its only guard (`terms.guard`).
+
+## Adopting open material
+
+Not everything has to be written from scratch. Openly licensed lessons, stories and textbooks already exist, and the
+commons can take them in, under four rules.
+
+1. **The licence is read per item, never per site.** A publisher's site can say "CC BY", yet one book on it is
+   NonCommercial, or a newer edition is under other terms. IM's first edition is CC BY 4.0, but its v.360 is CC BY-NC 4.0.
+   OpenStax moved most of its books to CC BY-NC-SA in 2026. So the importer takes the licence from the item itself (an IM
+   lesson page's notice, a StoryWeaver story's licence line). An item that states no licence is refused.
+2. **Only CC BY, CC0 and public domain enter the core.** These are the `adopt` licences (`gates/data/licences.json`,
+   `text.adoptable`). NonCommercial, NoDerivatives and closed material is **reference only**: we keep its codes and
+   links, never its content. ShareAlike material (Wikibooks, many UNESCO titles) would bind every lesson built from it,
+   so it stays **out of the CC BY core**. A separate share-alike pack is the way to carry it if a product ever needs it.
+3. **Credit travels with the item.** Every adopted lesson has an `adopted` block with these fields:
+   - the source;
+   - the item's own licence, and `licenceUrl`, the deed of that licence;
+   - the authors;
+   - the attribution text the publisher asks for;
+   - `sourceUrl`, the original's address;
+   - what we changed.
+
+   The lesson's own `attribution` names the first author.
+4. **Everything adopted lands as `draft`** and passes every gate like any other record. Review still decides what a
+   child sees.
+
+Two gates enforce the rules:
+
+- **`content.source-licensed`** refuses each of these:
+  - an unregistered source;
+  - a source whose class contradicts its licences;
+  - an item under an NC, ND, SA or unknown licence;
+  - a licence the source does not publish under;
+  - a deed that does not match the licence;
+  - a missing attribution, author or original address;
+  - an address on another host.
+- **`content.no-copied-text`** accepts adopted wording only where its credit travels with it. The same run of eight
+  words in a lesson without that `adopted` block is refused. The credit may carry the publisher's © and notice, but a
+  credit that names a NonCommercial or NoDerivatives licence is refused.
+
+**The sources.** `openlessons sources` lists them. Each record under `sources/` gives these:
+
+- its class;
+- the licences it publishes under;
+- where an item states its own licence;
+- the page where the terms were read, with a quotation and the date;
+- the credit the publisher asks for;
+- what could not be verified.
+
+| class | sources (read 2026-11-23) |
+|---|---|
+| adopt | IM K-12 Math, first edition (CC BY 4.0; v.360 is NC, refused per item); StoryWeaver (CC BY 4.0); African Storybook (CC BY 4.0); Global Digital Library (CC BY; its BY-SA books refused); OpenStax (only the books still CC BY 4.0); Siyavula (only the unbranded CC BY 3.0 ePUBs; the ND editions refused); Project Gutenberg (public domain in the USA: check each country); Book Dash (CC BY 4.0); Wikimedia Commons (per file, as assets); Bloom Library (per book) |
+| reference only | Khan Academy (CC BY-NC-SA), CK-12 (its own non-commercial licence), Eureka Math / EngageNY (CC BY-NC-SA 4.0), Let's Read (NC, until a title is read) |
+| share-alike, kept out of the core | Wikibooks (CC BY-SA 4.0 and GFDL), UNESCO open access (mostly CC BY-SA 3.0 IGO) |
+
+**How to add a source.**
+
+1. Find the publisher's own licence page, and the place where one item states its own licence.
+2. Write `sources/<id>.json` (`source/1`). Fill in the class, the licences, `perItem`, the terms with their address, the
+   date read and a short quotation, and the credit wording.
+3. `openlessons validate` refuses a class that contradicts the licences.
+4. If items will be imported, an adapter in `crates/openlessons/src/adopt.rs` reads the publisher's format into an
+   intake. Its tests must show a NonCommercial item refused.
+
+**How to import.**
+
+1. Write an adoption plan, `intake/<source>/plan.json` (`adopt-plan/1`). Each entry gives these:
+   - the input file, as fetched from the item's `url` (inputs are not committed);
+   - the locale;
+   - the objectives it maps onto;
+   - the ages;
+   - what to take from the item;
+   - any practice items to generate beside it.
+2. Run the import, then rebuild the index and validate:
+
+```bash
+openlessons adopt intake/illustrative-math/plan.json   # check each item's licence and credit, write drafts
+openlessons index && openlessons validate
+```
+
+An item that fails a licence check is refused, with the reason. A lesson that fails any gate is taken out again.
+
+Today's intake has two parts:
+
+- **IM K-5 Math**: a K-2 slice of six lessons, three in English and three in Spanish, under `paths/<locale>/maths/im-k2-slice`.
+- **StoryWeaver**: the adapter is ready, but no story has been imported. StoryWeaver serves a story's record to anyone,
+  but its page text only to a signed-in reader.
+
+**How attribution reaches the app.** Each lesson's `attribution` line and its `adopted` block go out in every export:
+
+- the bundle;
+- the learner bundle, which has no answers but keeps the credit;
+- the app pack (`ext.adopted`), which `import` restores.
+
+Bundles also carry `credits`: one entry per adopted lesson, with its attribution, licence, deed and original address.
+That is what an app's credits screen shows. The minimum, next to the lesson, is its `attribution` line, which links the
+licence.
 
 ## Age bands
 
@@ -142,7 +243,7 @@ no model       no model   a model    no model   no model           a person revi
    misconceptions, the ages and reading bounds, the language, the aligned standards in our own words (the publisher's
    wording only where its terms allow), and the rules. A pick is dealt across subjects and languages, prerequisites first.
 3. **Draft.** Any harness answers each order with one proposal file (`proposal/1`) under `.loop/drafts/`.
-4. **Gates.** `openlessons loop land` judges each proposal with all twenty-one gates. A draft that fails leaves no trace and is
+4. **Gates.** `openlessons loop land` judges each proposal with all twenty-two gates. A draft that fails leaves no trace and is
    listed in the report with the reason.
 5. **Land.** What passes is placed at status **`draft`**, the index is regenerated, the whole tree is judged again, and a
    run report is written to `runs/<id>.json` and `.md`: gaps closed, items added, gates passed, drafts refused. Without a
@@ -187,9 +288,10 @@ the ordinary CI gates judge like any other.
 
 ## Quality gates
 
-Every change must pass twenty-one gates: schema, content-derived ids, references, standards terms, alignment, a place in the
+Every change must pass twenty-two gates: schema, content-derived ids, references, standards terms, alignment, a place in the
 topic graph, matching age bands, reading level for the stated age, a verified answer, no answer in the prompt, a recording
-behind every heard prompt, licensed assets, no personal data, no copied text, a child-safety lexicon, no duplicates,
+behind every heard prompt, licensed assets, adopted material under its own open licence and with its credit, no
+personal data, no copied text, a child-safety lexicon, no duplicates,
 review before `reviewed`, by a listed reviewer, nothing reviewed changed silently against the base, and a fresh index.
 Each gate has a fixture it must fail and one it must pass, and the validator checks that before it judges anything. The
 gates are a floor. They do not replace a teacher's review.
@@ -205,8 +307,9 @@ Found a problem in a lesson, especially one that is unsafe for a child? See [SEC
 
 ## Roadmap
 
-1. Done: the format, twenty-one gates, the registry, the age bands, the topic graph, the gap report, the loop, `export`,
-   `import`, `mcp`, heard prompts, the reviewer list, the seed.
-2. Next: reviewers named, and the first `reviewed` content, with educators.
+1. Done: the format, twenty-two gates, the registry, the age bands, the topic graph, the gap report, the loop, `export`,
+   `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake (`sources/`, `openlessons adopt`).
+2. Next: reviewers named, and the first `reviewed` content, with educators; StoryWeaver stories in three or more languages
+   once a reader account fetches their pages.
 3. Then: usage signals from products, with no learner data; recordings for the audio cues; objective-level nodes for the
    open frameworks.

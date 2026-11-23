@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_a643e4dccbd1083cb7180c4d",
+  "slug": "im-k-fingers-count-to-10",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Fingers as a Math Tool",
+  "ages": {
+    "min": 4,
+    "max": 6
+  },
+  "skills": [
+    "maths.number.count-to-10"
+  ],
+  "teach": {
+    "text": "Let’s count to 10. As I count to 10, put up 1 finger for each number. Now let’s count to 10 with our fingers. Each time you say a number, put up 1 finger. How many fingers am I holding up?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Fingers as a Math Tool\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5/teachers/kindergarten/unit-2/lesson-1",
+    "title": "Fingers as a Math Tool",
+    "sourceUrl": "https://im.kendallhunt.com/K5/teachers/kindergarten/unit-2/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Fingers as a Math Tool\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5/teachers/kindergarten/unit-2/lesson-1",
+    "created": "2026-11-23"
+  }
+}

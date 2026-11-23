@@ -74,6 +74,12 @@
       "mode": "blocking"
     },
     {
+      "id": "content.source-licensed",
+      "version": 1,
+      "title": "Adopted open material comes from a registered source under the item's own CC BY, CC0 or public-domain licence, with its deed, authors, attribution and original address; NonCommercial, NoDerivatives and ShareAlike material never enters the core, and a source's class follows from its licences",
+      "mode": "blocking"
+    },
+    {
       "id": "content.no-pii",
       "version": 1,
       "title": "No email address, phone number, web address or account handle in content or provenance",

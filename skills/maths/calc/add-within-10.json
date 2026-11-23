@@ -10,7 +10,8 @@
     "b05-06"
   ],
   "statement": {
-    "en": "I can add two numbers with a total up to 10."
+    "en": "I can add two numbers with a total up to 10.",
+    "es": "Puedo sumar dos números con un total de hasta 10."
   },
   "type": "math_foundations",
   "prerequisites": [],
@@ -18,7 +19,8 @@
     {
       "no": 1,
       "feedback": {
-        "en": "Adding makes the number bigger. Count on, do not count back."
+        "en": "Adding makes the number bigger. Count on, do not count back.",
+        "es": "Sumar hace el número más grande. Cuenta hacia adelante, no hacia atrás."
       },
       "mustAddress": true
     }

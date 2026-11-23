@@ -1,0 +1,41 @@
+{
+  "schema": "lesson/1",
+  "id": "les_f241d5af8ba4425b63a00f20",
+  "slug": "counting-hens",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Count the hens",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "maths.number.count-to-five"
+  ],
+  "teach": {
+    "text": "The little red hen counts her chicks in the yard every morning."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Counting Hens\" by Ada Writer, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "example-open",
+    "item": "counting-hens",
+    "title": "Counting Hens",
+    "sourceUrl": "https://example.org/items/counting-hens",
+    "licence": "CC-BY-NC-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+    "authors": [
+      "Ada Writer"
+    ],
+    "attribution": "\"Counting Hens\" by Ada Writer, © Example Publisher 2020, released under CC BY 4.0.",
+    "changes": "shortened",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "source/1",
+  "id": "project-gutenberg",
+  "title": "Project Gutenberg",
+  "publisher": "Project Gutenberg Literary Archive Foundation",
+  "url": "https://www.gutenberg.org/",
+  "class": "adopt",
+  "licences": [
+    "CC-PDM-1.0"
+  ],
+  "perItem": "each ebook's copyright status (public domain in the USA); the Project Gutenberg header, footer and name are stripped before adoption",
+  "terms": {
+    "url": "https://www.gutenberg.org/policy/license.html",
+    "read": "2026-11-23",
+    "quotation": "If you are not located in the United States, you'll have to check the laws of the country where you are located before using this ebook."
+  },
+  "caveats": [
+    "public domain in the USA is not public domain everywhere: check each work in every country it is served",
+    "'Project Gutenberg' is a registered trademark; the licence and every reference to the name are removed"
+  ],
+  "unverified": [
+    "gutenberg.org answered 503 on the day; the terms were read from an archived copy of 2026-11-16"
+  ]
+}

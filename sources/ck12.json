@@ -1,0 +1,21 @@
+{
+  "schema": "source/1",
+  "id": "ck12",
+  "title": "CK-12 FlexBooks",
+  "publisher": "CK-12 Foundation",
+  "url": "https://www.ck12.org/",
+  "class": "reference-only",
+  "licences": [
+    "LicenseRef-CK12-CML"
+  ],
+  "perItem": "the CK-12 Curriculum Materials License, for the whole site",
+  "terms": {
+    "url": "https://info.ck12.org/curriculum-materials-license",
+    "read": "2026-11-23",
+    "quotation": "the entire Distribution must be licensed under the terms and conditions of this Curriculum Materials License"
+  },
+  "caveats": [
+    "educational purposes only; commercial use and AI or machine-learning training are prohibited",
+    "FlexBook is a registered trademark"
+  ]
+}

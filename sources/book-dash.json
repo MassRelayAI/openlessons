@@ -1,0 +1,21 @@
+{
+  "schema": "source/1",
+  "id": "book-dash",
+  "title": "Book Dash",
+  "publisher": "Book Dash",
+  "url": "https://bookdash.org/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0"
+  ],
+  "perItem": "every book, by the publisher's statement",
+  "terms": {
+    "url": "https://bookdash.org/who-we-are/open-content-partners/",
+    "read": "2026-11-23",
+    "quotation": "We publish all of our books under a Creative Commons CC BY 4.0 license",
+    "attribution": "credit Book Dash and the original creators"
+  },
+  "caveats": [
+    "languages are mostly South African; none of ours beyond English was checked"
+  ]
+}

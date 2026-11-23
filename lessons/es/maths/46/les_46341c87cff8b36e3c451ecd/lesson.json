@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_46341c87cff8b36e3c451ecd",
+  "slug": "im-g1-contemos-y-sumemos",
+  "locale": "es",
+  "subject": "maths",
+  "title": "Contemos y sumemos",
+  "ages": {
+    "min": 6,
+    "max": 7
+  },
+  "skills": [
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "Hoy podrán hacer matemáticas de diferentes maneras. ¿Cuántos objetos hay en su colección? ¿Pueden mostrarlo?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Contemos y sumemos\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5_ES/teachers/grade-1/unit-1/lesson-1",
+    "title": "Contemos y sumemos",
+    "sourceUrl": "https://im.kendallhunt.com/K5_ES/teachers/grade-1/unit-1/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Contemos y sumemos\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5_ES/teachers/grade-1/unit-1/lesson-1",
+    "created": "2026-11-23"
+  }
+}

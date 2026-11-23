@@ -1,0 +1,21 @@
+{
+  "schema": "source/1",
+  "id": "bloom-library",
+  "title": "Bloom Library",
+  "publisher": "SIL Global",
+  "url": "https://bloomlibrary.org/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0",
+    "CC0-1.0"
+  ],
+  "perItem": "each book's own licence, set by its author in Bloom's licence dialog",
+  "terms": {
+    "url": "https://docs.bloomlibrary.org/Help/Reference/about-creative-commons/",
+    "read": "2026-11-23",
+    "quotation": "You can select Creative Commons when you choose a license for the book"
+  },
+  "unverified": [
+    "the default licence and the API field; books under NonCommercial licences exist and are refused"
+  ]
+}

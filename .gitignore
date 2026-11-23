@@ -2,3 +2,4 @@ target/
 *.tgz
 .DS_Store
 .loop/
+intake/*/pages/

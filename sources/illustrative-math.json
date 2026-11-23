@@ -1,0 +1,32 @@
+{
+  "schema": "source/1",
+  "id": "illustrative-math",
+  "title": "IM K-12 Math",
+  "publisher": "Illustrative Mathematics",
+  "url": "https://illustrativemathematics.org/",
+  "hosts": [
+    "im.kendallhunt.com",
+    "accessim.org"
+  ],
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0",
+    "CC-BY-NC-4.0"
+  ],
+  "perItem": "the notice at the foot of each lesson page: the first edition (2019-2021) reads 'Licensed under the Creative Commons Attribution 4.0 license'; IM v.360 material is CC BY-NC 4.0 and is refused",
+  "terms": {
+    "url": "https://illustrativemathematics.org/terms-of-use/",
+    "read": "2026-11-23",
+    "quotation": "licensed for use under the Creative Commons Attribution 4.0 International License (CC BY 4.0)",
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under {licence}."
+  },
+  "caveats": [
+    "IM® is a registered mark; the name and logo are not under the Creative Commons licence and may not name a product or imply endorsement",
+    "IM TK-12 Math v.360 (second edition) is CC BY-NC 4.0: reference only",
+    "the lesson pages read for the slice (im.kendallhunt.com, first edition, K5 and K5_ES) each carry the CC BY 4.0 notice"
+  ],
+  "importer": "illustrative-math",
+  "unverified": [
+    "the licence of images and third-party material inside lessons; the slice adopts text only"
+  ]
+}

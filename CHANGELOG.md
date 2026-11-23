@@ -2,6 +2,34 @@
 
 ## Unreleased
 
+## 0.5.0 (2026-11-23)
+
+- **Open material (OER) intake.** `sources/` registers 16 publishers of open material (`source/1`), each with the
+  licences it publishes under, where an item states its own licence, the page its terms were read on (quotation, date)
+  and its class: 10 `adopt` (IM K-12 Math first edition, StoryWeaver, African Storybook, Global Digital Library,
+  OpenStax, Siyavula, Project Gutenberg, Book Dash, Wikimedia Commons, Bloom Library), 4 `reference-only` (Khan Academy,
+  CK-12, Eureka Math / EngageNY, Let's Read) and 2 `sa-layer` (Wikibooks, UNESCO open access), kept out of the CC BY core.
+  `openlessons sources` lists them.
+- **`openlessons adopt <plan>`** reads the items of an adoption plan (`adopt-plan/1`) with the source's adapter, takes
+  each item's OWN licence (never the site's), refuses NonCommercial, NoDerivatives, ShareAlike, unknown and unstated
+  licences and any item without its credit, builds `draft` lessons mapped onto objectives and age bands, and takes out
+  again any lesson a gate refuses. Adapters: IM K-12 Math lesson pages, and StoryWeaver's story record and reader pages.
+- **Imported:** a K-2 slice of IM K-5 Math, six lessons (three in English, three in Spanish) with 36 practice items, as
+  two courses `paths/<locale>/maths/im-k2-slice`. No StoryWeaver story yet: their page text is served to signed-in
+  readers only.
+- `lesson/1` gains `adopted` (source, item, title, sourceUrl, licence, licenceUrl, authors, attribution, changes,
+  retrieved). Exports carry it: the learner bundle, the app pack (`ext.adopted`, restored by `import`), and a `credits`
+  list in both bundles. The index line of an adopted lesson names its `source`; the catalog counts `sources`.
+- **New gate `content.source-licensed`** (twenty-two gates): a registered source whose class follows from its
+  licences; an item licence that is CC BY, CC0 or public domain, that the source publishes under, with the matching deed,
+  its authors, attribution and an original on the source's host; a lesson credit naming the first author. Proven red
+  first (`crates/openlessons/tests/adopt.rs`, `gates/fixtures/red/content.source-licensed/`).
+- **`content.no-copied-text`** now allows adopted wording only where its `adopted` credit travels with it (a run of
+  eight words, fourteen characters for Chinese, anywhere else is refused), lets the credit carry the publisher's © and
+  notice, and refuses any text or credit that names a NonCommercial or NoDerivatives licence (`licenceMarks` in
+  `gates/data/protected.json`).
+- `gates/data/licences.json` gains `text`: the adoptable and share-alike licences and the deed of each.
+
 ## 0.4.2 (2026-11-23)
 
 - 0.4.1's tag points at a commit whose catalogs were stale; use 0.4.2. No content changed.

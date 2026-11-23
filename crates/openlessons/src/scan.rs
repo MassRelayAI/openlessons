@@ -4,6 +4,7 @@
 //! a time; across lessons only item ids and content signatures are kept, for the duplicate gate.
 
 use crate::canon::{asset_id, item_id, lesson_id, sha256_hex, shard};
+use crate::adopt;
 use crate::item;
 use crate::text::{self, Lexicon};
 use anyhow::{Context, Result};
@@ -26,6 +27,7 @@ pub const RULES: &[&str] = &[
     "item.no-answer-leak",
     "item.heard-prompt-recorded",
     "asset.licensed",
+    "content.source-licensed",
     "content.no-pii",
     "content.no-copied-text",
     "content.child-safe",
@@ -53,6 +55,7 @@ const SCHEMAS: &[(&str, &str)] = &[
     ("subject/1", include_str!("../../../schemas/subject.schema.json")),
     ("signal/1", include_str!("../../../schemas/signal.schema.json")),
     ("run/1", include_str!("../../../schemas/run.schema.json")),
+    ("source/1", include_str!("../../../schemas/source.schema.json")),
 ];
 
 #[derive(Debug, Clone, PartialEq)]
@@ -329,7 +332,7 @@ fn all_strings(v: &Value, out: &mut Vec<String>) {
     match v {
         Value::String(s) => out.push(s.clone()),
         Value::Array(a) => a.iter().for_each(|x| all_strings(x, out)),
-        Value::Object(o) => o.iter().filter(|(k, _)| !matches!(k.as_str(), "sourceUrl" | "termsUrl" | "source")).for_each(|(_, x)| all_strings(x, out)),
+        Value::Object(o) => o.iter().filter(|(k, _)| !matches!(k.as_str(), "sourceUrl" | "termsUrl" | "licenceUrl" | "source")).for_each(|(_, x)| all_strings(x, out)),
         _ => {}
     }
 }
@@ -371,6 +374,13 @@ struct Refs {
     lessons: BTreeMap<String, (String, String)>,
     /// the entries of REVIEWERS.json
     reviewers: Vec<Value>,
+    /// source id -> the source/1 record (open material we may adopt, or must only reference)
+    sources: BTreeMap<String, Value>,
+    text_licences: adopt::Licences,
+    /// window -> (fingerprint of a run of adopted text -> the item it came from: "<source> <sourceUrl>")
+    adopted_prints: BTreeMap<usize, HashMap<u64, String>>,
+    /// every text a learner is shown: (file, line, place, text, the adopted item it credits or "", window)
+    shown_texts: Vec<(String, usize, String, String, String, usize)>,
 }
 
 /// Scan the tree at `root` with the gate data (reading levels, licences, safety lexicons) in `data`.
@@ -415,6 +425,10 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         assets: BTreeMap::new(),
         lessons: BTreeMap::new(),
         reviewers: Vec::new(),
+        sources: BTreeMap::new(),
+        text_licences: adopt::Licences::from_json(&licences),
+        adopted_prints: BTreeMap::new(),
+        shown_texts: Vec::new(),
     };
 
     // who may review what: no file, or an empty list, means nothing can be `reviewed`
@@ -431,6 +445,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
     age_bands(&mut c, &mut r);
     subjects(&mut c, &mut r);
     standards(&mut c, &mut r);
+    sources(&mut c, &mut r);
     skills(&mut c, &mut r, &lexicons);
     alignments(&mut c, &mut r);
     assets(&mut c, &mut r, &licences);
@@ -772,6 +787,29 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
     }
 }
 
+/// sources/<id>.json: publishers of open material, each with the licences it publishes under and its class.
+fn sources(c: &mut Ctx, r: &mut Refs) {
+    for p in ls(&c.root.join("sources")) {
+        let Some(id) = stem(&p, ".json") else {
+            stray(c, &p, "<source>.json");
+            continue;
+        };
+        let rel = c.rel(&p);
+        let Some(v) = c.read_json(&p) else { continue };
+        if !c.valid("source/1", &v, &rel, 0) {
+            continue;
+        }
+        if st(&v, "id") != id {
+            c.add("layout.content-addressed", &rel, 0, format!("the file is named {id} but its id is {}", st(&v, "id")));
+        }
+        for m in adopt::source_problems(&v, &r.text_licences) {
+            c.add("content.source-licensed", &rel, 0, m);
+        }
+        r.sources.insert(id, v);
+        c.count("sources", 1);
+    }
+}
+
 fn skills(c: &mut Ctx, r: &mut Refs, lexicons: &BTreeMap<String, Lexicon>) {
     let mut prereq: BTreeMap<String, (String, Vec<String>)> = BTreeMap::new();
     for subject in ls(&c.root.join("skills")) {
@@ -1025,6 +1063,19 @@ fn lessons(c: &mut Ctx, r: &mut Refs, bands: &[text::ReadingBand], lexicons: &BT
             }
         }
     }
+    // adopted text is allowed where its credit travels with it: a run of it anywhere else is copied text
+    if !r.adopted_prints.is_empty() {
+        let mut told: BTreeSet<(String, String)> = BTreeSet::new();
+        for (file, line, place, t, owner, window) in std::mem::take(&mut r.shown_texts) {
+            let Some(map) = r.adopted_prints.get(&window) else { continue };
+            if let Some(from) = text::window_prints(&t, window).iter().find_map(|h| map.get(h).filter(|o| **o != owner)) {
+                if told.insert((file.clone(), t.clone())) {
+                    let (source, url) = from.split_once(' ').unwrap_or((from.as_str(), ""));
+                    c.add("content.no-copied-text", &file, line, format!("{place}: this is the wording of an item adopted from {source} ({url}): a lesson that uses it carries its credit in `adopted`, or says it in its own words"));
+                }
+            }
+        }
+    }
     entries
 }
 
@@ -1073,6 +1124,21 @@ fn lesson(
     }
     reviewed_ok(c, r, &v, &rel, 0, None);
     pii(c, &v, &rel, 0);
+
+    // adopted open material: the item's own licence, its credit, and a source that allows it
+    let mut owner = String::new();
+    if let Some(a) = v.get("adopted") {
+        let problems = adopt::adopted_problems(a, st(&v, "attribution"), &r.sources, &r.text_licences);
+        for m in &problems {
+            c.add("content.source-licensed", &rel, 0, format!("adopted: {m}"));
+        }
+        if let Some(m) = r.protected.licence_mark(st(a, "attribution")) {
+            c.add("content.no-copied-text", &rel, 0, format!("adopted.attribution: {m}"));
+        }
+        if problems.is_empty() {
+            owner = format!("{} {}", st(a, "source"), st(a, "sourceUrl"));
+        }
+    }
 
     // aligned: every skill exists and maps to at least one standard
     let skills = strs(&v, "skills");
@@ -1188,7 +1254,15 @@ fn lesson(
     }
     // one finding per (gate, file, text): a line repeated on a hundred items is one problem
     let mut told: BTreeSet<(u8, String)> = BTreeSet::new();
+    let window = if segmentation == "character" { 14 } else { 8 };
     for (file, line, place, t) in &shown {
+        // the adopted wording is what the lesson teaches and the story it tells; practice items beside it are ours
+        if !owner.is_empty() && matches!(place.as_str(), "teach" | "reteach" | "example" | "story") {
+            for h in text::window_prints(t, window) {
+                r.adopted_prints.entry(window).or_default().entry(h).or_insert_with(|| owner.clone());
+            }
+        }
+        r.shown_texts.push((file.clone(), *line, place.clone(), t.clone(), owner.clone(), window));
         if let Some(m) = text::icu_issue(t) {
             c.add("schema.valid", file, *line, format!("{place}: {m}"));
         }
@@ -1223,6 +1297,9 @@ fn lesson(
     });
     if !target.is_empty() {
         line["targetLocale"] = json!(target);
+    }
+    if let Some(a) = v.get("adopted") {
+        line["source"] = json!(st(a, "source"));
     }
     Some(IndexEntry { locale: locale.to_string(), subject: subject.to_string(), line })
 }
@@ -1314,7 +1391,7 @@ fn build_index(entries: &[IndexEntry], counts: &BTreeMap<String, u64>, r: &Refs)
         "counts": {
             "locales": total("locales"), "frameworks": total("frameworks"), "standards": total("standards"), "skills": total("skills"),
             "alignments": total("alignments"), "assets": total("assets"), "lessons": total("lessons"), "items": total("items"), "paths": total("paths"),
-            "bands": total("bands"), "subjects": total("subjects"), "topics": total("topics"), "signals": total("signals"), "runs": total("runs"),
+            "bands": total("bands"), "subjects": total("subjects"), "topics": total("topics"), "signals": total("signals"), "runs": total("runs"), "sources": total("sources"),
         },
         "shelves": shelves,
     });

@@ -1,0 +1,23 @@
+{
+  "schema": "source/1",
+  "id": "siyavula",
+  "title": "Siyavula textbooks",
+  "publisher": "Siyavula",
+  "url": "https://www.siyavula.com/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-3.0",
+    "CC-BY-ND-3.0",
+    "LicenseRef-all-rights-reserved"
+  ],
+  "perItem": "per edition: unbranded ePUBs are CC BY 3.0 (adopt); branded PDFs and some ePUBs are CC BY-ND 3.0 (refused); IT and CAT books are closed",
+  "terms": {
+    "url": "https://www.siyavula.com/read",
+    "read": "2026-11-23",
+    "quotation": "you cannot adapt or change these versions"
+  },
+  "caveats": [
+    "only the unbranded CC BY 3.0 ePUBs may be adopted",
+    "the site itself is closed copyright except where otherwise noted"
+  ]
+}

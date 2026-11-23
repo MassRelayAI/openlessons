@@ -182,6 +182,17 @@ pub struct Protected {
     pub marks: Vec<Vec<String>>,
     /// window -> (fingerprint -> framework id)
     pub prints: BTreeMap<usize, HashMap<u64, String>>,
+    /// phrases that name a NonCommercial or NoDerivatives licence, matched as runs of whole tokens
+    pub licence_marks: Vec<Vec<String>>,
+}
+
+/// The fingerprint of every run of `window` tokens of a text (all of them, unsorted).
+pub fn window_prints(text: &str, window: usize) -> Vec<u64> {
+    let toks = tokens(text);
+    if window == 0 || toks.len() < window {
+        return Vec::new();
+    }
+    toks.windows(window).map(print_of).collect()
 }
 
 fn print_of(window: &[String]) -> u64 {
@@ -205,7 +216,8 @@ pub fn fingerprints(text: &str, window: usize, sample: u64) -> Vec<String> {
 impl Protected {
     pub fn from_json(v: &Value) -> Protected {
         let list = |k: &str| v.get(k).and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str).map(str::to_string).collect::<Vec<_>>();
-        let mut p = Protected { symbols: list("symbols"), marks: list("marks").iter().map(|m| tokens(m)).filter(|m| !m.is_empty()).collect(), prints: BTreeMap::new() };
+        let phrases = |k: &str| list(k).iter().map(|m| tokens(m)).filter(|m| !m.is_empty()).collect::<Vec<_>>();
+        let mut p = Protected { symbols: list("symbols"), marks: phrases("marks"), prints: BTreeMap::new(), licence_marks: phrases("licenceMarks") };
         // fingerprints given inline, for tests and small lists: {"window": 6, "fingerprints": {"<framework>": ["<12 hex>"]}}
         let window = v.get("window").and_then(Value::as_u64).unwrap_or(8) as usize;
         for (framework, prints) in v.get("fingerprints").and_then(Value::as_object).into_iter().flatten() {
@@ -262,8 +274,18 @@ impl Protected {
         out
     }
 
+    /// A NonCommercial or NoDerivatives licence named in the text, if one is. The credit of adopted material may carry
+    /// the copyright sign and the publisher's notice; it may never carry one of these.
+    pub fn licence_mark(&self, text: &str) -> Option<String> {
+        let toks = tokens(text);
+        self.licence_marks.iter().find(|m| contains_tokens(&toks, m)).map(|m| format!("'{}' names a NonCommercial or NoDerivatives licence: such material is reference only, never content", m.join(" ")))
+    }
+
     /// Why this text looks copied, if it does.
     pub fn issue(&self, text: &str) -> Option<String> {
+        if let Some(m) = self.licence_mark(text) {
+            return Some(m);
+        }
         if let Some(s) = self.symbols.iter().find(|s| text.contains(s.as_str())) {
             return Some(format!("'{s}' marks copied material: write it in your own words and credit sources in `attribution`"));
         }

@@ -2,7 +2,7 @@
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use openlessons::{canon, export, find, gaps, import, judge, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
+use openlessons::{adopt, canon, export, find, gaps, import, judge, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
 use serde_json::{json, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -164,6 +164,27 @@ enum Cmd {
     },
     /// List the standards registry: every framework with its licence class and what may be copied
     Registry {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        #[arg(long)]
+        json: bool,
+    },
+    /// Adopt open material: read each item of an adoption plan with its source's adapter, check the item's own licence
+    /// and credit, and place what passes as `draft` lessons (an item that fails any gate leaves no trace)
+    Adopt {
+        /// an adopt-plan/1 file; its entries name input files relative to it
+        plan: PathBuf,
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the day the records are made (default: today, UTC)
+        #[arg(long)]
+        date: Option<String>,
+        /// the maker the records name
+        #[arg(long, default_value = "openlessons-adopt")]
+        maker: String,
+    },
+    /// List the sources of open material: each publisher, its class (adopt, reference-only, sa-layer) and its licences
+    Sources {
         #[arg(long, default_value = ".")]
         root: PathBuf,
         #[arg(long)]
@@ -487,6 +508,60 @@ fn run(cli: Cli) -> Result<u8> {
             }
             if !json {
                 eprintln!("{} framework(s): {}", dirs.len(), classes.iter().map(|(k, v)| format!("{v} {k}")).collect::<Vec<_>>().join("; "));
+            }
+            Ok(0)
+        }
+        Cmd::Adopt { plan, root, date, maker } => {
+            let data = root.join("gates").join("data");
+            let sources = adopt::load_sources(&root)?;
+            let lic = adopt::Licences::load(&data)?;
+            let p: Value = serde_json::from_str(&fs::read_to_string(&plan).with_context(|| format!("{}", plan.display()))?).context("the adoption plan")?;
+            let base = plan.parent().map(Path::to_path_buf).unwrap_or_default();
+            let created = date.unwrap_or_else(looprun::today);
+            let a = adopt::run_plan(&p, &base, &sources, &lic, &maker, &created)?;
+            let mut refused = a.refused.len();
+            for r in &a.refused {
+                println!("refused {}:", r.entry);
+                r.reasons.iter().for_each(|m| println!("    {m}"));
+            }
+            let written = import::write_records(&root, &a.records)?;
+            // every gate judges what was written; a lesson with a finding is taken out again
+            let s = scan(&root, &data)?;
+            let mut kept = Vec::new();
+            for (l, _) in &a.records.lessons {
+                let id = l["id"].as_str().unwrap_or("");
+                let dir = format!("lessons/{}/{}/{}/{id}", l["locale"].as_str().unwrap_or(""), l["subject"].as_str().unwrap_or(""), canon::shard(id));
+                let found: Vec<_> = s.findings.iter().filter(|f| f.rule != "index.fresh" && f.path.starts_with(&dir)).collect();
+                if found.is_empty() {
+                    kept.push(dir);
+                } else {
+                    refused += 1;
+                    println!("refused {} (a gate is red):", l["slug"].as_str().unwrap_or(""));
+                    found.iter().for_each(|f| println!("    {} {}: {}", f.rule, f.path, f.message));
+                    fs::remove_dir_all(root.join(&dir))?;
+                }
+            }
+            for w in written.iter().filter(|w| kept.iter().any(|k| w.starts_with(k.as_str()))) {
+                println!("wrote {w}");
+            }
+            println!("{} lesson(s) adopted as `draft`, {refused} refused. Next: `openlessons index`, then `openlessons validate`.", kept.len());
+            Ok(if refused == 0 { 0 } else { 1 })
+        }
+        Cmd::Sources { root, json } => {
+            let sources = adopt::load_sources(&root)?;
+            let mut classes: std::collections::BTreeMap<String, usize> = Default::default();
+            for s in sources.values() {
+                let g = |k: &str| s[k].as_str().unwrap_or("").to_string();
+                *classes.entry(g("class")).or_default() += 1;
+                if json {
+                    println!("{s}");
+                } else {
+                    let lic: Vec<&str> = s["licences"].as_array().into_iter().flatten().filter_map(Value::as_str).collect();
+                    println!("{:<26} {:<15} read {}  {:<44} {}", g("id"), g("class"), s["terms"]["read"].as_str().unwrap_or("never"), lic.join(", "), g("title"));
+                }
+            }
+            if !json {
+                eprintln!("{} source(s): {}", sources.len(), classes.iter().map(|(k, v)| format!("{v} {k}")).collect::<Vec<_>>().join("; "));
             }
             Ok(0)
         }

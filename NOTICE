@@ -30,6 +30,14 @@ affiliated with or endorsed by any of them, and its lessons do not certify anyth
   that developed the Next Generation Science Standards were involved in the production of this product, and they do not
   endorse it.
 
+Open material adopted under its own licence (see sources/ and each lesson's `adopted` block) keeps its credit:
+
+- IM K-5 Math (first edition): Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0
+  (https://creativecommons.org/licenses/by/4.0/). Illustrative Mathematics® and its logo are trademarks of Illustrative
+  Mathematics and are not under the Creative Commons licence; this project is not affiliated with or endorsed by
+  Illustrative Mathematics. The lessons under paths/en/maths/im-k2-slice and paths/es/maths/im-k2-slice adapt text from
+  the lesson pages each names; their practice items are openlessons' own.
+
 As of 0.4.0 the only publisher's wording stored here is that of the National curriculum in England. Every other framework
 is held by identifier, with our own labels and paraphrases; each framework's own record under standards/ says what its
 terms allow and where they were read.

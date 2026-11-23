@@ -1,0 +1,43 @@
+{
+  "schema": "lesson/1",
+  "id": "les_5056d61c8bc0766ea6d5c1fc",
+  "slug": "im-g2-sumemos-y-restemos",
+  "locale": "es",
+  "subject": "maths",
+  "title": "Sumemos y restemos hasta 10",
+  "ages": {
+    "min": 6,
+    "max": 8
+  },
+  "skills": [
+    "maths.calc.subtract-within-10",
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "Vamos a jugar ‘Márcalo: Suma y resta hasta 10’. El objetivo es ser la primera persona en escribir una expresión para cada número. ¿Cuál es el valor de la diferencia?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Sumemos y restemos hasta 10\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5_ES/teachers/grade-2/unit-1/lesson-1",
+    "title": "Sumemos y restemos hasta 10",
+    "sourceUrl": "https://im.kendallhunt.com/K5_ES/teachers/grade-2/unit-1/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Sumemos y restemos hasta 10\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5_ES/teachers/grade-2/unit-1/lesson-1",
+    "created": "2026-11-23"
+  }
+}

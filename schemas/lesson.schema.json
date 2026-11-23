@@ -171,6 +171,70 @@
       "minLength": 1,
       "maxLength": 200
     },
+    "adopted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "licence"
+      ],
+      "description": "open material this lesson adapts: its source (sources/), the item's own licence and its credit. Checked by content.source-licensed",
+      "properties": {
+        "source": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "item": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "the source's own id of the item"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "sourceUrl": {
+          "type": "string",
+          "pattern": "^https://",
+          "maxLength": 500
+        },
+        "licence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "description": "the item's own licence, as an SPDX id"
+        },
+        "licenceUrl": {
+          "type": "string",
+          "pattern": "^https://",
+          "maxLength": 200
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "changes": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "retrieved": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        }
+      }
+    },
     "provenance": {
       "type": "object",
       "additionalProperties": false,

@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_80ad7e2f7afc174fc5d284c1",
+  "slug": "im-k-dedos-contar-hasta-10",
+  "locale": "es",
+  "subject": "maths",
+  "title": "Los dedos como herramienta matemática",
+  "ages": {
+    "min": 4,
+    "max": 6
+  },
+  "skills": [
+    "maths.number.count-to-10"
+  ],
+  "teach": {
+    "text": "Contemos hasta 10. Mientras cuento hasta 10, levanten 1 dedo por cada número. Ahora contemos hasta 10 con nuestros dedos. Cada vez que digan un número, levanten 1 dedo. ¿Cuántos dedos tengo levantados?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Los dedos como herramienta matemática\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5_ES/teachers/kindergarten/unit-2/lesson-1",
+    "title": "Los dedos como herramienta matemática",
+    "sourceUrl": "https://im.kendallhunt.com/K5_ES/teachers/kindergarten/unit-2/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Los dedos como herramienta matemática\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5_ES/teachers/kindergarten/unit-2/lesson-1",
+    "created": "2026-11-23"
+  }
+}

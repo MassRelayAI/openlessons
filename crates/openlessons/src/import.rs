@@ -337,6 +337,10 @@ pub fn from_pack(pack: &Value, strings: &Value) -> Result<Records> {
             put(&mut o, "status", ext["status"].clone());
             put(&mut o, "licence", ext.get("licence").cloned().unwrap_or_else(|| json!("CC-BY-4.0")));
             put(&mut o, "attribution", ext.get("attribution").cloned().unwrap_or_else(|| json!("openlessons contributors")));
+            // the credit of adopted material travels with the lesson, in every format
+            if let Some(a) = ext.get("adopted") {
+                put(&mut o, "adopted", a.clone());
+            }
             put(&mut o, "provenance", ext["provenance"].clone());
             let mut items: Vec<Value> = items_of.remove(&id).unwrap_or_default();
             items.extend(skills.iter().flat_map(|k| items_of.remove(k).unwrap_or_default()));

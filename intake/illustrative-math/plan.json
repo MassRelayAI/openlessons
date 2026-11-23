@@ -1,0 +1,153 @@
+{
+  "schema": "adopt-plan/1",
+  "source": "illustrative-math",
+  "retrieved": "2026-11-23",
+  "note": "A K-2 slice of IM K-5 Math, first edition (CC BY 4.0). Each input is the lesson page at `url`, saved under pages/ (not committed: fetch it again from `url`). `teach` picks the page's student-facing prompts by position; practice items are made by openlessons.",
+  "entries": [
+    {
+      "input": "pages/K5_teachers_kindergarten_unit-2_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5/teachers/kindergarten/unit-2/lesson-1/lesson.html",
+      "locale": "en",
+      "subject": "maths",
+      "slug": "im-k-fingers-count-to-10",
+      "skills": [
+        "maths.number.count-to-10"
+      ],
+      "ages": {
+        "min": 4,
+        "max": 6
+      },
+      "teach": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "practice": {
+        "kind": "count",
+        "max": 10,
+        "n": 6
+      }
+    },
+    {
+      "input": "pages/K5_teachers_grade-1_unit-1_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5/teachers/grade-1/unit-1/lesson-1/lesson.html",
+      "locale": "en",
+      "subject": "maths",
+      "slug": "im-g1-count-and-add",
+      "skills": [
+        "maths.calc.add-within-10"
+      ],
+      "ages": {
+        "min": 6,
+        "max": 7
+      },
+      "teach": [
+        1,
+        4,
+        9
+      ],
+      "practice": {
+        "kind": "add",
+        "max": 10,
+        "n": 6
+      }
+    },
+    {
+      "input": "pages/K5_teachers_grade-2_unit-1_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5/teachers/grade-2/unit-1/lesson-1/lesson.html",
+      "locale": "en",
+      "subject": "maths",
+      "slug": "im-g2-add-subtract-within-10",
+      "skills": [
+        "maths.calc.subtract-within-10",
+        "maths.calc.add-within-10"
+      ],
+      "ages": {
+        "min": 6,
+        "max": 8
+      },
+      "teach": [
+        2,
+        4
+      ],
+      "practice": {
+        "kind": "subtract",
+        "max": 10,
+        "n": 6
+      }
+    },
+    {
+      "input": "pages/K5_ES_teachers_kindergarten_unit-2_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5_ES/teachers/kindergarten/unit-2/lesson-1/lesson.html",
+      "locale": "es",
+      "subject": "maths",
+      "slug": "im-k-dedos-contar-hasta-10",
+      "skills": [
+        "maths.number.count-to-10"
+      ],
+      "ages": {
+        "min": 4,
+        "max": 6
+      },
+      "teach": [
+        0,
+        2,
+        4,
+        8
+      ],
+      "practice": {
+        "kind": "count",
+        "max": 10,
+        "n": 6
+      }
+    },
+    {
+      "input": "pages/K5_ES_teachers_grade-1_unit-1_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5_ES/teachers/grade-1/unit-1/lesson-1/lesson.html",
+      "locale": "es",
+      "subject": "maths",
+      "slug": "im-g1-contemos-y-sumemos",
+      "skills": [
+        "maths.calc.add-within-10"
+      ],
+      "ages": {
+        "min": 6,
+        "max": 7
+      },
+      "teach": [
+        2,
+        8
+      ],
+      "practice": {
+        "kind": "add",
+        "max": 10,
+        "n": 6
+      }
+    },
+    {
+      "input": "pages/K5_ES_teachers_grade-2_unit-1_lesson-1.html",
+      "url": "https://im.kendallhunt.com/K5_ES/teachers/grade-2/unit-1/lesson-1/lesson.html",
+      "locale": "es",
+      "subject": "maths",
+      "slug": "im-g2-sumemos-y-restemos",
+      "skills": [
+        "maths.calc.subtract-within-10",
+        "maths.calc.add-within-10"
+      ],
+      "ages": {
+        "min": 6,
+        "max": 8
+      },
+      "teach": [
+        4,
+        8
+      ],
+      "practice": {
+        "kind": "subtract",
+        "max": 10,
+        "n": 6
+      }
+    }
+  ]
+}
