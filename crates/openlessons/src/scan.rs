@@ -34,6 +34,7 @@ pub const RULES: &[&str] = &[
     "content.no-duplicates",
     "loop.review-before-reviewed",
     "loop.reviewer-listed",
+    "review.jury-decision",
     "loop.base-respected",
     "graph.ids-stable",
     "index.fresh",
@@ -56,6 +57,7 @@ const SCHEMAS: &[(&str, &str)] = &[
     ("signal/1", include_str!("../../../schemas/signal.schema.json")),
     ("run/1", include_str!("../../../schemas/run.schema.json")),
     ("source/1", include_str!("../../../schemas/source.schema.json")),
+    ("jury-decision/1", include_str!("../../../schemas/jury-decision.schema.json")),
 ];
 
 #[derive(Debug, Clone, PartialEq)]
@@ -252,7 +254,9 @@ fn review_problem(v: &Value) -> Option<String> {
     let p = &v["provenance"];
     let reviewed = matches!(status, "reviewed" | "published");
     let human_pass = arr(p, "reviews").iter().any(|r| st(r, "kind") == "human" && st(r, "verdict") == "pass" && st(r, "by") != st(p, "maker"));
-    if reviewed && !human_pass {
+    // a lesson or an item is settled by the jury (its decision record is judged by review.jury-decision)
+    let jury_pass = jury_content(v) && jury_entry(v).is_some();
+    if reviewed && !human_pass && !jury_pass {
         return Some(format!(
             "status `{status}` (origin: {}) needs a passing review by a person other than the maker",
             st(p, "origin")
@@ -300,7 +304,7 @@ fn reviewer_problem(r: &Refs, v: &Value, lesson: Option<(&str, &str)>) -> Option
                     && st(e, "since") <= st(rv, "date")
                     && (st(e, "until").is_empty() || st(rv, "date") <= st(e, "until"))
             })
-    });
+    }) || (jury_content(v) && jury_entry(v).is_some_and(|e| r.reviewers.iter().any(|j| st(j, "kind") == "jury" && st(j, "id") == st(e, "by"))));
     if listed {
         return None;
     }
@@ -315,6 +319,70 @@ fn reviewer_problem(r: &Refs, v: &Value, lesson: Option<(&str, &str)>) -> Option
         if place.is_empty() { String::new() } else { format!(" and for {}", place.join(", ")) },
         if exact { " (role `subject` for an exact alignment)" } else { "" }
     ))
+}
+
+/// Lessons and items are the content the jury settles.
+fn jury_content(v: &Value) -> bool {
+    matches!(st(v, "schema"), "lesson/1" | "item/1")
+}
+
+/// The record's passing jury review entry, if it has one.
+fn jury_entry(v: &Value) -> Option<&Value> {
+    arr(&v["provenance"], "reviews").iter().find(|e| st(e, "kind") == "jury" && st(e, "verdict") == "pass")
+}
+
+/// review.jury-decision on one lesson or item: `reviewed` is given only by a decision record that is unanimous and sourced.
+fn jury_ok(c: &mut Ctx, r: &Refs, v: &Value, path: &str, line: usize, lesson: &str, locale: &str) {
+    if !matches!(st(v, "status"), "reviewed" | "published") {
+        return;
+    }
+    const RULE: &str = crate::jury::RULE;
+    let id = st(v, "id");
+    let want = crate::jury::decision_path(id);
+    let Some(e) = jury_entry(v) else {
+        c.add(RULE, path, line, format!("status `{}` on a lesson or an item is given only by the jury: it needs a passing jury review entry and its decision record {want}", st(v, "status")));
+        return;
+    };
+    if st(e, "decision") != want {
+        c.add(RULE, path, line, format!("the jury review names the decision `{}`; the decision of {id} is {want}", st(e, "decision")));
+        return;
+    }
+    let file = c.root.join(&want);
+    if !file.exists() {
+        c.add(RULE, path, line, format!("no decision record at {want}: only a jury decision record may set `reviewed`"));
+        return;
+    }
+    let Some(d) = c.read_json(&file) else { return };
+    if !c.valid("jury-decision/1", &d, &want, 0) {
+        c.add(RULE, path, line, format!("the decision record {want} is not a valid jury-decision/1"));
+        return;
+    }
+    let reg = crate::jury::Registry { standards: &r.standards, aligned: &r.aligned };
+    for m in crate::jury::decision_problems(&reg, &r.reviewers, &d, v, lesson, locale) {
+        c.add(RULE, path, line, format!("{want}: {m}"));
+    }
+}
+
+/// Every decision record is the file of a lesson or an item that exists.
+fn decisions(c: &mut Ctx, r: &Refs) {
+    for p in ls(&c.root.join(crate::jury::DECISIONS)) {
+        let Some(id) = stem(&p, ".json") else {
+            stray(c, &p, "decision records (<record id>.json)");
+            continue;
+        };
+        let rel = c.rel(&p);
+        let Some(v) = c.read_json(&p) else { continue };
+        if !c.valid("jury-decision/1", &v, &rel, 0) {
+            continue;
+        }
+        if st(&v, "record") != id {
+            c.add("layout.content-addressed", &rel, 0, format!("the file is named {id} but decides {}", st(&v, "record")));
+        }
+        if !r.records.contains(&id) {
+            c.add("refs.resolve", &rel, 0, format!("the decision is about {id}, which is no lesson or item of the tree"));
+        }
+        c.count("decisions", 1);
+    }
 }
 
 /// Both review gates on one record.
@@ -381,6 +449,8 @@ struct Refs {
     adopted_prints: BTreeMap<usize, HashMap<u64, String>>,
     /// every text a learner is shown: (file, line, place, text, the adopted item it credits or "", window)
     shown_texts: Vec<(String, usize, String, String, String, usize)>,
+    /// every lesson and item id seen, for the decision records
+    records: BTreeSet<String>,
 }
 
 /// Scan the tree at `root` with the gate data (reading levels, licences, safety lexicons) in `data`.
@@ -429,6 +499,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         text_licences: adopt::Licences::from_json(&licences),
         adopted_prints: BTreeMap::new(),
         shown_texts: Vec::new(),
+        records: BTreeSet::new(),
     };
 
     // who may review what: no file, or an empty list, means nothing can be `reviewed`
@@ -453,6 +524,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
     paths(&mut c, &r);
     signals(&mut c, &mut r);
     runs(&mut c);
+    decisions(&mut c, &r);
 
     let index = build_index(&entries, &c.counts, &r);
     let mut on_disk = BTreeMap::new();
@@ -1123,6 +1195,8 @@ fn lesson(
         c.add("refs.resolve", &rel, 0, format!("the target locale {target} is not in locales/"));
     }
     reviewed_ok(c, r, &v, &rel, 0, None);
+    jury_ok(c, r, &v, &rel, 0, id, locale);
+    r.records.insert(id.to_string());
     pii(c, &v, &rel, 0);
 
     // adopted open material: the item's own licence, its credit, and a source that allows it
@@ -1233,6 +1307,8 @@ fn lesson(
                 }
             }
             reviewed_ok(c, r, &it, &irel, line, Some((locale, subject)));
+            jury_ok(c, r, &it, &irel, line, id, locale);
+            r.records.insert(iid.clone());
             pii(c, &it, &irel, line);
             item::asset_refs(&it, &mut refs);
             shown.extend(item::texts(&it).into_iter().map(|(p, t)| (irel.clone(), line, p, t)));

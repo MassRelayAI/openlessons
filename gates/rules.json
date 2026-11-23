@@ -116,6 +116,12 @@
       "mode": "blocking"
     },
     {
+      "id": "review.jury-decision",
+      "version": 1,
+      "title": "A lesson or an item is `reviewed` only by a jury decision record (review/decisions/<id>.json) that matches its content, is unanimous across the three roles, and cites a registry entry and a resolving source for every correctness claim",
+      "mode": "blocking"
+    },
+    {
       "id": "loop.base-respected",
       "version": 1,
       "title": "Against a base revision, nothing reviewed changes silently: it moves forward, is reopened with a higher version, or is revised by a new record",

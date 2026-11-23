@@ -8,8 +8,9 @@ app or AI harness to use and to add to.**
 - **Standards** are referenced by identifier and link. They belong to their publishers; see [NOTICE](NOTICE).
 
 > Status: early (0.5). The format, the gates, a standards registry, an age-band model, a topic graph, the gap report,
-> the content loop and an intake for open material (OER) are here. **Nothing in the tree has been reviewed by an educator yet.** A product for children reads
-> `reviewed` or `published` content only; today there is none.
+> the content loop and an intake for open material (OER) are here. Lessons become `reviewed` only through the sourced AI
+> jury (see "How content gets reviewed"); no educator has reviewed anything yet. A product for children reads `reviewed`
+> or `published` content only.
 
 ## What is in it
 
@@ -243,7 +244,7 @@ no model       no model   a model    no model   no model           a person revi
    misconceptions, the ages and reading bounds, the language, the aligned standards in our own words (the publisher's
    wording only where its terms allow), and the rules. A pick is dealt across subjects and languages, prerequisites first.
 3. **Draft.** Any harness answers each order with one proposal file (`proposal/1`) under `.loop/drafts/`.
-4. **Gates.** `openlessons loop land` judges each proposal with all twenty-two gates. A draft that fails leaves no trace and is
+4. **Gates.** `openlessons loop land` judges each proposal with all twenty-three gates. A draft that fails leaves no trace and is
    listed in the report with the reason.
 5. **Land.** What passes is placed at status **`draft`**, the index is regenerated, the whole tree is judged again, and a
    run report is written to `runs/<id>.json` and `.md`: gaps closed, items added, gates passed, drafts refused. Without a
@@ -286,13 +287,46 @@ uses no model and no secret; the report is the job's summary and an artifact. Dr
 person or an approved runner holds a model key, with one of the three ways above, and its output is a pull request that
 the ordinary CI gates judge like any other.
 
+## How content gets reviewed
+
+A lesson or an item becomes `reviewed` in one way only: a **sourced AI jury** decides it, under the policy in
+[review/jury-policy.md](review/jury-policy.md) (jury `jury-v1` in [REVIEWERS.json](REVIEWERS.json); accountable owner:
+MassRelay).
+
+- **Three roles, decided apart.** `subject` (is it right, against cited sources), `safety` (is it safe and right for the
+  age), `language` (is it good language and culture for its locale). Each is filled by a separate model session that sees
+  its own work order and checklist and never another role's verdict.
+- **Unanimous or draft.** All three pass, or the lesson stays a `draft` with the objections written down for the next
+  draft. A lesson leaves draft whole: the lesson and every item.
+- **Sourced.** Every correctness claim cites a standards-registry entry aligned to the lesson's objective and a real
+  reference: a web address with the date it was read, or a public-domain or CC BY source. An unsourced claim fails.
+- **Audited.** Each decision is a file, `review/decisions/<record id>.json`: the policy version, the models of all three
+  roles, their verdicts, checks, sources and notes, the date, and the hash of the exact content decided. Change the
+  content and the decision lapses.
+- **Spot-checked.** 5% of passes are drawn (reproducibly) and marked `spotCheck: pending` for an optional human check.
+  It never blocks; disagreement is how jury drift is caught.
+
+The gate `review.jury-decision` refuses a `reviewed` lesson or item without its decision, or with one that is not
+unanimous, not sourced, or about other content.
+
+```sh
+openlessons jury orders --lesson <les_id> --out .jury/orders      # one order per role; hand each to a separate reviewer
+# any harness writes .jury/verdicts/<role>/<les_id>.json (or uses the MCP tools jury_order / jury_submit)
+openlessons jury run --harness <name> --independence "<how the roles were kept apart>" --dry-run
+openlessons jury run --harness <name> --independence "<...>" && openlessons index
+```
+
+The program never calls a model: the harness that fills the roles brings its own model and key. Skills, alignments and
+paths are still settled by people listed in `REVIEWERS.json`; none is listed yet.
+
 ## Quality gates
 
-Every change must pass twenty-two gates: schema, content-derived ids, references, standards terms, alignment, a place in the
+Every change must pass twenty-three gates: schema, content-derived ids, references, standards terms, alignment, a place in the
 topic graph, matching age bands, reading level for the stated age, a verified answer, no answer in the prompt, a recording
 behind every heard prompt, licensed assets, adopted material under its own open licence and with its credit, no
 personal data, no copied text, a child-safety lexicon, no duplicates,
-review before `reviewed`, by a listed reviewer, nothing reviewed changed silently against the base, and a fresh index.
+review before `reviewed`, by a listed reviewer, a unanimous and sourced jury decision for every reviewed lesson and item,
+nothing reviewed changed silently against the base, and a fresh index.
 Each gate has a fixture it must fail and one it must pass, and the validator checks that before it judges anything. The
 gates are a floor. They do not replace a teacher's review.
 
@@ -300,16 +334,16 @@ gates are a floor. They do not replace a teacher's review.
 
 People and AI agents both can. A contribution is a pull request that adds files in the layout above, or one proposal file
 that `openlessons apply` or `openlessons loop land` places for you; it says who or what made it, it must pass the gates,
-and a person other than the maker, listed in [REVIEWERS.json](REVIEWERS.json), reviews it before it is marked `reviewed`.
-That list is empty today, which is why nothing here is reviewed. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+and the jury (above) decides it before it is marked `reviewed`. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Found a problem in a lesson, especially one that is unsafe for a child? See [SECURITY.md](SECURITY.md).
 
 ## Roadmap
 
-1. Done: the format, twenty-two gates, the registry, the age bands, the topic graph, the gap report, the loop, `export`,
-   `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake (`sources/`, `openlessons adopt`).
-2. Next: reviewers named, and the first `reviewed` content, with educators; StoryWeaver stories in three or more languages
-   once a reader account fetches their pages.
+1. Done: the format, twenty-three gates, the sourced AI jury, the registry, the age bands, the topic graph, the gap
+   report, the loop, `export`, `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake
+   (`sources/`, `openlessons adopt`).
+2. Next: human spot-checks of jury passes, and educators named for skills and alignments; StoryWeaver stories in three or
+   more languages once a reader account fetches their pages.
 3. Then: usage signals from products, with no learner data; recordings for the audio cues; objective-level nodes for the
    open frameworks.

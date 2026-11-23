@@ -38,6 +38,14 @@
         "role": "subject",
         "verdict": "pass",
         "date": "2026-11-23"
+      },
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_2e620c67febffa6825275760.json"
       }
     ]
   }

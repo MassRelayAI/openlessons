@@ -257,7 +257,7 @@ fn a_drafter_that_fails_is_reported_not_trusted() {
 #[test]
 fn the_mcp_server_offers_the_gap_report_and_work_orders_without_writing() {
     let (tree, _) = green_copy("mcp");
-    assert_eq!(mcp::tool_names(), ["find_lessons", "get_lesson", "gap_report", "get_work_orders", "validate_proposal", "propose_lesson"]);
+    assert_eq!(mcp::tool_names(), ["find_lessons", "get_lesson", "gap_report", "get_work_orders", "validate_proposal", "jury_order", "jury_submit", "propose_lesson"]);
     let server = mcp::Server { root: tree.clone(), data: data(), allow_write: false };
     let call = |tool: &str, args: Value| -> Value {
         let r = server.handle(&json!({"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": tool, "arguments": args}})).unwrap();

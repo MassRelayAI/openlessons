@@ -18,6 +18,15 @@
         "example-framework"
       ],
       "since": "2026-01-01"
+    },
+    {
+      "id": "jury-v1",
+      "kind": "jury",
+      "owner": "MassRelay",
+      "policy": "review/jury-policy.md",
+      "policyVersion": "1",
+      "spotCheckRate": 0.05,
+      "since": "2026-11-23"
     }
   ]
 }

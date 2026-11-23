@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MassRelayAI/openlessons/schemas/jury-decision.schema.json",
+  "title": "jury-decision/1: review/decisions/<record id>.json, the audit of one jury decision on one lesson or item (see review/jury-policy.md)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "record",
+    "lesson",
+    "contentHash",
+    "jury",
+    "policy",
+    "policyVersion",
+    "date",
+    "harness",
+    "independence",
+    "roles",
+    "outcome",
+    "notes",
+    "spotCheck"
+  ],
+  "properties": {
+    "schema": {
+      "const": "jury-decision/1"
+    },
+    "record": {
+      "type": "string",
+      "pattern": "^(les|itm)_[0-9a-f]{24}$",
+      "description": "the lesson or item decided; the file is named after it"
+    },
+    "lesson": {
+      "type": "string",
+      "pattern": "^les_[0-9a-f]{24}$",
+      "description": "the lesson the record is, or belongs to"
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$",
+      "description": "sha256 of the canonical record without status and provenance: the decision is about exactly this content, and lapses when it changes"
+    },
+    "jury": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+      "description": "the jury id in REVIEWERS.json"
+    },
+    "policy": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "policyVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "harness": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "what filled the roles (an agent harness, a CI job)"
+    },
+    "independence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 600,
+      "description": "how the roles were kept from seeing each other's verdicts"
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject",
+        "safety",
+        "language"
+      ],
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/verdict"
+        },
+        "safety": {
+          "$ref": "#/$defs/verdict"
+        },
+        "language": {
+          "$ref": "#/$defs/verdict"
+        }
+      }
+    },
+    "outcome": {
+      "enum": [
+        "pass",
+        "draft"
+      ],
+      "description": "pass only when all three roles pass and every correctness claim is sourced; anything else keeps the record a draft"
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 600
+      },
+      "description": "every objection, prefixed with its role"
+    },
+    "spotCheck": {
+      "enum": [
+        "none",
+        "pending",
+        "agreed",
+        "disagreed"
+      ],
+      "description": "pending: drawn for an optional human spot-check (never blocking)"
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://[^\\s]+$",
+          "maxLength": 500
+        },
+        "accessed": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "licence": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "public-domain, CC0-1.0 or CC-BY-* for a source cited by licence rather than by an accessed web address"
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claim",
+        "registry",
+        "sources"
+      ],
+      "properties": {
+        "claim": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "registry": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "a standard id of the standards registry (standards/), aligned to a skill of the record (itself or an ancestor)"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/source"
+          }
+        }
+      }
+    },
+    "verdict": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verdict",
+        "model",
+        "reviewer",
+        "checks",
+        "notes"
+      ],
+      "properties": {
+        "verdict": {
+          "enum": [
+            "pass",
+            "object"
+          ]
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "the harness session or agent that filled the role"
+        },
+        "locale": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 20,
+          "description": "language role: the locale judged, which is the record's"
+        },
+        "checks": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "boolean"
+          },
+          "description": "the role's checklist, item by item (review/jury-policy.md)"
+        },
+        "claims": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/claim"
+          },
+          "description": "subject role: the correctness claims, each sourced"
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 600
+          }
+        }
+      }
+    }
+  }
+}

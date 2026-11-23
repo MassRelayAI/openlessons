@@ -1,5 +1,15 @@
 {
   "schema": "reviewers/1",
-  "note": "The people whose review can settle a record, and what each may review. Nobody is listed yet: naming reviewers is the project owner's decision, and until someone is listed nothing in the tree can be `reviewed` or `published`. See CONTRIBUTING.md.",
-  "reviewers": []
+  "note": "Who can settle a record. Lessons and items are settled by the sourced AI jury `jury-v1` (review/jury-policy.md; accountable owner: MassRelay), and only with a decision record under review/decisions/. Skills, alignments and paths are settled by the people listed here; no person is listed yet, and naming one is the project owner's decision. See CONTRIBUTING.md.",
+  "reviewers": [
+    {
+      "id": "jury-v1",
+      "kind": "jury",
+      "owner": "MassRelay",
+      "policy": "review/jury-policy.md",
+      "policyVersion": "1",
+      "spotCheckRate": 0.05,
+      "since": "2026-11-23"
+    }
+  ]
 }

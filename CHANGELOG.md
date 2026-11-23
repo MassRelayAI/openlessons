@@ -2,6 +2,16 @@
 
 ## Unreleased
 
+- **The sourced AI jury (decision K4).** Lessons and items become `reviewed` only by a jury decision record,
+  `review/decisions/<record id>.json` (schema `jury-decision/1`), under `review/jury-policy.md` (policy version 1; jury
+  `jury-v1` in `REVIEWERS.json`, owner MassRelay). Three independent roles (subject, safety, language), unanimous to pass,
+  every correctness claim citing a registry entry and a resolving source, the models recorded, 5% of passes drawn for an
+  optional human spot-check. New gate `review.jury-decision` (proven red first on its fixture and in `tests/jury.rs`).
+  New commands `openlessons jury orders` and `openlessons jury run [--dry-run]`; new MCP tools `jury_order` and
+  `jury_submit`. Review entries take `kind: jury` with a `decision` path. Files beyond the review lane: `scan.rs`,
+  `main.rs`, `mcp.rs`, `lib.rs`, the review-entry block of every record schema, `reviewers.schema.json`,
+  `gates/rules.json`, the green fixture, `scoregraph/rules/quality.review.jury-decision.json`.
+
 ## 0.5.0 (2026-11-23)
 
 - **Open material (OER) intake.** `sources/` registers 16 publishers of open material (`source/1`), each with the

@@ -2,7 +2,7 @@
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use openlessons::{adopt, canon, export, find, gaps, import, judge, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
+use openlessons::{adopt, canon, export, find, gaps, import, judge, jury, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
 use serde_json::{json, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -205,6 +205,48 @@ enum Cmd {
     Stamp { paths: Vec<PathBuf> },
     /// Print the id and folder of a lesson
     Id { locale: String, subject: String, slug: String },
+    /// The sourced AI jury (review/jury-policy.md): work orders per role, then the run that decides
+    Jury {
+        #[command(subcommand)]
+        step: JuryStep,
+    },
+}
+
+#[derive(Subcommand)]
+enum JuryStep {
+    /// Write one work order per role and lesson to <out>/<role>/<lesson id>.json (an order never holds another verdict)
+    Orders {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the lessons to put before the jury (default: every lesson at `draft` or `proposed`)
+        #[arg(long)]
+        lesson: Vec<String>,
+        #[arg(long, default_value = ".jury/orders")]
+        out: PathBuf,
+    },
+    /// Turn the three verdicts of each lesson into decision records; settle the lessons that pass unanimously
+    Run {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the verdicts, as <verdicts>/<role>/<lesson id>.json
+        #[arg(long, default_value = ".jury/verdicts")]
+        verdicts: PathBuf,
+        /// only these lessons (default: every lesson with a verdict)
+        #[arg(long)]
+        lesson: Vec<String>,
+        /// the decision date (default: today, UTC)
+        #[arg(long)]
+        date: Option<String>,
+        /// what filled the roles
+        #[arg(long)]
+        harness: String,
+        /// how the roles were kept from seeing each other's verdicts
+        #[arg(long)]
+        independence: String,
+        /// decide and report, write nothing
+        #[arg(long)]
+        dry_run: bool,
+    },
 }
 
 #[derive(clap::Args)]
@@ -580,6 +622,39 @@ fn run(cli: Cli) -> Result<u8> {
             for p in paths {
                 let (files, items, changed) = stamp(&p)?;
                 println!("{}: {files} file(s), {items} item(s), {changed} id(s) written", p.display());
+            }
+            Ok(0)
+        }
+        Cmd::Jury { step: JuryStep::Orders { root, lesson, out } } => {
+            let s = scan(&root, &root.join("gates").join("data"))?;
+            let reviewers: Value = serde_json::from_str(&fs::read_to_string(root.join("REVIEWERS.json")).context("REVIEWERS.json")?)?;
+            let list = reviewers["reviewers"].as_array().cloned().unwrap_or_default();
+            let juries = jury::juries(&list);
+            let [j] = juries.as_slice() else { anyhow::bail!("REVIEWERS.json must list exactly one jury entry") };
+            let lessons: Vec<String> = if lesson.is_empty() {
+                s.lessons.iter().filter(|l| matches!(l["status"].as_str(), Some("draft" | "proposed"))).filter_map(|l| l["id"].as_str().map(str::to_string)).collect()
+            } else {
+                lesson
+            };
+            for role in jury::ROLES {
+                fs::create_dir_all(out.join(role))?;
+                for l in &lessons {
+                    let o = jury::order(&root, &s, j, role, l)?;
+                    fs::write(out.join(role).join(format!("{l}.json")), format!("{}\n", serde_json::to_string_pretty(&o)?))?;
+                }
+            }
+            println!("{} order(s) for {} lesson(s) under {}: hand each role's folder to a separate reviewer, and collect <role>/<lesson id>.json verdicts", lessons.len() * 3, lessons.len(), out.display());
+            Ok(0)
+        }
+        Cmd::Jury { step: JuryStep::Run { root, verdicts, lesson, date, harness, independence, dry_run } } => {
+            let data = root.join("gates").join("data");
+            let o = jury::RunOptions { root: &root, data: &data, verdicts: &verdicts, date: date.unwrap_or_else(looprun::today), harness, independence, dry_run, lessons: lesson };
+            let r = jury::run(&o)?;
+            print!("{}", jury::markdown(&r));
+            if dry_run {
+                println!("\ndry run: nothing written");
+            } else {
+                println!("\n{} path(s) written. Next: `openlessons index`, then `openlessons validate --base origin/main`.", r.written.len());
             }
             Ok(0)
         }

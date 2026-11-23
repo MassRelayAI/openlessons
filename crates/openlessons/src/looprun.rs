@@ -3,7 +3,7 @@
 //! The loop is agent-agnostic. `orders` turns the top gaps into work orders (`order/1`): everything a harness needs to
 //! draft one lesson, and nothing it may not copy. Any harness answers an order with a proposal file (`proposal/1`).
 //! `land` judges every proposal with every gate and places the ones that pass at status `draft`. Nothing here can set
-//! `reviewed`: that takes a person listed in REVIEWERS.json, and a product for children reads `reviewed` content only.
+//! `reviewed`: that takes a decision of the jury (`openlessons jury`), and a product for children reads `reviewed` content only.
 //!
 //! Drafting needs a model, so it runs where a person or an approved runner holds a key. Everything else in this file,
 //! and the gap report, needs neither a model nor a secret.
@@ -295,7 +295,7 @@ pub fn land(o: &Land) -> Result<Value> {
         "mode": match o.mode { Mode::Files => "files", Mode::DryRun => "dry-run", Mode::PullRequest => "pull-request" },
         "makers": makers, "orders": wanted.len(), "drafts": files.len() + o.failed.len(),
         "status": "draft",
-        "note": "Every record of this run is `draft`: drafted by a model, passed by the gates, read by no educator. Only a person listed in REVIEWERS.json can make it `reviewed`, and a product for children reads `reviewed` content only.",
+        "note": "Every record of this run is `draft`: drafted by a model, passed by the gates, reviewed by nobody. Only a unanimous, sourced decision of the jury in REVIEWERS.json can make it `reviewed`, and a product for children reads `reviewed` content only.",
         "landed": landed, "refused": refused,
         "spread": {"objectives": objectives.len(), "subjects": subjects, "locales": locales},
         "gaps": {"cells": gaps_after.cells, "before": gaps_before.gaps.len(), "after": gaps_after.gaps.len(), "closed": closed},

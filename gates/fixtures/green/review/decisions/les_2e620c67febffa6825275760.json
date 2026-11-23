@@ -1,0 +1,72 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_2e620c67febffa6825275760",
+  "lesson": "les_2e620c67febffa6825275760",
+  "contentHash": "988a55fe5433440d632fe7fff160b2e9215e368852eb4545bdb764ac4702c1ea",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "example-harness",
+  "independence": "three separate sessions, each given only its own work order",
+  "roles": {
+    "subject": {
+      "verdict": "pass",
+      "model": "example-model-subject",
+      "reviewer": "example-harness/subject",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "notes": [],
+      "claims": [
+        {
+          "claim": "Counting a group of up to five things, one number for each thing, gives how many there are.",
+          "registry": "example-framework:y1.n1",
+          "sources": [
+            {
+              "title": "Example framework, Year 1: counting",
+              "url": "https://example.org/framework/y1#n1",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ]
+    },
+    "safety": {
+      "verdict": "pass",
+      "model": "example-model-safety",
+      "reviewer": "example-harness/safety",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "notes": []
+    },
+    "language": {
+      "verdict": "pass",
+      "model": "example-model-language",
+      "reviewer": "example-harness/language",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "notes": [],
+      "locale": "en"
+    }
+  },
+  "outcome": "pass",
+  "notes": [],
+  "spotCheck": "none"
+}

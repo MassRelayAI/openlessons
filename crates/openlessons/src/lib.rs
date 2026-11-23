@@ -10,6 +10,7 @@
 //! - [`gaps`]: the gap report over objective x age band x language
 //! - [`looprun`]: the content loop: work orders, landing drafts, the run report
 //! - [`canon`]: canonical JSON and the ids derived from content
+//! - [`jury`]: the sourced AI jury: work orders per role, decision records, the checks they must pass
 
 pub mod adopt;
 pub mod base;
@@ -18,6 +19,7 @@ pub mod export;
 pub mod gaps;
 pub mod import;
 pub mod item;
+pub mod jury;
 pub mod looprun;
 pub mod mcp;
 pub mod observe;
