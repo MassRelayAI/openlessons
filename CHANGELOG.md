@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+## 0.4.1 (2026-11-23)
+
+- **Objective ids are a public contract.** The new gate `graph.ids-stable` (judged with `--base`, like `loop.base-respected`)
+  refuses a tree that drops or renames an objective id present on the base. A retired objective stays and says what
+  replaces it: `"deprecated": {"replacedBy": "<id>", "reason": "..."}` (new optional field of `skill/1`); the replacement must
+  exist. Proven red first on `gates/fixtures/graph.ids-stable/`.
+- `index/catalog.json` carries the release `version`.
+
 - **The copied-text guard covers ten frameworks.** `gates/data/protected/<framework>.txt` holds fingerprints (hashes of
   runs of eight words, fourteen characters for Chinese) of the official texts of Common Core (mathematics and English
   language arts), the CEFR Companion volume, PISA 2025, Hong Kong's mathematics curriculum guide, South Africa's CAPS
