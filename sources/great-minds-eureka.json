@@ -1,0 +1,24 @@
+{
+  "schema": "source/1",
+  "id": "great-minds-eureka",
+  "title": "Eureka Math / EngageNY",
+  "publisher": "Great Minds",
+  "url": "https://greatminds.org/",
+  "class": "reference-only",
+  "licences": [
+    "CC-BY-NC-SA-4.0",
+    "LicenseRef-all-rights-reserved"
+  ],
+  "perItem": "per resource; a resource that states no licence falls under the terms of service",
+  "terms": {
+    "url": "https://greatminds.org/legal/terms-of-service",
+    "read": "2026-11-23",
+    "quotation": "made available under a Creative Commons license (such as CC-BY-NC-SA 4.0) or other open-source license."
+  },
+  "caveats": [
+    "no trademark rights are granted"
+  ],
+  "unverified": [
+    "which products are open; engageny.org now redirects to nysed.gov"
+  ]
+}

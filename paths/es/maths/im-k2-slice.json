@@ -1,0 +1,40 @@
+{
+  "schema": "path/1",
+  "slug": "im-k2-slice",
+  "locale": "es",
+  "subject": "maths",
+  "title": "Matemáticas abiertas K-2: de IM K-5 Math",
+  "ages": {
+    "min": 4,
+    "max": 8
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:k2-slice",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "Kínder: contar hasta 10",
+      "lessons": [
+        "les_80ad7e2f7afc174fc5d284c1"
+      ]
+    },
+    {
+      "title": "Grado 1: contar y sumar",
+      "lessons": [
+        "les_46341c87cff8b36e3c451ecd"
+      ]
+    },
+    {
+      "title": "Grado 2: sumar y restar hasta 10",
+      "lessons": [
+        "les_5056d61c8bc0766ea6d5c1fc"
+      ]
+    }
+  ]
+}

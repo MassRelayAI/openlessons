@@ -81,7 +81,7 @@ pub fn observations(scan: &Scan, version: &str, base_measured: bool) -> Vec<Valu
             "schema": "observation/1", "product": PRODUCT, "version": version, "rule": {"id": format!("quality.{rule}"), "version": 1},
             "context": {"scope": "tree"}, "probe": probe, "assertions": records,
         });
-        if *rule == "loop.base-respected" && !base_measured {
+        if (*rule == "loop.base-respected" || *rule == "graph.ids-stable") && !base_measured {
             o["outcome"] = json!("unmeasured");
         } else {
             o["facts"] = json!({"findings": findings, "records": records});

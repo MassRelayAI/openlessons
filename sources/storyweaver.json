@@ -1,0 +1,27 @@
+{
+  "schema": "source/1",
+  "id": "storyweaver",
+  "title": "StoryWeaver",
+  "publisher": "Pratham Books",
+  "url": "https://storyweaver.org.in/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0"
+  ],
+  "perItem": "each story's own licence: `licenseType` in its record, or the licence line on its attribution page; a story under any other licence is refused until this record lists it",
+  "terms": {
+    "url": "https://storyweaver.org.in/attributions",
+    "read": "2026-11-23",
+    "quotation": "The license that has been used for all stories and images is the CC BY 4.0 license.",
+    "attribution": "'<title>' written by <author>, illustrated by <illustrator>, published by <publisher> under a CC BY 4.0 license on StoryWeaver."
+  },
+  "caveats": [
+    "the public story record (api/v1/stories/<slug>) carries title, language, level, authors, illustrators and publisher, but no page text",
+    "page text is served to a signed-in reader only (api/v1/stories/<slug>/read answers 401 without an account)",
+    "read-alongs and videos may carry other licences"
+  ],
+  "importer": "storyweaver",
+  "unverified": [
+    "the licence of read-alongs and videos (a search result said CC BY-NC-ND 4.0)"
+  ]
+}

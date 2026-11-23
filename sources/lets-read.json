@@ -1,0 +1,23 @@
+{
+  "schema": "source/1",
+  "id": "lets-read",
+  "title": "Let's Read",
+  "publisher": "The Asia Foundation",
+  "url": "https://www.letsreadasia.org/",
+  "class": "reference-only",
+  "licences": [
+    "CC-BY-NC-4.0"
+  ],
+  "perItem": "per book",
+  "terms": {
+    "url": "https://www.letsreadasia.org/",
+    "read": "2026-11-23",
+    "quotation": "(no licence text could be read: the terms page is a script shell)"
+  },
+  "caveats": [
+    "held reference-only until a book page is read: a 2020 deck found by search says CC BY-NC 4.0 for some titles"
+  ],
+  "unverified": [
+    "the licence of any title"
+  ]
+}

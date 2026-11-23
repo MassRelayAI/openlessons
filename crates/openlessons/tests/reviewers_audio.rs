@@ -36,12 +36,19 @@ fn reviewers(tree: &Path, f: impl Fn(&mut Value)) {
 }
 
 #[test]
-fn the_shipped_list_names_nobody_and_nothing_in_the_tree_is_reviewed() {
+fn the_shipped_list_names_no_person_and_only_the_jury_settles_lessons() {
     let v: Value = serde_json::from_str(&fs::read_to_string(root().join("REVIEWERS.json")).unwrap()).unwrap();
-    assert_eq!(v["reviewers"], json!([]), "reviewers are named by the project owner, not by a change that also adds content");
+    // people are named by the project owner, not by a change that also adds content; the jury is the owner's decision K4
+    let list = v["reviewers"].as_array().unwrap();
+    assert_eq!(list.len(), 1, "{list:?}");
+    assert_eq!((list[0]["kind"].as_str(), list[0]["id"].as_str(), list[0]["owner"].as_str()), (Some("jury"), Some("jury-v1"), Some("MassRelay")));
     let s = scan(&root(), &root().join("gates/data")).unwrap();
-    // a contribution is `proposed`, a draft of the loop is `draft`: with nobody listed, nothing can be more than that
-    assert!(s.lessons.iter().all(|l| l["status"] == "proposed" || l["status"] == "draft"));
+    // a lesson above `proposed` is there only by a jury decision record the gate accepts
+    for l in s.lessons.iter().filter(|l| l["status"] != "proposed" && l["status"] != "draft") {
+        assert_eq!(l["status"], "reviewed", "{l}");
+        assert!(root().join(format!("review/decisions/{}.json", l["id"].as_str().unwrap())).is_file(), "{l}");
+    }
+    assert!(s.findings.iter().all(|f| f.rule != "review.jury-decision" && f.rule != "loop.reviewer-listed"), "{:?}", s.findings);
 }
 
 #[test]
@@ -62,11 +69,10 @@ fn a_review_counts_only_from_a_listed_reviewer_in_scope() {
     assert_eq!(hits(&tree, RULE).len(), 2);
     fs::remove_dir_all(&tree).unwrap();
 
-    // listed for another language: the alignment still stands, the lesson does not
+    // listed for another language: the alignment still stands, and so does the lesson, which the jury settles
     let tree = green_copy("locale");
     reviewers(&tree, |r| r["locales"] = json!(["id"]));
-    let h = hits(&tree, RULE);
-    assert!(h.len() == 1 && h[0].contains("lesson.json") && h[0].contains("locale en"), "{h:#?}");
+    assert_eq!(hits(&tree, RULE), Vec::<String>::new());
     fs::remove_dir_all(&tree).unwrap();
 
     // listed for another framework: the lesson stands, the alignment does not
@@ -79,18 +85,18 @@ fn a_review_counts_only_from_a_listed_reviewer_in_scope() {
     // listed without the role the review was given in
     let tree = green_copy("role");
     reviewers(&tree, |r| r["roles"] = json!(["licence"]));
-    assert_eq!(hits(&tree, RULE).len(), 2);
+    assert_eq!(hits(&tree, RULE).len(), 1, "the alignment; the lesson is the jury's");
     fs::remove_dir_all(&tree).unwrap();
 
     // a review dated before the reviewer's term began
     let tree = green_copy("term");
     reviewers(&tree, |r| r["since"] = json!("2027-01-01"));
-    assert_eq!(hits(&tree, RULE).len(), 2);
+    assert_eq!(hits(&tree, RULE).len(), 1);
     reviewers(&tree, |r| {
         r["since"] = json!("2026-01-01");
         r["until"] = json!("2026-06-30");
     });
-    assert_eq!(hits(&tree, RULE).len(), 2, "and after it ended");
+    assert_eq!(hits(&tree, RULE).len(), 1, "and after it ended");
     reviewers(&tree, |r| r["locales"] = json!(["*"]));
     reviewers(&tree, |r| r["until"] = json!("2027-12-31"));
     assert_eq!(hits(&tree, RULE), Vec::<String>::new());

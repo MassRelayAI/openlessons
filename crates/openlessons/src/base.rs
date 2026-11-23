@@ -213,6 +213,40 @@ pub fn against_base(root: &Path, base: &dyn Base) -> Result<Vec<Finding>> {
             }
         }
     }
+    out.extend(ids_stable(root, base)?);
+    Ok(out)
+}
+
+pub const IDS_RULE: &str = "graph.ids-stable";
+
+/// The gate `graph.ids-stable`: an objective (skill) id present on the base never vanishes. It may be marked
+/// `deprecated: {"replacedBy": "<id>"}`, and the replacement must exist; the record itself stays.
+fn ids_stable(root: &Path, base: &dyn Base) -> Result<Vec<Finding>> {
+    let mut out = Vec::new();
+    let mut head = BTreeMap::new();
+    files(root, &root.join("skills"), &mut head);
+    let mut live: BTreeMap<String, (String, Value)> = BTreeMap::new();
+    for (path, raw) in &head {
+        if let Ok(v) = serde_json::from_str::<Value>(raw) {
+            live.insert(st(&v, "id").to_string(), (path.clone(), v));
+        }
+    }
+    for path in base.changed()?.into_iter().filter(|p| p.starts_with("skills/")) {
+        let Some(before) = base.read(&path)? else { continue };
+        let Ok(old) = serde_json::from_str::<Value>(&before) else { continue };
+        let id = st(&old, "id");
+        if !id.is_empty() && !live.contains_key(id) {
+            out.push(Finding { rule: IDS_RULE.to_string(), path, line: 0, message: format!("objective id {id} was on the base and is gone: ids are a public contract; keep the record and mark it `deprecated` with `replacedBy`") });
+        }
+    }
+    for (id, (path, v)) in &live {
+        if let Some(d) = v.get("deprecated") {
+            let to = d.get("replacedBy").and_then(Value::as_str).unwrap_or("");
+            if to.is_empty() || to == id || !live.contains_key(to) {
+                out.push(Finding { rule: IDS_RULE.to_string(), path: path.clone(), line: 0, message: format!("{id} is deprecated but `replacedBy` {to:?} is not another objective that exists") });
+            }
+        }
+    }
     Ok(out)
 }
 
@@ -242,6 +276,24 @@ mod tests {
         assert!(illegal(&base, &lesson("reviewed", "Count!", 1, json!([pass("t1")]))).is_some());
         assert!(illegal(&base, &lesson("reviewed", "Count", 1, json!([]))).is_some());
         assert!(illegal(&lesson("published", "Count", 1, json!([pass("t1")])), &base).is_some());
+    }
+
+    #[test]
+    fn a_deprecated_id_stays_and_points_at_a_live_one() {
+        let d = std::env::temp_dir().join(format!("ol-ids-{}", std::process::id()));
+        let _ = fs::remove_dir_all(&d);
+        let (b, h) = (d.join("b"), d.join("h"));
+        for (root, files) in [(&b, vec![("a", ""), ("b", "")]), (&h, vec![("a", ",\"deprecated\":{\"replacedBy\":\"b\"}"), ("b", "")])] {
+            fs::create_dir_all(root.join("skills")).unwrap();
+            for (n, extra) in files {
+                fs::write(root.join(format!("skills/{n}.json")), format!("{{\"id\":\"{n}\"{extra}}}")).unwrap();
+            }
+        }
+        let base = DirBase { base: b.clone(), head: h.clone() };
+        assert!(ids_stable(&h, &base).unwrap().is_empty());
+        fs::remove_file(h.join("skills/a.json")).unwrap();
+        assert_eq!(ids_stable(&h, &base).unwrap().len(), 1);
+        let _ = fs::remove_dir_all(&d);
     }
 
     #[test]

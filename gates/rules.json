@@ -74,6 +74,12 @@
       "mode": "blocking"
     },
     {
+      "id": "content.source-licensed",
+      "version": 1,
+      "title": "Adopted open material comes from a registered source under the item's own CC BY, CC0 or public-domain licence, with its deed, authors, attribution and original address; NonCommercial, NoDerivatives and ShareAlike material never enters the core, and a source's class follows from its licences",
+      "mode": "blocking"
+    },
+    {
       "id": "content.no-pii",
       "version": 1,
       "title": "No email address, phone number, web address or account handle in content or provenance",
@@ -110,9 +116,21 @@
       "mode": "blocking"
     },
     {
+      "id": "review.jury-decision",
+      "version": 1,
+      "title": "A lesson or an item is `reviewed` only by a jury decision record (review/decisions/<id>.json) that matches its content, is unanimous across the three roles, and cites a registry entry and a resolving source for every correctness claim",
+      "mode": "blocking"
+    },
+    {
       "id": "loop.base-respected",
       "version": 1,
       "title": "Against a base revision, nothing reviewed changes silently: it moves forward, is reopened with a higher version, or is revised by a new record",
+      "mode": "blocking"
+    },
+    {
+      "id": "graph.ids-stable",
+      "version": 1,
+      "title": "An objective id present on the base is never dropped or renamed: it may be marked deprecated with a pointer to its replacement, but it stays",
       "mode": "blocking"
     },
     {

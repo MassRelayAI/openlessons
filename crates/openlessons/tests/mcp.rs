@@ -85,7 +85,7 @@ fn it_speaks_the_protocol() {
     assert_eq!(replies[0]["result"]["serverInfo"]["name"], "openlessons");
     assert!(replies[0]["result"]["capabilities"]["tools"].is_object());
     let names: Vec<&str> = replies[1]["result"]["tools"].as_array().unwrap().iter().map(|t| t["name"].as_str().unwrap()).collect();
-    assert_eq!(names, ["find_lessons", "get_lesson", "gap_report", "get_work_orders", "validate_proposal", "propose_lesson"]);
+    assert_eq!(names, ["find_lessons", "get_lesson", "gap_report", "get_work_orders", "validate_proposal", "jury_order", "jury_submit", "propose_lesson"]);
     assert!(replies[1]["result"]["tools"].as_array().unwrap().iter().all(|t| t["inputSchema"]["type"] == "object" && t["description"].is_string()));
     assert_eq!(replies[2]["result"], json!({}));
     assert_eq!(replies[3]["error"]["code"], -32601);

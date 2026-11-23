@@ -1,0 +1,24 @@
+{
+  "schema": "source/1",
+  "id": "khan-academy",
+  "title": "Khan Academy",
+  "publisher": "Khan Academy",
+  "url": "https://www.khanacademy.org/",
+  "class": "reference-only",
+  "licences": [
+    "LicenseRef-CC-BY-NC-SA",
+    "LicenseRef-all-rights-reserved"
+  ],
+  "perItem": "videos and exercises are CC BY-NC-SA; the platform is not licensed",
+  "terms": {
+    "url": "https://support.khanacademy.org/hc/en-us/articles/202262954",
+    "read": "2026-11-23",
+    "quotation": "Creative Commons (CC by NC SA) license (for video and exercise use)"
+  },
+  "caveats": [
+    "reference only: codes and links, never content"
+  ],
+  "unverified": [
+    "the CC BY-NC-SA version"
+  ]
+}

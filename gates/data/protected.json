@@ -1,6 +1,6 @@
 {
   "schema": "protected-text/1",
-  "note": "What the gate content.no-copied-text refuses in our own wording. `symbols` and `marks` travel with copied material. `lists` describes the fingerprint lists under protected/: each line of protected/<framework>.txt is the hash of one run of `window` words of a text whose terms forbid copying it (or that we hold back), so a list can tell that a passage is the publisher's without holding the passage. A list is made with `openlessons fingerprint <file> --window <n> --sample <k>` from a text file that is never committed, and it is proven before it is trusted: a passage of the source planted in a copy of the tree must pass without the list and be refused with it (`proof`). A framework with no list here is guarded by the paraphrase rule and the licence reviewer alone; its record under standards/ says so (`terms.guard`). The lists catch the copied passage; they cannot see a close paraphrase.",
+  "note": "What the gate content.no-copied-text refuses in our own wording. `symbols` and `marks` travel with copied material. `lists` describes the fingerprint lists under protected/: each line of protected/<framework>.txt is the hash of one run of `window` words of a text whose terms forbid copying it (or that we hold back), so a list can tell that a passage is the publisher's without holding the passage. A list is made with `openlessons fingerprint <file> --window <n> --sample <k>` from a text file that is never committed, and it is proven before it is trusted: a passage of the source planted in a copy of the tree must pass without the list and be refused with it (`proof`). A framework with no list here is guarded by the paraphrase rule and the licence reviewer alone; its record under standards/ says so (`terms.guard`). The lists catch the copied passage; they cannot see a close paraphrase. `licenceMarks` name a NonCommercial or NoDerivatives licence: they are refused in our wording and in the credit of adopted material alike, where the copyright sign and the publisher's notice are allowed.",
   "symbols": [
     "©",
     "®",
@@ -18,6 +18,17 @@
     "版權所有",
     "सर्वाधिकार सुरक्षित",
     "جميع الحقوق محفوظة"
+  ],
+  "licenceMarks": [
+    "cc by nc",
+    "cc by nd",
+    "by nc sa",
+    "by nc nd",
+    "noncommercial",
+    "non commercial",
+    "noderivatives",
+    "no derivatives",
+    "no derivative works"
   ],
   "lists": {
     "ccss-2010": {

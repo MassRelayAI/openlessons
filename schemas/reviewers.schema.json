@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/MassRelayAI/openlessons/schemas/reviewers.schema.json",
-  "title": "reviewers/1: REVIEWERS.json, the people whose review can settle a record, and what each may review",
+  "title": "reviewers/1: REVIEWERS.json, who can settle a record (people, and the sourced AI jury), and what each may review",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -20,98 +20,160 @@
     "reviewers": {
       "type": "array",
       "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "handle",
-          "roles",
-          "locales",
-          "subjects",
-          "frameworks",
-          "since"
-        ],
-        "properties": {
-          "handle": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
-            "description": "the public handle the reviewer signs reviews with"
-          },
-          "roles": {
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-              "enum": [
-                "subject",
-                "language",
-                "safety",
-                "licence"
-              ]
-            }
-          },
-          "locales": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
-                },
-                {
-                  "const": "*"
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "handle",
+              "roles",
+              "locales",
+              "subjects",
+              "frameworks",
+              "since"
+            ],
+            "properties": {
+              "handle": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$",
+                "description": "the public handle the reviewer signs reviews with"
+              },
+              "roles": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    "subject",
+                    "language",
+                    "safety",
+                    "licence"
+                  ]
                 }
-              ]
+              },
+              "locales": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-z]{2,3}(-[A-Z][a-z]{3})?(-[A-Z]{2})?$"
+                    },
+                    {
+                      "const": "*"
+                    }
+                  ]
+                },
+                "description": "languages they may review; * for all"
+              },
+              "subjects": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+                      "maxLength": 80
+                    },
+                    {
+                      "const": "*"
+                    }
+                  ]
+                }
+              },
+              "frameworks": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+                      "maxLength": 80
+                    },
+                    {
+                      "const": "*"
+                    }
+                  ]
+                },
+                "description": "frameworks whose alignments they may review"
+              },
+              "since": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "until": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              }
             },
-            "description": "languages they may review; * for all"
+            "description": "a person: their review settles skills, alignments and paths; lessons and items are settled by the jury"
           },
-          "subjects": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-                  "maxLength": 80
-                },
-                {
-                  "const": "*"
-                }
-              ]
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "kind",
+              "owner",
+              "policy",
+              "policyVersion",
+              "since"
+            ],
+            "description": "the sourced AI jury (review/jury-policy.md): the only reviewer that can set a lesson or an item `reviewed`, and only with a decision record",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,63}$"
+              },
+              "kind": {
+                "const": "jury"
+              },
+              "owner": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 120,
+                "description": "who is accountable for the jury policy (an organisation)"
+              },
+              "policy": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "description": "the policy file, relative to the root"
+              },
+              "policyVersion": {
+                "type": "string",
+                "pattern": "^[0-9]+$"
+              },
+              "spotCheckRate": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "the share of passes drawn for an optional human spot-check"
+              },
+              "since": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "until": {
+                "type": "string",
+                "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              }
             }
-          },
-          "frameworks": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-                  "maxLength": 80
-                },
-                {
-                  "const": "*"
-                }
-              ]
-            },
-            "description": "frameworks whose alignments they may review"
-          },
-          "since": {
-            "type": "string",
-            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-          },
-          "until": {
-            "type": "string",
-            "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
-          },
-          "note": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 200
           }
-        }
+        ]
       }
     }
   }

@@ -10,7 +10,8 @@
     "b05-06"
   ],
   "statement": {
-    "en": "I can take one number away from another, within 10."
+    "en": "I can take one number away from another, within 10.",
+    "es": "Puedo quitar un número de otro, hasta 10."
   },
   "type": "math_foundations",
   "prerequisites": [
@@ -20,7 +21,8 @@
     {
       "no": 1,
       "feedback": {
-        "en": "Taking away makes the number smaller. Count back, do not count on."
+        "en": "Taking away makes the number smaller. Count back, do not count on.",
+        "es": "Quitar hace el número más pequeño. Cuenta hacia atrás, no hacia adelante."
       },
       "mustAddress": true
     }

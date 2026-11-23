@@ -2,7 +2,7 @@
 
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
-use openlessons::{canon, export, find, gaps, import, judge, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
+use openlessons::{adopt, canon, export, find, gaps, import, judge, jury, looprun, observe, scan, selftest, stamp, text, write_index, Query, RULES};
 use serde_json::{json, Value};
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -169,6 +169,27 @@ enum Cmd {
         #[arg(long)]
         json: bool,
     },
+    /// Adopt open material: read each item of an adoption plan with its source's adapter, check the item's own licence
+    /// and credit, and place what passes as `draft` lessons (an item that fails any gate leaves no trace)
+    Adopt {
+        /// an adopt-plan/1 file; its entries name input files relative to it
+        plan: PathBuf,
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the day the records are made (default: today, UTC)
+        #[arg(long)]
+        date: Option<String>,
+        /// the maker the records name
+        #[arg(long, default_value = "openlessons-adopt")]
+        maker: String,
+    },
+    /// List the sources of open material: each publisher, its class (adopt, reference-only, sa-layer) and its licences
+    Sources {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        #[arg(long)]
+        json: bool,
+    },
     /// Print the fingerprint list of a text file, for gates/data/protected/<framework>.txt (the text itself is never stored)
     Fingerprint {
         /// a plain-text file of the protected wording; keep it outside the repository
@@ -184,6 +205,48 @@ enum Cmd {
     Stamp { paths: Vec<PathBuf> },
     /// Print the id and folder of a lesson
     Id { locale: String, subject: String, slug: String },
+    /// The sourced AI jury (review/jury-policy.md): work orders per role, then the run that decides
+    Jury {
+        #[command(subcommand)]
+        step: JuryStep,
+    },
+}
+
+#[derive(Subcommand)]
+enum JuryStep {
+    /// Write one work order per role and lesson to <out>/<role>/<lesson id>.json (an order never holds another verdict)
+    Orders {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the lessons to put before the jury (default: every lesson at `draft` or `proposed`)
+        #[arg(long)]
+        lesson: Vec<String>,
+        #[arg(long, default_value = ".jury/orders")]
+        out: PathBuf,
+    },
+    /// Turn the three verdicts of each lesson into decision records; settle the lessons that pass unanimously
+    Run {
+        #[arg(long, default_value = ".")]
+        root: PathBuf,
+        /// the verdicts, as <verdicts>/<role>/<lesson id>.json
+        #[arg(long, default_value = ".jury/verdicts")]
+        verdicts: PathBuf,
+        /// only these lessons (default: every lesson with a verdict)
+        #[arg(long)]
+        lesson: Vec<String>,
+        /// the decision date (default: today, UTC)
+        #[arg(long)]
+        date: Option<String>,
+        /// what filled the roles
+        #[arg(long)]
+        harness: String,
+        /// how the roles were kept from seeing each other's verdicts
+        #[arg(long)]
+        independence: String,
+        /// decide and report, write nothing
+        #[arg(long)]
+        dry_run: bool,
+    },
 }
 
 #[derive(clap::Args)]
@@ -325,7 +388,7 @@ fn run(cli: Cli) -> Result<u8> {
             } else {
                 for rule in RULES {
                     let n = per_rule(rule);
-                    let skipped = *rule == "loop.base-respected" && base.is_none();
+                    let skipped = (*rule == "loop.base-respected" || *rule == "graph.ids-stable") && base.is_none();
                     let mark = if skipped { "--  " } else if n == 0 { "ok  " } else { "RED " };
                     let note = if skipped { " (no --base given: not judged)".to_string() } else if n == 0 { String::new() } else { format!(": {n} finding(s)") };
                     println!("{mark} {rule}{note}");
@@ -490,6 +553,60 @@ fn run(cli: Cli) -> Result<u8> {
             }
             Ok(0)
         }
+        Cmd::Adopt { plan, root, date, maker } => {
+            let data = root.join("gates").join("data");
+            let sources = adopt::load_sources(&root)?;
+            let lic = adopt::Licences::load(&data)?;
+            let p: Value = serde_json::from_str(&fs::read_to_string(&plan).with_context(|| format!("{}", plan.display()))?).context("the adoption plan")?;
+            let base = plan.parent().map(Path::to_path_buf).unwrap_or_default();
+            let created = date.unwrap_or_else(looprun::today);
+            let a = adopt::run_plan(&p, &base, &sources, &lic, &maker, &created)?;
+            let mut refused = a.refused.len();
+            for r in &a.refused {
+                println!("refused {}:", r.entry);
+                r.reasons.iter().for_each(|m| println!("    {m}"));
+            }
+            let written = import::write_records(&root, &a.records)?;
+            // every gate judges what was written; a lesson with a finding is taken out again
+            let s = scan(&root, &data)?;
+            let mut kept = Vec::new();
+            for (l, _) in &a.records.lessons {
+                let id = l["id"].as_str().unwrap_or("");
+                let dir = format!("lessons/{}/{}/{}/{id}", l["locale"].as_str().unwrap_or(""), l["subject"].as_str().unwrap_or(""), canon::shard(id));
+                let found: Vec<_> = s.findings.iter().filter(|f| f.rule != "index.fresh" && f.path.starts_with(&dir)).collect();
+                if found.is_empty() {
+                    kept.push(dir);
+                } else {
+                    refused += 1;
+                    println!("refused {} (a gate is red):", l["slug"].as_str().unwrap_or(""));
+                    found.iter().for_each(|f| println!("    {} {}: {}", f.rule, f.path, f.message));
+                    fs::remove_dir_all(root.join(&dir))?;
+                }
+            }
+            for w in written.iter().filter(|w| kept.iter().any(|k| w.starts_with(k.as_str()))) {
+                println!("wrote {w}");
+            }
+            println!("{} lesson(s) adopted as `draft`, {refused} refused. Next: `openlessons index`, then `openlessons validate`.", kept.len());
+            Ok(if refused == 0 { 0 } else { 1 })
+        }
+        Cmd::Sources { root, json } => {
+            let sources = adopt::load_sources(&root)?;
+            let mut classes: std::collections::BTreeMap<String, usize> = Default::default();
+            for s in sources.values() {
+                let g = |k: &str| s[k].as_str().unwrap_or("").to_string();
+                *classes.entry(g("class")).or_default() += 1;
+                if json {
+                    println!("{s}");
+                } else {
+                    let lic: Vec<&str> = s["licences"].as_array().into_iter().flatten().filter_map(Value::as_str).collect();
+                    println!("{:<26} {:<15} read {}  {:<44} {}", g("id"), g("class"), s["terms"]["read"].as_str().unwrap_or("never"), lic.join(", "), g("title"));
+                }
+            }
+            if !json {
+                eprintln!("{} source(s): {}", sources.len(), classes.iter().map(|(k, v)| format!("{v} {k}")).collect::<Vec<_>>().join("; "));
+            }
+            Ok(0)
+        }
         Cmd::Fingerprint { file, window, sample } => {
             let raw = String::from_utf8_lossy(&fs::read(&file).with_context(|| format!("{}", file.display()))?).to_string();
             println!("# window={window}");
@@ -505,6 +622,39 @@ fn run(cli: Cli) -> Result<u8> {
             for p in paths {
                 let (files, items, changed) = stamp(&p)?;
                 println!("{}: {files} file(s), {items} item(s), {changed} id(s) written", p.display());
+            }
+            Ok(0)
+        }
+        Cmd::Jury { step: JuryStep::Orders { root, lesson, out } } => {
+            let s = scan(&root, &root.join("gates").join("data"))?;
+            let reviewers: Value = serde_json::from_str(&fs::read_to_string(root.join("REVIEWERS.json")).context("REVIEWERS.json")?)?;
+            let list = reviewers["reviewers"].as_array().cloned().unwrap_or_default();
+            let juries = jury::juries(&list);
+            let [j] = juries.as_slice() else { anyhow::bail!("REVIEWERS.json must list exactly one jury entry") };
+            let lessons: Vec<String> = if lesson.is_empty() {
+                s.lessons.iter().filter(|l| matches!(l["status"].as_str(), Some("draft" | "proposed"))).filter_map(|l| l["id"].as_str().map(str::to_string)).collect()
+            } else {
+                lesson
+            };
+            for role in jury::ROLES {
+                fs::create_dir_all(out.join(role))?;
+                for l in &lessons {
+                    let o = jury::order(&root, &s, j, role, l)?;
+                    fs::write(out.join(role).join(format!("{l}.json")), format!("{}\n", serde_json::to_string_pretty(&o)?))?;
+                }
+            }
+            println!("{} order(s) for {} lesson(s) under {}: hand each role's folder to a separate reviewer, and collect <role>/<lesson id>.json verdicts", lessons.len() * 3, lessons.len(), out.display());
+            Ok(0)
+        }
+        Cmd::Jury { step: JuryStep::Run { root, verdicts, lesson, date, harness, independence, dry_run } } => {
+            let data = root.join("gates").join("data");
+            let o = jury::RunOptions { root: &root, data: &data, verdicts: &verdicts, date: date.unwrap_or_else(looprun::today), harness, independence, dry_run, lessons: lesson };
+            let r = jury::run(&o)?;
+            print!("{}", jury::markdown(&r));
+            if dry_run {
+                println!("\ndry run: nothing written");
+            } else {
+                println!("\n{} path(s) written. Next: `openlessons index`, then `openlessons validate --base origin/main`.", r.written.len());
             }
             Ok(0)
         }

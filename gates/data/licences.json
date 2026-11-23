@@ -10,5 +10,35 @@
   ],
   "attributionNotRequired": [
     "CC0-1.0"
-  ]
+  ],
+  "text": {
+    "note": "Licences under which a source's text may enter the CC BY core (`adoptable`), the share-alike licences that are kept out of it (`shareAlike`), and the deed each licence's `licenceUrl` must name. Anything else (NonCommercial, NoDerivatives, all rights reserved, a licence nobody recognised) is reference only: codes and links, never content.",
+    "adoptable": [
+      "CC0-1.0",
+      "CC-PDM-1.0",
+      "CC-BY-4.0",
+      "CC-BY-3.0",
+      "CC-BY-2.5",
+      "CC-BY-2.0"
+    ],
+    "shareAlike": [
+      "CC-BY-SA-4.0",
+      "CC-BY-SA-3.0",
+      "CC-BY-SA-3.0-IGO",
+      "CC-BY-SA-2.0",
+      "GFDL-1.3-or-later",
+      "GFDL-1.2-or-later"
+    ],
+    "deeds": {
+      "CC0-1.0": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "CC-PDM-1.0": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "CC-BY-4.0": "https://creativecommons.org/licenses/by/4.0/",
+      "CC-BY-3.0": "https://creativecommons.org/licenses/by/3.0/",
+      "CC-BY-2.5": "https://creativecommons.org/licenses/by/2.5/",
+      "CC-BY-2.0": "https://creativecommons.org/licenses/by/2.0/",
+      "CC-BY-SA-4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "CC-BY-SA-3.0": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "CC-BY-SA-3.0-IGO": "https://creativecommons.org/licenses/by-sa/3.0/igo/"
+    }
+  }
 }

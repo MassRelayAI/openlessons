@@ -1,0 +1,19 @@
+{
+  "schema": "source/1",
+  "id": "example-open",
+  "title": "Example open stories",
+  "publisher": "Example Publisher",
+  "url": "https://example.org/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0",
+    "CC-BY-NC-4.0"
+  ],
+  "perItem": "each item's page states its own licence",
+  "terms": {
+    "url": "https://example.org/licence",
+    "read": "2026-11-23",
+    "quotation": "Our stories are openly licensed, each under the licence on its page.",
+    "attribution": "credit the author and Example Publisher"
+  }
+}

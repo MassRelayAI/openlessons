@@ -1,0 +1,26 @@
+{
+  "schema": "source/1",
+  "id": "wikimedia-commons",
+  "title": "Wikimedia Commons",
+  "publisher": "Wikimedia Foundation and contributors",
+  "url": "https://commons.wikimedia.org/",
+  "class": "adopt",
+  "licences": [
+    "CC0-1.0",
+    "CC-PDM-1.0",
+    "CC-BY-4.0",
+    "CC-BY-3.0",
+    "CC-BY-SA-4.0",
+    "CC-BY-SA-3.0"
+  ],
+  "perItem": "each file's description page",
+  "terms": {
+    "url": "https://commons.wikimedia.org/wiki/Commons:Licensing",
+    "read": "2026-11-23",
+    "quotation": "Media licensed exclusively under non-commercial only licenses (like CC BY-NC-SA) are not accepted either."
+  },
+  "caveats": [
+    "pictures and sounds: they enter as assets, under the asset rules (gates/data/licences.json `allowed`)",
+    "public domain must hold in the USA and in the source country"
+  ]
+}

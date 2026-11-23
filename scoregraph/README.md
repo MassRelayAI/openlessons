@@ -13,7 +13,7 @@ depends on its code.
 
 A level that nothing reaches is observed once, with locale `any`. The facts of a coverage observation: `skills`,
 `lessons`, `lessons_reviewed`, `lessons_published`, `items`, `alignments`, `exact_reviewed`, `exact_proposed`, `partial`,
-`related`, `objectives`, `objectives_reached`. `quality.loop.base-respected` is `unmeasured` unless `--base` is given.
+`related`, `objectives`, `objectives_reached`. `quality.loop.base-respected` and `quality.graph.ids-stable` are `unmeasured` unless `--base` is given.
 
 ```bash
 V=$(git rev-parse HEAD)

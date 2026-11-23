@@ -24,8 +24,9 @@ draft ──► proposed ──► reviewed ──► published
 
 `draft` is where the content loop lands what a model drafted and the gates passed (`openlessons loop land`; see the
 README, "Run the loop"). `proposed` is a contribution a person or an agent offers by pull request or `openlessons apply`.
-Neither has been read by an educator, and neither may reach a child. From either, the only way up is a review by a
-listed person.
+Neither has been reviewed, and neither may reach a child. From either, the only way up for a lesson or an item is a
+decision of the sourced AI jury (`review/jury-policy.md`); for a skill, an alignment or a path, a review by a listed
+person.
 
 A new objective, topic or alignment changes the topic graph: it comes as its own pull request, never through the loop.
 An objective names its `topic` (listed in `topics/<subject>.json`) and its age `bands` (`bands/age-bands.json`), and a
@@ -51,9 +52,11 @@ or the paraphrase rule alone.
 
 4. **Open a pull request** with status `proposed`. Keep it small: one lesson, or one skill with its lessons. An agent can
    instead write one proposal file and run `openlessons apply <file>`, which places the records and marks them `proposed`.
-5. **Review.** A person who did not make the content, and who is listed in `REVIEWERS.json` for that role, language and
-   subject, reads it and adds a review entry. Only then does a maintainer set `reviewed`, and later `published`. Nobody
-   reviews their own work, and an AI review never counts as the review.
+5. **Review.** Lessons and items go before the jury: three independent roles (subject, safety, language), unanimous,
+   every correctness claim sourced, one decision record per record under `review/decisions/` (`openlessons jury`; see
+   `review/jury-policy.md`). Only a passing decision sets `reviewed`. Skills, alignments and paths are reviewed by a
+   person listed in `REVIEWERS.json` for that role, language and subject. Nobody reviews their own work, and a single
+   `ai` review entry never counts as the review.
 
 ## What a reviewer looks for (the gates cannot)
 
@@ -72,21 +75,21 @@ old one go. `openlessons validate --base origin/main` enforces this, and CI runs
 
 ## Reviewers
 
-`REVIEWERS.json` lists the people whose review can settle a record: a public handle, the roles they review in (subject,
-language, safety, licence), the languages, subjects and frameworks they cover (`*` for all), and the dates of their term.
-A gate refuses any `reviewed` or `published` record whose passing review is not from someone listed for exactly that. An
-`exact` alignment needs a `subject` reviewer listed for its framework.
+`REVIEWERS.json` lists who can settle a record. **The jury** (`kind: jury`: its id, the accountable owner, the policy file
+and its version) is the only reviewer of lessons and items, and only through a decision record. **People** (a public
+handle, the roles they review in, the languages, subjects and frameworks they cover, `*` for all, and the dates of their
+term) settle skills, alignments and paths. A gate refuses any `reviewed` or `published` record whose passing review is not
+from someone listed for exactly that. An `exact` alignment needs a `subject` reviewer listed for its framework.
 
-**The list is empty.** Who reviews lessons for children is the project owner's decision, and it has not been made yet.
-Until it is, everything stays `proposed`, however good it looks. Do not add a reviewer in a pull request that also adds
-or changes content: a change to the list is reviewed on its own.
+**No person is listed yet.** Who reviews skills and alignments for children is the project owner's decision. Do not add a
+reviewer in a pull request that also adds or changes content: a change to the list is reviewed on its own.
 
 ## CODEOWNERS
 
 There is no `CODEOWNERS` file yet, on purpose. An owner must be a public team with write access, one per language and
 subject, made of people qualified to review lessons for children. No such team exists today, and a file naming an owner
 that cannot review would only pretend to guard the content. Until teams exist, a maintainer assigns the reviewer on each
-pull request, and nothing in the tree is `reviewed`.
+pull request; lessons and items are settled by the jury.
 
 ## Changing a gate
 

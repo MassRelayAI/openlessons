@@ -1,0 +1,31 @@
+{
+  "schema": "source/1",
+  "id": "unesco-open-access",
+  "title": "UNESCO open access publications",
+  "publisher": "UNESCO",
+  "url": "https://www.unesco.org/",
+  "hosts": [
+    "unesdoc.unesco.org"
+  ],
+  "class": "sa-layer",
+  "licences": [
+    "CC-BY-SA-3.0-IGO",
+    "LicenseRef-CC-BY-NC-SA-IGO",
+    "LicenseRef-CC-BY-NC-ND-IGO",
+    "LicenseRef-CC-BY-ND-IGO"
+  ],
+  "perItem": "per publication, on its imprint page",
+  "terms": {
+    "url": "https://www.unesco.org/en/open-access/cc-sa",
+    "read": "2026-11-23",
+    "quotation": "The present license applies exclusively to the text content of the publication.",
+    "attribution": "«Author's name» / «Title of original work» / ISBN – licensed under [Designation of the Creative Commons IGO license applicable]."
+  },
+  "caveats": [
+    "images need separate permission; the UNESCO logo may not appear on derivatives",
+    "a derivative carries a 'not an official UNESCO publication' disclaimer"
+  ],
+  "unverified": [
+    "the IGO licence versions"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.content.source-licensed",
+  "version": 1,
+  "title": "Adopted open material comes from a registered source under the item's own CC BY, CC0 or public-domain licence, with its deed, authors, attribution and original address; NonCommercial, NoDerivatives and ShareAlike material never enters the core, and a source's class follows from its licences",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

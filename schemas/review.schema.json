@@ -20,16 +20,18 @@
     "kind": {
       "enum": [
         "human",
-        "ai"
+        "ai",
+        "jury"
       ],
-      "description": "an ai review is advice; only a human review can settle a record"
+      "description": "an ai review is advice. A jury review is the sourced AI jury of REVIEWERS.json: it counts only with its decision record (review/decisions/<id>.json), and only on a lesson or an item"
     },
     "role": {
       "enum": [
         "subject",
         "language",
         "safety",
-        "licence"
+        "licence",
+        "jury"
       ],
       "description": "subject: it teaches what it says and the answers are right; language: natural and right for the age and place; safety: nothing unsafe for a child; licence: every borrowed part may be used"
     },
@@ -39,6 +41,11 @@
         "fix",
         "fail"
       ]
+    },
+    "decision": {
+      "type": "string",
+      "pattern": "^review/decisions/(les|itm)_[0-9a-f]{24}[.]json$",
+      "description": "a jury review: the decision record that settles it"
     },
     "date": {
       "type": "string",

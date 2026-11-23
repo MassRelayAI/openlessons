@@ -69,6 +69,9 @@ app pack with keyed strings and answer groups for a lesson player; `--format bun
 - Check `status`. With children, use `published` content only, unless an adult responsible for the learner has chosen
   otherwise. `proposed` means no educator has reviewed it.
 - Credit the source where the lesson is shown: the lesson's `attribution` and `licence` (CC BY 4.0).
+- A lesson with an `adopted` block adapts open material: show its `attribution` line, and keep `adopted.attribution`,
+  its licence deed and its original address on a credits screen (a bundle's `credits` list). Never draft from a
+  `reference-only` or `sa-layer` source (`openlessons sources`): write in your own words.
 
 ## 3. Propose a lesson
 

@@ -1,0 +1,26 @@
+{
+  "schema": "source/1",
+  "id": "openstax",
+  "title": "OpenStax",
+  "publisher": "Rice University",
+  "url": "https://openstax.org/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0",
+    "CC-BY-NC-SA-4.0"
+  ],
+  "perItem": "`license_name` and `license_version` of each book in the OpenStax CMS API; since 2026-04-22 most of the library is CC BY-NC-SA 4.0 and is refused",
+  "terms": {
+    "url": "https://openstax.org/license",
+    "read": "2026-11-23",
+    "quotation": "transitioned our textbook library from a mix of CC BY and CC BY-NC-SA licensing to CC BY-NC-SA licensing across the library."
+  },
+  "caveats": [
+    "of the first 100 of 129 books read: 67 CC BY-NC-SA 4.0, 32 CC BY 4.0, 1 blank",
+    "earlier CC BY versions stay CC BY; new and updated versions are NC-SA",
+    "OpenStax is a secondary-and-college library: little of it is K-8"
+  ],
+  "unverified": [
+    "the trademark and logo exclusion wording"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_5b8e6434fe328e4fdcd1d29a",
+  "slug": "im-g1-count-and-add",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Count and Add",
+  "ages": {
+    "min": 6,
+    "max": 7
+  },
+  "skills": [
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "Today, you will get to do math in different ways. How many objects are in your collection? Can you prove it to me? Now we are going to learn a game called Number Race, Add to 10. Let’s play a round together. I am going to roll both dot cubes and find the total number of dots. How many dots are there? How do you know?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Count and Add\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5/teachers/grade-1/unit-1/lesson-1",
+    "title": "Count and Add",
+    "sourceUrl": "https://im.kendallhunt.com/K5/teachers/grade-1/unit-1/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Count and Add\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5/teachers/grade-1/unit-1/lesson-1",
+    "created": "2026-11-23"
+  }
+}

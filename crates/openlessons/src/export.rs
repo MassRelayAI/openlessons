@@ -114,9 +114,18 @@ pub fn load(root: &Path, course: &str, min_status: &str) -> Result<Course> {
 
 const CREDIT: &str = "openlessons contributors, CC BY 4.0, https://github.com/MassRelayAI/openlessons";
 
+/// The credit of every adopted lesson in the course: what an app shows on its credits screen, one line per item, with
+/// the licence's deed and the original's address.
+pub fn credits(c: &Course) -> Vec<Value> {
+    c.lessons
+        .iter()
+        .filter_map(|(l, _)| l.get("adopted").map(|a| json!({"lesson": l["id"], "attribution": a["attribution"], "licence": a["licence"], "licenceUrl": a["licenceUrl"], "sourceUrl": a["sourceUrl"]})))
+        .collect()
+}
+
 pub fn bundle(c: &Course) -> Value {
     json!({
-        "schema": "bundle/1", "credit": CREDIT, "path": c.path,
+        "schema": "bundle/1", "credit": CREDIT, "credits": credits(c), "path": c.path,
         "lessons": c.lessons.iter().map(|(l, items)| json!({"lesson": l, "items": items})).collect::<Vec<_>>(),
         "skills": c.skills, "alignments": c.alignments, "standards": c.standards, "frameworks": c.frameworks,
     })
@@ -149,7 +158,7 @@ pub fn learner(c: &Course) -> Value {
                 "status": l["status"], "attribution": l["attribution"], "licence": l["licence"],
                 "items": items.iter().map(learner_item).collect::<Vec<_>>(),
             });
-            for k in ["image", "targetLocale"] {
+            for k in ["image", "targetLocale", "adopted"] {
                 if let Some(v) = l.get(k) {
                     out[k] = v.clone();
                 }
@@ -158,7 +167,7 @@ pub fn learner(c: &Course) -> Value {
         })
         .collect();
     json!({
-        "schema": "learner-bundle/1", "credit": CREDIT,
+        "schema": "learner-bundle/1", "credit": CREDIT, "credits": credits(c),
         "path": {"slug": c.path["slug"], "title": c.path["title"], "locale": c.path["locale"], "subject": c.path["subject"], "ages": c.path["ages"], "units": c.path["units"]},
         "lessons": lessons,
     })
@@ -441,7 +450,7 @@ pub fn pack(c: &Course) -> Result<(Value, Value)> {
             }
             put(&mut o, "teach", teach);
             let mut ext = json!({"id": l["id"], "ages": l["ages"], "status": l["status"], "licence": l["licence"], "attribution": l["attribution"], "provenance": l["provenance"]});
-            for k in ["revision", "minutes", "translationOf"] {
+            for k in ["revision", "minutes", "translationOf", "adopted"] {
                 if let Some(v) = l.get(k) {
                     ext[k] = v.clone();
                 }

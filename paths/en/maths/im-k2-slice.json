@@ -1,0 +1,40 @@
+{
+  "schema": "path/1",
+  "slug": "im-k2-slice",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Open maths K-2: from IM K-5 Math",
+  "ages": {
+    "min": 4,
+    "max": 8
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:k2-slice",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "Kindergarten: count to 10",
+      "lessons": [
+        "les_a643e4dccbd1083cb7180c4d"
+      ]
+    },
+    {
+      "title": "Grade 1: count and add",
+      "lessons": [
+        "les_5b8e6434fe328e4fdcd1d29a"
+      ]
+    },
+    {
+      "title": "Grade 2: add and subtract within 10",
+      "lessons": [
+        "les_19df001196e2c04e6d47d5f4"
+      ]
+    }
+  ]
+}

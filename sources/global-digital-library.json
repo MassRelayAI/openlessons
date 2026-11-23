@@ -1,0 +1,21 @@
+{
+  "schema": "source/1",
+  "id": "global-digital-library",
+  "title": "Global Digital Library",
+  "publisher": "Global Digital Library",
+  "url": "https://digitallibrary.io/",
+  "class": "adopt",
+  "licences": [
+    "CC-BY-4.0",
+    "CC-BY-SA-4.0"
+  ],
+  "perItem": "each book is marked with its own licence, authors and illustrators; a CC BY-SA book is refused (share-alike layer)",
+  "terms": {
+    "url": "https://digitallibrary.io/about/license",
+    "read": "2026-11-23",
+    "quotation": "The primary licenses for content on the GDL are CC BY and CC BY-SA."
+  },
+  "unverified": [
+    "licence versions and the per-book field name; the old API host did not answer"
+  ]
+}

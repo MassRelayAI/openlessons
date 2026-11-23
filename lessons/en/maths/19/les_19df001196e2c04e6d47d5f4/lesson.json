@@ -1,0 +1,43 @@
+{
+  "schema": "lesson/1",
+  "id": "les_19df001196e2c04e6d47d5f4",
+  "slug": "im-g2-add-subtract-within-10",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Add and Subtract Within 10",
+  "ages": {
+    "min": 6,
+    "max": 8
+  },
+  "skills": [
+    "maths.calc.subtract-within-10",
+    "maths.calc.add-within-10"
+  ],
+  "teach": {
+    "text": "We are going to play Check It Off: Add or Subtract within 10. The goal is to be the first person to write an expression for each number. What is the value of the difference?"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Add and Subtract Within 10\" by Illustrative Mathematics, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "illustrative-math",
+    "item": "K5/teachers/grade-2/unit-1/lesson-1",
+    "title": "Add and Subtract Within 10",
+    "sourceUrl": "https://im.kendallhunt.com/K5/teachers/grade-2/unit-1/lesson-1/lesson.html",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Illustrative Mathematics"
+    ],
+    "attribution": "Based on IM® K–12 Math authored by Illustrative Mathematics and licensed under CC BY 4.0. Lesson: \"Add and Subtract Within 10\".",
+    "changes": "shortened and adapted for a learner's screen; practice items added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "illustrative-math:K5/teachers/grade-2/unit-1/lesson-1",
+    "created": "2026-11-23"
+  }
+}

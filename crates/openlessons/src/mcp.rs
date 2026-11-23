@@ -1,10 +1,11 @@
 //! A Model Context Protocol server over the tree: JSON-RPC 2.0, one message per line, on standard input and output.
 //!
-//! Six tools. Five only read: `find_lessons`, `get_lesson` (the learner's view: never an answer), `gap_report`,
-//! `get_work_orders` (the loop's next lessons to draft) and `validate_proposal`.
-//! One writes, and only when the server was started with `--allow-write`: `propose_lesson` saves a proposal file under
-//! `proposals/`. It never writes a lesson, and nothing it writes can be `reviewed`: a maintainer applies the file, the
-//! gates judge it, a person reviews it.
+//! Eight tools. Six only read: `find_lessons`, `get_lesson` (the learner's view: never an answer), `gap_report`,
+//! `get_work_orders` (the loop's next lessons to draft), `validate_proposal` and `jury_order` (one jury role's work
+//! order: the content and that role's checklist, never another role's verdict).
+//! Two write, and only when the server was started with `--allow-write`: `propose_lesson` saves a proposal file under
+//! `proposals/`, and `jury_submit` saves one role's verdict under `.jury/verdicts/`, once. Neither writes a lesson or
+//! marks anything reviewed: `openlessons jury run` turns three verdicts into a decision, and the gates judge it.
 //!
 //! The protocol surface used here is small (initialize, ping, tools/list, tools/call), so it is written out by hand:
 //! the tool stays one binary with no runtime of its own.
@@ -40,7 +41,7 @@ fn tools() -> Value {
     json!([
         {
             "name": "find_lessons",
-            "description": "Search the lesson index. Every result carries its `status`: only `published` lessons have been reviewed by an educator.",
+            "description": "Search the lesson index. Every result carries its `status`: `reviewed` lessons passed the sourced AI jury (review/jury-policy.md); `draft` and `proposed` have been reviewed by nobody.",
             "inputSchema": {"type": "object", "additionalProperties": false, "properties": {
                 "locale": {"type": "string", "description": "language the lesson is written in (en, id)"},
                 "subject": {"type": "string"},
@@ -85,6 +86,19 @@ fn tools() -> Value {
             "name": "validate_proposal",
             "description": "Run the quality gates over a proposal without saving anything. Returns the findings to fix.",
             "inputSchema": {"type": "object", "additionalProperties": false, "required": ["proposal"], "properties": {"proposal": proposal}}
+        },
+        {
+            "name": "jury_order",
+            "description": "The work order for one jury role on one lesson (review/jury-policy.md): the lesson and its items with answers, the objective, the aligned standards, the role's checklist and the verdict to return. It never holds another role's verdict: decide alone.",
+            "inputSchema": {"type": "object", "additionalProperties": false, "required": ["role", "lesson"], "properties": {
+                "role": {"type": "string", "enum": ["subject", "safety", "language"]},
+                "lesson": {"type": "string", "description": "a lesson id: les_ and 24 hex digits"}
+            }}
+        },
+        {
+            "name": "jury_submit",
+            "description": "Save one role's verdict (jury-verdict/1) on one lesson under .jury/verdicts/<role>/<lesson id>.json. A verdict is given once and never revised. Refused unless the server was started with --allow-write. Returns nothing about the other roles.",
+            "inputSchema": {"type": "object", "additionalProperties": false, "required": ["verdict"], "properties": {"verdict": {"type": "object"}}}
         },
         {
             "name": "propose_lesson",
@@ -211,7 +225,7 @@ impl Server {
         Ok(json!({
             "ok": findings.is_empty(), "findings": findings,
             "records": {"skills": records.skills.len(), "alignments": records.alignments.len(), "lessons": records.lessons.len(), "items": items},
-            "note": "Judged against the skills, standards and assets of the tree and the lessons this proposal touches. Duplicates of items in other lessons are caught when the proposal is applied. Every record will be `proposed`: only a person can review it.",
+            "note": "Judged against the skills, standards and assets of the tree and the lessons this proposal touches. Duplicates of items in other lessons are caught when the proposal is applied. Every record will be `proposed`: only the jury can review it.",
         }))
     }
 
@@ -233,6 +247,54 @@ impl Server {
         }))
     }
 
+    fn jury(&self) -> Result<Value> {
+        let raw = fs::read_to_string(self.root.join("REVIEWERS.json")).map_err(|e| anyhow!("REVIEWERS.json: {e}"))?;
+        let v: Value = serde_json::from_str(&raw)?;
+        let list = arr(&v, "reviewers").to_vec();
+        let juries = crate::jury::juries(&list);
+        match juries.as_slice() {
+            [j] => Ok((*j).clone()),
+            _ => bail!("REVIEWERS.json must list exactly one jury entry"),
+        }
+    }
+
+    fn lesson_id(a: &Value) -> Result<String> {
+        let id = st(a, "lesson");
+        if id.len() != 28 || !id.starts_with("les_") || !id[4..].bytes().all(|b| b.is_ascii_hexdigit()) {
+            bail!("`lesson` is a lesson id: les_ and 24 hex digits");
+        }
+        Ok(id.to_string())
+    }
+
+    fn jury_order(&self, a: &Value) -> Result<Value> {
+        let lesson = Self::lesson_id(a)?;
+        let s = scan(&self.root, &self.data)?;
+        crate::jury::order(&self.root, &s, &self.jury()?, st(a, "role"), &lesson)
+    }
+
+    fn jury_submit(&self, v: &Value) -> Result<Value> {
+        if !self.allow_write {
+            bail!("this server is read-only. To accept jury verdicts, start it with `openlessons mcp --allow-write`; it will then save them under .jury/verdicts/ and nothing else");
+        }
+        let role = st(v, "role");
+        if !crate::jury::ROLES.contains(&role) {
+            bail!("`role` is subject, safety or language");
+        }
+        let lesson = Self::lesson_id(v)?;
+        let shape = crate::jury::verdict_shape(v, role, &lesson);
+        if !shape.is_empty() {
+            bail!("not a jury verdict: {}", shape.join("; "));
+        }
+        let dir = self.root.join(".jury").join("verdicts").join(role);
+        let file = dir.join(format!("{lesson}.json"));
+        if file.exists() {
+            bail!("the {role} verdict on {lesson} was already given: a verdict is given once and never revised");
+        }
+        fs::create_dir_all(&dir)?;
+        fs::write(&file, format!("{}\n", serde_json::to_string_pretty(v)?))?;
+        Ok(json!({"saved": true, "file": format!(".jury/verdicts/{role}/{lesson}.json"), "next": "When all three roles have given theirs, a maintainer runs `openlessons jury run`."}))
+    }
+
     fn call(&self, params: &Value) -> Value {
         let args = params.get("arguments").cloned().unwrap_or_else(|| json!({}));
         let result = match st(params, "name") {
@@ -242,6 +304,8 @@ impl Server {
             "get_work_orders" => self.work_orders(&args),
             "validate_proposal" => self.check(&args["proposal"]),
             "propose_lesson" => self.propose(&args["proposal"]),
+            "jury_order" => self.jury_order(&args),
+            "jury_submit" => self.jury_submit(&args["verdict"]),
             other => Err(anyhow!("unknown tool {other}")),
         };
         match result {
@@ -262,7 +326,7 @@ impl Server {
                     "protocolVersion": version,
                     "capabilities": {"tools": {}},
                     "serverInfo": {"name": "openlessons", "version": env!("CARGO_PKG_VERSION")},
-                    "instructions": "An open curriculum commons. Find lessons, read one as a learner sees it (answers are never returned), validate a proposal, or propose a lesson. Check `status`: only `published` content has been reviewed by an educator; serve nothing else to children unless a responsible adult agrees. Proposals are always saved as `proposed`.",
+                    "instructions": "An open curriculum commons. Find lessons, read one as a learner sees it (answers are never returned), validate a proposal, or propose a lesson. Check `status`: `reviewed` content passed the sourced AI jury, and nothing below it has been reviewed; serve nothing below `reviewed` to children unless a responsible adult agrees. Proposals are always saved as `proposed`.",
                 }))
             }
             "ping" => ok(json!({})),
