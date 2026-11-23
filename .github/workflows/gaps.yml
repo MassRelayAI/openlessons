@@ -1,0 +1,57 @@
+name: gaps
+
+# The gap report, on a schedule: which objective x age band x language cells have no lesson or too few items, ranked by
+# demand. This job uses no model and no secret, writes nothing to the repository, and reads the tree as data.
+# Drafting is NOT done here. It runs where a person or an approved runner holds a model key (see README, "Run the loop"),
+# and its output is a pull request that the `ci` workflow judges like any other.
+on:
+  schedule:
+    - cron: "17 5 * * 1" # Mondays, 05:17 UTC
+  workflow_dispatch:
+    inputs:
+      top:
+        description: how many gaps to list
+        default: "50"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gaps
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+
+jobs:
+  report:
+    name: gap report
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Rust toolchain (stable)
+        run: rustup toolchain install stable --profile minimal --no-self-update && rustup default stable
+      - name: build
+        run: cargo build --release --locked
+      - name: the gap report
+        env:
+          # a number from the dispatch form, passed as data and checked before use: never written into the script
+          TOP: ${{ github.event.inputs.top || '50' }}
+        run: |
+          case "$TOP" in ''|*[!0-9]*) TOP=50 ;; esac
+          ./target/release/openlessons gaps --top "$TOP" --md | tee gaps.md >> "$GITHUB_STEP_SUMMARY"
+          ./target/release/openlessons gaps --top "$TOP" --json > gaps.jsonl
+          ./target/release/openlessons loop pick --top "$TOP" --run next-run > /dev/null
+          tail -n 1 gaps.jsonl
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: gap-report
+          path: |
+            gaps.md
+            gaps.jsonl
+            next-run/orders.json
+          retention-days: 90

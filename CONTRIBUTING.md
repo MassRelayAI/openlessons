@@ -9,7 +9,8 @@ By contributing you agree that your **content** (anything under `lessons/`, `ski
 `locales/`) is licensed under [CC BY 4.0](LICENSE-CONTENT) and your **code** (everything else) under
 [Apache-2.0](LICENSE). Contribute only what you have the right to license this way.
 
-- Do not paste text from a textbook, a paid course, an exam paper or a word list.
+- Do not paste text from a textbook, a paid course, an exam paper or a word list. The gate `content.no-copied-text`
+  catches the careless copy; a licence reviewer catches the rest.
 - Do not copy a standard's wording unless its framework says `"quote": "official_text"`. Write the statement in your own words
   and link the source.
 - A picture or a sound needs an `asset/1` record with a licence from `gates/data/licences.json` and its attribution.
@@ -20,6 +21,20 @@ By contributing you agree that your **content** (anything under `lessons/`, `ski
 ```
 draft ──► proposed ──► reviewed ──► published
 ```
+
+`draft` is where the content loop lands what a model drafted and the gates passed (`openlessons loop land`; see the
+README, "Run the loop"). `proposed` is a contribution a person or an agent offers by pull request or `openlessons apply`.
+Neither has been read by an educator, and neither may reach a child. From either, the only way up is a review by a
+listed person.
+
+A new objective, topic or alignment changes the topic graph: it comes as its own pull request, never through the loop.
+An objective names its `topic` (listed in `topics/<subject>.json`) and its age `bands` (`bands/age-bands.json`), and a
+prerequisite never starts later than the objective that needs it. Start a new alignment as `related` unless you have
+read the standard: `partial` and `exact` are claims about coverage, and they must share an age band with the standard.
+
+A new framework comes with its terms: the licence, the page where you read it, a short quotation from that page and the
+day you read it. If you could not read the terms, say so (`"reviewed": null`): the framework is then held by identifier
+only.
 
 1. **Write.** Follow [SKILL.md](SKILL.md) section 3: it is the same procedure for a person and for an agent.
 2. **Say who made it.** Every record has `provenance`: `origin` is `human`, `ai` or `generator`; `maker` is a public handle

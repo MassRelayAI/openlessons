@@ -3,7 +3,7 @@ Copyright 2026 The openlessons authors
 
 Code and tools (the command line, the schemas, the gates) are licensed under the Apache License, Version 2.0 (see LICENSE).
 
-Content (everything under lessons/, skills/, alignments/, paths/, assets/ and locales/) is licensed under the Creative Commons
+Content (everything under lessons/, skills/, topics/, bands/, alignments/, paths/, assets/ and locales/) is licensed under the Creative Commons
 Attribution 4.0 International licence (see LICENSE-CONTENT). Suggested credit: "openlessons contributors, CC BY 4.0", with a
 link to https://github.com/MassRelayAI/openlessons. An asset may carry its own licence and attribution in its record.
 
@@ -14,8 +14,31 @@ affiliated with or endorsed by any of them, and its lessons do not certify anyth
   Government Licence v3.0.
 - Common Core State Standards: © Copyright 2010. National Governors Association Center for Best Practices and Council of
   Chief State School Officers. All rights reserved.
+- Early years foundation stage statutory framework (Department for Education) and Curriculum for Excellence (Education
+  Scotland, © Crown copyright): Contains public sector information licensed under the Open Government Licence v3.0.
+- Australian Curriculum: © Australian Curriculum, Assessment and Reporting Authority (ACARA) 2010 to present, unless
+  otherwise indicated. Material drawn from the Australian Curriculum website is licensed under CC BY 4.0; where it appears
+  here it has been modified. ACARA does not endorse this project.
+- Real Decreto 157/2022 (Spain). Fuente: Agencia Estatal Boletín Oficial del Estado, https://www.boe.es
+- Course of Study (Japan). Source: Ministry of Education, Culture, Sports, Science and Technology (MEXT) website; edited
+  by openlessons contributors, not by the Government of Japan.
+- 12-Year Basic Education Curriculum Guidelines (Taiwan). 資料來源：國家教育研究院／教育部.
+- PISA 2025 Assessment and Analytical Framework: OECD (2026). Where this project adapts it: this is an adaptation of an
+  original work by the OECD. The opinions expressed and arguments employed in this adaptation should not be reported as
+  representing the official views of the OECD or of its Member countries.
+- Next Generation Science Standards is a registered trademark of WestEd. Neither WestEd nor the lead states and partners
+  that developed the Next Generation Science Standards were involved in the production of this product, and they do not
+  endorse it.
+
+As of 0.4.0 the only publisher's wording stored here is that of the National curriculum in England. Every other framework
+is held by identifier, with our own labels and paraphrases; each framework's own record under standards/ says what its
+terms allow and where they were read.
 
 The Common European Framework of Reference for Languages (Council of Europe), Cambridge English: Young Learners and
 Cambridge Primary Mathematics (Cambridge University Press & Assessment), HSK and YCT (Chinese Testing International;
-GF 0025-2021) and Kurikulum Merdeka (Kementerian Pendidikan Dasar dan Menengah) are named by level only, with links to
-their sources. No descriptor, word list, syllabus text or exam item of theirs is stored here.
+GF 0025-2021), Kurikulum Merdeka (Kementerian Pendidikan Dasar dan Menengah), and every other framework whose record says
+`reference_only` (among them NGSS, the CSTA standards, the International Baccalaureate, the UNESCO AI competency
+framework, the ISTE Standards, the CASEL framework, the National Core Arts Standards, Singapore's syllabuses, India's
+National Curriculum Framework, China's compulsory education standards, the ACTFL guidelines, TOCFL and JLPT) are named by
+level or code only, with links to their sources. No descriptor, word list, syllabus text or exam item of theirs is stored
+here.

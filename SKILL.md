@@ -14,6 +14,8 @@ use its tools and skip the file work below:
 |---|---|
 | `find_lessons` | searches the index by `locale`, `subject`, `skill`, `standard`, `framework`, `age`, `status`, `text` |
 | `get_lesson` | returns one lesson as a learner may see it. No answers, hints or feedback, ever. Refuses a lesson below `min_status` (default `published`) |
+| `gap_report` | lists what is missing: objective x age band x language cells with no lesson or too few items, ranked by demand |
+| `get_work_orders` | returns the next lessons to draft as work orders (`order/1`); see section 4 |
 | `validate_proposal` | runs the gates over a `proposal/1` object and returns the findings; saves nothing |
 | `propose_lesson` | validates, then saves the proposal under `proposals/` for a maintainer and a reviewer. Needs a server started with `--allow-write`; it never writes a lesson and nothing it saves is reviewed |
 
@@ -92,6 +94,27 @@ places every record, and marks all of it `proposed`. Then do steps 6 and 7 below
    raising its `revision` or `version` and setting it back to `proposed`. Do not edit `index/` by hand and do not change a gate or its fixtures to make your content pass.
 7. Open a pull request. A person listed in `REVIEWERS.json` reviews it; you cannot add yourself or anyone else to that list.
 
+## 4. Draft for the loop
+
+The loop asks for lessons the commons lacks. A work order (`order/1`, from `openlessons loop pick`, from
+`.loop/orders.json`, or from the MCP tool `get_work_orders`) names one cell: an objective, an age band, a language.
+
+1. Read the order. `objective` is what the learner should be able to do, with its `misconceptions`. `band.ages` and
+   `reading` bound the text. `standards` gives the aligned standards in our own words; a `statementOfficial` appears only
+   where that publisher's terms allow copying. `existing` lists lessons on the same objective in other languages: look at
+   their shape, do not translate them.
+2. Write one proposal (`proposal/1`) with one lesson. Take `slug`, `locale`, `subject`, `ages` and `skills` from
+   `order.lesson` exactly, and write at least `order.lesson.minItems` items. No `skills`, no `alignments`.
+3. Follow `order.rules`. The ones that matter most: your own words, in the order's language; nothing copied; no names of
+   real people, contacts, links or brands; one defensible answer per item, never given away by its prompt; arithmetic
+   computed, not guessed; your `provenance` with `origin: ai`, your agent name and your model.
+4. Check it: `validate_proposal` over MCP, or save it as `.loop/drafts/<name>.json` and let `openlessons loop land
+   --dry-run` judge it. Fix what the gates find; never change a gate, a fixture or the index to pass.
+5. Hand it over: `propose_lesson` (MCP), or leave the file under `.loop/drafts/`. `openlessons loop land` places what
+   passes at status `draft` and writes the run report. You cannot review your own draft, and nobody can mark it
+   `reviewed` but a person listed in `REVIEWERS.json`. Until then no child sees it.
+
 What the gates will refuse: a prompt that contains the answer, two choices that look the same, text too long for the stated
 age, anything on the safety lexicon, personal data (emails, phone numbers, links, handles), a duplicate of an existing item,
-an asset without a licence and attribution.
+an asset without a licence and attribution, text that carries the marks of copied material or six words in a row from a
+text we may not copy, a lesson for ages its objective is not taught at.

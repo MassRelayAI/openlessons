@@ -1,6 +1,7 @@
 # openlessons: design
 
-As of 2026-11-23. Slices 1 to 3 are built; what is not built is marked **later**.
+As of 2026-11-23. Slices 1 to 4 are built (4 is the registry, the age bands, the topic graph and the loop: section 8);
+what is not built is marked **later**.
 
 openlessons is a curriculum commons kept as plain files: skills, lessons and items anyone may use, aligned to public standards
 frameworks by reference. Any harness (an app, an agent, a script) can read it without our code. Content is CC BY 4.0, code is
@@ -25,6 +26,11 @@ breaking change is a new number (`lesson/2`) with a converter; a published recor
 | `path/1` | an ordered course of lessons | locale / subject / slug |
 | `proposal/1` | content offered in one file; `openlessons apply` places it | a file in `proposals/` until applied |
 | `reviewers/1` | `REVIEWERS.json`: who may review what | one file |
+| `age-bands/1` | `bands/age-bands.json`: the one age-band model and its mapping to grade systems | one file |
+| `subject/1` | a subject of the topic graph: its strands and topics | `maths` |
+| `signal/1` | one usage count for a cell: a number, never anything about a learner | a line under `signals/` |
+| `order/1` | a work order of the loop: draft a lesson for this objective, band and language | made by `loop pick`, not stored |
+| `run/1` | the report of one loop run | `runs/<date>-<hash>.json` |
 | `review/1` | one entry of a record's `provenance.reviews` | inside its record |
 
 **Standards are references, never copies.** A framework records what may be quoted, and a gate enforces it:
@@ -101,12 +107,15 @@ fail is not known to work. All gates block.
 | `refs.resolve` | a reference to a skill, standard, locale, lesson or misconception that does not exist; a prerequisite loop |
 | `standards.terms-respected` | official wording or titles beyond what the framework's terms allow |
 | `lesson.aligned` | a lesson with a skill that is aligned to no standard |
+| `graph.placed` | an objective without a topic or an age band that exists; a prerequisite that starts later than what needs it |
+| `alignment.band-matches` | an `exact` or `partial` alignment that shares no age band with its standard; a lesson for ages its objectives are not taught at |
 | `lesson.reading-level` | text too long for the youngest stated age (words per sentence, letters per word; characters for CJK) |
 | `item.answer-verified` | an answer that names nothing, two choices that look the same, a check a guess passes, no verification method |
 | `item.no-answer-leak` | a shown prompt, or a hint, that gives the right answer and none of the wrong ones |
 | `item.heard-prompt-recorded` | a heard prompt without a recorded audio asset that has a licence and an attribution |
 | `asset.licensed` | an asset without a record, with a licence off the allowed list, or without attribution |
 | `content.no-pii` | an email address, phone number, web address or account handle |
+| `content.no-copied-text` | a mark of copied material in our own wording; six words in a row from a text whose terms forbid copying it |
 | `content.child-safe` | a term on the safety lexicon of the lesson's language; a language with no lexicon |
 | `content.no-duplicates` | the same item twice, by id or by what it asks and accepts |
 | `loop.review-before-reviewed` | `reviewed` or `published` without a passing review by a person who is not the maker; an `exact` alignment settled without a `subject` reviewer |
@@ -169,7 +178,8 @@ draft ──► proposed ──► reviewed ──► published
 - **`observe`** prints `observation/1` records: one per gate, and one per standards level and locale with the skills,
   lessons, items, reviewed and proposed alignments and objectives reached. The rules that score them are in
   [`scoregraph/`](../scoregraph); a score ledger ingests both and gates a change that lowers the score.
-- **The MCP server** (`openlessons mcp`, standard input and output) gives an agent four tools: `find_lessons`,
+- **The MCP server** (`openlessons mcp`, standard input and output) gives an agent six tools: `gap_report` and
+  `get_work_orders` (section 8), `find_lessons`,
   `get_lesson` (the learner's view: no key, no hints, no script of a heard prompt; refused below `min_status`, default
   `published`), `validate_proposal` (the gates over a proposal, nothing saved) and `propose_lesson`. The server is
   read-only unless started with `--allow-write`, and then it writes one thing: a proposal file under `proposals/`, for a
@@ -185,6 +195,52 @@ draft ──► proposed ──► reviewed ──► published
 6. A gate without a red fixture is not a gate, and the validator refuses to run on unproven gates.
 7. AI may draft and propose. Only a person moves a record to `reviewed`.
 8. The index is generated and committed, so a harness with no tools can still search.
+9. The registry, the bands and the graph extend the records that were there (`framework/1`, `standard/1`, `skill/1`):
+   an objective is a skill, and there is one place for each fact.
+10. Demand is computed, never stored: the registry and the alignments say what is wanted, so no row exists only to rank.
+11. The loop lands `draft`. Review is outside it, by design: the loop can run every hour and nothing reaches a child.
+
+## 8. The registry, the bands, the graph and the loop
+
+**Registry.** A framework's record says who issues it, where, for which subject areas and ages, and under which terms.
+The terms were read on the publisher's own pages on the day in `terms.reviewed`; `terms.termsUrl` is the page and
+`terms.evidence` a short quotation from it. Three classes follow: `open` (a licence that allows reuse and adaptation,
+commercial use included), `attribution` (reuse with a limit) and `reference_only` (everything else, and every framework
+whose terms could not be read). NonCommercial, NoDerivatives and ShareAlike licences are `reference_only`: their text
+cannot live in a CC BY tree. An open licence does not by itself mean we quote: `terms.quote` is the most we copy, and
+for a framework we have not read node by node it stays at identifiers and titles.
+
+**Age bands.** One model, ten bands, two years each from 3 to 18. A band is the age at the start of the school year for
+a learner who started at the usual age. Each band lists its name in each grade system; the mapping is many to many where
+countries start school at different ages (Indonesia's kelas 1 is in two bands). CEFR is listed as the range a school
+learner of a foreign language is usually working at, with a note that it describes proficiency and not age.
+
+**Topic graph.** Subject, strand, topic, objective. The first three live in `topics/<subject>.json`; an objective is a
+`skill/1` record with a stable id, its `topic`, its `bands`, its `prerequisites` (the edges) and the languages it applies
+to (its subject's, unless it says otherwise: English phonics applies to English only). Its standards are the rows under
+`alignments/`. `index/objectives.jsonl` joins all of it per objective, with the languages it is already taught in.
+
+**Cells and demand.** A cell is objective x age band x language. A lesson fills it when it teaches the objective in that
+language for ages inside the band, with at least eight items. Demand for an empty cell is: one point for each framework
+of the registry that covers the objective's subject area at the band's ages; plus 10, 4 or 1 for each framework we hold
+an `exact`, `partial` or `related` alignment to; plus `5 x floor(log2(1 + n))` for `n` usage counts. The report ranks by
+demand; a pick takes cells whose prerequisites are already taught in that language first, and deals them across
+subjects and languages.
+
+**Usage signals carry no child data.** `signal/1` has seven fields: the cell, a week or month, a kind, a count of at
+least 20 and the product's handle. The schema allows nothing else and the gates refuse the rest.
+
+**The loop.** `loop pick` writes work orders; any harness drafts; `loop land` applies each proposal in turn, scans the
+whole tree, and undoes the proposal if any gate is red, so a refused draft leaves no trace. A loop proposal may not add
+skills or alignments, must match an order of its run when the run has orders, and must name its model. What lands is
+`draft`. The run report (`run/1`) counts gaps before and after by running the gap report twice. The run is one commit on
+a branch `loop/<id>`; a dry run stops there, a full run pushes and opens a pull request with the report as its body.
+
+**What the copied-text gate can and cannot see.** It sees the marks that travel with copied text, and runs of six words
+that match a fingerprint. The fingerprints today cover the kindergarten and grade 1 mathematics standards of the Common
+Core, as far as their pages could be read. It cannot see a close paraphrase or a text nobody has fingerprinted: that is
+what the `licence` reviewer is for. **Later**: fingerprints for every `attribution` and `reference_only` framework we
+hold nodes of.
 
 ## 7. Next
 
