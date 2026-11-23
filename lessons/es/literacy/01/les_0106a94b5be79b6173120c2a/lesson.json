@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_0106a94b5be79b6173120c2a",
+  "slug": "gdl-story-16318",
+  "locale": "es",
+  "subject": "literacy",
+  "title": "Rizado o liso",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Lee el cuento. Mira cada página y toca Siguiente."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Rizado o liso\" by Radha HS, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "16318",
+    "title": "Rizado o liso",
+    "sourceUrl": "https://content.digitallibrary.io/book/rizado-o-liso/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Radha HS"
+    ],
+    "attribution": "'Rizado o liso' by Radha HS (with Ruchi Shah, Verónica Artola Martínez), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:16318",
+    "created": "2026-11-23"
+  }
+}

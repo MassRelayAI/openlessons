@@ -21,11 +21,11 @@ app or AI harness to use and to add to.**
 | subjects, with strands and topics | 10 subjects, 86 topics | `topics/` |
 | objectives (skills), each with its topic, age bands and prerequisites | 181, with 122 prerequisite edges | `skills/` |
 | alignments of objectives to standards, none reviewed yet | 559 | `alignments/` |
-| sources of open material, each with its licence class (adopt, reference only, share-alike) | 16 (10 adopt, 4 reference only, 2 share-alike) | `sources/` |
-| lessons | 55, in 6 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian, and open maths K-2 adapted from IM K-5 Math in English and Spanish | `lessons/` |
-| items (questions and activities, 7 kinds) | 4,214 | `lessons/**/items.jsonl` |
+| sources of open material, each with its licence class (adopt, reference only, share-alike) | 16 (9 adopt, 5 reference only, 2 share-alike) | `sources/` |
+| lessons | 86: two outside a course (the first jury-reviewed lessons, in Arabic maths and English science) and the rest in 10 courses: first English, early maths, first Mandarin (taught in English), first reading in Indonesian, open maths K-2 adapted from IM K-5 Math (English, Spanish), and open first-reading stories (English, Spanish, Hindi, Chinese) | `lessons/` |
+| items (questions and activities, 7 kinds) | 4,259 | `lessons/**/items.jsonl` |
 | languages of instruction | 7: Arabic, English, Spanish, Hindi, Indonesian, Chinese (Simplified), Chinese (Traditional) | `locales/` |
-| cells to fill (objective x age band x language) | 1,583, of which 50 have a lesson | `openlessons gaps` |
+| cells to fill (objective x age band x language) | 1,583, of which 54 have a lesson | `openlessons gaps` |
 
 The numbers come from [`index/catalog.json`](index/catalog.json) and `openlessons gaps`, which the tool generates.
 
@@ -134,7 +134,8 @@ commons can take them in, under four rules.
 2. **Only CC BY, CC0 and public domain enter the core.** These are the `adopt` licences (`gates/data/licences.json`,
    `text.adoptable`). NonCommercial, NoDerivatives and closed material is **reference only**: we keep its codes and
    links, never its content. ShareAlike material (Wikibooks, many UNESCO titles) would bind every lesson built from it,
-   so it stays **out of the CC BY core**. A separate share-alike pack is the way to carry it if a product ever needs it.
+   so it stays **out of the CC BY core**. Decided on 2026-11-23: share-alike material stays out of this repository,
+   and a separate share-alike pack is made only if a product needs it.
 3. **Credit travels with the item.** Every adopted lesson has an `adopted` block with these fields:
    - the source;
    - the item's own licence, and `licenceUrl`, the deed of that licence;
@@ -172,9 +173,9 @@ Two gates enforce the rules:
 
 | class | sources (read 2026-11-23) |
 |---|---|
-| adopt | IM K-12 Math, first edition (CC BY 4.0; v.360 is NC, refused per item); StoryWeaver (CC BY 4.0); African Storybook (CC BY 4.0); Global Digital Library (CC BY; its BY-SA books refused); OpenStax (only the books still CC BY 4.0); Siyavula (only the unbranded CC BY 3.0 ePUBs; the ND editions refused); Project Gutenberg (public domain in the USA: check each country); Book Dash (CC BY 4.0); Wikimedia Commons (per file, as assets); Bloom Library (per book) |
-| reference only | Khan Academy (CC BY-NC-SA), CK-12 (its own non-commercial licence), Eureka Math / EngageNY (CC BY-NC-SA 4.0), Let's Read (NC, until a title is read) |
-| share-alike, kept out of the core | Wikibooks (CC BY-SA 4.0 and GFDL), UNESCO open access (mostly CC BY-SA 3.0 IGO) |
+| adopt | IM K-12 Math, first edition (CC BY 4.0; v.360 is NC, refused per item); StoryWeaver (CC BY 4.0); African Storybook (CC BY 4.0); Global Digital Library (CC BY; its BY-SA books refused); OpenStax (only the books still CC BY 4.0); Siyavula (only the unbranded CC BY 3.0 ePUBs; the ND editions refused); Project Gutenberg (public domain in the USA: check each country); Book Dash (CC BY 4.0); Wikimedia Commons (per file, as assets) |
+| reference only | Khan Academy (CC BY-NC-SA), CK-12 (its own non-commercial licence), Eureka Math / EngageNY (CC BY-NC-SA 4.0), Let's Read (NC, until a title is read), Bloom Library (the licences it names are NC; its book API needs a key) |
+| share-alike, kept out of this repository | Wikibooks (CC BY-SA 4.0 and GFDL), UNESCO open access (mostly CC BY-SA 3.0 IGO) |
 
 **How to add a source.**
 
@@ -203,11 +204,20 @@ openlessons index && openlessons validate
 
 An item that fails a licence check is refused, with the reason. A lesson that fails any gate is taken out again.
 
-Today's intake has two parts:
+Today's intake has three parts:
 
 - **IM K-5 Math**: a K-2 slice of six lessons, three in English and three in Spanish, under `paths/<locale>/maths/im-k2-slice`.
-- **StoryWeaver**: the adapter is ready, but no story has been imported. StoryWeaver serves a story's record to anyone,
-  but its page text only to a signed-in reader.
+- **First-reading stories from the Global Digital Library**: 29 level-1 stories (10 English, 9 Hindi, 6 Chinese, 4
+  Spanish), first published by StoryWeaver, African Storybook and Book Dash, under `paths/<locale>/literacy/open-stories`.
+  GDL serves each book's record and its EPUB without an account. The licence is read from both: the record's `license`
+  term, and the licence the book's own credits page names. When the book names one, that is the licence recorded (the
+  African Storybook titles say CC BY 3.0). If the two disagree in kind, the book is refused. Five books were refused at
+  intake: four had a sentence too long for ages 5-7, and one named no author.
+- **StoryWeaver direct**: the adapter is ready, but StoryWeaver serves page text only to a signed-in reader.
+
+No Arabic or Indonesian story is in yet. GDL's Arabic books are all CC BY-NC-SA. Its Indonesian CC BY books with text
+are first published by Let's Read, which stays reference only until its licence is read: a distributor's copy never
+gets round its publisher's class.
 
 **How attribution reaches the app.** Each lesson's `attribution` line and its `adopted` block go out in every export:
 
@@ -343,7 +353,7 @@ Found a problem in a lesson, especially one that is unsafe for a child? See [SEC
 1. Done: the format, twenty-three gates, the sourced AI jury, the registry, the age bands, the topic graph, the gap
    report, the loop, `export`, `import`, `mcp`, heard prompts, the reviewer list, the seed, the open-material intake
    (`sources/`, `openlessons adopt`).
-2. Next: human spot-checks of jury passes, and educators named for skills and alignments; StoryWeaver stories in three or
-   more languages once a reader account fetches their pages.
+2. Next: human spot-checks of jury passes, and educators named for skills and alignments; Arabic and Indonesian stories
+   from a source whose licence is read.
 3. Then: usage signals from products, with no learner data; recordings for the audio cues; objective-level nodes for the
    open frameworks.

@@ -1,0 +1,31 @@
+{
+  "schema": "path/1",
+  "slug": "open-stories",
+  "locale": "es",
+  "subject": "literacy",
+  "title": "Cuentos abiertos: primeras lecturas",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:level-1",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "Primeros cuentos",
+      "lessons": [
+        "les_0106a94b5be79b6173120c2a",
+        "les_1b6054925b40790ef26a731f",
+        "les_804eb7aac39cca5b52454387",
+        "les_be78df621d7e06b20c48c62c"
+      ]
+    }
+  ]
+}

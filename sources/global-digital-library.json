@@ -7,15 +7,25 @@
   "class": "adopt",
   "licences": [
     "CC-BY-4.0",
-    "CC-BY-SA-4.0"
+    "CC-BY-3.0",
+    "CC-BY-SA-4.0",
+    "CC-BY-NC-4.0",
+    "CC-BY-NC-3.0",
+    "CC-BY-NC-SA-4.0",
+    "CC-BY-NC-SA-3.0"
   ],
-  "perItem": "each book is marked with its own licence, authors and illustrators; a CC BY-SA book is refused (share-alike layer)",
+  "perItem": "the book's `license` term in the public content API (class_list `license-cc-by-4-0`), and every licence its EPUB credits page names; the book's own statement wins, and a disagreement in family refuses the book",
   "terms": {
     "url": "https://digitallibrary.io/about/license",
     "read": "2026-11-23",
     "quotation": "The primary licenses for content on the GDL are CC BY and CC BY-SA."
   },
-  "unverified": [
-    "licence versions and the per-book field name; the old API host did not answer"
-  ]
+  "caveats": [
+    "books are read from the public content API (content.digitallibrary.io/wp-json/wp/v2/book) and their EPUB, both without an account",
+    "GDL redistributes StoryWeaver, Book Dash and African Storybook titles: the credit names the original publisher; African Storybook books state CC BY 3.0 inside, and that is the licence recorded",
+    "all 94 Arabic books read are 3asafeer, CC BY-NC-SA 4.0: refused",
+    "the Indonesian CC BY books with an EPUB are The Asia Foundation's (Let's Read): refused while Let's Read is reference only",
+    "a book first published by a source held reference-only or share-alike is refused whatever its GDL field says"
+  ],
+  "importer": "global-digital-library"
 }

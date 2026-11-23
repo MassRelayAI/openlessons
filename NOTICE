@@ -37,6 +37,10 @@ Open material adopted under its own licence (see sources/ and each lesson's `ado
   Mathematics and are not under the Creative Commons licence; this project is not affiliated with or endorsed by
   Illustrative Mathematics. The lessons under paths/en/maths/im-k2-slice and paths/es/maths/im-k2-slice adapt text from
   the lesson pages each names; their practice items are openlessons' own.
+- First-reading stories under paths/<locale>/literacy/open-stories: each was read from the Global Digital Library and
+  was first published by StoryWeaver (Pratham Books), African Storybook (Saide) or Book Dash, under the CC BY licence its
+  own credits page names. Each lesson's `adopted` block holds its authors, illustrators, translators, licence and
+  original address. Pictures are not included.
 
 As of 0.4.0 the only publisher's wording stored here is that of the National curriculum in England. Every other framework
 is held by identifier, with our own labels and paraphrases; each framework's own record under standards/ says what its

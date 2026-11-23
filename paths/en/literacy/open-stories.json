@@ -1,0 +1,37 @@
+{
+  "schema": "path/1",
+  "slug": "open-stories",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "Open stories: first reading",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:level-1",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "First stories",
+      "lessons": [
+        "les_215cb874854947f1a7bf462b",
+        "les_2f053f372090de5b73adc67e",
+        "les_4659b7ac24375de1c1f34533",
+        "les_4afa757372d20730890f667a",
+        "les_5ee633f467ec5680e4688a78",
+        "les_65e731fbbaaad6dcb9013d46",
+        "les_8ae044b34a75ca59ab0fff8e",
+        "les_ba146dc25c03f3f3d01a6d36",
+        "les_c2b4896ce054460077df814e",
+        "les_c2f7107b60e656191ba2ca34"
+      ]
+    }
+  ]
+}

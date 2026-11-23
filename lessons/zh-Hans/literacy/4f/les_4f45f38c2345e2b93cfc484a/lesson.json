@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_4f45f38c2345e2b93cfc484a",
+  "slug": "gdl-story-8525",
+  "locale": "zh-Hans",
+  "subject": "literacy",
+  "title": "我不害怕！",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "读一读这个故事。看完一页，再点下一页。"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"我不害怕！\" by Mini Shrinivasan, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "8525",
+    "title": "我不害怕！",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e6%88%91%e4%b8%8d%e5%ae%b3%e6%80%95%ef%bc%81wo-bu-haipa/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Mini Shrinivasan"
+    ],
+    "attribution": "'我不害怕！' by Mini Shrinivasan (with Rayika Sen), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:8525",
+    "created": "2026-11-23"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "path/1",
+  "slug": "open-stories",
+  "locale": "hi",
+  "subject": "literacy",
+  "title": "खुली कहानियाँ: पहली पढ़ाई",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "status": "draft",
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:level-1",
+    "reviews": [],
+    "created": "2026-11-23"
+  },
+  "units": [
+    {
+      "title": "पहली कहानियाँ",
+      "lessons": [
+        "les_046bcb68e6873256cafb2308",
+        "les_140d53a9fef1d7412211e899",
+        "les_352c85140a6bf244f9234677",
+        "les_8e06a6991f55bcd966c3bafb",
+        "les_946d63d7d27586de75ab0f23",
+        "les_ae6d68f9f7eb388ebac2a2cd",
+        "les_bd2c14fbd9819c9387feac2e",
+        "les_cc6dcf5c3828c238f95b9d15",
+        "les_de12b7182b924a47404bd4fe"
+      ]
+    }
+  ]
+}

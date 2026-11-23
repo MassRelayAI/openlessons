@@ -1,0 +1,586 @@
+{
+  "schema": "adopt-plan/1",
+  "source": "global-digital-library",
+  "retrieved": "2026-11-23",
+  "note": "Early-reading stories (GDL level 1) under CC BY, read without an account: each `input` is the book's record from the GDL content API, each `epub` its EPUB unpacked (text and package only). Neither is committed: fetch them again from the record's `link` and `customMeta.epub`.",
+  "entries": [
+    {
+      "input": "pages/10078.json",
+      "epub": "pages/10078",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-10078",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16300.json",
+      "epub": "pages/16300",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16300",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16304.json",
+      "epub": "pages/16304",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16304",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16310.json",
+      "epub": "pages/16310",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16310",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16316.json",
+      "epub": "pages/16316",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16316",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16318.json",
+      "epub": "pages/16318",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16318",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/16324.json",
+      "epub": "pages/16324",
+      "locale": "es",
+      "subject": "literacy",
+      "slug": "gdl-story-16324",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Lee el cuento. Mira cada página y toca Siguiente.",
+      "next": "Siguiente",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/1912.json",
+      "epub": "pages/1912",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-1912",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2008.json",
+      "epub": "pages/2008",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2008",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2074.json",
+      "epub": "pages/2074",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2074",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2096.json",
+      "epub": "pages/2096",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2096",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/21893.json",
+      "epub": "pages/21893",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-21893",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2486.json",
+      "epub": "pages/2486",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2486",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2542.json",
+      "epub": "pages/2542",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2542",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2546.json",
+      "epub": "pages/2546",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2546",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/2552.json",
+      "epub": "pages/2552",
+      "locale": "en",
+      "subject": "literacy",
+      "slug": "gdl-story-2552",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "Read the story. Look at each page, then tap Next.",
+      "next": "Next",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6151.json",
+      "epub": "pages/6151",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6151",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6157.json",
+      "epub": "pages/6157",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6157",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6161.json",
+      "epub": "pages/6161",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6161",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6163.json",
+      "epub": "pages/6163",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6163",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6165.json",
+      "epub": "pages/6165",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6165",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6173.json",
+      "epub": "pages/6173",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6173",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6175.json",
+      "epub": "pages/6175",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6175",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6187.json",
+      "epub": "pages/6187",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6187",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6195.json",
+      "epub": "pages/6195",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6195",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/6197.json",
+      "epub": "pages/6197",
+      "locale": "hi",
+      "subject": "literacy",
+      "slug": "gdl-story-6197",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।",
+      "next": "आगे",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8521.json",
+      "epub": "pages/8521",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8521",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8523.json",
+      "epub": "pages/8523",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8523",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8525.json",
+      "epub": "pages/8525",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8525",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8527.json",
+      "epub": "pages/8527",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8527",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8529.json",
+      "epub": "pages/8529",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8529",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8531.json",
+      "epub": "pages/8531",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8531",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8533.json",
+      "epub": "pages/8533",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8533",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    },
+    {
+      "input": "pages/8535.json",
+      "epub": "pages/8535",
+      "locale": "zh-Hans",
+      "subject": "literacy",
+      "slug": "gdl-story-8535",
+      "skills": [
+        "literacy.reading.retell-a-story"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 7
+      },
+      "intro": "读一读这个故事。看完一页，再点下一页。",
+      "next": "下一页",
+      "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons"
+    }
+  ]
+}

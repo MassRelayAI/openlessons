@@ -4,10 +4,10 @@
   "title": "Bloom Library",
   "publisher": "SIL Global",
   "url": "https://bloomlibrary.org/",
-  "class": "adopt",
+  "class": "reference-only",
   "licences": [
-    "CC-BY-4.0",
-    "CC0-1.0"
+    "CC-BY-NC-SA-4.0",
+    "CC-BY-NC-ND-4.0"
   ],
   "perItem": "each book's own licence, set by its author in Bloom's licence dialog",
   "terms": {
@@ -15,7 +15,11 @@
     "read": "2026-11-23",
     "quotation": "You can select Creative Commons when you choose a license for the book"
   },
+  "caveats": [
+    "held reference only until a book's own licence can be read: the licence examples page names CC BY-NC-SA 4.0 and CC BY-NC-ND 4.0, and Bloom's book API needs an application key",
+    "books under CC BY may exist; none was read"
+  ],
   "unverified": [
-    "the default licence and the API field; books under NonCommercial licences exist and are refused"
+    "whether any book is CC BY, and the API field that states it"
   ]
 }

@@ -1331,9 +1331,12 @@ fn lesson(
     // one finding per (gate, file, text): a line repeated on a hundred items is one problem
     let mut told: BTreeSet<(u8, String)> = BTreeSet::new();
     let window = if segmentation == "character" { 14 } else { 8 };
+    // the adopted wording is the story it tells or, with no story, what it teaches; practice items and a story's
+    // opening line are ours
+    let tells_a_story = shown.iter().any(|x| x.2 == "story");
     for (file, line, place, t) in &shown {
-        // the adopted wording is what the lesson teaches and the story it tells; practice items beside it are ours
-        if !owner.is_empty() && matches!(place.as_str(), "teach" | "reteach" | "example" | "story") {
+        let adopted_part = if tells_a_story { place == "story" } else { matches!(place.as_str(), "teach" | "reteach" | "example") };
+        if !owner.is_empty() && adopted_part {
             for h in text::window_prints(t, window) {
                 r.adopted_prints.entry(window).or_default().entry(h).or_insert_with(|| owner.clone());
             }

@@ -242,6 +242,8 @@ pub struct Intake {
     pub locale: Option<String>,
     /// IM: the student-facing prompts in page order; StoryWeaver: the text of each story page
     pub texts: Vec<String>,
+    /// the original publisher, when a distributor carries the item (a GDL book from StoryWeaver, Book Dash, ...)
+    pub publisher: String,
 }
 
 fn entity(s: &str) -> String {
@@ -317,6 +319,7 @@ pub fn from_im_page(html: &str, url: &str) -> Result<Intake> {
         attribution: String::new(),
         locale: None,
         texts,
+        publisher: "Illustrative Mathematics".to_string(),
     })
 }
 
@@ -386,8 +389,180 @@ pub fn from_storyweaver(meta: &Value, read: &Value) -> Result<Intake> {
         attribution,
         locale,
         texts,
+        publisher,
     })
 }
+
+/// The text of an XHTML page: the head dropped, then as [`html_lines`].
+fn page_text(xhtml: &str) -> String {
+    let low = xhtml.to_lowercase();
+    let body = match (low.find("<head"), low.find("</head>")) {
+        (Some(a), Some(b)) if a < b => format!("{}{}", &xhtml[..a], &xhtml[b + "</head>".len()..]),
+        _ => xhtml.to_string(),
+    };
+    html_lines(&body).join(" ")
+}
+
+/// Every licence a text names ("Released under CC BY 4.0 license", "Creative Commons: Attribution 3.0", "licensed under
+/// a Creative Commons Attribution 4.0 International License", "la licencia CC BY 4.0"), recognised.
+pub fn licences_named(text: &str) -> Vec<String> {
+    let low = text.to_lowercase();
+    let mut out = Vec::new();
+    for start in ["cc by", "cc-by", "creative commons attribution", "creative commons: attribution"] {
+        let mut from = 0;
+        while let Some(i) = low[from..].find(start) {
+            let at = from + i;
+            // up to the first version number ("4.0")
+            let tail: Vec<char> = low[at..].chars().take(90).collect();
+            if let Some(j) = (0..tail.len().saturating_sub(2)).find(|&j| tail[j].is_ascii_digit() && tail[j + 1] == '.' && tail[j + 2].is_ascii_digit()) {
+                let phrase: String = tail[..j + 3].iter().collect();
+                if let Some(l) = normalise_licence(&phrase) {
+                    out.push(l);
+                }
+            }
+            from = at + start.len();
+        }
+    }
+    // Chinese: 知识共享：署名 3.0 (Creative Commons: Attribution 3.0), with 非商业 (NC), 禁止演绎 (ND), 相同方式共享 (SA)
+    let mut from = 0;
+    while let Some(i) = text[from..].find("\u{77e5}\u{8bc6}\u{5171}\u{4eab}") {
+        let at = from + i;
+        let tail: String = text[at..].chars().take(30).collect();
+        if tail.contains("\u{7f72}\u{540d}") {
+            let c: Vec<char> = tail.chars().collect();
+            if let Some(j) = (0..c.len().saturating_sub(2)).find(|&j| c[j].is_ascii_digit() && c[j + 1] == '.' && c[j + 2].is_ascii_digit()) {
+                let head: String = c[..j].iter().collect();
+                let mut id = "CC-BY".to_string();
+                if head.contains("\u{975e}\u{5546}\u{4e1a}") {
+                    id.push_str("-NC");
+                }
+                if head.contains("\u{7981}\u{6b62}\u{6f14}\u{7ece}") {
+                    id.push_str("-ND");
+                } else if head.contains("\u{76f8}\u{540c}\u{65b9}\u{5f0f}\u{5171}\u{4eab}") {
+                    id.push_str("-SA");
+                }
+                out.push(format!("{id}-{}.{}", c[j], c[j + 2]));
+            }
+        }
+        from = at + "\u{77e5}\u{8bc6}\u{5171}\u{4eab}".len();
+    }
+    out.sort();
+    out.dedup();
+    out
+}
+
+/// A credit line without web addresses (the original's address travels in `sourceUrl`).
+fn without_addresses(s: &str) -> String {
+    s.split_whitespace().filter(|w| !(w.contains("://") || w.starts_with("www.") || w.contains(".org") || w.contains(".com"))).collect::<Vec<_>>().join(" ")
+}
+
+/// The family of a licence: `CC-BY-4.0` -> `CC-BY`, `CC-BY-NC-SA-4.0` -> `CC-BY-NC-SA`.
+fn family(spdx: &str) -> String {
+    spdx.split('-').take_while(|p| !p.chars().next().is_some_and(|c| c.is_ascii_digit())).collect::<Vec<_>>().join("-")
+}
+
+/// A Global Digital Library book: its record from the GDL content API (`/wp-json/wp/v2/book/<id>`, public) and its
+/// EPUB, unpacked (the package file, and its pages in spine order). The licence is the item's own twice over: the
+/// record's `license` term (`class_list`: `license-cc-by-4-0`) and every licence the book's own credits page names.
+/// When the book names a licence, that is the item's licence; two that disagree, or one of another family than the
+/// record's (CC BY against CC BY-NC), and the book is refused.
+pub fn from_gdl(record: &Value, opf: &str, pages: &[String]) -> Result<Intake> {
+    let field = strs(record, "class_list").iter().find_map(|c| c.strip_prefix("license-").map(str::to_string)).unwrap_or_default();
+    let tag = |t: &str| -> Vec<String> {
+        let open = format!("<dc:{t}");
+        opf.split(open.as_str())
+            .skip(1)
+            .filter_map(|r| r.split_once('>').map(|x| x.1))
+            .map(|body| entity(body.split('<').next().unwrap_or("").trim()))
+            .filter(|v| !v.is_empty())
+            .collect()
+    };
+    let title_full = tag("title").first().cloned().unwrap_or_else(|| entity(st(&record["title"], "rendered")));
+    let title = title_full.lines().next().unwrap_or("").trim().to_string();
+    let lang = tag("language").first().cloned().unwrap_or_default().to_lowercase();
+    let locale = match lang.split(['-', '_']).next().unwrap_or("") {
+        "zh" => Some("zh-Hans"),
+        "en" => Some("en"),
+        "es" => Some("es"),
+        "hi" => Some("hi"),
+        "id" | "in" => Some("id"),
+        "ar" => Some("ar"),
+        _ => None,
+    }
+    .map(str::to_string);
+    let authors = tag("creator");
+    let others = tag("contributor");
+    let publisher = st(&record["customMeta"], "publisher").to_string();
+    // story pages: after the title page, up to the credits; empty pages and the table of contents are skipped
+    let credits = |t: &str| {
+        let l = t.to_lowercase();
+        // the credits page: a licence, the copyright sign, or "free to download" (in Chinese, 自由下载)
+        l.contains("creative commons") || l.contains("released under") || l.contains("free to download") || l.contains("storyweaver") || t.contains('\u{a9}') || t.contains("\u{81ea}\u{7531}\u{4e0b}\u{8f7d}")
+    };
+    let mut texts = Vec::new();
+    let mut back = String::new();
+    for t in pages {
+        if !back.is_empty() || credits(t) {
+            back.push_str(t);
+            back.push(' ');
+            continue;
+        }
+        let l = t.to_lowercase();
+        let title_page = ["author:", "autor:", "illustrator:", "ilustrador:"].iter().any(|k| l.contains(k));
+        if t.is_empty() || l.starts_with("chapter 1 chapter 2") || title_page {
+            continue;
+        }
+        texts.push(t.clone());
+    }
+    if texts.is_empty() {
+        bail!("the book has no story pages");
+    }
+    let named = licences_named(&back);
+    let low_back = back.to_lowercase();
+    if named.is_empty() && (low_back.contains("creative commons") || back.contains("\u{77e5}\u{8bc6}\u{5171}\u{4eab}") || low_back.contains("licen")) {
+        bail!("the book's credits name a licence that could not be read: refused rather than trust the record alone");
+    }
+    let from_field = normalise_licence(&field);
+    let licence = match named.as_slice() {
+        [] => from_field.clone(),
+        [one] => Some(one.clone()),
+        many => bail!("the book names more than one licence ({}): refused until each part is read", many.join(", ")),
+    };
+    if let (Some(l), Some(f)) = (&licence, &from_field) {
+        if family(l) != family(f) {
+            bail!("the book says {l} but its GDL record says {f}: refused until they agree");
+        }
+    }
+    let stated = if named.is_empty() { field.clone() } else { named.join(", ") };
+    let story_credit = ["Story Attribution:", "Atribuci\u{f3}n de la historia:"].iter().find_map(|k| back.find(k).map(|i| back[i..].to_string())).map(|t| {
+        let end = ["Other Credits", "Otros cr\u{e9}ditos", "Illustration Attributions", "Atribuciones de la ilustraci\u{f3}n", "Disclaimer"].iter().filter_map(|k| t.find(k)).min().unwrap_or(t.len());
+        without_addresses(&t[..end])
+    });
+    let lic_name = licence.as_deref().map(short_name).unwrap_or_else(|| stated.clone());
+    let mut attribution = format!(
+        "'{title}' by {}{}, {}, licensed under {lic_name}; via the Global Digital Library.",
+        authors.join(", "),
+        if others.is_empty() { String::new() } else { format!(" (with {})", others.join(", ")) },
+        if publisher.is_empty() { "Global Digital Library" } else { &publisher },
+    );
+    if let Some(c) = story_credit {
+        attribution = format!("{attribution} {c}");
+    }
+    Ok(Intake {
+        source: "global-digital-library".to_string(),
+        item: record["id"].as_u64().map(|n| n.to_string()).unwrap_or_default(),
+        url: st(record, "link").to_string(),
+        title,
+        licence,
+        licence_stated: stated,
+        authors,
+        attribution: attribution.chars().take(600).collect(),
+        locale,
+        texts,
+        publisher,
+    })
+}
+
 
 // ---------- the plan: which items, mapped onto which objectives ----------
 
@@ -511,6 +686,15 @@ pub fn run_plan(plan: &Value, base: &Path, sources: &BTreeMap<String, Value>, li
                 let r = read("read")?;
                 from_storyweaver(&serde_json::from_str(&m).context("the story record")?, &serde_json::from_str(&r).context("the reader pages")?)
             }),
+            "global-digital-library" => read("input").and_then(|r| {
+                let record: Value = serde_json::from_str(&r).context("the GDL book record")?;
+                let dir = base.join(st(e, "epub"));
+                let opf_path = find_opf(&dir).ok_or_else(|| anyhow!("no package file (*.opf) under {}", dir.display()))?;
+                let opf = fs::read_to_string(&opf_path)?;
+                let at = opf_path.parent().map(Path::to_path_buf).unwrap_or_default();
+                let pages: Vec<String> = spine(&opf).iter().filter_map(|h| fs::read_to_string(at.join(h)).ok()).map(|x| page_text(&x)).collect();
+                from_gdl(&record, &opf, &pages)
+            }),
             other => Err(anyhow!("no adapter `{other}` for {source_id}")),
         };
         let mut intake = match intake {
@@ -522,6 +706,12 @@ pub fn run_plan(plan: &Value, base: &Path, sources: &BTreeMap<String, Value>, li
         };
         if !st(e, "url").is_empty() {
             intake.url = st(e, "url").to_string();
+        }
+        // a distributor's copy is no way round its publisher's class: an item first published by a source we hold as
+        // reference only or share-alike is refused, whatever the distributor's field says
+        if let Some(held) = sources.values().find(|s| !intake.publisher.is_empty() && st(s, "class") != "adopt" && (st(s, "publisher") == intake.publisher || st(s, "title") == intake.publisher)) {
+            refused.push(Refusal { entry: name, reasons: vec![format!("first published by {}, which is {} ({}): refused", intake.publisher, st(held, "class"), st(held, "id"))] });
+            continue;
         }
         let Some(licence) = intake.licence.clone() else {
             refused.push(Refusal { entry: name, reasons: vec![format!("the licence '{}' is not one we recognise: nothing is adopted under an unknown licence", intake.licence_stated)] });
@@ -557,7 +747,7 @@ pub fn run_plan(plan: &Value, base: &Path, sources: &BTreeMap<String, Value>, li
         }
         let (subject, slug) = (st(e, "subject"), st(e, "slug"));
         let (teach, items) = match st(src, "importer") {
-            "storyweaver" => {
+            "storyweaver" | "global-digital-library" => {
                 let intro = st(e, "intro");
                 if intro.is_empty() {
                     bail!("{name}: a story entry gives the `intro` the lesson opens with, in its own language");
@@ -602,6 +792,34 @@ pub fn run_plan(plan: &Value, base: &Path, sources: &BTreeMap<String, Value>, li
         records.lessons.push((lesson, items));
     }
     Ok(Adoption { records, refused })
+}
+
+/// The package file of an unpacked EPUB.
+fn find_opf(dir: &Path) -> Option<std::path::PathBuf> {
+    let mut stack = vec![dir.to_path_buf()];
+    while let Some(d) = stack.pop() {
+        let mut entries: Vec<_> = fs::read_dir(&d).ok()?.filter_map(|e| e.ok().map(|e| e.path())).collect();
+        entries.sort();
+        for p in entries {
+            if p.is_dir() {
+                stack.push(p);
+            } else if p.extension().is_some_and(|x| x == "opf") {
+                return Some(p);
+            }
+        }
+    }
+    None
+}
+
+/// The pages of an EPUB package in reading order: each spine `itemref` resolved through the manifest.
+pub fn spine(opf: &str) -> Vec<String> {
+    let attr = |tag: &str, name: &str| -> Option<String> {
+        let k = format!("{name}=\"");
+        tag.find(&k).map(|i| &tag[i + k.len()..]).and_then(|r| r.split('"').next()).map(str::to_string)
+    };
+    let tags = |t: &str| -> Vec<String> { opf.split(&format!("<{t}")).skip(1).filter_map(|r| r.split('>').next()).map(str::to_string).collect() };
+    let manifest: BTreeMap<String, String> = tags("item ").iter().filter_map(|t| Some((attr(t, "id")?, attr(t, "href")?))).collect();
+    tags("itemref").iter().filter_map(|t| attr(t, "idref")).filter_map(|id| manifest.get(&id).cloned()).collect()
 }
 
 /// Every record under `<root>/sources/`.
@@ -737,6 +955,77 @@ mod tests {
         let a = run_plan(&json!({"schema": "adopt-plan/1", "source": "illustrative-math", "entries": [entry("by.html", "im-ok")]}), &dir, &s, &lic(), "openlessons-adopt", "2026-11-23").unwrap();
         assert_eq!(a.records.lessons.len(), 0);
         assert!(a.refused[0].reasons.iter().any(|r| r.contains("attribution")), "{:?}", a.refused);
+        fs::remove_dir_all(&dir).unwrap();
+    }
+}
+
+#[cfg(test)]
+mod gdl_tests {
+    use super::*;
+
+    fn record(licence: &str, publisher: &str) -> Value {
+        json!({"id": 1, "link": "https://content.digitallibrary.io/book/hens/", "class_list": ["book", format!("license-{licence}")],
+            "customMeta": {"publisher": publisher}, "title": {"rendered": "Hens"}})
+    }
+    const OPF: &str = "<package><metadata><dc:title>Hens</dc:title><dc:language>en</dc:language><dc:creator id=\"c1\">Ada Writer</dc:creator></metadata>\
+        <manifest><item id=\"p1\" href=\"chapter-1.xhtml\"/><item id=\"p2\" href=\"chapter-2.xhtml\"/></manifest><spine><itemref idref=\"p1\"/><itemref idref=\"p2\"/></spine></package>";
+    fn pages(credit: &str) -> Vec<String> {
+        vec!["Hens Author: Ada Writer".into(), "A hen has three eggs.".into(), "One, two, three!".into(), credit.into()]
+    }
+
+    #[test]
+    fn the_spine_gives_pages_in_reading_order() {
+        assert_eq!(spine(OPF), ["chapter-1.xhtml", "chapter-2.xhtml"]);
+    }
+
+    #[test]
+    fn the_book_s_own_statement_is_its_licence() {
+        let i = from_gdl(&record("cc-by-4-0", "African Storybook"), OPF, &pages("\u{a9} African Storybook Initiative 2014 Creative Commons: Attribution 3.0")).unwrap();
+        assert_eq!(i.licence.as_deref(), Some("CC-BY-3.0"));
+        assert_eq!(i.texts, ["A hen has three eggs.", "One, two, three!"]);
+        assert_eq!(i.locale.as_deref(), Some("en"));
+        assert!(i.attribution.contains("Ada Writer") && i.attribution.contains("African Storybook"));
+        // in Chinese: 知识共享：署名3.0
+        let zh = from_gdl(&record("cc-by-4-0", "African Storybook"), OPF, &pages("\u{a9} 2014 \u{77e5}\u{8bc6}\u{5171}\u{4eab}\u{ff1a}\u{7f72}\u{540d}3.0")).unwrap();
+        assert_eq!(zh.licence.as_deref(), Some("CC-BY-3.0"));
+    }
+
+    #[test]
+    fn a_book_whose_statement_and_record_disagree_or_cannot_be_read_is_refused() {
+        // the record says CC BY; the book says NonCommercial
+        assert!(from_gdl(&record("cc-by-4-0", "x"), OPF, &pages("Released under CC BY-NC 4.0 license.")).is_err());
+        // two licences named
+        assert!(from_gdl(&record("cc-by-4-0", "x"), OPF, &pages("Released under CC BY 4.0 license. Also under CC BY 3.0 license.")).is_err());
+        // a Creative Commons notice nobody can read
+        assert!(from_gdl(&record("cc-by-4-0", "x"), OPF, &pages("Creative Commons, some rights.")).is_err());
+        // an NC record with no statement stays NC, and the checks refuse it
+        let nc = from_gdl(&record("cc-by-nc-sa-4-0", "x"), OPF, &pages("The end \u{a9} 2020")).unwrap();
+        assert_eq!(nc.licence.as_deref(), Some("CC-BY-NC-SA-4.0"));
+    }
+
+    #[test]
+    fn a_distributor_s_copy_of_a_reference_only_publisher_is_refused() {
+        let dir = std::env::temp_dir().join(format!("openlessons-gdl-unit-{}", std::process::id()));
+        let _ = fs::remove_dir_all(&dir);
+        fs::create_dir_all(dir.join("book/content")).unwrap();
+        fs::write(dir.join("book/content/book.opf"), OPF).unwrap();
+        for (n, t) in [(1, "<p>A hen has three eggs.</p>"), (2, "<p>Released under CC BY 4.0 license.</p>")] {
+            fs::write(dir.join(format!("book/content/chapter-{n}.xhtml")), t).unwrap();
+        }
+        fs::write(dir.join("rec.json"), record("cc-by-4-0", "The Asia Foundation").to_string()).unwrap();
+        let mut sources = BTreeMap::new();
+        sources.insert("global-digital-library".to_string(), json!({"id": "global-digital-library", "class": "adopt", "url": "https://digitallibrary.io/", "licences": ["CC-BY-4.0"], "importer": "global-digital-library", "terms": {}}));
+        sources.insert("lets-read".to_string(), json!({"id": "lets-read", "class": "reference-only", "publisher": "The Asia Foundation", "licences": ["CC-BY-NC-4.0"]}));
+        let lic = Licences::load(&Path::new(env!("CARGO_MANIFEST_DIR")).join("../../gates/data")).unwrap();
+        let plan = json!({"schema": "adopt-plan/1", "source": "global-digital-library", "entries": [{"input": "rec.json", "epub": "book", "locale": "en", "subject": "literacy",
+            "slug": "hens", "skills": ["literacy.reading.retell-a-story"], "ages": {"min": 5, "max": 7}, "intro": "Read the story.", "next": "Next"}]});
+        let a = run_plan(&plan, &dir, &sources, &lic, "openlessons-adopt", "2026-11-23").unwrap();
+        assert_eq!(a.records.lessons.len(), 0);
+        assert!(a.refused[0].reasons[0].contains("reference-only"), "{:?}", a.refused);
+        // the same book from an adoptable publisher is adopted
+        fs::write(dir.join("rec.json"), record("cc-by-4-0", "Book Dash").to_string()).unwrap();
+        let a = run_plan(&plan, &dir, &sources, &lic, "openlessons-adopt", "2026-11-23").unwrap();
+        assert_eq!(a.records.lessons.len(), 1, "{:?}", a.refused);
         fs::remove_dir_all(&dir).unwrap();
     }
 }

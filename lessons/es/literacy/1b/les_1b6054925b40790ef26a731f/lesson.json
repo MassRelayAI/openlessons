@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_1b6054925b40790ef26a731f",
+  "slug": "gdl-story-16300",
+  "locale": "es",
+  "subject": "literacy",
+  "title": "Nuestra vaca Pendo",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Lee el cuento. Mira cada página y toca Siguiente."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Nuestra vaca Pendo\" by Ruth Odondi, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "16300",
+    "title": "Nuestra vaca Pendo",
+    "sourceUrl": "https://content.digitallibrary.io/book/nuestra-vaca-pendo/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Ruth Odondi"
+    ],
+    "attribution": "'Nuestra vaca Pendo' by Ruth Odondi (with Rob Owen, Keenlly G. Ordoñez), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:16300",
+    "created": "2026-11-23"
+  }
+}

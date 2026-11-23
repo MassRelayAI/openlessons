@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_4659b7ac24375de1c1f34533",
+  "slug": "gdl-story-2552",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "Young or Old?",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"Young or Old?\" by Shannon David, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "2552",
+    "title": "Young or Old?",
+    "sourceUrl": "https://content.digitallibrary.io/book/young-or-old/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Shannon David"
+    ],
+    "attribution": "'Young or Old?' by Shannon David (with Shailja Jain Chougule), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story:Young or Old?is translated byShannon David. The © for this translation lies with Room to Read, 2015. Some rights reserved. Released under CC BY 4.0 license.Based on Original story:'बड़ा या छोटा?', byMukesh Malviya. © Room to Read , 2015. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:2552",
+    "created": "2026-11-23"
+  }
+}

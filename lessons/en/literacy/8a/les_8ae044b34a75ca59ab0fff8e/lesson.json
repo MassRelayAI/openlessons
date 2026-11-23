@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_8ae044b34a75ca59ab0fff8e",
+  "slug": "gdl-story-10078",
+  "locale": "en",
+  "subject": "literacy",
+  "title": "My Home",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "Read the story. Look at each page, then tap Next."
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"My Home\" by Rukmini Banerji, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "10078",
+    "title": "My Home",
+    "sourceUrl": "https://content.digitallibrary.io/book/my-home-2/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Rukmini Banerji"
+    ],
+    "attribution": "'My Home' by Rukmini Banerji (with Rajeev Verma 'Banjara', Manisha Chaudhry), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story: My Home is translated by Manisha Chaudhry . The © for this translation lies with Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' मेरा घर ' , by Rukmini Banerji . © Pratham Books , 2007. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:10078",
+    "created": "2026-11-23"
+  }
+}

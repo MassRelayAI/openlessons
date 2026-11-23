@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_ccaa8fe0755f16dcc833ee52",
+  "slug": "gdl-story-8527",
+  "locale": "zh-Hans",
+  "subject": "literacy",
+  "title": "我们的牛潘多",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "读一读这个故事。看完一页，再点下一页。"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"我们的牛潘多\" by Ruth Odondi, CC BY 3.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "8527",
+    "title": "我们的牛潘多",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e6%88%91%e4%bb%ac%e7%9a%84%e7%89%9b%e6%bd%98%e5%a4%9awomen-de-niu-pan-duo/",
+    "licence": "CC-BY-3.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "authors": [
+      "Ruth Odondi"
+    ],
+    "attribution": "'我们的牛潘多' by Ruth Odondi (with Rob Owen, 在此插入你的名字\n\t\t\tZài cǐ chārù nǐ de míngzì), African Storybook, licensed under CC BY 3.0; via the Global Digital Library.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:8527",
+    "created": "2026-11-23"
+  }
+}

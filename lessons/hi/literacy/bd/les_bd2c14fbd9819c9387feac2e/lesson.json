@@ -1,0 +1,42 @@
+{
+  "schema": "lesson/1",
+  "id": "les_bd2c14fbd9819c9387feac2e",
+  "slug": "gdl-story-6165",
+  "locale": "hi",
+  "subject": "literacy",
+  "title": "मोटा राजा दुबला कुत्ता",
+  "ages": {
+    "min": 5,
+    "max": 7
+  },
+  "skills": [
+    "literacy.reading.retell-a-story"
+  ],
+  "teach": {
+    "text": "कहानी पढ़ो। हर पन्ना देखो, फिर आगे दबाओ।"
+  },
+  "status": "draft",
+  "licence": "CC-BY-4.0",
+  "attribution": "Adapted from \"मोटा राजा दुबला कुत्ता\" by Parismita, CC BY 4.0; openlessons contributors",
+  "adopted": {
+    "source": "global-digital-library",
+    "item": "6165",
+    "title": "मोटा राजा दुबला कुत्ता",
+    "sourceUrl": "https://content.digitallibrary.io/book/%e0%a4%ae%e0%a5%8b%e0%a4%9f%e0%a4%be-%e0%a4%b0%e0%a4%be%e0%a4%9c%e0%a4%be-%e0%a4%a6%e0%a5%81%e0%a4%ac%e0%a4%b2%e0%a4%be-%e0%a4%95%e0%a5%81%e0%a4%a4%e0%a5%8d%e0%a4%a4%e0%a4%be/",
+    "licence": "CC-BY-4.0",
+    "licenceUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "authors": [
+      "Parismita"
+    ],
+    "attribution": "'मोटा राजा दुबला कुत्ता' by Parismita (with Parismita, Manisha Chaudhry), StoryWeaver, licensed under CC BY 4.0; via the Global Digital Library. Story Attribution: This story: मोटा राजा दुबला कुत्ता is translated by Manisha Chaudhry . The © for this translation lies with Pratham Books, 2007. Some rights reserved. Released under CC BY 4.0 license. Based on Original story: ' Fat King Thin Dog ' , by Parismita . © Pratham Books , 2007. Some rights reserved. Released under CC BY 4.0 license.",
+    "changes": "story pages kept as written, one per screen; pictures left out; an opening line added by openlessons",
+    "retrieved": "2026-11-23"
+  },
+  "provenance": {
+    "origin": "generator",
+    "maker": "openlessons-adopt",
+    "tool": "openlessons adopt",
+    "source": "global-digital-library:6165",
+    "created": "2026-11-23"
+  }
+}
