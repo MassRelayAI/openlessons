@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+- **Two failure classes of the first jury run are gates now**, so a draft fails before the jury: `item.hint-fits`
+  (a hint pointing at a picture the item does not show, or speaking of "both" over three or more choices; words per
+  language in `gates/data/hints.json`) and `item.objective-listed` (an item on an objective its lesson does not list;
+  before, a `refs.resolve` finding). Both judge drafts and settled content; `jury orders` refuses a lesson that fails
+  them, whatever its status. Proven red first (`tests/hints.rs`, 4 of 5 failed) and on their fixtures. The `proposed`
+  seed has about 2,600 picture-less "look at the picture" hints: it meets the gate when it is put before the jury.
+
 ## 0.5.2 (2026-11-23)
 
 - **12 original early-reading stories, 6 in Arabic and 6 in Indonesian.** They are written for openlessons by MassRelay

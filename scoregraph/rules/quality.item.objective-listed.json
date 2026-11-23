@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.item.objective-listed",
+  "version": 1,
+  "title": "An item tests only objectives its lesson lists",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

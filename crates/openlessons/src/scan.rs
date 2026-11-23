@@ -25,6 +25,8 @@ pub const RULES: &[&str] = &[
     "lesson.reading-level",
     "item.answer-verified",
     "item.no-answer-leak",
+    "item.hint-fits",
+    "item.objective-listed",
     "item.heard-prompt-recorded",
     "asset.licensed",
     "content.source-licensed",
@@ -143,6 +145,8 @@ pub struct Scan {
     pub alignments: Vec<Aligned>,
     /// one index line per lesson (id, locale, subject, skills, status, items, ...)
     pub lessons: Vec<Value>,
+    /// gates/data/hints.json, for the checks a lesson meets before the jury
+    pub hints: HintWords,
 }
 
 struct Ctx {
@@ -233,6 +237,72 @@ fn arr<'a>(v: &'a Value, k: &str) -> &'a [Value] {
 }
 fn strs(v: &Value, k: &str) -> Vec<String> {
     arr(v, k).iter().filter_map(Value::as_str).map(str::to_string).collect()
+}
+
+/// The words a hint uses to point at what its item must have (gates/data/hints.json), per locale.
+#[derive(Debug, Clone, Default)]
+pub struct HintWords {
+    pub picture: BTreeMap<String, Vec<String>>,
+    pub both: BTreeMap<String, Vec<String>>,
+}
+
+impl HintWords {
+    pub fn from_json(v: &Value) -> HintWords {
+        let table = |k: &str| -> BTreeMap<String, Vec<String>> {
+            v[k].as_object().map(|o| o.iter().map(|(l, w)| (l.clone(), w.as_array().into_iter().flatten().filter_map(Value::as_str).map(str::to_string).collect())).collect()).unwrap_or_default()
+        };
+        HintWords { picture: table("picture"), both: table("both") }
+    }
+}
+
+fn says(text: &str, words: &[String], segmentation: &str) -> Option<String> {
+    if segmentation == "character" {
+        return words.iter().find(|w| text.contains(w.as_str())).cloned();
+    }
+    let hay = text::tokens(text);
+    words.iter().find(|w| text::contains_tokens(&hay, &text::tokens(w))).cloned()
+}
+
+fn shows_image(v: &Value) -> bool {
+    match v {
+        Value::Object(o) => o.contains_key("image") || o.values().any(shows_image),
+        Value::Array(a) => a.iter().any(shows_image),
+        _ => false,
+    }
+}
+
+/// item.hint-fits on one item: a hint that sends the learner to a picture the item does not show, or speaks of two
+/// things on an item that offers three or more choices.
+pub fn hint_problems(h: &HintWords, locale: &str, segmentation: &str, item: &Value) -> Vec<String> {
+    let mut out = Vec::new();
+    let view = &item["view"];
+    let choices = ["options", "tiles", "right", "left"].iter().map(|k| view[*k].as_array().map(Vec::len).unwrap_or(0)).max().unwrap_or(0);
+    let none = Vec::new();
+    for hint in arr(&item["key"], "hints").iter().filter_map(Value::as_str) {
+        if let Some(w) = says(hint, h.picture.get(locale).unwrap_or(&none), segmentation) {
+            if !shows_image(view) {
+                out.push(format!("the hint '{hint}' points at a picture ('{w}'), but the item shows none: write the hint for this item"));
+            }
+        }
+        if let Some(w) = says(hint, h.both.get(locale).unwrap_or(&none), segmentation) {
+            if choices > 2 {
+                out.push(format!("the hint '{hint}' speaks of two things ('{w}'), but the item offers {choices} choices: write the hint for this item"));
+            }
+        }
+    }
+    out
+}
+
+/// Both pre-jury item checks (item.hint-fits, item.objective-listed) on one item of a lesson, whatever its status.
+pub fn pre_jury_problems(h: &HintWords, lesson: &Value, segmentation: &str, item: &Value) -> Vec<(String, String)> {
+    let listed: BTreeSet<String> = strs(lesson, "skills").into_iter().collect();
+    let mut out: Vec<(String, String)> = hint_problems(h, st(lesson, "locale"), segmentation, item).into_iter().map(|m| ("item.hint-fits".to_string(), m)).collect();
+    for s in strs(item, "skills") {
+        if !listed.contains(&s) {
+            out.push(("item.objective-listed".to_string(), format!("the item tests {s}, which its lesson does not list: list it on the lesson, or move the item")));
+        }
+    }
+    out
 }
 
 /// Sorted entries of a folder; empty when it does not exist.
@@ -451,6 +521,8 @@ struct Refs {
     shown_texts: Vec<(String, usize, String, String, String, usize)>,
     /// every lesson and item id seen, for the decision records
     records: BTreeSet<String>,
+    /// gates/data/hints.json
+    hints: HintWords,
 }
 
 /// Scan the tree at `root` with the gate data (reading levels, licences, safety lexicons) in `data`.
@@ -500,6 +572,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         adopted_prints: BTreeMap::new(),
         shown_texts: Vec::new(),
         records: BTreeSet::new(),
+        hints: HintWords::from_json(&load("hints.json")?),
     };
 
     // who may review what: no file, or an empty list, means nothing can be `reviewed`
@@ -550,6 +623,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         standards: r.standards,
         alignments: r.alignments,
         lessons,
+        hints: r.hints,
     })
 }
 
@@ -1276,9 +1350,11 @@ fn lesson(
             } else if let Some(first) = signatures.insert(format!("{locale}#{subject}#{}", item::signature(&it)), here.clone()) {
                 c.add("content.no-duplicates", &irel, line, format!("asks and accepts the same as the item at {first}"));
             }
-            for s in strs(&it, "skills") {
-                if !skills.contains(&s) {
-                    c.add("refs.resolve", &irel, line, format!("the item's skill {s} is not one of the lesson's"));
+            // the pre-jury checks judge drafts and settled content; a proposed lesson meets them at `jury orders`
+            let settled_or_draft = |x: &Value| matches!(st(x, "status"), "draft" | "reviewed" | "published");
+            for (rule, m) in pre_jury_problems(&r.hints, &v, &segmentation, &it) {
+                if rule != "item.hint-fits" || settled_or_draft(&v) || settled_or_draft(&it) {
+                    c.add(&rule, &irel, line, m);
                 }
             }
             for d in arr(&it["key"], "distractors") {

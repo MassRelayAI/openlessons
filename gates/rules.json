@@ -62,6 +62,18 @@
       "mode": "blocking"
     },
     {
+      "id": "item.hint-fits",
+      "version": 1,
+      "title": "A hint fits its item: it points at no picture the item does not show, and speaks of no two things where the item offers three or more choices (judged on drafts and settled content; a proposed lesson meets it before the jury)",
+      "mode": "blocking"
+    },
+    {
+      "id": "item.objective-listed",
+      "version": 1,
+      "title": "An item tests only objectives its lesson lists",
+      "mode": "blocking"
+    },
+    {
       "id": "item.heard-prompt-recorded",
       "version": 1,
       "title": "A prompt that is heard, not shown, names a recorded audio asset that has a licence and an attribution",
