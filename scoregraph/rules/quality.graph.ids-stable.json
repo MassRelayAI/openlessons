@@ -1,0 +1,28 @@
+{
+  "schema": "rule/1",
+  "id": "quality.graph.ids-stable",
+  "version": 1,
+  "title": "Against a base revision, an objective id is never dropped or renamed: it stays, marked deprecated with a pointer to its replacement",
+  "family": "quality",
+  "kind": "deterministic",
+  "mode": "blocking",
+  "weight": 1,
+  "check": {
+    "fact": "findings",
+    "op": "eq",
+    "value": 0
+  },
+  "red": {
+    "facts": {
+      "findings": 3,
+      "records": 100
+    }
+  },
+  "green": {
+    "facts": {
+      "findings": 0,
+      "records": 100
+    }
+  },
+  "owner": "gates"
+}

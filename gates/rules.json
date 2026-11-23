@@ -116,6 +116,12 @@
       "mode": "blocking"
     },
     {
+      "id": "graph.ids-stable",
+      "version": 1,
+      "title": "An objective id present on the base is never dropped or renamed: it may be marked deprecated with a pointer to its replacement, but it stays",
+      "mode": "blocking"
+    },
+    {
       "id": "index.fresh",
       "version": 1,
       "title": "The index is the one the data generates, never a hand edit",

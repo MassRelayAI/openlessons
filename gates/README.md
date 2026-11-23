@@ -23,6 +23,8 @@
 
 `openlessons selftest` copies the green tree, lays each red overlay over it in turn, and requires the named gate to fire.
 The green tree is also the base each overlay is compared with, which is how `loop.base-respected` is proven.
+A gate that compares two trees and needs a different starting point keeps it in `fixtures/<rule>/base/` (laid over the green
+tree): `graph.ids-stable` is proven by a base that has an objective the green tree lacks.
 `openlessons validate` runs the self-test first and judges nothing if it fails.
 
 ## Adding or changing a gate

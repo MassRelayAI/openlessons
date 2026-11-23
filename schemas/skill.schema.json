@@ -127,6 +127,16 @@
         }
       }
     },
+    "deprecated": {
+      "description": "An id is never removed once released. A retired objective stays and points at what replaces it.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replacedBy"],
+      "properties": {
+        "replacedBy": { "type": "string" },
+        "reason": { "type": "string" }
+      }
+    },
     "status": {
       "enum": [
         "draft",

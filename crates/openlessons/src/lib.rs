@@ -87,8 +87,10 @@ pub fn selftest(root: &Path) -> Result<SelfTest> {
     }
 
     for rule in RULES {
-        let red = gates.join("fixtures").join("red").join(rule);
-        if !red.is_dir() {
+        // a gate that compares two trees keeps the tree it starts from in fixtures/<rule>/base; the head is the green tree
+        let paired = gates.join("fixtures").join(rule).join("base");
+        let red = if paired.is_dir() { gates.join("fixtures").join("empty-overlay") } else { gates.join("fixtures").join("red").join(rule) };
+        if !paired.is_dir() && !red.is_dir() {
             ok = false;
             lines.push(format!("FAIL {rule}: no red fixture at gates/fixtures/red/{rule}/"));
             continue;
@@ -96,11 +98,20 @@ pub fn selftest(root: &Path) -> Result<SelfTest> {
         let tmp = std::env::temp_dir().join(format!("openlessons-selftest-{}-{rule}", std::process::id()));
         let _ = fs::remove_dir_all(&tmp);
         // the green tree is the base every red overlay is a change to
-        let result = copy_tree(&green, &tmp).and_then(|_| copy_tree(&red, &tmp)).and_then(|_| scan(&tmp, &data)).and_then(|mut s| {
-            s.findings.extend(base::against_base(&tmp, &base::DirBase { base: green.clone(), head: tmp.clone() })?);
+        let base_tree = std::env::temp_dir().join(format!("openlessons-selftest-{}-{rule}-base", std::process::id()));
+        let _ = fs::remove_dir_all(&base_tree);
+        let result = copy_tree(&green, &tmp).and_then(|_| if red.is_dir() { copy_tree(&red, &tmp) } else { Ok(()) }).and_then(|_| scan(&tmp, &data)).and_then(|mut s| {
+            let mut from = green.clone();
+            if paired.is_dir() {
+                copy_tree(&green, &base_tree)?;
+                copy_tree(&paired, &base_tree)?;
+                from = base_tree.clone();
+            }
+            s.findings.extend(base::against_base(&tmp, &base::DirBase { base: from, head: tmp.clone() })?);
             Ok(s)
         });
         let _ = fs::remove_dir_all(&tmp);
+        let _ = fs::remove_dir_all(&base_tree);
         let hits = result?.findings.iter().filter(|f| f.rule == *rule).count();
         if hits > 0 {
             lines.push(format!("ok   {rule}: red on its red fixture ({hits} finding(s))"));

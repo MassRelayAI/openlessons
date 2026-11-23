@@ -142,7 +142,7 @@ no model       no model   a model    no model   no model           a person revi
    misconceptions, the ages and reading bounds, the language, the aligned standards in our own words (the publisher's
    wording only where its terms allow), and the rules. A pick is dealt across subjects and languages, prerequisites first.
 3. **Draft.** Any harness answers each order with one proposal file (`proposal/1`) under `.loop/drafts/`.
-4. **Gates.** `openlessons loop land` judges each proposal with all twenty gates. A draft that fails leaves no trace and is
+4. **Gates.** `openlessons loop land` judges each proposal with all twenty-one gates. A draft that fails leaves no trace and is
    listed in the report with the reason.
 5. **Land.** What passes is placed at status **`draft`**, the index is regenerated, the whole tree is judged again, and a
    run report is written to `runs/<id>.json` and `.md`: gaps closed, items added, gates passed, drafts refused. Without a
@@ -187,7 +187,7 @@ the ordinary CI gates judge like any other.
 
 ## Quality gates
 
-Every change must pass twenty gates: schema, content-derived ids, references, standards terms, alignment, a place in the
+Every change must pass twenty-one gates: schema, content-derived ids, references, standards terms, alignment, a place in the
 topic graph, matching age bands, reading level for the stated age, a verified answer, no answer in the prompt, a recording
 behind every heard prompt, licensed assets, no personal data, no copied text, a child-safety lexicon, no duplicates,
 review before `reviewed`, by a listed reviewer, nothing reviewed changed silently against the base, and a fresh index.
@@ -205,7 +205,7 @@ Found a problem in a lesson, especially one that is unsafe for a child? See [SEC
 
 ## Roadmap
 
-1. Done: the format, twenty gates, the registry, the age bands, the topic graph, the gap report, the loop, `export`,
+1. Done: the format, twenty-one gates, the registry, the age bands, the topic graph, the gap report, the loop, `export`,
    `import`, `mcp`, heard prompts, the reviewer list, the seed.
 2. Next: reviewers named, and the first `reviewed` content, with educators.
 3. Then: usage signals from products, with no learner data; recordings for the audio cues; objective-level nodes for the

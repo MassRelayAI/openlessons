@@ -325,7 +325,7 @@ fn run(cli: Cli) -> Result<u8> {
             } else {
                 for rule in RULES {
                     let n = per_rule(rule);
-                    let skipped = *rule == "loop.base-respected" && base.is_none();
+                    let skipped = (*rule == "loop.base-respected" || *rule == "graph.ids-stable") && base.is_none();
                     let mark = if skipped { "--  " } else if n == 0 { "ok  " } else { "RED " };
                     let note = if skipped { " (no --base given: not judged)".to_string() } else if n == 0 { String::new() } else { format!(": {n} finding(s)") };
                     println!("{mark} {rule}{note}");
