@@ -1,0 +1,37 @@
+{
+  "slug": "binary-b11-12",
+  "locale": "zh-Hant",
+  "subject": "computing",
+  "title": "二進位：0 和 1",
+  "ages": {
+    "min": 11,
+    "max": 12
+  },
+  "skills": [
+    "computing.data.binary"
+  ],
+  "teach": {
+    "text": "電腦用 0 和 1 儲存所有資料。二進位每一位的值，從右到左是 1、2、4、8。",
+    "examples": [
+      "101 是 4 + 1 = 5",
+      "1111 是 8 + 4 + 2 + 1 = 15"
+    ],
+    "reteach": "把有 1 的位置的值加起來。"
+  },
+  "image": {
+    "emoji": "💾"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_a7c7b9d24ff57e7b0f12e291",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

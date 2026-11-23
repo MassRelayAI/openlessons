@@ -1,0 +1,37 @@
+{
+  "slug": "name-materials-b05-06",
+  "locale": "zh-Hant",
+  "subject": "science",
+  "title": "東西是什麼做的？",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.materials.name-materials"
+  ],
+  "teach": {
+    "text": "東西由不同的材料做成。木頭硬硬的。玻璃可以看穿。",
+    "examples": [
+      "桌子是木頭做的",
+      "窗戶是玻璃做的"
+    ],
+    "reteach": "摸一摸，看一看：硬的還是軟的？"
+  },
+  "image": {
+    "emoji": "🪵"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_d20aca85b83b75aba3c623a2",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

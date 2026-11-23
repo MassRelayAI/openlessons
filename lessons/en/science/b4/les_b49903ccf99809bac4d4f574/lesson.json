@@ -1,0 +1,38 @@
+{
+  "slug": "body-parts-and-senses-b05-06",
+  "locale": "en",
+  "subject": "science",
+  "title": "My body and my senses",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.living-things.body-parts-and-senses"
+  ],
+  "teach": {
+    "text": "You have five senses. You see with your eyes and hear with your ears.",
+    "examples": [
+      "Nose: smell",
+      "Tongue: taste",
+      "Skin: touch"
+    ],
+    "reteach": "Point to the body part, then say what it does."
+  },
+  "image": {
+    "emoji": "👀"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_b49903ccf99809bac4d4f574",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

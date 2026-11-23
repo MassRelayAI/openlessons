@@ -1,0 +1,37 @@
+{
+  "slug": "day-and-night-b05-06",
+  "locale": "hi",
+  "subject": "science",
+  "title": "दिन और रात",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.earth-space.day-and-night"
+  ],
+  "teach": {
+    "text": "पृथ्वी लट्टू की तरह घूमती है। जो हिस्सा सूरज की ओर है, वहाँ दिन है।",
+    "examples": [
+      "सूरज की ओर: दिन",
+      "सूरज से दूर: रात"
+    ],
+    "reteach": "एक गेंद और टॉर्च से देखो: आधी गेंद पर ही रोशनी पड़ती है।"
+  },
+  "image": {
+    "emoji": "🌍"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_5d37d0d151952243b893326b",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

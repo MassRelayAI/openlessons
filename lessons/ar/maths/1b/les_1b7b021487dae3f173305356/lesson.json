@@ -1,0 +1,36 @@
+{
+  "slug": "repeating-patterns-b05-06",
+  "locale": "ar",
+  "subject": "maths",
+  "title": "أكمل النمط",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.algebra.repeating-patterns"
+  ],
+  "teach": {
+    "text": "النمط يتكرر بالترتيب نفسه. أحمر، أزرق، أحمر، أزرق.",
+    "examples": [
+      "🔴🔵🔴🔵"
+    ],
+    "reteach": "قل النمط بصوت عال ثم أكمل."
+  },
+  "image": {
+    "emoji": "🔁"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_1b7b021487dae3f173305356",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

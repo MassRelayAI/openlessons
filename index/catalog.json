@@ -8,16 +8,44 @@
     "skills": 181,
     "alignments": 559,
     "assets": 0,
-    "lessons": 49,
-    "items": 4178,
+    "lessons": 70,
+    "items": 4347,
     "paths": 4,
     "bands": 10,
     "subjects": 10,
     "topics": 86,
     "signals": 0,
-    "runs": 0
+    "runs": 1
   },
   "shelves": [
+    {
+      "locale": "ar",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/ar/computing.jsonl"
+    },
+    {
+      "locale": "ar",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/ar/maths.jsonl"
+    },
+    {
+      "locale": "ar",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/ar/science.jsonl"
+    },
+    {
+      "locale": "en",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/en/computing.jsonl"
+    },
     {
       "locale": "en",
       "subject": "english",
@@ -35,9 +63,65 @@
     {
       "locale": "en",
       "subject": "maths",
-      "lessons": 12,
-      "items": 1024,
+      "lessons": 13,
+      "items": 1032,
       "file": "index/en/maths.jsonl"
+    },
+    {
+      "locale": "en",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/en/science.jsonl"
+    },
+    {
+      "locale": "es",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/es/computing.jsonl"
+    },
+    {
+      "locale": "es",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/es/maths.jsonl"
+    },
+    {
+      "locale": "es",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/es/science.jsonl"
+    },
+    {
+      "locale": "hi",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/hi/computing.jsonl"
+    },
+    {
+      "locale": "hi",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/hi/maths.jsonl"
+    },
+    {
+      "locale": "hi",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/hi/science.jsonl"
+    },
+    {
+      "locale": "id",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/id/computing.jsonl"
     },
     {
       "locale": "id",
@@ -45,6 +129,62 @@
       "lessons": 12,
       "items": 1039,
       "file": "index/id/indonesian.jsonl"
+    },
+    {
+      "locale": "id",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/id/maths.jsonl"
+    },
+    {
+      "locale": "id",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/id/science.jsonl"
+    },
+    {
+      "locale": "zh-Hans",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hans/computing.jsonl"
+    },
+    {
+      "locale": "zh-Hans",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hans/maths.jsonl"
+    },
+    {
+      "locale": "zh-Hans",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hans/science.jsonl"
+    },
+    {
+      "locale": "zh-Hant",
+      "subject": "computing",
+      "lessons": 1,
+      "items": 9,
+      "file": "index/zh-Hant/computing.jsonl"
+    },
+    {
+      "locale": "zh-Hant",
+      "subject": "maths",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hant/maths.jsonl"
+    },
+    {
+      "locale": "zh-Hant",
+      "subject": "science",
+      "lessons": 1,
+      "items": 8,
+      "file": "index/zh-Hant/science.jsonl"
     }
   ]
 }

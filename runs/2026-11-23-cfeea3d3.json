@@ -1,0 +1,436 @@
+{
+  "schema": "run/1",
+  "id": "2026-11-23-cfeea3d3",
+  "date": "2026-11-23",
+  "mode": "pull-request",
+  "makers": [
+    "claude-code (claude-fable-5)"
+  ],
+  "orders": 21,
+  "drafts": 21,
+  "status": "draft",
+  "note": "Every record of this run is `draft`: drafted by a model, passed by the gates, read by no educator. Only a person listed in REVIEWERS.json can make it `reviewed`, and a product for children reads `reviewed` content only.",
+  "landed": [
+    {
+      "draft": "001-maths_algebra_repeating-patterns_b05-06_ar.json",
+      "lesson": "les_1b7b021487dae3f173305356",
+      "slug": "repeating-patterns-b05-06",
+      "locale": "ar",
+      "subject": "maths",
+      "objectives": [
+        "maths.algebra.repeating-patterns"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/ar/maths/1b/les_1b7b021487dae3f173305356"
+    },
+    {
+      "draft": "002-maths_data_sort-and-count_b05-06_es.json",
+      "lesson": "les_ec73b1c3dc5b8d52071e64f8",
+      "slug": "sort-and-count-b05-06",
+      "locale": "es",
+      "subject": "maths",
+      "objectives": [
+        "maths.data.sort-and-count"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/es/maths/ec/les_ec73b1c3dc5b8d52071e64f8"
+    },
+    {
+      "draft": "003-maths_measure_compare-length-mass_b05-06_hi.json",
+      "lesson": "les_bb3d1fc7b4f71427d25cd74e",
+      "slug": "compare-length-mass-b05-06",
+      "locale": "hi",
+      "subject": "maths",
+      "objectives": [
+        "maths.measure.compare-length-mass"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/hi/maths/bb/les_bb3d1fc7b4f71427d25cd74e"
+    },
+    {
+      "draft": "004-maths_shape_position-words_b05-06_id.json",
+      "lesson": "les_af543d80d20833363751a6f8",
+      "slug": "position-words-b05-06",
+      "locale": "id",
+      "subject": "maths",
+      "objectives": [
+        "maths.shape.position-words"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/id/maths/af/les_af543d80d20833363751a6f8"
+    },
+    {
+      "draft": "005-maths_calc_add-within-10_b05-06_zh-Hans.json",
+      "lesson": "les_432f0e7816717aa2fb850b95",
+      "slug": "add-within-10-b05-06",
+      "locale": "zh-Hans",
+      "subject": "maths",
+      "objectives": [
+        "maths.calc.add-within-10"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/zh-Hans/maths/43/les_432f0e7816717aa2fb850b95"
+    },
+    {
+      "draft": "006-maths_fractions_halves-and-quarters_b05-06_zh-Hant.json",
+      "lesson": "les_7586ebf40ee93718edb25e5e",
+      "slug": "halves-and-quarters-b05-06",
+      "locale": "zh-Hant",
+      "subject": "maths",
+      "objectives": [
+        "maths.fractions.halves-and-quarters"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/zh-Hant/maths/75/les_7586ebf40ee93718edb25e5e"
+    },
+    {
+      "draft": "007-computing_digital-citizenship_keep-private_b05-06_ar.json",
+      "lesson": "les_b2a629f67a85d89a6b9ca50b",
+      "slug": "keep-private-b05-06",
+      "locale": "ar",
+      "subject": "computing",
+      "objectives": [
+        "computing.digital-citizenship.keep-private"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/ar/computing/b2/les_b2a629f67a85d89a6b9ca50b"
+    },
+    {
+      "draft": "008-computing_algorithms_follow-steps_b05-06_en.json",
+      "lesson": "les_c9083857dac071ec05b0d526",
+      "slug": "follow-steps-b05-06",
+      "locale": "en",
+      "subject": "computing",
+      "objectives": [
+        "computing.algorithms.follow-steps"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/en/computing/c9/les_c9083857dac071ec05b0d526"
+    },
+    {
+      "draft": "009-computing_data_sort-into-groups_b05-06_es.json",
+      "lesson": "les_81554364a0fcecbb8ef3a16d",
+      "slug": "sort-into-groups-b05-06",
+      "locale": "es",
+      "subject": "computing",
+      "objectives": [
+        "computing.data.sort-into-groups"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/es/computing/81/les_81554364a0fcecbb8ef3a16d"
+    },
+    {
+      "draft": "010-computing_systems_parts-of-a-computer_b05-06_hi.json",
+      "lesson": "les_6bb91366eeadddb27c4b60f6",
+      "slug": "parts-of-a-computer-b05-06",
+      "locale": "hi",
+      "subject": "computing",
+      "objectives": [
+        "computing.systems.parts-of-a-computer"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/hi/computing/6b/les_6bb91366eeadddb27c4b60f6"
+    },
+    {
+      "draft": "011-computing_ai_what-ai-is_b09-10_id.json",
+      "lesson": "les_dfc2e5f0e2a89dde01bd7bc6",
+      "slug": "what-ai-is-b09-10",
+      "locale": "id",
+      "subject": "computing",
+      "objectives": [
+        "computing.ai.what-ai-is"
+      ],
+      "ages": {
+        "min": 9,
+        "max": 10
+      },
+      "items": 8,
+      "path": "lessons/id/computing/df/les_dfc2e5f0e2a89dde01bd7bc6"
+    },
+    {
+      "draft": "012-computing_digital-citizenship_check-sources_b09-10_zh-Hans.json",
+      "lesson": "les_19ad6b66bc7af4b0bc60a10c",
+      "slug": "check-sources-b09-10",
+      "locale": "zh-Hans",
+      "subject": "computing",
+      "objectives": [
+        "computing.digital-citizenship.check-sources"
+      ],
+      "ages": {
+        "min": 9,
+        "max": 10
+      },
+      "items": 8,
+      "path": "lessons/zh-Hans/computing/19/les_19ad6b66bc7af4b0bc60a10c"
+    },
+    {
+      "draft": "013-computing_data_binary_b11-12_zh-Hant.json",
+      "lesson": "les_a7c7b9d24ff57e7b0f12e291",
+      "slug": "binary-b11-12",
+      "locale": "zh-Hant",
+      "subject": "computing",
+      "objectives": [
+        "computing.data.binary"
+      ],
+      "ages": {
+        "min": 11,
+        "max": 12
+      },
+      "items": 9,
+      "path": "lessons/zh-Hant/computing/a7/les_a7c7b9d24ff57e7b0f12e291"
+    },
+    {
+      "draft": "014-maths_calc_add-within-20_b05-06_en.json",
+      "lesson": "les_5c93d2a56f8db1a32987725f",
+      "slug": "add-within-20-b05-06",
+      "locale": "en",
+      "subject": "maths",
+      "objectives": [
+        "maths.calc.add-within-20"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/en/maths/5c/les_5c93d2a56f8db1a32987725f"
+    },
+    {
+      "draft": "015-science_earth-space_weather-and-seasons_b05-06_ar.json",
+      "lesson": "les_9a74f05cf7ce4d777a233a39",
+      "slug": "weather-and-seasons-b05-06",
+      "locale": "ar",
+      "subject": "science",
+      "objectives": [
+        "science.earth-space.weather-and-seasons"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/ar/science/9a/les_9a74f05cf7ce4d777a233a39"
+    },
+    {
+      "draft": "016-science_living-things_body-parts-and-senses_b05-06_en.json",
+      "lesson": "les_b49903ccf99809bac4d4f574",
+      "slug": "body-parts-and-senses-b05-06",
+      "locale": "en",
+      "subject": "science",
+      "objectives": [
+        "science.living-things.body-parts-and-senses"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/en/science/b4/les_b49903ccf99809bac4d4f574"
+    },
+    {
+      "draft": "017-science_living-things_living-and-non-living_b05-06_es.json",
+      "lesson": "les_f413a3a2a23bf87de3c06163",
+      "slug": "living-and-non-living-b05-06",
+      "locale": "es",
+      "subject": "science",
+      "objectives": [
+        "science.living-things.living-and-non-living"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/es/science/f4/les_f413a3a2a23bf87de3c06163"
+    },
+    {
+      "draft": "018-science_earth-space_day-and-night_b05-06_hi.json",
+      "lesson": "les_5d37d0d151952243b893326b",
+      "slug": "day-and-night-b05-06",
+      "locale": "hi",
+      "subject": "science",
+      "objectives": [
+        "science.earth-space.day-and-night"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/hi/science/5d/les_5d37d0d151952243b893326b"
+    },
+    {
+      "draft": "019-science_forces-energy_push-and-pull_b05-06_id.json",
+      "lesson": "les_b21b40b44d679c655ece243d",
+      "slug": "push-and-pull-b05-06",
+      "locale": "id",
+      "subject": "science",
+      "objectives": [
+        "science.forces-energy.push-and-pull"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/id/science/b2/les_b21b40b44d679c655ece243d"
+    },
+    {
+      "draft": "020-science_living-things_parts-of-a-plant_b05-06_zh-Hans.json",
+      "lesson": "les_ff94d79a41780673e7d67920",
+      "slug": "parts-of-a-plant-b05-06",
+      "locale": "zh-Hans",
+      "subject": "science",
+      "objectives": [
+        "science.living-things.parts-of-a-plant"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/zh-Hans/science/ff/les_ff94d79a41780673e7d67920"
+    },
+    {
+      "draft": "021-science_materials_name-materials_b05-06_zh-Hant.json",
+      "lesson": "les_d20aca85b83b75aba3c623a2",
+      "slug": "name-materials-b05-06",
+      "locale": "zh-Hant",
+      "subject": "science",
+      "objectives": [
+        "science.materials.name-materials"
+      ],
+      "ages": {
+        "min": 5,
+        "max": 6
+      },
+      "items": 8,
+      "path": "lessons/zh-Hant/science/d2/les_d20aca85b83b75aba3c623a2"
+    }
+  ],
+  "refused": [],
+  "spread": {
+    "objectives": 21,
+    "subjects": [
+      "computing",
+      "maths",
+      "science"
+    ],
+    "locales": [
+      "ar",
+      "en",
+      "es",
+      "hi",
+      "id",
+      "zh-Hans",
+      "zh-Hant"
+    ]
+  },
+  "gaps": {
+    "cells": 1583,
+    "before": 1534,
+    "after": 1513,
+    "closed": [
+      "computing.digital-citizenship.keep-private@b05-06@ar",
+      "maths.algebra.repeating-patterns@b05-06@ar",
+      "maths.data.sort-and-count@b05-06@es",
+      "maths.measure.compare-length-mass@b05-06@hi",
+      "maths.shape.position-words@b05-06@id",
+      "computing.algorithms.follow-steps@b05-06@en",
+      "computing.data.sort-into-groups@b05-06@es",
+      "computing.systems.parts-of-a-computer@b05-06@hi",
+      "maths.calc.add-within-10@b05-06@zh-Hans",
+      "maths.calc.add-within-20@b05-06@en",
+      "maths.fractions.halves-and-quarters@b05-06@zh-Hant",
+      "science.earth-space.weather-and-seasons@b05-06@ar",
+      "science.living-things.body-parts-and-senses@b05-06@en",
+      "science.living-things.living-and-non-living@b05-06@es",
+      "computing.ai.what-ai-is@b09-10@id",
+      "computing.digital-citizenship.check-sources@b09-10@zh-Hans",
+      "science.earth-space.day-and-night@b05-06@hi",
+      "science.forces-energy.push-and-pull@b05-06@id",
+      "science.living-things.parts-of-a-plant@b05-06@zh-Hans",
+      "science.materials.name-materials@b05-06@zh-Hant",
+      "computing.data.binary@b11-12@zh-Hant"
+    ]
+  },
+  "lessons": {
+    "before": 49,
+    "after": 70,
+    "added": 21
+  },
+  "items": {
+    "before": 4178,
+    "after": 4347,
+    "added": 169
+  },
+  "gates": {
+    "count": 20,
+    "green": 20,
+    "red": 0,
+    "findings": 0,
+    "rules": {
+      "schema.valid": 0,
+      "layout.content-addressed": 0,
+      "refs.resolve": 0,
+      "standards.terms-respected": 0,
+      "lesson.aligned": 0,
+      "graph.placed": 0,
+      "alignment.band-matches": 0,
+      "lesson.reading-level": 0,
+      "item.answer-verified": 0,
+      "item.no-answer-leak": 0,
+      "item.heard-prompt-recorded": 0,
+      "asset.licensed": 0,
+      "content.no-pii": 0,
+      "content.no-copied-text": 0,
+      "content.child-safe": 0,
+      "content.no-duplicates": 0,
+      "loop.review-before-reviewed": 0,
+      "loop.reviewer-listed": 0,
+      "loop.base-respected": 0,
+      "index.fresh": 0
+    },
+    "base": "judged against HEAD: nothing reviewed changed"
+  }
+}

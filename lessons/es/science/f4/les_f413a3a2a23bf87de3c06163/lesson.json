@@ -1,0 +1,37 @@
+{
+  "slug": "living-and-non-living-b05-06",
+  "locale": "es",
+  "subject": "science",
+  "title": "Vivo o no vivo",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.living-things.living-and-non-living"
+  ],
+  "teach": {
+    "text": "Los seres vivos comen, crecen y respiran. Una piedra no hace nada de eso.",
+    "examples": [
+      "Un gato está vivo",
+      "Una mesa no está viva"
+    ],
+    "reteach": "Pregunta: ¿come? ¿crece? ¿respira?"
+  },
+  "image": {
+    "emoji": "🌱"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_f413a3a2a23bf87de3c06163",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

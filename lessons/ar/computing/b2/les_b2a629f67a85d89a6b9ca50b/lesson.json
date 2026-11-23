@@ -1,0 +1,37 @@
+{
+  "slug": "keep-private-b05-06",
+  "locale": "ar",
+  "subject": "computing",
+  "title": "معلوماتي الخاصة",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "computing.digital-citizenship.keep-private"
+  ],
+  "teach": {
+    "text": "بعض المعلومات خاصة بك وبأهلك. لا نعطيها لشخص لا نعرفه.",
+    "examples": [
+      "اسمي الكامل خاص",
+      "لوني المفضل ليس سرا"
+    ],
+    "reteach": "إذا لم تكن متأكدا، اسأل شخصا كبيرا تثق به."
+  },
+  "image": {
+    "emoji": "🔒"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_b2a629f67a85d89a6b9ca50b",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

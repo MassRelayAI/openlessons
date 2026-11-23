@@ -1,0 +1,37 @@
+{
+  "slug": "compare-length-mass-b05-06",
+  "locale": "hi",
+  "subject": "maths",
+  "title": "लंबा या छोटा, भारी या हल्का",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.measure.compare-length-mass"
+  ],
+  "teach": {
+    "text": "दो चीज़ों को पास रखकर देखो। जो आगे तक जाए, वह लंबी है।",
+    "examples": [
+      "रस्सी पेंसिल से लंबी है",
+      "हाथी चूहे से भारी है"
+    ],
+    "reteach": "दोनों को एक ही जगह से शुरू करके देखो।"
+  },
+  "image": {
+    "emoji": "📏"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_bb3d1fc7b4f71427d25cd74e",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

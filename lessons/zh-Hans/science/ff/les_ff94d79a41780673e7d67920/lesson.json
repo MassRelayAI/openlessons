@@ -1,0 +1,37 @@
+{
+  "slug": "parts-of-a-plant-b05-06",
+  "locale": "zh-Hans",
+  "subject": "science",
+  "title": "植物的各部分",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.living-things.parts-of-a-plant"
+  ],
+  "teach": {
+    "text": "植物有根、茎、叶和花。根在土里喝水。",
+    "examples": [
+      "根在土里",
+      "叶子是绿色的"
+    ],
+    "reteach": "从下往上看：根、茎、叶、花。"
+  },
+  "image": {
+    "emoji": "🌷"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_ff94d79a41780673e7d67920",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

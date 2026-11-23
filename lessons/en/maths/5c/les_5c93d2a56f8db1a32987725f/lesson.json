@@ -1,0 +1,37 @@
+{
+  "slug": "add-within-20-b05-06",
+  "locale": "en",
+  "subject": "maths",
+  "title": "Add within 20",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.calc.add-within-20"
+  ],
+  "teach": {
+    "text": "To add, start at the bigger number and count on. 8 and 5 make 13.",
+    "examples": [
+      "8 + 5 = 13",
+      "9 + 6 = 15"
+    ],
+    "reteach": "Make ten first, then add what is left."
+  },
+  "image": {
+    "emoji": "➕"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_5c93d2a56f8db1a32987725f",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

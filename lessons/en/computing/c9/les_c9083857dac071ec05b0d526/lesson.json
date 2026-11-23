@@ -1,0 +1,37 @@
+{
+  "slug": "follow-steps-b05-06",
+  "locale": "en",
+  "subject": "computing",
+  "title": "One step at a time",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "computing.algorithms.follow-steps"
+  ],
+  "teach": {
+    "text": "An instruction tells you what to do. Do one step, then the next.",
+    "examples": [
+      "First, then, last",
+      "Step 1, step 2, step 3"
+    ],
+    "reteach": "Say each step out loud before you do it."
+  },
+  "image": {
+    "emoji": "👣"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_c9083857dac071ec05b0d526",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

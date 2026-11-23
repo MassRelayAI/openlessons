@@ -1,0 +1,37 @@
+{
+  "slug": "halves-and-quarters-b05-06",
+  "locale": "zh-Hant",
+  "subject": "maths",
+  "title": "一半和四分之一",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "maths.fractions.halves-and-quarters"
+  ],
+  "teach": {
+    "text": "把東西分成一樣大的兩份，每份是一半。分成一樣大的四份，每份是四分之一。",
+    "examples": [
+      "4 的一半是 2",
+      "8 的四分之一是 2"
+    ],
+    "reteach": "先平均分，再數其中一份。"
+  },
+  "image": {
+    "emoji": "🍕"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_7586ebf40ee93718edb25e5e",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

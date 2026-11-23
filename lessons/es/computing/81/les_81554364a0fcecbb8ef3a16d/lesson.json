@@ -1,0 +1,37 @@
+{
+  "slug": "sort-into-groups-b05-06",
+  "locale": "es",
+  "subject": "computing",
+  "title": "Ordenar con una regla",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "computing.data.sort-into-groups"
+  ],
+  "teach": {
+    "text": "Una regla nos dice cómo ordenar. Por ejemplo: por color o por tamaño.",
+    "examples": [
+      "Regla: es rojo",
+      "Regla: tiene ruedas"
+    ],
+    "reteach": "Di la regla en voz alta y mira cada cosa."
+  },
+  "image": {
+    "emoji": "🗂️"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_81554364a0fcecbb8ef3a16d",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

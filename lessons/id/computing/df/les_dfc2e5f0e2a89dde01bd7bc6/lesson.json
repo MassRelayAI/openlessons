@@ -1,0 +1,37 @@
+{
+  "slug": "what-ai-is-b09-10",
+  "locale": "id",
+  "subject": "computing",
+  "title": "Apa itu AI?",
+  "ages": {
+    "min": 9,
+    "max": 10
+  },
+  "skills": [
+    "computing.ai.what-ai-is"
+  ],
+  "teach": {
+    "text": "AI adalah program komputer yang belajar dari banyak contoh. AI bisa menebak dengan baik, tetapi AI juga bisa salah.",
+    "examples": [
+      "AI belajar dari ribuan foto kucing",
+      "Jawaban AI perlu diperiksa"
+    ],
+    "reteach": "Ingat tiga hal: AI itu program, AI belajar dari contoh, dan AI bisa salah."
+  },
+  "image": {
+    "emoji": "🤖"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_dfc2e5f0e2a89dde01bd7bc6",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}

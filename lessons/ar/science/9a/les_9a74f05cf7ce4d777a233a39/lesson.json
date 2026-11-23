@@ -1,0 +1,37 @@
+{
+  "slug": "weather-and-seasons-b05-06",
+  "locale": "ar",
+  "subject": "science",
+  "title": "الطقس من حولنا",
+  "ages": {
+    "min": 5,
+    "max": 6
+  },
+  "skills": [
+    "science.earth-space.weather-and-seasons"
+  ],
+  "teach": {
+    "text": "الطقس يتغير كل يوم. قد يكون مشمسا أو ماطرا أو عاصفا.",
+    "examples": [
+      "☀️ مشمس",
+      "🌧️ ماطر"
+    ],
+    "reteach": "انظر من النافذة وصف ما تراه."
+  },
+  "image": {
+    "emoji": "⛅"
+  },
+  "schema": "lesson/1",
+  "status": "draft",
+  "provenance": {
+    "origin": "ai",
+    "maker": "claude-code",
+    "model": "claude-fable-5",
+    "tool": "openlessons-loop",
+    "created": "2026-11-23",
+    "reviews": []
+  },
+  "id": "les_9a74f05cf7ce4d777a233a39",
+  "licence": "CC-BY-4.0",
+  "attribution": "openlessons contributors"
+}
