@@ -22,7 +22,8 @@
     "quote": "ids_only",
     "termsUrl": "https://ncic.re.kr/mbr/policy.do",
     "evidence": "공공누리 제2유형은 상업적 이용을 금지하고 있으니",
-    "note": "Korea Open Government Licence type 2: attribution, no commercial use. Grade bands only.",
+    "guard": "paraphrase_rule",
+    "note": "Korea Open Government Licence type 2: attribution, no commercial use. Grade bands only. Copied-text guard: the paraphrase rule alone; no official text was fetched.",
     "reviewed": "2026-11-23"
   }
 }

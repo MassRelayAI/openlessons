@@ -24,7 +24,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://www.ncert.nic.in/",
-    "note": "The publisher's sites could not be reached and its copyright policy was not read. Search results report that reproduction needs its permission. Stage names only.",
+    "guard": "paraphrase_rule",
+    "note": "The publisher's sites could not be reached and its copyright policy was not read. Search results report that reproduction needs its permission. Stage names only. Copied-text guard: the paraphrase rule alone; the publisher's sites could not be reached.",
     "reviewed": null
   }
 }

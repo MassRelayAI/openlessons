@@ -21,7 +21,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.cambridgeinternational.org/privacy-and-legal/terms-and-conditions/",
     "evidence": "must not otherwise copy, reproduce or re-distribute the contents of these pages in whole or in part",
-    "note": "Proprietary: the site's terms forbid copying or redistributing its pages. Stage names only; the curriculum framework text is never stored.",
+    "guard": "paraphrase_rule",
+    "note": "Proprietary: the site's terms forbid copying or redistributing its pages. Stage names only; the curriculum framework text is never stored. Copied-text guard: the paraphrase rule alone; the curriculum framework is not public.",
     "reviewed": "2026-11-23"
   }
 }

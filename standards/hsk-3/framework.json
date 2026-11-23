@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.chinesetest.cn/legal-notice",
     "evidence": "All the contents of the website are copyrighted by CTI or the content providers.",
-    "note": "The test site's contents are copyrighted by the operator or its content providers; reuse must name the source and the grant does not reach adaptation. Band names only; the graded word, character and grammar lists are never stored.",
+    "guard": "paraphrase_rule",
+    "note": "The test site's contents are copyrighted by the operator or its content providers; reuse must name the source and the grant does not reach adaptation. Band names only; the graded word, character and grammar lists are never stored. Copied-text guard: the paraphrase rule alone; no official text of the standard could be fetched; we hold band names only.",
     "reviewed": "2026-11-23"
   }
 }

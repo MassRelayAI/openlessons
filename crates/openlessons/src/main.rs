@@ -169,11 +169,16 @@ enum Cmd {
         #[arg(long)]
         json: bool,
     },
-    /// Print the fingerprints of a text file, for gates/data/protected.json (the text itself is never stored)
+    /// Print the fingerprint list of a text file, for gates/data/protected/<framework>.txt (the text itself is never stored)
     Fingerprint {
+        /// a plain-text file of the protected wording; keep it outside the repository
         file: PathBuf,
-        #[arg(long, default_value_t = 6)]
+        /// tokens per fingerprint: 8 for running text, about 14 for a script counted by character
+        #[arg(long, default_value_t = 8)]
         window: usize,
+        /// keep one fingerprint in this many (1 keeps all); thin a long document
+        #[arg(long, default_value_t = 1)]
+        sample: u64,
     },
     /// Write content ids into items.jsonl files and sort them (a file or a folder)
     Stamp { paths: Vec<PathBuf> },
@@ -485,12 +490,12 @@ fn run(cli: Cli) -> Result<u8> {
             }
             Ok(0)
         }
-        Cmd::Fingerprint { file, window } => {
-            let raw = fs::read_to_string(&file).with_context(|| format!("{}", file.display()))?;
-            let mut prints: Vec<String> = raw.lines().flat_map(|l| text::fingerprints(l, window)).collect();
-            prints.sort();
-            prints.dedup();
-            println!("{}", serde_json::to_string(&prints)?);
+        Cmd::Fingerprint { file, window, sample } => {
+            let raw = String::from_utf8_lossy(&fs::read(&file).with_context(|| format!("{}", file.display()))?).to_string();
+            println!("# window={window}");
+            for h in text::fingerprints(&raw, window, sample) {
+                println!("{h}");
+            }
             Ok(0)
         }
         Cmd::Stamp { paths } => {

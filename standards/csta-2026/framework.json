@@ -25,7 +25,8 @@
     "quote": "ids_only",
     "termsUrl": "https://csteachers.org/pk12standards/",
     "evidence": "as long as they provide proper attribution, use for non-commercial purposes, and share contributions or derivations under the same license",
-    "note": "Shared under an attribution, non-commercial, share-alike licence: neither condition fits a CC BY tree. Standard identifiers only, with our own paraphrase.",
+    "guard": "fingerprints",
+    "note": "Shared under an attribution, non-commercial, share-alike licence: neither condition fits a CC BY tree. Standard identifiers only, with our own paraphrase. Copied-text guard: fingerprints of the pre-kindergarten and kindergarten foundational standards only; grades 1-12 are published in an interactive page that could not be read as text (273 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

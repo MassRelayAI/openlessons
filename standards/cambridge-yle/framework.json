@@ -20,7 +20,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://www.cambridgeenglish.org/exams-and-tests/qualifications/young-learners/",
-    "note": "Proprietary. Level names only; word lists, syllabus text and exam items are never stored. The terms page of this site has not been read.",
+    "guard": "fingerprints",
+    "note": "Proprietary. Level names only; word lists, syllabus text and exam items are never stored. The terms page of this site has not been read. Copied-text guard: fingerprints of the handbook for teachers, with its topic and word lists (20020 runs of 8 tokens, hashes only).",
     "reviewed": null
   }
 }

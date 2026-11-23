@@ -21,7 +21,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.jlpt.jp/e/policy.html",
     "evidence": "without permission of copyright holders for personal use such as individual study",
-    "note": "Copying and adaptation are allowed without permission only for personal use such as individual study. Level names only.",
+    "guard": "paraphrase_rule",
+    "note": "Copying and adaptation are allowed without permission only for personal use such as individual study. Level names only. Copied-text guard: the paraphrase rule alone; we hold level names only, and no syllabus text was fetched.",
     "reviewed": "2026-11-23"
   }
 }

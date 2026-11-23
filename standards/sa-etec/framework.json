@@ -23,7 +23,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://etec.gov.sa/",
-    "note": "No framework page or terms page could be read; the site footer reserves all rights. Stage names only.",
+    "guard": "paraphrase_rule",
+    "note": "No framework page or terms page could be read; the site footer reserves all rights. Stage names only. Copied-text guard: the paraphrase rule alone; no framework text could be found on the commission's site.",
     "reviewed": null
   }
 }

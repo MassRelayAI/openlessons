@@ -361,7 +361,7 @@ struct Refs {
     signals: Vec<Signal>,
     registry: Vec<Value>,
     areas: BTreeMap<String, String>,
-    protected: text::Protected,
+    protected: std::sync::Arc<text::Protected>,
     /// skill id -> aligned standard ids
     aligned: BTreeMap<String, BTreeSet<String>>,
     alignments: Vec<Aligned>,
@@ -408,7 +408,7 @@ pub fn scan(root: &Path, data: &Path) -> Result<Scan> {
         signals: Vec::new(),
         registry: Vec::new(),
         areas: BTreeMap::new(),
-        protected: text::Protected::from_json(&load("protected.json")?),
+        protected: text::Protected::load(data).map_err(|e| anyhow::anyhow!(e))?,
         aligned: BTreeMap::new(),
         alignments: Vec::new(),
         assets: BTreeMap::new(),
@@ -704,6 +704,13 @@ fn standards(c: &mut Ctx, r: &mut Refs) {
         }
         if f["span"]["ages"]["min"].as_i64() > f["span"]["ages"]["max"].as_i64() {
             c.add("schema.valid", &frel, 0, "span.ages.min is above span.ages.max");
+        }
+        // a framework whose wording we hold back says how copied text is kept out, and says it truly
+        let (guard, listed) = (st(terms, "guard"), r.protected.coverage().contains_key(&fw));
+        if quote != "official_text" && guard.is_empty() {
+            c.add("standards.terms-respected", &frel, 0, "a framework whose wording may not be copied says how our text is guarded (`terms.guard`: fingerprints or paraphrase_rule)");
+        } else if (guard == "fingerprints") != listed && !(guard.is_empty() && !listed) {
+            c.add("standards.terms-respected", &frel, 0, format!("`terms.guard` is `{guard}` but gates/data/protected/ {} a fingerprint list for {fw}", if listed { "holds" } else { "holds no" }));
         }
         r.registry.push(f.clone());
         r.frameworks.insert(fw.clone(), quote.to_string());

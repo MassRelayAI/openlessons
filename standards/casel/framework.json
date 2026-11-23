@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://casel.org/terms-of-use/",
     "evidence": "may not be copied, reproduced, modified, published",
-    "note": "All rights reserved: the site's contents may not be copied or modified without written permission. The five competence areas are named as facts; no text is stored.",
+    "guard": "fingerprints",
+    "note": "All rights reserved: the site's contents may not be copied or modified without written permission. The five competence areas are named as facts; no text is stored. Copied-text guard: fingerprints of the framework page: the five competence areas and their descriptions (2811 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

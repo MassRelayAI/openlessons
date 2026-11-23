@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.education.gov.za/terms.aspx",
     "evidence": "All rights reserved.",
-    "note": "All rights reserved. Phase names only.",
+    "guard": "fingerprints",
+    "note": "All rights reserved. Phase names only. Copied-text guard: fingerprints of mathematics for grades 4-6 and life skills for grades R-3, in English; the other subjects and phases are not covered (34260 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

@@ -25,7 +25,8 @@
     "quote": "ids_only",
     "termsUrl": "https://newzealandcurriculum.tahurangi.education.govt.nz/copyright",
     "evidence": "licensed for re-use under a Creative Commons Attribution-NonCommercial 4.0 Licence",
-    "note": "Crown copyright under a non-commercial licence. Level names only, with our own paraphrase.",
+    "guard": "paraphrase_rule",
+    "note": "Crown copyright under a non-commercial licence. Level names only, with our own paraphrase. Copied-text guard: the paraphrase rule alone; only the site's front page could be read as text.",
     "reviewed": "2026-11-23"
   }
 }

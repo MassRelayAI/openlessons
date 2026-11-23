@@ -3,8 +3,9 @@
 use crate::canon::sha256_hex;
 use regex::Regex;
 use serde_json::Value;
-use std::collections::{BTreeMap, BTreeSet};
-use std::sync::OnceLock;
+use std::collections::{BTreeMap, BTreeSet, HashMap};
+use std::path::{Path, PathBuf};
+use std::sync::{Arc, Mutex, OnceLock};
 
 /// CJK ideographs and kana: counted by character, never as letters of a word.
 pub fn is_cjk(c: char) -> bool {
@@ -168,39 +169,97 @@ impl Lexicon {
 
 // ---------- copied text ----------
 
-/// What the gate `content.no-copied-text` looks for in our own wording (gates/data/protected.json): marks that travel
-/// with copied material, and fingerprints of protected wording. A fingerprint is the hash of a run of `window` words, so
-/// the list can say "this sentence is the publisher's" without holding the sentence.
+/// What the gate `content.no-copied-text` looks for in our own wording: marks that travel with copied material
+/// (gates/data/protected.json), and fingerprints of protected wording (gates/data/protected/<framework>.txt). A
+/// fingerprint is the hash of a run of `window` tokens, so a list can say "this sentence is the publisher's" without
+/// holding the sentence. Each framework's list has its own window: eight words for running text, more for a script
+/// that is counted by character.
 #[derive(Debug, Clone, Default)]
 pub struct Protected {
     /// substrings, matched as written (the copyright sign)
     pub symbols: Vec<String>,
     /// phrases, matched as runs of whole tokens
     pub marks: Vec<Vec<String>>,
-    pub window: usize,
-    /// fingerprint -> framework id
-    pub prints: BTreeMap<String, String>,
+    /// window -> (fingerprint -> framework id)
+    pub prints: BTreeMap<usize, HashMap<u64, String>>,
 }
 
-/// The fingerprints of a text: one per run of `window` tokens.
-pub fn fingerprints(text: &str, window: usize) -> Vec<String> {
+fn print_of(window: &[String]) -> u64 {
+    u64::from_str_radix(&sha256_hex(window.join(" ").as_bytes())[..12], 16).unwrap_or(0)
+}
+
+/// The fingerprints of a text, as twelve hex digits each: one per run of `window` tokens across the whole text.
+/// `sample` keeps one fingerprint in that many (1 keeps all): a long document can be thinned and a copied passage of a
+/// few sentences is still caught.
+pub fn fingerprints(text: &str, window: usize, sample: u64) -> Vec<String> {
     let toks = tokens(text);
     if window == 0 || toks.len() < window {
         return Vec::new();
     }
-    toks.windows(window).map(|w| sha256_hex(w.join(" ").as_bytes())[..16].to_string()).collect()
+    let mut out: Vec<String> = toks.windows(window).map(print_of).filter(|h| sample <= 1 || h % sample == 0).map(|h| format!("{h:012x}")).collect();
+    out.sort();
+    out.dedup();
+    out
 }
 
 impl Protected {
     pub fn from_json(v: &Value) -> Protected {
         let list = |k: &str| v.get(k).and_then(Value::as_array).into_iter().flatten().filter_map(Value::as_str).map(str::to_string).collect::<Vec<_>>();
-        let mut p = Protected { symbols: list("symbols"), marks: list("marks").iter().map(|m| tokens(m)).filter(|m| !m.is_empty()).collect(), window: v.get("window").and_then(Value::as_u64).unwrap_or(6) as usize, prints: BTreeMap::new() };
+        let mut p = Protected { symbols: list("symbols"), marks: list("marks").iter().map(|m| tokens(m)).filter(|m| !m.is_empty()).collect(), prints: BTreeMap::new() };
+        // fingerprints given inline, for tests and small lists: {"window": 6, "fingerprints": {"<framework>": ["<12 hex>"]}}
+        let window = v.get("window").and_then(Value::as_u64).unwrap_or(8) as usize;
         for (framework, prints) in v.get("fingerprints").and_then(Value::as_object).into_iter().flatten() {
             for h in prints.as_array().into_iter().flatten().filter_map(Value::as_str) {
-                p.prints.insert(h.to_string(), framework.clone());
+                p.add(window, h, framework);
             }
         }
         p
+    }
+
+    fn add(&mut self, window: usize, hex: &str, framework: &str) {
+        if let Ok(h) = u64::from_str_radix(hex.trim(), 16) {
+            self.prints.entry(window).or_default().entry(h).or_insert_with(|| framework.to_string());
+        }
+    }
+
+    /// protected.json and every protected/<framework>.txt of a gate data folder. A list file starts with a line
+    /// `# window=<n>` and holds one fingerprint per line. Read once per folder: the lists are large and never change
+    /// while the program runs.
+    pub fn load(data: &Path) -> Result<Arc<Protected>, String> {
+        static CACHE: OnceLock<Mutex<HashMap<PathBuf, Arc<Protected>>>> = OnceLock::new();
+        let cache = CACHE.get_or_init(|| Mutex::new(HashMap::new()));
+        if let Some(p) = cache.lock().ok().and_then(|c| c.get(data).cloned()) {
+            return Ok(p);
+        }
+        let file = data.join("protected.json");
+        let raw = std::fs::read_to_string(&file).map_err(|e| format!("gate data {}: {e}", file.display()))?;
+        let mut p = Protected::from_json(&serde_json::from_str(&raw).map_err(|e| format!("gate data {}: {e}", file.display()))?);
+        let mut lists: Vec<PathBuf> = std::fs::read_dir(data.join("protected")).map(|r| r.filter_map(|e| e.ok().map(|e| e.path())).collect()).unwrap_or_default();
+        lists.sort();
+        for list in lists.iter().filter(|l| l.extension().is_some_and(|x| x == "txt")) {
+            let framework = list.file_stem().map(|n| n.to_string_lossy().to_string()).unwrap_or_default();
+            let body = std::fs::read_to_string(list).map_err(|e| format!("gate data {}: {e}", list.display()))?;
+            let window = body.lines().next().and_then(|l| l.strip_prefix("# window=")).and_then(|n| n.trim().parse::<usize>().ok()).ok_or_else(|| format!("gate data {}: the first line is `# window=<n>`", list.display()))?;
+            for line in body.lines().skip(1).filter(|l| !l.trim().is_empty()) {
+                p.add(window, line, &framework);
+            }
+        }
+        let p = Arc::new(p);
+        if let Ok(mut c) = cache.lock() {
+            c.insert(data.to_path_buf(), p.clone());
+        }
+        Ok(p)
+    }
+
+    /// The frameworks that have a list, with the number of fingerprints each holds.
+    pub fn coverage(&self) -> BTreeMap<String, usize> {
+        let mut out = BTreeMap::new();
+        for map in self.prints.values() {
+            for framework in map.values() {
+                *out.entry(framework.clone()).or_default() += 1;
+            }
+        }
+        out
     }
 
     /// Why this text looks copied, if it does.
@@ -212,9 +271,12 @@ impl Protected {
         if let Some(m) = self.marks.iter().find(|m| contains_tokens(&toks, m)) {
             return Some(format!("'{}' marks copied material: write it in your own words and credit sources in `attribution`", m.join(" ")));
         }
-        if self.window > 0 && toks.len() >= self.window {
-            for w in toks.windows(self.window) {
-                if let Some(framework) = self.prints.get(&sha256_hex(w.join(" ").as_bytes())[..16]) {
+        for (window, map) in &self.prints {
+            if *window == 0 || toks.len() < *window {
+                continue;
+            }
+            for w in toks.windows(*window) {
+                if let Some(framework) = map.get(&print_of(w)) {
                     return Some(format!("'{}' is the wording of {framework}, whose terms do not allow copying it: paraphrase", w.join(" ")));
                 }
             }
@@ -325,7 +387,7 @@ mod tests {
         let theirs = "Pupils should recite the seven wonders in order every single morning";
         let p = Protected::from_json(&serde_json::json!({
             "symbols": ["\u{a9}"], "marks": ["all rights reserved"], "window": 6,
-            "fingerprints": {"example-framework": fingerprints(theirs, 6)}
+            "fingerprints": {"example-framework": fingerprints(theirs, 6, 1)}
         }));
         assert!(p.issue("Count the dots. \u{a9} 2020 A Publisher").is_some());
         assert!(p.issue("All Rights Reserved.").is_some());
@@ -333,7 +395,14 @@ mod tests {
         // six of their words in a row, inside our sentence
         assert!(p.issue("Now recite the seven wonders in order, please.").is_some());
         assert!(p.issue("Recite the seven wonders.").is_none());
-        assert_eq!(fingerprints("one two three", 6), Vec::<String>::new());
+        assert_eq!(fingerprints("one two three", 6, 1), Vec::<String>::new());
+        // a thinned list still catches a passage of a few sentences, and a run that crosses a line break is one run
+        let long = "the quick brown fox jumps over the lazy dog and then\nruns far away into the quiet green hills beyond the river bank";
+        let thin = Protected::from_json(&serde_json::json!({"window": 8, "fingerprints": {"example-framework": fingerprints(long, 8, 2)}}));
+        assert!(fingerprints(long, 8, 2).len() < fingerprints(long, 8, 1).len());
+        assert!(thin.issue(&long.replace('\n', " ")).unwrap().contains("example-framework"));
+        assert!(thin.issue("The quick brown fox is a pangram that people type to test a keyboard.").is_none());
+        assert_eq!(thin.coverage()["example-framework"], fingerprints(long, 8, 2).len());
     }
 
     #[test]

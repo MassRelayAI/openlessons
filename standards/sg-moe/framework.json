@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.moe.gov.sg/terms-of-use",
     "evidence": "no part of The Website may be reproduced or reused for any commercial purposes whatsoever without our prior written permission",
-    "note": "All rights reserved: no commercial reuse without written permission, and no modification. Level names only, with our own paraphrase.",
+    "guard": "paraphrase_rule",
+    "note": "All rights reserved: no commercial reuse without written permission, and no modification. Level names only, with our own paraphrase. Copied-text guard: the paraphrase rule alone; the syllabus files were not found at the ministry's addresses.",
     "reviewed": "2026-11-23"
   }
 }

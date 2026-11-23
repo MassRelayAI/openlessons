@@ -24,7 +24,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://www.moe.gov.ae/",
-    "note": "No terms of reuse could be read on the ministry's site; a search result reports that all copyrights are reserved. Cycle names only.",
+    "guard": "paraphrase_rule",
+    "note": "No terms of reuse could be read on the ministry's site; a search result reports that all copyrights are reserved. Cycle names only. Copied-text guard: the paraphrase rule alone; no framework text could be found on the ministry's site.",
     "reviewed": null
   }
 }

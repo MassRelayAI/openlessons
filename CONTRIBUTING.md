@@ -34,7 +34,8 @@ read the standard: `partial` and `exact` are claims about coverage, and they mus
 
 A new framework comes with its terms: the licence, the page where you read it, a short quotation from that page and the
 day you read it. If you could not read the terms, say so (`"reviewed": null`): the framework is then held by identifier
-only.
+only. Say also how our wording is guarded against its text (`terms.guard`): a fingerprint list (see `gates/README.md`),
+or the paraphrase rule alone.
 
 1. **Write.** Follow [SKILL.md](SKILL.md) section 3: it is the same procedure for a person and for an agent.
 2. **Say who made it.** Every record has `provenance`: `origin` is `human`, `ai` or `generator`; `maker` is a public handle

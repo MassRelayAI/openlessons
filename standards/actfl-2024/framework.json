@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.actfl.org/use-of-actfl-proficiency-guidelines-and-issuing-of-official-actfl-tests",
     "evidence": "may be used for non-profit, educational purposes only, provided that they are reproduced in their entirety",
-    "note": "Reproduction is allowed only whole, unaltered, for non-profit educational purposes. Level names only. Recorded for Arabic and other languages it describes.",
+    "guard": "paraphrase_rule",
+    "note": "Reproduction is allowed only whole, unaltered, for non-profit educational purposes. Level names only. Recorded for Arabic and other languages it describes. Copied-text guard: the paraphrase rule alone; the guidelines file was not found at the publisher's address.",
     "reviewed": "2026-11-23"
   }
 }

@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://kurikulum.kemendikdasmen.go.id/",
     "evidence": "Hak Cipta Kementerian Pendidikan Dasar dan Menengah",
-    "note": "The site states no licence and its footer claims copyright for the ministry. Indonesia's copyright law (UU 28/2014, Pasal 42) excludes laws and regulations from copyright, but whether an agency head's decree setting the learning outcomes counts has not been settled for us. Phase names only; the text of the learning outcomes is never stored.",
+    "guard": "paraphrase_rule",
+    "note": "The site states no licence and its footer claims copyright for the ministry. Indonesia's copyright law (UU 28/2014, Pasal 42) excludes laws and regulations from copyright, but whether an agency head's decree setting the learning outcomes counts has not been settled for us. Phase names only; the text of the learning outcomes is never stored. Copied-text guard: the paraphrase rule alone; the official files of the learning outcomes could not be fetched from the ministry's hosts.",
     "reviewed": "2026-11-23"
   }
 }

@@ -25,7 +25,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.ontario.ca/page/copyright-information",
     "evidence": "may be reproduced for non-commercial purposes if no changes are made to the original content",
-    "note": "Crown copyright: reproduction is allowed for non-commercial purposes with no changes; commercial reproduction needs a licence from the King's Printer. Codes only, with our own paraphrase.",
+    "guard": "paraphrase_rule",
+    "note": "Crown copyright: reproduction is allowed for non-commercial purposes with no changes; commercial reproduction needs a licence from the King's Printer. Codes only, with our own paraphrase. Copied-text guard: the paraphrase rule alone; the curriculum is served through an interactive site that could not be read as text.",
     "reviewed": "2026-11-23"
   }
 }

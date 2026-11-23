@@ -21,7 +21,8 @@
     "quote": "ids_only",
     "termsUrl": "https://rm.coe.int/common-european-framework-of-reference-for-languages-learning-teaching/16809ea0d4",
     "evidence": "All rights reserved. No part of this publication may be translated, reproduced or transmitted, in any form or by any means",
-    "note": "All rights reserved: reproducing or translating the descriptors needs written permission. Level names are used as facts; descriptors are never copied.",
+    "guard": "fingerprints",
+    "note": "All rights reserved: reproducing or translating the descriptors needs written permission. Level names are used as facts; descriptors are never copied. Copied-text guard: fingerprints of the whole Companion volume, descriptors included (53725 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

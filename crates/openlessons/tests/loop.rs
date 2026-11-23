@@ -340,3 +340,59 @@ fn a_dry_run_commits_the_run_on_its_own_branch_and_pushes_nothing() {
     assert!(land(Mode::DryRun).unwrap_err().to_string().contains("uncommitted"));
     done(&tree);
 }
+
+#[test]
+fn every_held_back_framework_is_guarded_by_a_proven_list_or_says_it_is_not() {
+    let s = scan(&root(), &data()).unwrap();
+    let lists: Value = serde_json::from_str(&fs::read_to_string(data().join("protected.json")).unwrap()).unwrap();
+    let held = openlessons::text::Protected::load(&data()).unwrap().coverage();
+    let (mut listed, mut rule_only) = (0, 0);
+    for f in &s.registry {
+        let (id, t) = (f["id"].as_str().unwrap(), &f["terms"]);
+        if t["quote"] == "official_text" {
+            assert!(t.get("guard").is_none() && !held.contains_key(id), "{id}: wording that may be quoted needs no guard");
+            continue;
+        }
+        match t["guard"].as_str() {
+            Some("fingerprints") => {
+                listed += 1;
+                // the list is there, as large as its record says, made from a named official source, and proven red first
+                let l = &lists["lists"][id];
+                let lines = fs::read_to_string(data().join("protected").join(format!("{id}.txt"))).unwrap().lines().count() as u64 - 1;
+                // (a run two publishers share is counted for the first of them, so the loaded count can be a little lower)
+                assert!(lines == l["fingerprints"].as_u64().unwrap() && held[id] as u64 <= lines && held[id] > 200, "{id}");
+                assert!(l["sources"][0]["url"].as_str().unwrap().starts_with("https://") && l["window"].as_u64().unwrap() >= 8, "{id}");
+                assert!(l["proof"]["before"].as_str().unwrap().starts_with("not caught") && l["proof"]["after"].as_str().unwrap().contains(id), "{id}");
+                assert!(t["note"].as_str().unwrap().contains("Copied-text guard: fingerprints"), "{id}");
+            }
+            Some("paraphrase_rule") => {
+                rule_only += 1;
+                assert!(!held.contains_key(id) && t["note"].as_str().unwrap().contains("Copied-text guard: the paraphrase rule alone"), "{id}");
+            }
+            other => panic!("{id}: terms.guard is {other:?}"),
+        }
+    }
+    assert_eq!((listed, rule_only), (10, 22));
+    // the lists hold hashes and nothing else: no line of a list is text
+    for (id, _) in held {
+        let body = fs::read_to_string(data().join("protected").join(format!("{id}.txt"))).unwrap();
+        assert!(body.lines().skip(1).all(|l| l.len() == 12 && l.bytes().all(|b| b.is_ascii_hexdigit())), "{id}");
+    }
+
+    // a record that claims a list it does not have, or hides one it has, turns the terms gate red
+    let (tree, _) = green_copy("guard");
+    let f = tree.join("standards/example-framework/framework.json");
+    let mut v: Value = serde_json::from_str(&fs::read_to_string(&f).unwrap()).unwrap();
+    v["terms"]["class"] = json!("reference_only");
+    v["terms"]["quote"] = json!("ids_only");
+    let hit = |v: &Value| -> usize {
+        fs::write(&f, v.to_string()).unwrap();
+        scan(&tree, &data()).unwrap().findings.iter().filter(|x| x.rule == "standards.terms-respected" && x.message.contains("guard")).count()
+    };
+    assert_eq!(hit(&v), 1, "no guard named");
+    v["terms"]["guard"] = json!("fingerprints");
+    assert_eq!(hit(&v), 1, "a list that does not exist");
+    v["terms"]["guard"] = json!("paraphrase_rule");
+    assert_eq!(hit(&v), 0);
+    done(&tree);
+}

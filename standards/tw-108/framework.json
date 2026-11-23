@@ -25,7 +25,8 @@
     "notice": "資料來源：國家教育研究院／教育部",
     "termsUrl": "https://www.naer.edu.tw/PageDoc?fid=324",
     "evidence": "以無償、非專屬，得再授權之方式提供公眾使用",
-    "note": "The host's open-information announcement grants free, sublicensable reuse and adaptation with the source cited, but covers what the host owns; the guidelines are issued by the Ministry. Until that is settled we keep identifiers and titles and paraphrase.",
+    "guard": "fingerprints",
+    "note": "The host's open-information announcement grants free, sublicensable reuse and adaptation with the source cited, but covers what the host owns; the guidelines are issued by the Ministry. Until that is settled we keep identifiers and titles and paraphrase. Copied-text guard: fingerprints of the general guidelines and the English-language domain; the other domains are not covered (65589 runs of 14 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

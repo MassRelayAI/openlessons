@@ -1,5 +1,20 @@
 # Changelog
 
+## Unreleased
+
+- **The copied-text guard covers ten frameworks.** `gates/data/protected/<framework>.txt` holds fingerprints (hashes of
+  runs of eight words, fourteen characters for Chinese) of the official texts of Common Core (mathematics and English
+  language arts), the CEFR Companion volume, PISA 2025, Hong Kong's mathematics curriculum guide, South Africa's CAPS
+  (mathematics 4-6, life skills R-3), Taiwan's guidelines (general, English), the CSTA PK-K standards, the ISTE Standards
+  for Students, the CASEL framework and the Cambridge Young Learners handbook: 320,588 fingerprints, no text. Each list
+  was proven red first: a passage of its source, planted in a copy of the tree, passed every gate without the list and
+  was refused with it (`gates/data/protected.json` records the sources and the proofs).
+- `framework/1` gains `terms.guard`: `fingerprints` or `paraphrase_rule`. The 22 held-back frameworks with no official
+  text that could be fetched say so, with the reason; the gate `standards.terms-respected` refuses a record that claims
+  a list it does not have.
+- `openlessons fingerprint` reads a whole text as one run of words, takes `--window` and `--sample`, and prints a list
+  file.
+
 ## 0.4.0 (2026-11-23)
 
 The content loop: where the benchmarks come from, who a lesson is for, what is missing, and a safe way to add it.

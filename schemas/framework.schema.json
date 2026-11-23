@@ -110,6 +110,13 @@
           "minLength": 1,
           "maxLength": 400,
           "description": "a short quotation from the page at termsUrl that shows the terms, as read on the `reviewed` day"
+        },
+        "guard": {
+          "enum": [
+            "fingerprints",
+            "paraphrase_rule"
+          ],
+          "description": "how our own wording is kept clear of this framework's text when we may not copy it. fingerprints: gates/data/protected/<framework>.txt holds hashes of the official text and the gate content.no-copied-text refuses a matching passage. paraphrase_rule: no official text could be fingerprinted, so the guard is the rule (write it in your own words) and the licence reviewer alone"
         }
       }
     },

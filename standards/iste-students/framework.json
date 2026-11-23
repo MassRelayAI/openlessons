@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://iste.org/permissions-licensing",
     "evidence": "Commercial use of the ISTE Standards requires a commercial digital use agreement.",
-    "note": "All rights reserved; commercial use needs an agreement with ISTE. Standard numbers only, with our own paraphrase.",
+    "guard": "fingerprints",
+    "note": "All rights reserved; commercial use needs an agreement with ISTE. Standard numbers only, with our own paraphrase. Copied-text guard: fingerprints of the standards for students as shown on the publisher's page (3214 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

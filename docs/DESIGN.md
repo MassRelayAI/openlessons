@@ -237,10 +237,12 @@ skills or alignments, must match an order of its run when the run has orders, an
 a branch `loop/<id>`; a dry run stops there, a full run pushes and opens a pull request with the report as its body.
 
 **What the copied-text gate can and cannot see.** It sees the marks that travel with copied text, and runs of six words
-that match a fingerprint. The fingerprints today cover the kindergarten and grade 1 mathematics standards of the Common
-Core, as far as their pages could be read. It cannot see a close paraphrase or a text nobody has fingerprinted: that is
-what the `licence` reviewer is for. **Later**: fingerprints for every `attribution` and `reference_only` framework we
-hold nodes of.
+that match a fingerprint list. Ten of the 32 frameworks whose wording we hold back have a list, made from the
+publisher's own text and proven red first (`gates/data/protected.json` names each source and what it covers; some lists
+cover one subject or one document of a larger curriculum). The other 22 had no official text that could be fetched:
+their records say `terms.guard: paraphrase_rule`, and there the guard is the rule and the `licence` reviewer alone. No
+list can see a close paraphrase. **Later**: lists for the frameworks whose sites refuse automated reads, made by a
+person with the document in hand.
 
 ## 7. Next
 

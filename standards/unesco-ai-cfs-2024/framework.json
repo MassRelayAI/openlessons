@@ -22,7 +22,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.unesco.org/en/open-access/cc-sa",
     "evidence": "available in Open Access under the Attribution-ShareAlike 3.0 IGO (CC-BY-SA 3.0 IGO) license",
-    "note": "Open access under a share-alike licence, which cannot be carried into a CC BY tree. Competency names by code only, with our own paraphrase.",
+    "guard": "paraphrase_rule",
+    "note": "Open access under a share-alike licence, which cannot be carried into a CC BY tree. Competency names by code only, with our own paraphrase. Copied-text guard: the paraphrase rule alone; the document is served through a reader that could not be read as text.",
     "reviewed": "2026-11-23"
   }
 }

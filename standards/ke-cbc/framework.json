@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://kicd.ac.ke/cbc-materials/curriculum-designs/",
     "evidence": "All Rights Reserved",
-    "note": "All rights reserved (site footer; no terms page). Grade names only.",
+    "guard": "paraphrase_rule",
+    "note": "All rights reserved (site footer; no terms page). Grade names only. Copied-text guard: the paraphrase rule alone; no official text was fetched.",
     "reviewed": "2026-11-23"
   }
 }

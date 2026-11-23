@@ -23,7 +23,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://www.socialstudies.org/standards/c3",
-    "note": "The document is reported to allow free reproduction of its text, but its rights page could not be read, so the terms are unread and only codes are used.",
+    "guard": "paraphrase_rule",
+    "note": "The document is reported to allow free reproduction of its text, but its rights page could not be read, so the terms are unread and only codes are used. Copied-text guard: the paraphrase rule alone; the document could not be fetched.",
     "reviewed": null
   }
 }

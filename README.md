@@ -114,7 +114,8 @@ terms were read, a short quotation from that page, the day it was read, and what
 A gate enforces the table: a record that holds a publisher's wording under terms that do not allow it turns
 `standards.terms-respected` red, and terms nobody has read allow identifiers only. A second gate,
 `content.no-copied-text`, reads our own wording for the marks of copied material and for runs of words from texts we may
-not copy.
+not copy: ten of the held-back frameworks have a fingerprint list made from their official text (hashes only, never the
+text), and each of the other 22 says in its record that the paraphrase rule is its only guard (`terms.guard`).
 
 ## Age bands
 

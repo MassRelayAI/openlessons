@@ -23,7 +23,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://educacionbasica.sep.gob.mx/",
-    "note": "The site could not be reached and no terms of reuse were read. Phase names only.",
+    "guard": "paraphrase_rule",
+    "note": "The site could not be reached and no terms of reuse were read. Phase names only. Copied-text guard: the paraphrase rule alone; the publisher's site could not be reached.",
     "reviewed": null
   }
 }

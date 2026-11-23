@@ -20,7 +20,8 @@
     "class": "reference_only",
     "quote": "ids_only",
     "termsUrl": "https://www.ibo.org/terms-and-conditions/copyright/",
-    "note": "Proprietary. The copyright page could not be read (it refuses automated requests), so the terms are unread and only programme names are used.",
+    "guard": "paraphrase_rule",
+    "note": "Proprietary. The copyright page could not be read (it refuses automated requests), so the terms are unread and only programme names are used. Copied-text guard: the paraphrase rule alone; the publisher's site refuses automated reads, and its guides are not public.",
     "reviewed": null
   }
 }

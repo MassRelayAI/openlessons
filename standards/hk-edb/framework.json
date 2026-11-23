@@ -25,7 +25,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.edb.gov.hk/en/important-notices/index.html",
     "evidence": "solely for personal or non-commercial internal use",
-    "note": "All rights reserved: download is for personal or non-commercial internal use, and adaptation needs written authorisation. Key stage names only.",
+    "guard": "fingerprints",
+    "note": "All rights reserved: download is for personal or non-commercial internal use, and adaptation needs written authorisation. Key stage names only. Copied-text guard: fingerprints of the mathematics curriculum guide in English only; other subjects and the Chinese editions are not covered (32371 runs of 8 tokens, hashes only).",
     "reviewed": "2026-11-23"
   }
 }

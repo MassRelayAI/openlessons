@@ -24,7 +24,8 @@
     "quote": "ids_only",
     "termsUrl": "https://www.chinesetest.cn/legal-notice",
     "evidence": "All the contents of the website are copyrighted by CTI or the content providers.",
-    "note": "The same site terms as HSK. Level names only; word lists and exam items are never stored.",
+    "guard": "paraphrase_rule",
+    "note": "The same site terms as HSK. Level names only; word lists and exam items are never stored. Copied-text guard: the paraphrase rule alone; no official text could be fetched; we hold level names only.",
     "reviewed": "2026-11-23"
   }
 }
