@@ -1,21 +1,21 @@
 {
-  "note": "Words a hint uses to point at something its item must have. `picture`: the hint sends the learner to an image, so the item shows one. `both`: the hint speaks of two things, so the item offers no more than two choices. Spaced scripts match whole words; CJK matches the text. Used by the gate item.hint-fits.",
+  "note": "Phrases a hint uses to send the learner to something its item must have. `picture`: the hint tells the learner to look at an image, so the item shows one (a hint that only mentions photos as a topic is not matched). `both`: the hint speaks of exactly two things, so the item offers no more than two choices (a plain 'two' is not matched). Spaced scripts match whole words; CJK matches the text. Used by the gate item.hint-fits; each list is proven on the first jury run's drafts.",
   "picture": {
-    "en": ["picture", "pictures", "image", "drawing"],
-    "es": ["imagen", "imágenes", "dibujo", "dibujos", "foto"],
-    "id": ["gambar", "foto"],
-    "hi": ["तस्वीर", "तस्वीरें", "चित्र"],
-    "ar": ["صورة", "الصورة", "الصور", "صور", "الرسم"],
-    "zh-Hans": ["图片", "看图", "图中", "图上"],
-    "zh-Hant": ["圖片", "看圖", "圖中", "圖上"]
+    "en": ["the picture", "the pictures", "this picture", "each picture", "the image", "the drawing", "the drawings"],
+    "es": ["la imagen", "las imágenes", "el dibujo", "los dibujos", "cada dibujo", "la foto", "las fotos"],
+    "id": ["lihat gambar", "gambar ini", "gambarnya", "lihat foto", "foto ini"],
+    "hi": ["तस्वीर देखो", "तस्वीर को देखो", "चित्र देखो", "चित्र को देखो", "तस्वीर में", "चित्र में"],
+    "ar": ["انظر إلى الصورة", "انظر إلى الصور", "انظري إلى الصورة", "في الصورة", "في الصور", "انظر إلى الرسم"],
+    "zh-Hans": ["看图", "看看图", "图中", "图上", "图里", "图片里", "图片上"],
+    "zh-Hant": ["看圖", "看看圖", "圖中", "圖上", "圖裡", "圖片裡", "圖片上"]
   },
   "both": {
     "en": ["both"],
-    "es": ["ambos", "ambas", "los dos", "las dos"],
-    "id": ["kedua", "keduanya"],
+    "es": ["ambos", "ambas"],
+    "id": ["keduanya", "kedua-duanya"],
     "hi": ["दोनों"],
-    "ar": ["كلا", "كلتا", "كليهما", "كلتيهما"],
-    "zh-Hans": ["两个", "两样", "两种"],
-    "zh-Hant": ["兩個", "兩樣", "兩種"]
+    "ar": ["كلتا", "كلاهما", "كلتاهما", "كليهما", "كلتيهما"],
+    "zh-Hans": ["两者", "两个都", "两样都", "两边都"],
+    "zh-Hant": ["兩者", "兩個都", "兩樣都", "兩邊都"]
   }
 }
