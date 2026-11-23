@@ -1,0 +1,74 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_e372991865cf038173f2de5d",
+  "lesson": "les_bb3d1fc7b4f71427d25cd74e",
+  "contentHash": "974ce186d898b102def201dbee6922528f65846d18c9740b2fc15aa350240611",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Comparing weight: a balloon is lighter, so easier to lift, than a door or a chair.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards for Mathematics, Kindergarten Measurement and Data (K.MD.A.1-2)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "hi",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

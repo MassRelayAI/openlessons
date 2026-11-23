@@ -1,0 +1,74 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_9f53ee475c0651a055e8c072",
+  "lesson": "les_9a74f05cf7ce4d777a233a39",
+  "contentHash": "8c4e5c0ec64c39151ecdab6256635137fdc9319c3efd25baddb79f9002fa5903",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Wind is a component of weather; strongly moving air is windy weather (عاصف), as the lesson's own example 💨 teaches.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "NGSS K-ESS2-1 Earth's Systems (weather)",
+              "url": "https://www.nextgenscience.org/pe/k-ess2-1-earths-systems",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

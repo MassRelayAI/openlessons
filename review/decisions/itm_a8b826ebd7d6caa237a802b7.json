@@ -1,0 +1,83 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_a8b826ebd7d6caa237a802b7",
+  "lesson": "les_6bb91366eeadddb27c4b60f6",
+  "contentHash": "f09eacf65cc8629ee54366a443a1de83c59e9712908d82ff151cdd456afaed8d",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Keyboard (typing) and mouse (pointing and selecting) are input devices, screen and speakers are output devices, so 'स्क्रीन' is the correct part.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "KS3 Computing/Hardware/Input and Output (Wikibooks)",
+              "url": "https://en.wikibooks.org/wiki/KS3_Computing/Hardware/Input_and_Output",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "National curriculum in England: computing programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [
+        "'कौन सा' is unhyphenated here while the same lesson writes 'कौन-सी'/'कौन-सा' elsewhere; standard spelling is hyphenated. Corrected wording: 'कौन-सा हिस्सा हमें जानकारी दिखाता है?'"
+      ],
+      "verdict": "object",
+      "locale": "hi",
+      "checks": {
+        "natural": true,
+        "correct": false,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: 'कौन सा' is unhyphenated here while the same lesson writes 'कौन-सी'/'कौन-सा' elsewhere; standard spelling is hyphenated. Corrected wording: 'कौन-सा हिस्सा हमें जानकारी दिखाता है?'",
+    "language: check `correct` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

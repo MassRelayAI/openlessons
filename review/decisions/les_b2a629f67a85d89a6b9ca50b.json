@@ -1,0 +1,84 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_b2a629f67a85d89a6b9ca50b",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "30fcb94039b1ba2c5960c08bebf4e64762e6babcba4ab8dcacaff7bd56341ed9",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Children should keep personal information such as full name, password and home address private, and tell a trusted adult if something online makes them upset, worried or confused.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "Childnet: Get SMART (4-11 year olds)",
+              "url": "https://www.childnet.com/young-people/4-11-year-olds/get-smart/",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Teach text switches person in adjacent sentences ('لا نعطي ... قبل أن نسأل شخصا كبيرا نثق به. الشخص الكبير الذي تثق به هو من يرعاك'), which reads as a translation. Correct: 'الشخص الكبير الذي نثق به هو من يرعانا في البيت، أو المعلم أو المعلمة.'",
+        "'ورقم الهاتف' breaks the 'اسمك ... عنوان بيتك ... اسم مدرستك' pattern. Correct: 'ورقم هاتفك'."
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Teach text switches person in adjacent sentences ('لا نعطي ... قبل أن نسأل شخصا كبيرا نثق به. الشخص الكبير الذي تثق به هو من يرعاك'), which reads as a translation. Correct: 'الشخص الكبير الذي نثق به هو من يرعانا في البيت، أو المعلم أو المعلمة.'; 'ورقم الهاتف' breaks the 'اسمك ... عنوان بيتك ... اسم مدرستك' pattern. Correct: 'ورقم هاتفك'.",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

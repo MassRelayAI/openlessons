@@ -1,0 +1,84 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_8b1d68ae3ad1f2919c0ed2fa",
+  "lesson": "les_19ad6b66bc7af4b0bc60a10c",
+  "contentHash": "f0e0cc0042f4a0a5962248a6fb08b2d0b9a9b2ca327b50087a57fcef6dd9a332",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Checking authorship, date and other sources and telling fact from opinion are how children evaluate online content; the keyed answer '再找一个来源核对' is the only sound choice.",
+          "registry": "iste-students:students",
+          "sources": [
+            {
+              "title": "ISTE Standards: Students",
+              "url": "https://iste.org/standards/students",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Fact vs. Opinion (Common Sense Education)",
+              "url": "https://www.commonsense.org/education/digital-literacy/fact-vs-opinion",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "How to be an expert fact-checker (National Geographic Kids)",
+              "url": "https://kids.nationalgeographic.com/homework-help/article/how-to-be-an-expert-fact-checker",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "zh-Hans",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

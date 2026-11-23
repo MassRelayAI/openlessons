@@ -1,0 +1,79 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_fe5050de1de249ac71e83116",
+  "lesson": "les_6bb91366eeadddb27c4b60f6",
+  "contentHash": "db1e8b7ec254ac587c3b3bebdc5a90e643cf8630ca32a0ed4a8c9d500c4ae0fd",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Keyboard (typing) and mouse (pointing and selecting) are input devices, screen and speakers are output devices, so 'माउस' is the correct part.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "KS3 Computing/Hardware/Input and Output (Wikibooks)",
+              "url": "https://en.wikibooks.org/wiki/KS3_Computing/Hardware/Input_and_Output",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "National curriculum in England: computing programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "hi",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

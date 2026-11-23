@@ -1,0 +1,74 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_5f547472baafd3d2db0a9cee",
+  "lesson": "les_d20aca85b83b75aba3c623a2",
+  "contentHash": "d58349c3e9cbde373f0e6394e380a3150a3bef42a393847754777642f5140798",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A jumper (毛衣) is made of yarn/wool (毛線), not glass or metal.",
+          "registry": "eng-nc-2014:ks1.science",
+          "sources": [
+            {
+              "title": "National curriculum in England: science programmes of study (Year 1 plants, everyday materials; Year 2 living things)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-science-programmes-of-study/national-curriculum-in-england-science-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "zh-Hant",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "pass",
+  "notes": [
+    "held: another record of this lesson did not pass, and a lesson leaves draft whole"
+  ],
+  "spotCheck": "none"
+}

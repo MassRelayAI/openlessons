@@ -22,14 +22,23 @@
     "emoji": "➕"
   },
   "schema": "lesson/1",
-  "status": "draft",
+  "status": "reviewed",
   "provenance": {
     "origin": "ai",
     "maker": "claude-code-reviser",
     "model": "claude-fable-5-2",
     "tool": "openlessons-jury-revise",
     "created": "2026-11-23",
-    "reviews": []
+    "reviews": [
+      {
+        "by": "jury-v1",
+        "kind": "jury",
+        "role": "jury",
+        "verdict": "pass",
+        "date": "2026-11-23",
+        "decision": "review/decisions/les_432f0e7816717aa2fb850b95.json"
+      }
+    ]
   },
   "id": "les_432f0e7816717aa2fb850b95",
   "licence": "CC-BY-4.0",

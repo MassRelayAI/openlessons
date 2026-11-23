@@ -1,0 +1,87 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_444a0495c3279a7328d1b1c4",
+  "lesson": "les_19ad6b66bc7af4b0bc60a10c",
+  "contentHash": "cea64984efff4f47c84071882c3e145076b2e53263dd02a6e157721271e2eb10",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Checking authorship, date and other sources and telling fact from opinion are how children evaluate online content; the keyed answer '家长、老师或照顾你的大人' is the only sound choice.",
+          "registry": "iste-students:students",
+          "sources": [
+            {
+              "title": "ISTE Standards: Students",
+              "url": "https://iste.org/standards/students",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Fact vs. Opinion (Common Sense Education)",
+              "url": "https://www.commonsense.org/education/digital-literacy/fact-vs-opinion",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "How to be an expert fact-checker (National Geographic Kids)",
+              "url": "https://kids.nationalgeographic.com/homework-help/article/how-to-be-an-expert-fact-checker",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-A"
+    },
+    "language": {
+      "notes": [
+        "Option c '留言不署名的人' is stiff and unidiomatic for a 9-10 year old reader (word order and the formal 署名). Corrected wording: '不留名字的人' (or '匿名留言的人')."
+      ],
+      "verdict": "object",
+      "locale": "zh-Hans",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: Option c '留言不署名的人' is stiff and unidiomatic for a 9-10 year old reader (word order and the formal 署名). Corrected wording: '不留名字的人' (or '匿名留言的人').",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

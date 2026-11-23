@@ -1,0 +1,78 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_31321cee4ef432ec0f62ec01",
+  "lesson": "les_d20aca85b83b75aba3c623a2",
+  "contentHash": "3522d37b580394415fc23d8fe7275ef667234067ddce87d51ecdf918dac86a95",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions, round 2)",
+  "independence": "Round 2: each role filled by fresh claude-opus-5-5 sessions that sat on no earlier jury and drafted nothing (subject x3, safety x2, language x2), each given only its own role's work orders and barred from every other role's orders, verdicts and the earlier round; verdicts combined only by jury run after all seven finished. The redrafts were written by separate claude-fable-5 sessions that sat on no jury.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Cooking pots are usually made of metal, which withstands heat on a stove; paper and wood are not used for pots on a flame.",
+          "registry": "eng-nc-2014:ks1.science",
+          "sources": [
+            {
+              "title": "National curriculum in England: science programmes of study (Year 1 plants, everyday materials; Year 2 living things)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-science-programmes-of-study/national-curriculum-in-england-science-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-subject-C"
+    },
+    "safety": {
+      "notes": [
+        "safety: the hint 鍋子要放在火上煮東西。想一想：哪一種材料可以放在火上？ asks a 5-year-old to think about which material can be put on a fire, with no warning that a pot on the fire is hot and is for a trusted adult to handle. Reword so it does not invite putting things on a fire (for example: 'Pots are used by grown-ups for cooking; which material is strong and does not burn?')."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": false,
+        "no-personal-data": true,
+        "safe-advice": false,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "zh-Hant",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury2-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "safety: objects: safety: the hint 鍋子要放在火上煮東西。想一想：哪一種材料可以放在火上？ asks a 5-year-old to think about which material can be put on a fire, with no warning that a pot on the fire is hot and is for a trusted adult to handle. Reword so it does not invite putting things on a fire (for example: 'Pots are used by grown-ups for cooking; which material is strong and does not burn?').",
+    "safety: check `no-harm` is false",
+    "safety: check `safe-advice` is false"
+  ],
+  "spotCheck": "none"
+}
