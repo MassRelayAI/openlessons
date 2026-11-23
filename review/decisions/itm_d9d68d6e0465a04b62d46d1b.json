@@ -1,0 +1,87 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_d9d68d6e0465a04b62d46d1b",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "381393fd04692db4509591eec418dc81203bd578a7e7a547625cc2bf7971241f",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "subject: answer a (tell a trusted adult) is correct, but the hint 'does this person know my family?' does not fit an item about something scary on the screen. Use a hint like 'من يمكنه أن يساعدني؟'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Young pupils learn to keep personal information private online and to go to a trusted adult for help when content or contact worries them.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [
+        "safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.",
+        "age-fit: the hint does not fit this question (it asks about a person, the item asks about a kind of information/action), which confuses a 5-year-old."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": false,
+        "age-fit": false,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "The hint 'هل يعرف هذا الشخص أهلي؟' has no referent (no person in the prompt). Use: 'فكر: مَن يستطيع أن يساعدني؟'"
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: subject: answer a (tell a trusted adult) is correct, but the hint 'does this person know my family?' does not fit an item about something scary on the screen. Use a hint like 'من يمكنه أن يساعدني؟'.",
+    "subject: check `hints-fair` is false",
+    "safety: objects: safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.; age-fit: the hint does not fit this question (it asks about a person, the item asks about a kind of information/action), which confuses a 5-year-old.",
+    "safety: check `safe-advice` is false",
+    "safety: check `age-fit` is false",
+    "language: objects: The hint 'هل يعرف هذا الشخص أهلي؟' has no referent (no person in the prompt). Use: 'فكر: مَن يستطيع أن يساعدني؟'",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

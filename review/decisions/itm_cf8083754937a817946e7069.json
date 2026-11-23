@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_cf8083754937a817946e7069",
+  "lesson": "les_ec73b1c3dc5b8d52071e64f8",
+  "contentHash": "c9155dac4df04034b84c5a81995db4a28cb96e93e075c60a1ff45422220e9512",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "In 🍎🍐🍌🚗 the apple, pear and banana are fruit and the car is not, so the car does not belong in the group.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards: Kindergarten Measurement and Data (K.MD)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "The hint 'Cuenta despacio, una por una' does not help an odd-one-out question. Corrected hint: 'Mira en qué se parecen las cosas.'; the prompt reads better as '¿Cuál no va con los demás?'"
+      ],
+      "verdict": "object",
+      "locale": "es",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: The hint 'Cuenta despacio, una por una' does not help an odd-one-out question. Corrected hint: 'Mira en qué se parecen las cosas.'; the prompt reads better as '¿Cuál no va con los demás?'",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

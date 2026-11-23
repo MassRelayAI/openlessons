@@ -1,0 +1,87 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_780f21ccfc63acc4f603f880",
+  "lesson": "les_c9083857dac071ec05b0d526",
+  "contentHash": "dc8505313e1c7f8d7d706c233f920015b5ee692f642bb8c1a0459e4b28b801cf",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "Answer key (a, Water it) is correct of the three options. hints-fair/explanation-correct: the question asks for the LAST step but the only hint says 'Think about what must come first.', which points the child toward the first action (a distractor). Give a hint about the last step, e.g. 'Which one happens at the end?'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": false,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "When planting a seed you dig a hole, put the seed in, and water it last, so 'a' is the correct last step among the options.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Algorithm - Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Algorithm",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "The prompt asks for the LAST step but the hint says 'what must come first'. Corrected hint: 'Say the steps in order. Which one is at the end?'"
+      ],
+      "verdict": "object",
+      "locale": "en",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: Answer key (a, Water it) is correct of the three options. hints-fair/explanation-correct: the question asks for the LAST step but the only hint says 'Think about what must come first.', which points the child toward the first action (a distractor). Give a hint about the last step, e.g. 'Which one happens at the end?'.",
+    "subject: check `explanation-correct` is false",
+    "subject: check `hints-fair` is false",
+    "language: objects: The prompt asks for the LAST step but the hint says 'what must come first'. Corrected hint: 'Say the steps in order. Which one is at the end?'",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

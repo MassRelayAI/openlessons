@@ -1,0 +1,82 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_417a5d876c46132b612c4894",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "967b2bf094056594bd206210ba8cd5faa666e2e28300e71f06e3e8fb8c171f37",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Young pupils learn to keep personal information private online and to go to a trusted adult for help when content or contact worries them.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [
+        "safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": false,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "The prompt uses 'الموثوق' while the teaching says 'شخصا كبيرا تثق به'; option b 'رسالة مجهولة' is not a person. Corrected prompt: 'مَن هو الشخص الكبير الذي تثق به؟'; option b: 'شخص لا تعرفه'."
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "safety: objects: safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.",
+    "safety: check `safe-advice` is false",
+    "language: objects: The prompt uses 'الموثوق' while the teaching says 'شخصا كبيرا تثق به'; option b 'رسالة مجهولة' is not a person. Corrected prompt: 'مَن هو الشخص الكبير الذي تثق به؟'; option b: 'شخص لا تعرفه'.",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

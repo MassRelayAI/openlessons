@@ -1,0 +1,78 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_47dacb1752740dd4ccbd0296",
+  "lesson": "les_ec73b1c3dc5b8d52071e64f8",
+  "contentHash": "74687b3134c007865f45c52a04348b507f4d6cba6118378935d72502c2d9dc83",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "answer-correct: picture is 🔴🔴🔴🔵🔵 and the question asks '¿De qué hay menos?'. Blue (2) is the key, but distractor 'c' 🟢 has 0 in the picture, which is fewer than 2, so it is also defensible. Drop 🟢 (offer only the colours shown) or ask '¿De qué hay menos: 🔴 o 🔵?'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": false,
+        "explanation-correct": true,
+        "misconceptions-sound": false,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "In 🔴🔴🔴🔵🔵 there are 3 red and 2 blue, so of the colours shown there are fewer blue.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards: Kindergarten Measurement and Data (K.MD)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "es",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: answer-correct: picture is 🔴🔴🔴🔵🔵 and the question asks '¿De qué hay menos?'. Blue (2) is the key, but distractor 'c' 🟢 has 0 in the picture, which is fewer than 2, so it is also defensible. Drop 🟢 (offer only the colours shown) or ask '¿De qué hay menos: 🔴 o 🔵?'.",
+    "subject: check `answer-correct` is false",
+    "subject: check `misconceptions-sound` is false"
+  ],
+  "spotCheck": "none"
+}

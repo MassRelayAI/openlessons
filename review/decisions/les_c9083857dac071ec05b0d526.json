@@ -1,0 +1,79 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_c9083857dac071ec05b0d526",
+  "lesson": "les_c9083857dac071ec05b0d526",
+  "contentHash": "47f96b952f91cfa8953f89b369afa103cb50f8f1d1f74f5797924fca76f729c8",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "objective-taught: the objective is to follow AND give instructions; the teach text only covers following ('Do one step, then the next') and never teaches that an instruction you give must be precise and unambiguous, yet itm_45202ac41ce223058ba27fb6 tests exactly that. Add one sentence and example on giving a clear instruction.",
+        "hints-fair: one hint ('Think about what must come first.') is reused for every item, including 'last step' and 'how many steps' questions where it misleads or does not help."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": false,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Key stage 1 pupils learn what algorithms are and that programs execute by following precise and unambiguous instructions.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "en",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: objective-taught: the objective is to follow AND give instructions; the teach text only covers following ('Do one step, then the next') and never teaches that an instruction you give must be precise and unambiguous, yet itm_45202ac41ce223058ba27fb6 tests exactly that. Add one sentence and example on giving a clear instruction.; hints-fair: one hint ('Think about what must come first.') is reused for every item, including 'last step' and 'how many steps' questions where it misleads or does not help.",
+    "subject: check `objective-taught` is false",
+    "subject: check `hints-fair` is false"
+  ],
+  "spotCheck": "none"
+}

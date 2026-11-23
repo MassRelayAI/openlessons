@@ -1,0 +1,82 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_566bde38dcb9dd2c7cdf142a",
+  "lesson": "les_9a74f05cf7ce4d777a233a39",
+  "contentHash": "02bed7c0d480d468e330853e5ebe273a9362d03547a0e59405bdebae5784ced8",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Young children describe local weather with words such as sunny, rainy, windy and snowy, and connect weather with what to wear.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "NGSS K-ESS2-1 Earth's Systems",
+              "url": "https://www.nextgenscience.org/pe/k-ess2-1-earths-systems",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "National curriculum in England: science programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-science-programmes-of-study/national-curriculum-in-england-science-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [
+        "hint \"انظر إلى الصورة جيدا.\" says \"the picture\" (singular) but this item shows three pictures as options and no prompt picture; corrected: \"انظر إلى الصور جيدا.\""
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: hint \"انظر إلى الصورة جيدا.\" says \"the picture\" (singular) but this item shows three pictures as options and no prompt picture; corrected: \"انظر إلى الصور جيدا.\"",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

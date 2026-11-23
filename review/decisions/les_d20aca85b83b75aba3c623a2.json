@@ -1,0 +1,82 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_d20aca85b83b75aba3c623a2",
+  "lesson": "les_d20aca85b83b75aba3c623a2",
+  "contentHash": "a39d623e26cf9dfd8c62f6cbedb1c28647ba74ca9b3103dc4ff21fb33349e793",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A material is the substance an object is made of; wood is hard and glass is transparent, so you can see through it.",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "Material - Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Material",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Transparency and translucency - Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Transparency_and_translucency",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "'玻璃可以看穿' is unnatural: 看穿 usually means seeing through a trick. Corrected: '玻璃是透明的，可以看到另一邊。'"
+      ],
+      "verdict": "object",
+      "locale": "zh-Hant",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: '玻璃可以看穿' is unnatural: 看穿 usually means seeing through a trick. Corrected: '玻璃是透明的，可以看到另一邊。'",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

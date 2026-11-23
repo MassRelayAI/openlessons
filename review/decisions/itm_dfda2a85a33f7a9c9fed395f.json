@@ -1,0 +1,85 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_dfda2a85a33f7a9c9fed395f",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "e829ccc0ba11449bf0593879cdfb883b24f56b8058e12a8d9c417c8f49d69ac3",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "subject: answer a (a photo of our house) is correct, but the hint 'does this person know my family?' does not help choose which photo is private (the stranger is given in the prompt). Use a hint like 'أي صورة تخبر الغريب أين أسكن؟'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Young pupils learn to keep personal information private online and to go to a trusted adult for help when content or contact worries them.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [
+        "safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.",
+        "age-fit: the hint does not fit this question (it asks about a person, the item asks about a kind of information/action), which confuses a 5-year-old.",
+        "no-personal-data / safe-advice: asking which picture we do not send to a stranger, with drawings of a cat and a tree as the 'safe' options, implies it is fine to send drawings (and keep chatting) with a stranger; the rule for this age is not to send anything to, or talk with, someone you do not know, and to tell a trusted adult."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": false,
+        "safe-advice": false,
+        "age-fit": false,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: subject: answer a (a photo of our house) is correct, but the hint 'does this person know my family?' does not help choose which photo is private (the stranger is given in the prompt). Use a hint like 'أي صورة تخبر الغريب أين أسكن؟'.",
+    "subject: check `hints-fair` is false",
+    "safety: objects: safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.; age-fit: the hint does not fit this question (it asks about a person, the item asks about a kind of information/action), which confuses a 5-year-old.; no-personal-data / safe-advice: asking which picture we do not send to a stranger, with drawings of a cat and a tree as the 'safe' options, implies it is fine to send drawings (and keep chatting) with a stranger; the rule for this age is not to send anything to, or talk with, someone you do not know, and to tell a trusted adult.",
+    "safety: check `no-personal-data` is false",
+    "safety: check `safe-advice` is false",
+    "safety: check `age-fit` is false"
+  ],
+  "spotCheck": "none"
+}

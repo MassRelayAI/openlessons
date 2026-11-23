@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_d95b9d922832a677b9f17530",
+  "lesson": "les_b21b40b44d679c655ece243d",
+  "contentHash": "b6e651dac7dfa3202117b6321f0e6509aa0e5f5914ab8da2fee56886371ab6c8",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A push or a pull can start, stop or change the motion of an object, and a stronger push changes its motion more (e.g. makes a ball go faster).",
+          "registry": "ngss-2013:k-2",
+          "sources": [
+            {
+              "title": "NGSS K-PS2-1 Motion and Stability: Forces and Interactions",
+              "url": "https://www.nextgenscience.org/pe/k-ps2-1-motion-and-stability-forces-and-interactions",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "'Kamu menutup pintu menjauh darimu' is awkward word order. Corrected: 'Kamu menutup pintu dengan menggerakkannya menjauh darimu. Itu gerakan apa?'"
+      ],
+      "verdict": "object",
+      "locale": "id",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: 'Kamu menutup pintu menjauh darimu' is awkward word order. Corrected: 'Kamu menutup pintu dengan menggerakkannya menjauh darimu. Itu gerakan apa?'",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

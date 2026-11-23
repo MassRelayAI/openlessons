@@ -1,0 +1,78 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_5df23d11ffda569698b7195e",
+  "lesson": "les_ec73b1c3dc5b8d52071e64f8",
+  "contentHash": "3424ee448170e6acccbbf7a70e67074e569dc8cf53024e2a71d5debd5e700823",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "Answer key (c, 3 groups) is correct. hints-fair/explanation-correct: the hint 'Cuenta despacio, una por una.' tells the child to count the things one by one, which leads to 6 (distractor 'b'), not to counting groups. Use e.g. 'Cuenta cada grupo como uno.'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": false,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "🍎🍎 🍌🍌 🍇🍇 is three categories (apples, bananas, grapes) of two each, so there are 3 groups.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards: Kindergarten Measurement and Data (K.MD)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "es",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: Answer key (c, 3 groups) is correct. hints-fair/explanation-correct: the hint 'Cuenta despacio, una por una.' tells the child to count the things one by one, which leads to 6 (distractor 'b'), not to counting groups. Use e.g. 'Cuenta cada grupo como uno.'.",
+    "subject: check `explanation-correct` is false",
+    "subject: check `hints-fair` is false"
+  ],
+  "spotCheck": "none"
+}

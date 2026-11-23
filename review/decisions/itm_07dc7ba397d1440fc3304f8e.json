@@ -1,0 +1,90 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_07dc7ba397d1440fc3304f8e",
+  "lesson": "les_c9083857dac071ec05b0d526",
+  "contentHash": "cef30fa2d6e24498e7c82755ee8e2a1c69f3fb416dc8a7b20f102b318139a5e6",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "answer-correct: 'How many steps?' is ambiguous for a 5-year-old: 'go forward, go forward, turn' is 3 instructions, but it contains 2 forward steps, so distractor 'b' (2) is also defensible. Ask 'How many instructions does the robot get?'.",
+        "hints-fair: 'Think about what must come first.' does not help count instructions."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": false,
+        "explanation-correct": false,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "The list 'go forward, go forward, turn' contains three instructions.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            },
+            {
+              "title": "Algorithm - Wikipedia",
+              "url": "https://en.wikipedia.org/wiki/Algorithm",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "'Robot steps' is ambiguous (walking steps or instructions), and the hint about 'first' does not fit. Corrected: 'A robot gets these instructions: go forward, go forward, turn. How many instructions are there?' Hint: 'Touch each instruction once as you count.'"
+      ],
+      "verdict": "object",
+      "locale": "en",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: answer-correct: 'How many steps?' is ambiguous for a 5-year-old: 'go forward, go forward, turn' is 3 instructions, but it contains 2 forward steps, so distractor 'b' (2) is also defensible. Ask 'How many instructions does the robot get?'.; hints-fair: 'Think about what must come first.' does not help count instructions.",
+    "subject: check `answer-correct` is false",
+    "subject: check `explanation-correct` is false",
+    "subject: check `hints-fair` is false",
+    "language: objects: 'Robot steps' is ambiguous (walking steps or instructions), and the hint about 'first' does not fit. Corrected: 'A robot gets these instructions: go forward, go forward, turn. How many instructions are there?' Hint: 'Touch each instruction once as you count.'",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

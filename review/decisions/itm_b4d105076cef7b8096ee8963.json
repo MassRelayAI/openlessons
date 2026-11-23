@@ -1,0 +1,83 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_b4d105076cef7b8096ee8963",
+  "lesson": "les_bb3d1fc7b4f71427d25cd74e",
+  "contentHash": "a74ba14b2b58df0f8e88dc452f2746ba8f531cfd7930bc598a57ad72ef2d1fe9",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "Answer key is correct. explanation-correct/hints-fair: The only hint, 'दोनों को ध्यान से देखो' ('look at BOTH carefully'), refers to two things but every item shows three options; it is misleading for a 5-year-old and does not point to the attribute asked. Use a hint that fits three objects and names the attribute (length or weight)."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": false,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A train is longer than a car or a bicycle, so 'c' is the only correct answer.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards: Kindergarten Measurement and Data (K.MD)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-C"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "Three options: use 'सबसे लंबी कौन है?'; hint 'तीनों को ध्यान से देखो।'"
+      ],
+      "verdict": "object",
+      "locale": "hi",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: Answer key is correct. explanation-correct/hints-fair: The only hint, 'दोनों को ध्यान से देखो' ('look at BOTH carefully'), refers to two things but every item shows three options; it is misleading for a 5-year-old and does not point to the attribute asked. Use a hint that fits three objects and names the attribute (length or weight).",
+    "subject: check `explanation-correct` is false",
+    "subject: check `hints-fair` is false",
+    "language: objects: Three options: use 'सबसे लंबी कौन है?'; hint 'तीनों को ध्यान से देखो।'",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

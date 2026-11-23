@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_948018d2f5b6d47f041afdf5",
+  "lesson": "les_19ad6b66bc7af4b0bc60a10c",
+  "contentHash": "29fbbace7be180f3340488739d59bba6dd89d22e545b78983a73cb2e94dc0a14",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Students should evaluate the accuracy, origin and currency of digital content, e.g. who wrote it, when it was updated, and whether other valid sources agree.",
+          "registry": "iste-students:students",
+          "sources": [
+            {
+              "title": "ISTE Standards: Students",
+              "url": "https://iste.org/standards/students",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-A"
+    },
+    "safety": {
+      "notes": [
+        "safety: a sourceless 'forward this quickly' chain message is a hoax/scam pattern; the correct option 'not necessarily, check first' does not include 'do not forward, show a trusted adult'. Safety advice must point to a trusted adult."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": false,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "zh-Hans",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "safety: objects: safety: a sourceless 'forward this quickly' chain message is a hoax/scam pattern; the correct option 'not necessarily, check first' does not include 'do not forward, show a trusted adult'. Safety advice must point to a trusted adult.",
+    "safety: check `safe-advice` is false"
+  ],
+  "spotCheck": "none"
+}

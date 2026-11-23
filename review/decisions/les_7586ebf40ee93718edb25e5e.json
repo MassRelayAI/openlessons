@@ -1,0 +1,88 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_7586ebf40ee93718edb25e5e",
+  "lesson": "les_7586ebf40ee93718edb25e5e",
+  "contentHash": "9b7a83c55d2dc9b2da382f04a005744c00fc3212d981b20df16dbce2937bbf9e",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A half is 1 of 2 equal parts and a quarter is 1 of 4 equal parts of an object, shape or quantity (Year 1).",
+          "registry": "eng-nc-2014:ks1.maths",
+          "sources": [
+            {
+              "title": "National curriculum in England: mathematics programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        },
+        {
+          "claim": "Half of 4 is 2 and a quarter of 8 is 2, as the examples state.",
+          "registry": "eng-nc-2014:ks1.maths",
+          "sources": [
+            {
+              "title": "National curriculum in England: mathematics programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-A"
+    },
+    "safety": {
+      "notes": [
+        "safety: youngest age 5, but the lesson asks for a quarter of a number (8, 12) - finding a fraction of a quantity is beyond kindergarten (halves/fourths of shapes is grade 1, fractions of sets later). Keep to halves of small sets/shapes or re-band upward."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": false,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "zh-Hant",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "safety: objects: safety: youngest age 5, but the lesson asks for a quarter of a number (8, 12) - finding a fraction of a quantity is beyond kindergarten (halves/fourths of shapes is grade 1, fractions of sets later). Keep to halves of small sets/shapes or re-band upward.",
+    "safety: check `age-fit` is false"
+  ],
+  "spotCheck": "none"
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_8acb10b63fa7ec79537bbd62",
+  "lesson": "les_19ad6b66bc7af4b0bc60a10c",
+  "contentHash": "8544644b19b6daef175ca754913d5243c29a29487f1675ea6abc3ca850e1bfa0",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "subject: fact-vs-opinion is not taught in the lesson text, and the source-checking hint does not help a child spot an opinion; use a hint about whether the sentence can be checked or is someone's liking. Key c (这本书最有趣) is correct; option a should say 水在0摄氏度结冰 for precision."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": false,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "A fact can be checked by observation, measurement or standard reference works; a matter of taste cannot be checked that way.",
+          "registry": "iste-students:students",
+          "sources": [
+            {
+              "title": "Fact (Wikipedia)",
+              "url": "https://en.wikipedia.org/wiki/Fact",
+              "accessed": "2026-11-23"
+            }
+          ]
+        },
+        {
+          "claim": "Students should evaluate the accuracy, origin and currency of digital content, e.g. who wrote it, when it was updated, and whether other valid sources agree.",
+          "registry": "iste-students:students",
+          "sources": [
+            {
+              "title": "ISTE Standards: Students",
+              "url": "https://iste.org/standards/students",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [
+        "Term 看法 is not taught in the lesson text; hint \"想一想：谁写的？别处怎么说？\" is about sources and does not fit a fact-vs-opinion question; use \"想一想：这句话能查证吗？还是某个人的想法？\"",
+        "Option a \"水在零度结冰\" is colloquial and unit-less; corrected: \"水在0摄氏度会结冰\"."
+      ],
+      "verdict": "object",
+      "locale": "zh-Hans",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: subject: fact-vs-opinion is not taught in the lesson text, and the source-checking hint does not help a child spot an opinion; use a hint about whether the sentence can be checked or is someone's liking. Key c (这本书最有趣) is correct; option a should say 水在0摄氏度结冰 for precision.",
+    "subject: check `objective-taught` is false",
+    "subject: check `hints-fair` is false",
+    "language: objects: Term 看法 is not taught in the lesson text; hint \"想一想：谁写的？别处怎么说？\" is about sources and does not fit a fact-vs-opinion question; use \"想一想：这句话能查证吗？还是某个人的想法？\"; Option a \"水在零度结冰\" is colloquial and unit-less; corrected: \"水在0摄氏度会结冰\".",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

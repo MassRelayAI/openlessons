@@ -1,0 +1,78 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_81554364a0fcecbb8ef3a16d",
+  "lesson": "les_81554364a0fcecbb8ef3a16d",
+  "contentHash": "de538b17a240f6b183b75a1a77c50c1bcce2df4c194e39c23d4b5694a150d5f7",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Classifying objects into given categories by a shared attribute (a rule such as 'is red' or 'has wheels') is an early-years data skill.",
+          "registry": "ac-v9:f-2",
+          "sources": [
+            {
+              "title": "Common Core State Standards for Mathematics, Kindergarten Measurement & Data (K.MD.B.3)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/MD/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [
+        "\"Ordenar\" means to put in sequence or tidy; sorting into groups is \"clasificar\"/\"agrupar\" in Spanish curricula. Corrected title: \"Clasificar con una regla\"; teach.text: \"Una regla nos dice cómo agrupar las cosas. Por ejemplo: por color o por tamaño.\""
+      ],
+      "verdict": "object",
+      "locale": "es",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: \"Ordenar\" means to put in sequence or tidy; sorting into groups is \"clasificar\"/\"agrupar\" in Spanish curricula. Corrected title: \"Clasificar con una regla\"; teach.text: \"Una regla nos dice cómo agrupar las cosas. Por ejemplo: por color o por tamaño.\"",
+    "language: check `natural` is false",
+    "language: check `consistent` is false"
+  ],
+  "spotCheck": "none"
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_25cc17db6194fa79b900cab5",
+  "lesson": "les_b2a629f67a85d89a6b9ca50b",
+  "contentHash": "631ba403599b8f88e2c6ea14970b93a2e918c7d03fe800d66ba8639e204fff2d",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [
+        "subject: answer c (mum and dad) is correct, but the hint 'فكر: هل يعرف هذا الشخص أهلي؟' (does this person know my family?) teaches a misleading test: many people who know your family (neighbours, relatives, family friends) should still not know your password. Use a hint like 'كلمة السر نشاركها فقط مع أهلنا.'."
+      ],
+      "verdict": "object",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": false,
+        "misconceptions-sound": true,
+        "hints-fair": false,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Young pupils learn to keep personal information private online and to go to a trusted adult for help when content or contact worries them.",
+          "registry": "eng-nc-2014:ks1.computing",
+          "sources": [
+            {
+              "title": "National curriculum in England: computing programmes of study",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-computing-programmes-of-study/national-curriculum-in-england-computing-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [
+        "safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.",
+        "inclusive: the only correct answer is 'أمي وأبي'/'أمي أو أبي' (mum and dad), which excludes children raised by one parent, grandparents, carers or other guardians; use 'a trusted adult at home' or 'the grown-up who looks after you'.",
+        "safe-advice: the password item should also say a password is shared only with the trusted adult who looks after you, never with friends; the hint's 'knows my family' test contradicts that."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": false,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": false
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-B"
+    },
+    "language": {
+      "notes": [
+        "'من يجوز أن يعرف' is a legal (fiqh) register, too formal for age 5, and lacks 'له'. Corrected: 'مَن يحقّ له أن يعرف كلمة السر؟' or simpler 'لمن نقول كلمة السر؟'"
+      ],
+      "verdict": "object",
+      "locale": "ar",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": false,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-B"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "subject: objects: subject: answer c (mum and dad) is correct, but the hint 'فكر: هل يعرف هذا الشخص أهلي؟' (does this person know my family?) teaches a misleading test: many people who know your family (neighbours, relatives, family friends) should still not know your password. Use a hint like 'كلمة السر نشاركها فقط مع أهلنا.'.",
+    "subject: check `explanation-correct` is false",
+    "subject: check `hints-fair` is false",
+    "safety: objects: safe-advice: the shared hint 'فكر: هل يعرف هذا الشخص أهلي؟' (Think: does this person know my family?) defines trust too loosely: knowing the family does not make someone safe to receive a password, address or photo (most harm to children comes from people known to the family); the test should be 'ask a trusted adult first'.; inclusive: the only correct answer is 'أمي وأبي'/'أمي أو أبي' (mum and dad), which excludes children raised by one parent, grandparents, carers or other guardians; use 'a trusted adult at home' or 'the grown-up who looks after you'.; safe-advice: the password item should also say a password is shared only with the trusted adult who looks after you, never with friends; the hint's 'knows my family' test contradicts that.",
+    "safety: check `safe-advice` is false",
+    "safety: check `inclusive` is false",
+    "language: objects: 'من يجوز أن يعرف' is a legal (fiqh) register, too formal for age 5, and lacks 'له'. Corrected: 'مَن يحقّ له أن يعرف كلمة السر؟' or simpler 'لمن نقول كلمة السر؟'",
+    "language: check `register` is false"
+  ],
+  "spotCheck": "none"
+}

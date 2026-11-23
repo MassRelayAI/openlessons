@@ -1,0 +1,77 @@
+{
+  "schema": "jury-decision/1",
+  "record": "itm_91691e89af72be34a9b8197f",
+  "lesson": "les_af543d80d20833363751a6f8",
+  "contentHash": "f4afd177f33311051fc218b836a4b32dcbbca6934ab40519423cdbbfb7a88425",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "Kindergarten children describe the relative positions of objects with words such as above, below, beside, in front of, behind and next to.",
+          "registry": "ccss-2010:math.k-1",
+          "sources": [
+            {
+              "title": "Common Core State Standards for Mathematics, Kindergarten Geometry (K.G.A.1)",
+              "url": "https://www.thecorestandards.org/Math/Content/K/G/",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-B"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [
+        "hint \"Bayangkan bendanya pelan-pelan.\" (\"imagine the object slowly\") is a literal, unnatural phrase and does not help with position words; corrected: \"Lihat baik-baik: bendanya ada di mana?\""
+      ],
+      "verdict": "object",
+      "locale": "id",
+      "checks": {
+        "natural": false,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: hint \"Bayangkan bendanya pelan-pelan.\" (\"imagine the object slowly\") is a literal, unnatural phrase and does not help with position words; corrected: \"Lihat baik-baik: bendanya ada di mana?\"",
+    "language: check `natural` is false"
+  ],
+  "spotCheck": "none"
+}

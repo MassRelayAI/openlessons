@@ -1,0 +1,88 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_5c93d2a56f8db1a32987725f",
+  "lesson": "les_5c93d2a56f8db1a32987725f",
+  "contentHash": "d58912e8bdcb3f2f53ac8c815822dad6a5ed8c147647e7fecb240755f4ac27a6",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "8 + 5 = 13 and 9 + 6 = 15, as the examples state; counting on and making ten are valid strategies for addition within 20.",
+          "registry": "eng-nc-2014:ks1.maths",
+          "sources": [
+            {
+              "title": "National curriculum in England: mathematics programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        },
+        {
+          "claim": "Year 1 pupils add one-digit and two-digit numbers to 20, including 0, and use number bonds within 20.",
+          "registry": "eng-nc-2014:ks1.maths",
+          "sources": [
+            {
+              "title": "National curriculum in England: mathematics programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-A"
+    },
+    "safety": {
+      "notes": [
+        "safety: youngest age 5 (kindergarten) but the lesson is addition within 20 by counting on and the 'make ten' strategy (grade-1 ideas, e.g. CCSS 1.OA.C.6); kindergarten addition is within 10. Re-band to 6-7 or keep sums within 10."
+      ],
+      "verdict": "object",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": false,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [],
+      "verdict": "pass",
+      "locale": "en",
+      "checks": {
+        "natural": true,
+        "correct": true,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "safety: objects: safety: youngest age 5 (kindergarten) but the lesson is addition within 20 by counting on and the 'make ten' strategy (grade-1 ideas, e.g. CCSS 1.OA.C.6); kindergarten addition is within 10. Re-band to 6-7 or keep sums within 10.",
+    "safety: check `age-fit` is false"
+  ],
+  "spotCheck": "none"
+}

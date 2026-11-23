@@ -1,0 +1,79 @@
+{
+  "schema": "jury-decision/1",
+  "record": "les_432f0e7816717aa2fb850b95",
+  "lesson": "les_432f0e7816717aa2fb850b95",
+  "contentHash": "69d2da913ef358e06310370f123cc494a8ddead13f2c4c1d8a1adf8b8e940674",
+  "jury": "jury-v1",
+  "policy": "review/jury-policy.md",
+  "policyVersion": "1",
+  "date": "2026-11-23",
+  "harness": "claude-code (seven separate opus sessions)",
+  "independence": "Each role was filled by separate fresh claude-opus-5-5 sessions (subject x3, safety x2, language x2, lessons split by count), each given only its own role's work orders (openlessons jury orders) and told never to open another role's orders or verdicts; verdicts were written to per-role folders and combined only by jury run after all seven sessions had finished. The drafting model (claude-fable-5) sat on no role.",
+  "roles": {
+    "subject": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "objective-taught": true,
+        "answer-correct": true,
+        "explanation-correct": true,
+        "misconceptions-sound": true,
+        "hints-fair": true,
+        "claims-sourced": true
+      },
+      "claims": [
+        {
+          "claim": "3 + 4 = 7 and 5 + 2 = 7, as the examples state; addition within 10 is Year 1 content.",
+          "registry": "eng-nc-2014:y1.maths.addition-subtraction.3",
+          "sources": [
+            {
+              "title": "National curriculum in England: mathematics programmes of study (GOV.UK)",
+              "url": "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study/national-curriculum-in-england-mathematics-programmes-of-study",
+              "accessed": "2026-11-23"
+            }
+          ]
+        }
+      ],
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-subject-A"
+    },
+    "safety": {
+      "notes": [],
+      "verdict": "pass",
+      "checks": {
+        "no-harm": true,
+        "no-personal-data": true,
+        "safe-advice": true,
+        "age-fit": true,
+        "no-manipulation": true,
+        "inclusive": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-safety-A"
+    },
+    "language": {
+      "notes": [
+        "teach.text \"把两组合在一起就是加法。\" - \"两组合\" misparses as 组合; corrected: \"把两组东西合在一起，就是加法。\"",
+        "reteach \"从大的数开始，接着往下数。\" - \"往下数\" suggests counting downward; corrected: \"从大的数开始，接着往后数。\""
+      ],
+      "verdict": "object",
+      "locale": "zh-Hans",
+      "checks": {
+        "natural": false,
+        "correct": false,
+        "register": true,
+        "culture": true,
+        "consistent": true
+      },
+      "model": "claude-opus-5-5",
+      "reviewer": "claude-code/jury-language-A"
+    }
+  },
+  "outcome": "draft",
+  "notes": [
+    "language: objects: teach.text \"把两组合在一起就是加法。\" - \"两组合\" misparses as 组合; corrected: \"把两组东西合在一起，就是加法。\"; reteach \"从大的数开始，接着往下数。\" - \"往下数\" suggests counting downward; corrected: \"从大的数开始，接着往后数。\"",
+    "language: check `natural` is false",
+    "language: check `correct` is false"
+  ],
+  "spotCheck": "none"
+}
