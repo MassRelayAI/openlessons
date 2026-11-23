@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.4.0 (2026-11-23)
+
+The content loop: where the benchmarks come from, who a lesson is for, what is missing, and a safe way to add it.
+
+- **Standards registry.** `framework/1` gains `subjects`, `span` (ages and the publisher's own grades), `languages` and
+  `terms.evidence` (a short quotation from the terms page). 38 frameworks, each with the licence finding and the page it
+  was read on: 6 whose wording may be quoted (England's national curriculum and early years framework, the Australian
+  Curriculum, Scotland's Curriculum for Excellence, Spain's primary decree, Japan's Course of Study), 3 held to identifiers
+  and titles (Common Core, Taiwan's guidelines, PISA 2025), 29 by identifier only. `openlessons registry` lists them.
+- **Age bands.** `bands/age-bands.json` (`age-bands/1`): ten bands from 0-2 to adult, each mapped to US grades, England's
+  key stages and years, Indonesia's kelas and fase, Australia, India, Singapore, China, Spain, CEFR and ISCED. Standards
+  nodes name their bands (`standard/1` gains `bands`).
+- **Topic graph.** `topics/<subject>.json` (`subject/1`): ten subjects, 86 topics. `skill/1` gains `topic`, `bands` and
+  `locales`, all 49 existing skills are placed, and 132 objectives are added across maths, literacy, science, computing,
+  the arts, wellbeing and life skills, with 474 `related` alignments. `index/objectives.jsonl` lists every objective with
+  its standards and the languages it is taught in.
+- **Four more languages of instruction**: Spanish, Hindi, Arabic and Chinese (Traditional), each with a locale record and
+  a starter safety lexicon. Words in Devanagari and vocalised Arabic are counted whole.
+- **Three gates** (twenty in all): `graph.placed`, `alignment.band-matches` and `content.no-copied-text`, which refuses
+  the marks of copied material and any run of six words from a text whose terms forbid copying it
+  (`gates/data/protected.json` holds hashes, never the text; `openlessons fingerprint` adds to it).
+- **Gap report.** `openlessons gaps`: objective x age band x language cells with no lesson or too few items, ranked by
+  demand from the registry and the alignments, then from usage counts under `signals/` (`signal/1`: counts of at least 20
+  per cell and week, with no field for a learner).
+- **The loop.** `openlessons loop pick` writes work orders (`order/1`); `loop land` judges proposal files with every gate,
+  places what passes at status `draft`, and writes a run report (`run/1`) on a branch or a pull request; `loop run` does
+  both around a drafter command. A proposal that came through the loop cannot add a skill or an alignment, must answer an
+  order of its run, and leaves no trace when a gate refuses it.
+- **MCP**: `gap_report` and `get_work_orders`, both read-only.
+- A scheduled workflow (`gaps`) publishes the gap report weekly. It uses no model and no secret.
+- Fixed: the paraphrase of one Common Core standard ran eleven words alongside the publisher's sentence; the new gate
+  found it and it was rewritten.
+
 ## 0.3.0 (2026-11-23)
 
 - `openlessons mcp`: a Model Context Protocol server on standard input and output with four tools: `find_lessons`,
